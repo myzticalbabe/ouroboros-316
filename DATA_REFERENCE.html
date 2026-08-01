@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DATA REFERENCE — BCC Investigation Canonical Numbers</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; --p:#d2a8ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); padding:24px; line-height:1.65; }
+  .container { max-width:1000px; margin:0 auto; }
+  h1 { color:var(--g); text-align:center; font-size:1.8rem; padding-bottom:10px; margin-bottom:8px; }
+  h2 { color:var(--a); margin:28px 0 12px; font-size:1.25rem; padding-bottom:6px; border-bottom:1px solid var(--border); }
+  .subtitle { text-align:center; color:#8b949e; margin-bottom:24px; font-size:0.85rem; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:20px; margin-bottom:16px; }
+  table { width:100%; border-collapse:collapse; margin:8px 0; font-size:0.88rem; }
+  th { background:#1c2128; color:var(--a); text-align:left; padding:8px 10px; border:1px solid var(--border); font-size:0.78rem; text-transform:uppercase; }
+  td { padding:8px 10px; border:1px solid var(--border); vertical-align:top; }
+  tr:nth-child(even) td { background:#1a1f26; }
+  .val { font-family:monospace; font-weight:700; color:var(--h); font-size:0.92rem; }
+  .val-g { color:var(--g); }
+  .val-r { color:var(--r); }
+  .val-y { color:var(--y); }
+  .src { color:#8b949e; font-size:0.78rem; }
+  .note { font-size:0.82rem; color:#8b949e; font-style:italic; }
+  .footer { margin-top:30px; padding:16px; background:#1d1530; border-radius:8px; text-align:center; font-size:0.82rem; }
+  .footer a { color:var(--a); }
+  @media print { body { background:#fff; color:#000; } .card { border:1px solid #ccc; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>📊 DATA REFERENCE</h1>
+<p class="subtitle">
+  Berks Counseling Center (EIN 23-2043478) — Canonical Financial & Governance Figures<br>
+  <strong>Single source of truth for all investigation documents.</strong> Cross-reference before updating any deliverable.<br>
+  Last verified: August 1, 2026
+</p>
+
+<div class="card">
+  <h2>💰 Financial Summary — FY2025 (Year Ending June 2025, Filed May 2026)</h2>
+  <table>
+    <tr><th>Metric</th><th>Value</th><th>Source</th></tr>
+    <tr><td>Total Revenue</td><td class="val">$12,494,569</td><td class="src">IRS Form 990 Part VIII, ProPublica</td></tr>
+    <tr><td>Program Service Revenue</td><td class="val">$11,778,182</td><td class="src">IRS Form 990 Part VIII (94.3% of revenue)</td></tr>
+    <tr><td>Contributions &amp; Grants</td><td class="val">$204,333</td><td class="src">IRS Form 990 Part VIII</td></tr>
+    <tr><td>Investment Income</td><td class="val">$446,033</td><td class="src">IRS Form 990 Part VIII</td></tr>
+    <tr><td>Total Expenses</td><td class="val">$13,291,493</td><td class="src">IRS Form 990 Part IX</td></tr>
+    <tr><td>Program Services Expense</td><td class="val">$11,681,226</td><td class="src">IRS Form 990 Part IX (87.9%)</td></tr>
+    <tr><td>Management &amp; General</td><td class="val">$1,589,606</td><td class="src">IRS Form 990 Part IX (12.0%)</td></tr>
+    <tr><td>Fundraising</td><td class="val">$20,661</td><td class="src">IRS Form 990 Part IX (0.2%)</td></tr>
+    <tr><td>Net Income (Deficit)</td><td class="val val-r">−$796,924</td><td class="src">IRS Form 990 Part VIII − Part IX</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>🏦 Assets &amp; Portfolio — FY2025</h2>
+  <table>
+    <tr><th>Metric</th><th>Value</th><th>Source</th><th>⚠ Note</th></tr>
+    <tr>
+      <td>Total Assets</td><td class="val">$22,972,855</td><td class="src">ProPublica Nonprofit Explorer (FY2025 snapshot)</td>
+      <td class="note">Includes all asset classes</td>
+    </tr>
+    <tr>
+      <td>Net Assets / Fund Balance</td><td class="val">$19,830,778</td><td class="src">IRS Form 990 Part I, Line 22</td>
+      <td class="note">Total Assets − Total Liabilities</td>
+    </tr>
+    <tr>
+      <td><strong>Schedule D — Public Securities</strong></td><td class="val val-g">$10,480,000</td><td class="src">IRS Form 990 Schedule D (ProPublica e-file viewer)</td>
+      <td class="note"><strong>THIS IS THE PORTFOLIO VALUE.</strong> Not $19.8M. Not $22.97M. Use $10.48M when describing the securities portfolio.</td>
+    </tr>
+    <tr>
+      <td>Investment Income Trajectory</td><td class="val">$40K → $119K → $263K → $413K → $446K</td><td class="src">IRS Form 990 Part VIII, FY2021–2025</td>
+      <td class="note">11.13x growth: $40,067 (FY2021) → $446,033 (FY2025)</td>
+    </tr>
+  </table>
+  <p style="margin-top:12px;color:var(--y);font-size:0.85rem;">
+    <strong>⚠ CRITICAL DISTINCTION:</strong> INVESTMENT_PEOPLE_REPORT.html previously titled this "$19.8M Portfolio" — that conflated net assets with the securities portfolio. The actual securities portfolio is <strong>$10.48M</strong> per Schedule D. Net assets ($19.8M) = Total assets ($22.97M) − Liabilities (~$3.14M). Phase 1 fixed this.
+  </p>
+</div>
+
+<div class="card">
+  <h2>🏛️ Federal Awards</h2>
+  <table>
+    <tr><th>Metric</th><th>Value</th><th>Source</th></tr>
+    <tr><td>Total Federal Awards Enumerated</td><td class="val">125</td><td class="src">USASpending.gov paginated API (August 2026)</td></tr>
+    <tr><td>Total Federal Obligation</td><td class="val">$9,348,544.60</td><td class="src">USASpending.gov API (usaspending_api.py)</td></tr>
+    <tr><td>SAMHSA CCBHC Grant #</td><td class="val">H79SM088878</td><td class="src">USASpending.gov / HigherGov</td></tr>
+    <tr><td>SAMHSA Total Obligation</td><td class="val">$3,944,396</td><td class="src">USASpending.gov (initial $982,780, amended +301%)</td></tr>
+    <tr><td>SAMHSA Amount Outlaid</td><td class="val">$2,503,513</td><td class="src">USASpending.gov (63.5% drawn — 71% of period elapsed)</td></tr>
+    <tr><td>SAMHSA Grant Period</td><td class="val">2023-09-30 → 2027-09-29</td><td class="src">USASpending.gov / HigherGov</td></tr>
+    <tr><td>HUD CoC Grants (8 properties)</td><td class="val">~$500K–$600K+/yr</td><td class="src">USASpending.gov (latest-grant sum: $1,265,019 across varying renewal years)</td></tr>
+    <tr><td>Earlier Award Count</td><td class="val val-y">51</td><td class="src">USASpending.gov (unpaginated — superseded)</td></tr>
+  </table>
+  <p style="margin-top:8px;color:var(--y);font-size:0.85rem;">
+    <strong>NOTE:</strong> The 51-award figure was from an unpaginated partial pull (Session 10). The corrected 125-award count comes from paginated API calls. COMPLAINT_LETTER.html uses "125" as the canonical count. Any document still citing ~50 awards is stale.
+  </p>
+</div>
+
+<div class="card">
+  <h2>💼 Executive Compensation — FY2025 (Verified, Reconciled)</h2>
+  <table>
+    <tr><th>Person</th><th>Title</th><th>Base</th><th>Other</th><th>Total</th><th>Source</th></tr>
+    <tr>
+      <td>Christine Axford</td><td>CEO</td>
+      <td class="val">$140,004</td>
+      <td class="val">$5,428</td>
+      <td class="val">$145,432</td>
+      <td class="src">IRS Form 990 Part VII (ProPublica rendered)</td>
+    </tr>
+    <tr>
+      <td>Greg Little</td><td>CFO</td>
+      <td class="val">$132,442</td>
+      <td class="val">$17,350</td>
+      <td class="val val-r">$149,792</td>
+      <td class="src">IRS Form 990 Part VII (ProPublica rendered)</td>
+    </tr>
+  </table>
+  <p style="margin-top:8px;color:var(--y);font-size:0.85rem;">
+    <strong>RECONCILED (Session 17 / August 2026):</strong> Prior reports showed a base-vs-total comparison artifact. The CFO earns $4,360 MORE than the CEO on total compensation. CFO "other comp" ($17,350) is 3.2x CEO's ($5,428). CFO grew 23.4x over 6 years ($6,408 → $149,792). Schedule J (compensation methodology) not public.
+  </p>
+</div>
+
+<div class="card">
+  <h2>👥 Board of Directors — FY2025 (9 Members)</h2>
+  <p style="color:#8b949e;margin-bottom:8px;">Canonical roster in: <a href="INVESTMENT_PEOPLE_REPORT.html" style="color:var(--a);">INVESTMENT_PEOPLE_REPORT.html</a></p>
+  <table>
+    <tr><th>Name</th><th>Role</th><th>Employer</th><th>Conflict</th><th>Status</th></tr>
+    <tr><td>Joseph Plageman Jr.</td><td>Chair (14 yrs)</td><td>Edward Jones (CRD #5964768) + TPUC President</td><td class="val-r">⚠ $10.48M portfolio</td><td>Verified</td></tr>
+    <tr><td>Crystal Seitz</td><td>Vice Chair</td><td>Greater Reading Convention &amp; Visitors Bureau</td><td class="val-g">None</td><td>Verified</td></tr>
+    <tr><td>John Robinson</td><td>Treasurer (since 2021)</td><td>Robinson &amp; Associates, LLC (#3967553, ACTIVE)</td><td class="val-r">⚠ Consulting firm, $0 comp</td><td>Verified — 4 sources</td></tr>
+    <tr><td>James Brooks</td><td>Director (9+ yrs)</td><td>Unconfirmed (Marion Twp Fire Relief lead)</td><td class="val-y">Unknown</td><td>UNCONFIRMED</td></tr>
+    <tr><td>Linda Krause</td><td>Director (9+ yrs)</td><td>Edward Jones — Sr. Branch Office Admin</td><td class="val-y">⚠ 22% EJ board bloc</td><td>Verified</td></tr>
+    <tr><td>Deborah Scull</td><td>Director (9+ yrs)</td><td>Central Tire Co. (Mogel family)</td><td class="val-g">Low</td><td>Verified — Session 11</td></tr>
+    <tr><td>Brenda Gaul</td><td>Director (ex-Treasurer)</td><td>Furniture Soup, Inc.</td><td class="val-r">⚠ Vendor conflict</td><td>Verified</td></tr>
+    <tr><td>Missy Orlando</td><td>Director (Aug 2025)</td><td>United Way of Berks County</td><td class="val-r">⚠ $685K funding loop</td><td>Verified</td></tr>
+    <tr><td>Jeffrey Ralph</td><td>Director (Feb 2025)</td><td>GSK — Medicinal Chemistry (inferred)</td><td class="val-y">Unknown</td><td>Inferred — Session 11</td></tr>
+  </table>
+  <p style="margin-top:8px;font-size:0.82rem;">
+    <strong>8/9 employers confirmed. 1 unconfirmed (Brooks). 1 inferred (Ralph).</strong><br>
+    🦉 = Owl (conflicted): Plageman, Krause, Robinson, Gaul, Orlando (5 board members).<br>
+    External nexus: Marcia Goodman-Hinnershitz (Reading City Council → COCA Director → BCC's largest non-federal funder, $3.3M cumulative).
+  </p>
+</div>
+
+<div class="card">
+  <h2>📋 Key Dates &amp; Deadlines</h2>
+  <table>
+    <tr><th>Event</th><th>Date</th><th>Note</th></tr>
+    <tr><td>BCC 501(c)(3) Ruling</td><td class="val">February 1979</td><td>ACTIVE — no revocation</td></tr>
+    <tr><td>FY2025 990 Filed</td><td class="val">May 8, 2026</td><td>Latest available filing</td></tr>
+    <tr><td>FY2026 990 Expected</td><td class="val">May 2027</td><td>Next filing — covers year ending June 2026</td></tr>
+    <tr><td>SAMHSA Grant Expires</td><td class="val val-r">September 29, 2027</td><td>790 days remaining (as of Aug 1, 2026)</td></tr>
+    <tr><td>BCC v. Community Care Ruling</td><td class="val">November 7, 2018</td><td>898 MDA 2017 — BCC won on procedure</td></tr>
+    <tr><td>DDAP Complaint Investigation</td><td class="val">December 6, 2023</td><td>Event 4V0D11 / Facility TQ8F6601 — "in compliance"</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h2>📄 Document Inventory — Where to Find What</h2>
+  <table>
+    <tr><th>If you need...</th><th>Go to...</th></tr>
+    <tr><td>Complete gap inventory &amp; status</td><td><a href="INVESTIGATION_GAPS.html" style="color:var(--a);">INVESTIGATION_GAPS.html</a></td></tr>
+    <tr><td><strong>Canonical board roster &amp; profiles</strong></td><td><a href="INVESTMENT_PEOPLE_REPORT.html" style="color:var(--a);">INVESTMENT_PEOPLE_REPORT.html</a></td></tr>
+    <tr><td>Complete funding breakdown</td><td><a href="FUNDING_REVIEW.html" style="color:var(--a);">FUNDING_REVIEW.html</a></td></tr>
+    <tr><td>Formal complaint (ready to send)</td><td><a href="COMPLAINT_LETTER.html" style="color:var(--a);">COMPLAINT_LETTER.html</a></td></tr>
+    <tr><td>COI policy request (ready to send)</td><td><a href="COI_REQUEST_LETTER.html" style="color:var(--a);">COI_REQUEST_LETTER.html</a></td></tr>
+    <tr><td>Proven harm evidence</td><td><a href="DEEP_DIVE_HARM.html" style="color:var(--a);">DEEP_DIVE_HARM.html</a></td></tr>
+    <tr><td>Patient harm inventory</td><td><a href="PATIENT_HARM_REPORT.html" style="color:var(--a);">PATIENT_HARM_REPORT.html</a></td></tr>
+    <tr><td>DDAP investigation evidence</td><td><a href="DDAP_INVESTIGATION_EVIDENCE.html" style="color:var(--a);">DDAP_INVESTIGATION_EVIDENCE.html</a></td></tr>
+    <tr><td>DDAP complaint (MMJ patient rights)</td><td><a href="DDAP_COMPLAINT.html" style="color:var(--a);">DDAP_COMPLAINT.html</a></td></tr>
+    <tr><td>Regulatory violation framework</td><td><a href="COMPLIANCE_SELF_DEALING_ANGLES.html" style="color:var(--a);">COMPLIANCE_SELF_DEALING_ANGLES.html</a></td></tr>
+    <tr><td>Legal oversight gap analysis</td><td><a href="LEGAL_OVERSIGHT_ANGLE.html" style="color:var(--a);">LEGAL_OVERSIGHT_ANGLE.html</a></td></tr>
+    <tr><td>Forensic extraction methodology</td><td><a href="FORENSIC_EXTRACTION_BLUEPRINT.html" style="color:var(--a);">FORENSIC_EXTRACTION_BLUEPRINT.html</a></td></tr>
+    <tr><td>SAMHSA grant performance data</td><td><a href="SAMHSA_PERFORMANCE_H79SM088878.html" style="color:var(--a);">SAMHSA_PERFORMANCE_H79SM088878.html</a></td></tr>
+    <tr><td>Property ownership analysis</td><td><a href="BCC_PROPERTY_OWNERSHIP.html" style="color:var(--a);">BCC_PROPERTY_OWNERSHIP.html</a></td></tr>
+    <tr><td>MMJ patient legal rights</td><td><a href="MMJ_PAROLE_RIGHTS.html" style="color:var(--a);">MMJ_PAROLE_RIGHTS.html</a></td></tr>
+    <tr><td>Investigation audit report</td><td><a href="AUDIT_REPORT.html" style="color:var(--a);">AUDIT_REPORT.html</a></td></tr>
+    <tr><td><strong>Canonical numbers (this doc)</strong></td><td><a href="DATA_REFERENCE.html" style="color:var(--g);">DATA_REFERENCE.html</a></td></tr>
+    <tr><td>Agency complaint (plain text)</td><td><a href="COMPLAINT_AGENCY_LETTER.txt" style="color:var(--a);">COMPLAINT_AGENCY_LETTER.txt</a></td></tr>
+    <tr><td>Todo list &amp; contact directory</td><td><a href="COMPLAINT_TODO_LIST.html" style="color:var(--a);">COMPLAINT_TODO_LIST.html</a></td></tr>
+  </table>
+</div>
+
+<div class="footer">
+  <strong>DATA_REFERENCE.html — Canonical Numbers</strong> · August 1, 2026<br>
+  ⚠ <strong>Update this document first, then propagate changes to all other documents.</strong><br>
+  📋 <a href="INVESTIGATION_GAPS.html">Gaps</a> · <a href="AUDIT_REPORT.html">Audit</a> · <a href="COMPLAINT_LETTER.html">Complaint</a> · <a href="COI_REQUEST_LETTER.html">COI Request</a>
+</div>
+
+</div>
+</body>
+</html>
