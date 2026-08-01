@@ -2,9 +2,9 @@
 
 **Subject:** Berks Counseling Center (BCC), EIN 23-2043478  
 **Location:** 645 Penn Street, Reading, PA 19601  
-**Status:** Investigation in progress. 42 of 49 gaps open. 7 resolved (1 advanced). <strong>Nothing to be sent until investigation complete.</strong> All complaint letters and COI requests are drafted but on hold.  
+**Status:** Investigation in progress. 42 of 49 gaps open. 7 resolved (1 advanced). <strong>Nothing to be sent until investigation complete.</strong> All complaint letters and COI requests are drafted but on hold. <strong>BCC leadership is excluded from all complaint recipient lists — complaints go to oversight bodies only.</strong>  
 **Last updated:** August 1, 2026  
-**Git:** 4 commits (`c48461a` Phase 1 → `6067b20` Phase 2 → `f227ec4` README → `7208b8a` redacted letter)
+**Git:** 11 commits (`c48461a` Phase 1 → … → `a6f5a1e` BCC exclusion preamble fix)
 
 ---
 
@@ -27,7 +27,7 @@ If you're new to this investigation, read in this order:
 | 3 | **[FUNDING_REVIEW.html](FUNDING_REVIEW.html)** | Complete funding breakdown, worm fleet anomaly analysis, oversight agency mapping | 10 min |
 | 4 | **[INVESTMENT_PEOPLE_REPORT.html](INVESTMENT_PEOPLE_REPORT.html)** | Canonical board roster with detailed profiles, FINRA verification, conflict assessments | 10 min |
 | 5 | **[DEEP_DIVE_HARM.html](DEEP_DIVE_HARM.html)** | 6 proven harm items, 3 documented risks, alleged claims, all 16 people profiled | 10 min |
-| 6 | **[COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html)** | Ready-to-send formal complaint — <strong>redacted version (default shareable)</strong>, CONCERN 8 removed, 9 concerns, 13 primary recipients | 10 min |
+| 6 | **[COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html)** | Formal complaint — <strong>redacted version (default shareable)</strong>, CONCERN 8 removed, 9 concerns, <strong>10 oversight-body recipients (BCC excluded)</strong>, 30+ CC | 10 min |
 | 7 | **[COI_REQUEST_LETTER.html](COI_REQUEST_LETTER.html)** | Legally-grounded COI policy request under IRC §6104(d) | 5 min |
 | 8 | **[AUDIT_REPORT.html](AUDIT_REPORT.html)** | Cross-document audit — 7 critical, 11 medium, 8 low issues found and tracked | 10 min |
 
@@ -55,11 +55,17 @@ If you're new to this investigation, read in this order:
 
 | File | Description | Recipients | Status |
 |------|-------------|-----------|--------|
-| **[COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html)** | <strong>REDACTED — default shareable version.</strong> Formal complaint with 9 concerns. CONCERN 8 (MMJ patient allegation) removed for privacy. | 13 primary, 10 CC | <strong>Ready. Not sent.</strong> |
-| **[COMPLAINT_LETTER.html](COMPLAINT_LETTER.html)** | <strong>FULL VERSION — access-controlled.</strong> All 10 concerns including CONCERN 8 (single-source, uncorroborated patient allegation). See redacted version for external sharing. | 13 primary, 10 CC | Ready. Not sent. |
+| **[COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html)** | <strong>REDACTED — default shareable version.</strong> Formal complaint with 9 concerns. CONCERN 8 (MMJ patient allegation) removed for privacy. BCC leadership excluded — oversight bodies only. | 10 primary, 30+ CC | <strong>Ready. Not sent.</strong> |
+| **[COMPLAINT_LETTER.html](COMPLAINT_LETTER.html)** | <strong>FULL VERSION — access-controlled.</strong> All 10 concerns including CONCERN 8 (single-source, uncorroborated patient allegation). BCC leadership excluded — oversight bodies only. See redacted version for external sharing. | 10 primary, 30+ CC | Ready. Not sent. |
 | **[COI_REQUEST_LETTER.html](COI_REQUEST_LETTER.html)** | Conflict of Interest policy request under IRC §6104(d) | 4 verified BCC addresses, CC: PA AG, commissioners, council | **Ready. Not sent.** |
 | **[DDAP_COMPLAINT.html](DDAP_COMPLAINT.html)** | PA DDAP licensing complaint — MMJ patient rights | PA DDAP Bureau of Program Licensure | **Ready. Hold for corroboration.** |
-| **[COMPLAINT_AGENCY_LETTER.txt](COMPLAINT_AGENCY_LETTER.txt)** | Plain-text agency version of complaint letter | Same as COMPLAINT_LETTER_REDACTED.html | **Ready.** |
+| **[COMPLAINT_AGENCY_LETTER.txt](COMPLAINT_AGENCY_LETTER.txt)** | Plain-text agency version of complaint letter — BCC excluded, oversight bodies only | Same as COMPLAINT_LETTER_REDACTED.html | **Ready.** |
+
+### Strategy & Justification
+
+| File | Description | Key Contents |
+|------|-------------|-------------|
+| **[SYSTEMIC_CORRUPTION_JUSTIFICATION.html](SYSTEMIC_CORRUPTION_JUSTIFICATION.html)** | <strong>Why BCC leadership is NOT contacted.</strong> Standalone justification document. | 7 reasons: board-funder interlocks, CFO>CEO pay, Treasurer's undisclosed consulting firm, litigation against oversight (898 MDA 2017), HUD compliance risk, complainant safety (CONCERN 8), self-protecting governance structure. Evidence cross-reference table. |
 
 ### Action Items & Contacts
 
@@ -168,7 +174,7 @@ This investigation was audited on August 1, 2026. See [AUDIT_REPORT.html](AUDIT_
 
 **Privacy:** The MMJ/patient-rights content (CONCERN 8 in COMPLAINT_LETTER.html, gap #43 in INVESTIGATION_GAPS.html) contains a single-complainant account — not independently verified. A redacted version without CONCERN 8 — [COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html) — is the default shareable version for external distribution. The full version ([COMPLAINT_LETTER.html](COMPLAINT_LETTER.html)) is access-controlled. See OBS-5 in [AUDIT_REPORT.html](AUDIT_REPORT.html).
 
-**What hasn't been done:** No complaint has been sent. No COI request has been made. No PA Right-to-Know has been filed. The investigation has produced excellent evidence but has not yet delivered any external communication.
+**What hasn't been done:** No complaint has been sent. No COI request has been made. No PA Right-to-Know has been filed. The investigation has produced excellent evidence but has not yet delivered any external communication. <strong>BCC leadership is excluded from all complaint recipient lists — complaints go to oversight bodies only, as justified in [SYSTEMIC_CORRUPTION_JUSTIFICATION.html](SYSTEMIC_CORRUPTION_JUSTIFICATION.html).</strong>
 
 ---
 
