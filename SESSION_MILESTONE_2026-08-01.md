@@ -49,9 +49,9 @@ Verified output: 51 awards, $9,348,544.60 total obligation, CCBHC grant present.
 
 ## Remaining Top Priorities
 
-1. **SEND the COI Request Letter** (COI_REQUEST_LETTER.html ready, 4 verified addresses)
+1. **ROUTE the COI Request Letter** through PA AG Charitable Trusts or SAMHSA — do NOT send directly to BCC (COI_REQUEST_LETTER.html ready, oversight routing only)
 2. **Contact Herbein + Company** — does Edward Jones manage the portfolio?
-3. **Send the Complaint Letter** (7 city council emails + BCC board)
+3. **Send the Complaint Letter** to oversight bodies only — 7 city council + 3 county commissioners (BCC leadership EXCLUDED per SYSTEMIC_CORRUPTION_JUSTIFICATION.html)
 4. **File PA Right-to-Know** with Berks County (BCC contracts, MOUs, payments)
 5. **Verify John Robinson** via PA Dept of State corporations search
 6. **Manual UJS Portal search** for ALL BCC court records
