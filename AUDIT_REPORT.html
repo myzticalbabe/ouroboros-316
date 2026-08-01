@@ -209,17 +209,30 @@
   </p>
 </div>
 
-<div class="finding">
-  <strong>CRIT-3: Broken Cross-Reference — COMPLAINT_AGENCY_LETTER.txt Does Not Exist</strong>
-  <p style="margin-top:8px;">
-    INVESTIGATION_GAPS.html, gap #48, states: "now cited in COMPLAINT_LETTER.html and <strong>COMPLAINT_AGENCY_LETTER.txt</strong>."
-    <strong>COMPLAINT_AGENCY_LETTER.txt does not exist on disk.</strong> The file is not present in the project root or any subdirectory visible in the file tree.
-  </p>
-  <p style="margin-top:6px;color:#8b949e;">
-    <strong>Impact:</strong> A deliverable referenced as evidence does not exist. If this was meant to be a plain-text version of the complaint letter for agency submission, it was never created or was deleted.
+<div class="finding-y">
+  <strong>MED-12: COI_REQUEST_LETTER.html — Architectural Tension (Drafted for BCC, Reframed for Oversight)</strong>
+  <p style="margin-top:6px;">
+    COI_REQUEST_LETTER.html was <strong>originally drafted as a direct-to-BCC request</strong> — the TO field addressed Christine Axford, Greg Little, and Joseph Plageman Jr. at their berkscc.org emails, and the salutation read "Dear Ms. Axford, Mr. Little, and Mr. Plageman." This was the investigation's original strategy: send the COI request directly to BCC under IRC §6104(d) and start a 30-day clock.
   </p>
   <p style="margin-top:6px;">
-    <strong>Fix:</strong> Either create COMPLAINT_AGENCY_LETTER.txt or remove the reference from INVESTIGATION_GAPS.html.
+    The BCC exclusion strategy (documented in <a href="SYSTEMIC_CORRUPTION_JUSTIFICATION.html">SYSTEMIC_CORRUPTION_JUSTIFICATION.html</a>) changed this: BCC is the subject of a systemic corruption investigation and should not be tipped off before oversight bodies act. The COI request was <strong>restructured to route through PA AG Charitable Trusts or SAMHSA</strong> — not sent directly to BCC. The TO field now says "ROUTE THROUGH" and directs to oversight bodies.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Tension:</strong> The COI request's original structure (legal citations, document request list, "REASON FOR REQUEST" section) was written assuming BCC as the direct recipient. The restructuring preserved all content but reframed the delivery path. The letter body still includes phrases like "Please provide these documents electronically to the return email address" — which make more sense when addressed to BCC than to an oversight intermediary. A full rewrite for oversight-body routing would produce a cleaner document, but the current version is functionally correct: it tells the oversight body what to request and why.
+  </p>
+  <p style="margin-top:6px;">
+    <strong>Status:</strong> <span class="badge badge-y">TENSION DOCUMENTED</span> — The COI request is structurally reframed for oversight routing. The underlying content (what to request, legal basis, why it matters) remains intact. A future polish pass should rewrite the body for an oversight-body audience.
+  </p>
+</div>
+
+<div class="finding">
+  <strong>CRIT-3: Broken Cross-Reference — ✅ RESOLVED</strong>
+  <p style="margin-top:8px;">
+    INVESTIGATION_GAPS.html, gap #48, originally referenced <strong>COMPLAINT_AGENCY_LETTER.txt</strong> which did not exist at audit time.
+    <strong style="color:var(--g);">✅ FIXED.</strong> COMPLAINT_AGENCY_LETTER.txt was created (August 1, 2026) as the plain-text broadcast version of the complaint, with full TO + CC recipient lists and BCC exclusion note.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Status:</strong> Resolved. File exists and is referenced correctly across all documents.
   </p>
 </div>
 
@@ -503,7 +516,7 @@
     <tr><td>INVESTIGATION_GAPS.html</td><td>MEDIA_OUTREACH.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
     <tr><td>INVESTIGATION_GAPS.html</td><td>COMPLIANCE_SELF_DEALING_ANGLES.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
     <tr><td>INVESTIGATION_GAPS.html</td><td>LEGAL_OVERSIGHT_ANGLE.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
-    <tr><td>INVESTIGATION_GAPS.html (text ref)</td><td>COMPLAINT_AGENCY_LETTER.txt</td><td><span class="err">❌ DOES NOT EXIST</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html (text ref)</td><td>COMPLAINT_AGENCY_LETTER.txt</td><td><span class="ok">✅ EXISTS — Created Aug 1, 2026</span></td></tr>
     <tr><td>FUNDING_REVIEW.html</td><td>COMPLAINT_TODO_LIST.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
     <tr><td>FUNDING_REVIEW.html</td><td>TIKTOK_VIDEO_SCRIPT.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
     <tr><td>INVESTMENT_PEOPLE_REPORT.html</td><td>COMPLAINT_TODO_LIST.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
@@ -515,7 +528,7 @@
     <tr><td>FORENSIC_EXTRACTION_BLUEPRINT.html</td><td>INVESTIGATION_GAPS.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
   </table>
   <p style="margin-top:10px;color:#8b949e;">
-    <strong>Result:</strong> 37/38 links resolve. 1 broken text reference to COMPLAINT_AGENCY_LETTER.txt (see CRIT-3).
+    <strong>Result:</strong> 38/38 links resolve. 0 broken references (COMPLAINT_AGENCY_LETTER.txt created, see CRIT-3).
     2 absolute C: drive paths omitted from count (see CRIT-6).
   </p>
 </div>
@@ -542,15 +555,14 @@
 </div>
 
 <div class="card card-p">
-  <h3>OBS-4: No Single Source of Truth for Key Numbers</h3>
-  <p>The following numbers appear across multiple documents with no single canonical source:</p>
+  <h3>OBS-4: No Single Source of Truth for Key Numbers — ✅ RESOLVED</h3>
+  <p>DATA_REFERENCE.html now serves as the canonical reference for all financial figures with source citations and retrieval dates. The following numbers are standardized across documents:</p>
   <ul style="margin-left:20px;color:#8b949e;">
-    <li>Portfolio value: $10.48M (Schedule D) vs $19.8M (net assets) vs $22.97M (total assets)</li>
-    <li>Federal awards: 51 (earlier) vs 125 (corrected, Session 12+) vs ~125-130 (COMPLAINT_LETTER)</li>
-    <li>HUD grant total: ~$500K-$600K/yr vs $1,265,019 (FUNDING_REVIEW latest-grant sum)</li>
-    <li>Board affiliations: 8/9 confirmed vs "1 undisclosed" (both are technically correct but anchor different impressions)</li>
+    <li>Portfolio value: $10.48M (Schedule D public securities) / $19.8M (net assets) / $22.97M (total assets)</li>
+    <li>Federal awards: 125 (corrected, USASpending pagination)</li>
+    <li>HUD grant total: $1,265,019 (latest-grant sum) across 8 properties</li>
+    <li>Board affiliations: 8/9 confirmed, 1 unconfirmed (James Brooks)</li>
   </ul>
-  <p style="color:#8b949e;"><strong>Recommendation:</strong> Create a DATA_REFERENCE.html that serves as the canonical reference for all financial figures, with source citations and retrieval dates.</p>
 </div>
 
 <div class="card card-p">
@@ -566,11 +578,11 @@
   <h3>Phase 1 — Immediate (Today)</h3>
   <table>
     <tr><th>#</th><th>Action</th><th>Files Affected</th><th>Effort</th></tr>
-    <tr><td>1</td><td>Fix gap count arithmetic in INVESTIGATION_GAPS.html</td><td>INVESTIGATION_GAPS.html</td><td>15 min</td></tr>
-    <tr><td>2</td><td>Fix portfolio value title in INVESTMENT_PEOPLE_REPORT.html</td><td>INVESTMENT_PEOPLE_REPORT.html</td><td>5 min</td></tr>
-    <tr><td>3</td><td>Update COMPLAINT_TODO_LIST.html subtitle/metadata</td><td>COMPLAINT_TODO_LIST.html</td><td>5 min</td></tr>
-    <tr><td>4</td><td>Remove or fix C: drive absolute file paths</td><td>COMPLAINT_TODO_LIST.html, DONOR_RECONSTRUCTION.html</td><td>5 min</td></tr>
-    <tr><td>5</td><td>Create COMPLAINT_AGENCY_LETTER.txt or remove reference</td><td>INVESTIGATION_GAPS.html</td><td>10 min</td></tr>
+    <tr><td>1</td><td>Fix gap count arithmetic in INVESTIGATION_GAPS.html <span class="badge badge-g">✅ DONE</span></td><td>INVESTIGATION_GAPS.html</td><td>Completed</td></tr>
+    <tr><td>2</td><td>Fix portfolio value title in INVESTMENT_PEOPLE_REPORT.html <span class="badge badge-g">✅ DONE</span></td><td>INVESTMENT_PEOPLE_REPORT.html</td><td>Completed</td></tr>
+    <tr><td>3</td><td>Update COMPLAINT_TODO_LIST.html subtitle/metadata <span class="badge badge-g">✅ DONE</span></td><td>COMPLAINT_TODO_LIST.html</td><td>Completed</td></tr>
+    <tr><td>4</td><td>Remove or fix C: drive absolute file paths <span class="badge badge-g">✅ DONE</span></td><td>COMPLAINT_TODO_LIST.html, DONOR_RECONSTRUCTION.html</td><td>Completed</td></tr>
+    <tr><td>5</td><td>Create COMPLAINT_AGENCY_LETTER.txt <span class="badge badge-g">✅ DONE</span></td><td>COMPLAINT_AGENCY_LETTER.txt</td><td>Completed</td></tr>
   </table>
 </div>
 
@@ -603,7 +615,7 @@
   <strong>Audit Report Generated:</strong> August 1, 2026 &nbsp;|&nbsp;
   <strong>Documents Audited:</strong> 14 &nbsp;|&nbsp;
   <strong>Cross-References Verified:</strong> 38 &nbsp;|&nbsp;
-  <strong>Issues Found:</strong> 7 Critical, 11 Medium, 8 Low<br>
+  <strong>Issues Found:</strong> 6 Critical, 12 Medium, 8 Low<br>
   <strong>Bottom Line:</strong> The evidence is outstanding. Document management largely resolved (git version control, canonical references, redacted complaint, BCC exclusion strategy). Delivery has not started — all complaints routed to oversight bodies only, NOT BCC. See SYSTEMIC_CORRUPTION_JUSTIFICATION.html.<br><br>
   📋 <a href="INVESTIGATION_GAPS.html" style="color:var(--a);">INVESTIGATION_GAPS.html</a> &nbsp;|&nbsp;
   📋 <a href="COMPLAINT_TODO_LIST.html" style="color:var(--a);">COMPLAINT_TODO_LIST.html</a> &nbsp;|&nbsp;
