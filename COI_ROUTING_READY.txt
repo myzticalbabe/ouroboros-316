@@ -1,0 +1,145 @@
+============================================================
+COI ROUTING REQUEST — EXECUTION PACKAGE
+August 1, 2026
+============================================================
+
+STEP 1: Choose your routing target (one or both):
+
+OPTION A — PA Attorney General (Charitable Trusts Section)
+  To: info@attorneygeneral.gov
+  Phone: 717-783-2853
+
+OPTION B — SAMHSA CCBHC Program
+  To: CCBHC@samhsa.hhs.gov
+  Reference: Grant #H79SM088878
+
+Recommendation: Send to BOTH simultaneously.
+Use OPTION A as primary TO, OPTION B as CC.
+
+============================================================
+STEP 2: Email setup
+============================================================
+
+TO: info@attorneygeneral.gov
+CC: CCBHC@samhsa.hhs.gov, commissioners@countyofberks.com, council@readingpa.gov
+
+SUBJECT: Routing Request — Conflict of Interest Policy for Berks Counseling Center (EIN 23-2043478) — Pursuant to IRC Section 6104(d)
+
+============================================================
+STEP 3: Paste the body below
+============================================================
+
+⚠ This is a routing request — do NOT send directly to BCC.
+BCC is the subject of this investigation, not a partner in it.
+See SYSTEMIC_CORRUPTION_JUSTIFICATION.html for the full justification.
+
+This request is submitted to an oversight body with enforcement
+authority, requesting that you obtain BCC's Conflict of Interest
+Policy under IRC Section 6104(d) on the public's behalf.
+
+LEGAL BASIS FOR THIS REQUEST
+
+The following laws require BCC to provide its Conflict of Interest
+Policy upon request:
+
+- IRC Section 6104(d)(1)(A): 501(c)(3) organizations must make
+  their Form 990 available for public inspection. The COI policy
+  is a required disclosure under Form 990 Part VI, Section B,
+  Line 12a-c.
+
+- Treasury Reg Section 301.6104(d)-1: Organizations must provide
+  copies of their three most recent Form 990s upon request,
+  without charge other than reasonable copying fees. Must respond
+  within 30 days for written requests.
+
+REASON FOR THIS ROUTING REQUEST
+
+This routing request is prompted by publicly available information
+from BCC's own Form 990 filings and independent research, which
+identifies the following governance relationships:
+
+1. Board Chair Joseph Plageman Jr. and Director Linda Krause both
+   work for Edward Jones Investments — a firm that may manage
+   BCC's $10.48M securities portfolio (Schedule D, FY2025).
+
+2. Director Missy Orlando works for United Way of Berks County,
+   which granted BCC approximately $685,000 (including $678K
+   MacKenzie Scott pass-through funds).
+
+3. Board Treasurer John Robinson (since June 2021, $0 compensation)
+   owns ROBINSON & ASSOCIATES, LLC — an ACTIVE Pennsylvania entity
+   (#3967553, incorporated 2010). BCC's Form 990 Schedule L reports
+   ALL-NO related-party transactions.
+
+4. City Councilmember Marcia Goodman-Hinnershitz serves on Reading
+   City Council AND directs planning at COCA (Council on Chemical
+   Abuse), BCC's largest non-federal funder ($3.3M cumulative).
+
+I am not alleging any violation of law. I am seeking the Conflict
+of Interest Policy to determine whether these relationships are
+disclosed, monitored, and managed, and whether recusals are
+documented for board decisions involving funders.
+
+DOCUMENTS REQUESTED
+
+We respectfully request that you obtain the following from BCC
+under your enforcement authority (subpoena, audit request, or
+formal demand under IRC Section 6104(d)):
+
+1. BCC's written Conflict of Interest Policy (required under
+   Form 990 Part VI, Line 12a — BCC answered "Yes")
+
+2. Documentation of the process BCC uses to regularly monitor
+   compliance with the COI policy (Line 12b — BCC answered "Yes")
+
+3. Documentation of how BCC determines compensation for the CEO
+   and CFO (Line 15a — BCC answered "Yes")
+
+4. Any Schedule O narrative describing BCC's procedures for
+   addressing conflicts involving board members whose employers
+   do business with or provide funding to BCC
+
+The documents should be obtained electronically if possible. If
+electronic delivery is not feasible, paper copies are acceptable
+with reasonable copying costs as permitted under the regulations.
+Direct the request to BCC at:
+
+  Berks Counseling Center
+  645 Penn Street, 2nd Floor
+  Reading, PA 19601-3543
+  EIN: 23-2043478
+
+RESPONSE REQUESTED
+
+Under Treasury Regulation Section 301.6104(d)-1, a response is
+required within 30 days. We respectfully request that you follow
+up with BCC if no response is received within 30 days, and notify
+us of any response or non-response.
+
+The COI policy is the single most important governance document
+for evaluating the Edward Jones, United Way, and Robinson
+consulting relationships. If the policy does not address board
+members whose employers do business with BCC — or if it does but
+recusals haven't been followed — that is a material governance
+failure. This request is routed through an oversight body (PA AG
+or SAMHSA) rather than sent directly to BCC because BCC is the
+subject of a systemic corruption investigation and should not be
+tipped off before oversight bodies act.
+
+⚠ BCC leadership (Axford, Little, Plageman) and BCC general
+contact (bcc@berkscc.org) are EXCLUDED from all recipient lists.
+Do NOT forward this request to BCC directly.
+See SYSTEMIC_CORRUPTION_JUSTIFICATION.html for the explanation.
+
+============================================================
+STEP 4: After sending
+============================================================
+
+1. Save the sent email (PDF or screenshot) for the audit trail
+2. Record the date sent in COMPLAINT_TODO_LIST.html
+3. Set a 30-day calendar reminder for follow-up
+4. Commit to git: "COI request routed to PA AG and SAMHSA"
+
+============================================================
+BCC IS EXCLUDED FROM ALL RECIPIENT LISTS
+============================================================
