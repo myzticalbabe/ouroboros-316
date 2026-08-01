@@ -4,7 +4,7 @@
 **Location:** 645 Penn Street, Reading, PA 19601  
 **Status:** Investigation in progress. 42 of 49 gaps open. 7 resolved (1 advanced). <strong>Nothing to be sent until investigation complete.</strong> All complaint letters and COI requests are drafted but on hold. <strong>BCC leadership is excluded from all complaint recipient lists — complaints go to oversight bodies only.</strong>  
 **Last updated:** August 1, 2026  
-**Git:** 11 commits (`c48461a` Phase 1 → … → `a6f5a1e` BCC exclusion preamble fix)
+**Git:** 22 commits (`c48461a` initial → `68006be` final portfolio fix)
 
 ---
 
@@ -29,7 +29,7 @@ If you're new to this investigation, read in this order:
 | 5 | **[DEEP_DIVE_HARM.html](DEEP_DIVE_HARM.html)** | 6 proven harm items, 3 documented risks, alleged claims, all 16 people profiled | 10 min |
 | 6 | **[COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html)** | Formal complaint — <strong>redacted version (default shareable)</strong>, CONCERN 8 removed, 9 concerns, <strong>10 oversight-body recipients (BCC excluded)</strong>, 35+ CC across 9 categories | 10 min |
 | 7 | **[COI_REQUEST_LETTER.html](COI_REQUEST_LETTER.html)** | Legally-grounded COI policy request under IRC §6104(d) — route through oversight body, not BCC directly | 5 min |
-| 8 | **[AUDIT_REPORT.html](AUDIT_REPORT.html)** | Cross-document audit — 7 critical, 11 medium, 8 low issues found and tracked | 10 min |
+| 8 | **[AUDIT_REPORT.html](AUDIT_REPORT.html)** | Cross-document audit — 6 critical, 12 medium, 8 low issues found and tracked | 10 min |
 
 **Total reading time:** ~75 minutes for full understanding.
 
@@ -65,7 +65,9 @@ If you're new to this investigation, read in this order:
 
 | File | Description | Key Contents |
 |------|-------------|-------------|
+| **[STRATEGY_OVERVIEW.html](STRATEGY_OVERVIEW.html)** | <strong>Executive summary — one-page strategy for journalists and legislators.</strong> | Why BCC isn't contacted, who IS contacted (9 categories, 35+ recipients), 5 evidence categories, 5 critical gaps, next steps, reading order. |
 | **[SYSTEMIC_CORRUPTION_JUSTIFICATION.html](SYSTEMIC_CORRUPTION_JUSTIFICATION.html)** | <strong>Why BCC leadership is NOT contacted.</strong> Standalone justification document. | 7 reasons: board-funder interlocks, CFO>CEO pay, Treasurer's undisclosed consulting firm, litigation against oversight (898 MDA 2017), HUD compliance risk, complainant safety (CONCERN 8), self-protecting governance structure. Evidence cross-reference table. |
+| **[INVESTIGATOR RIGHTS & WHISTLEBLOWER PROTECTION](COMPLAINT_LETTER_REDACTED.html)** | <strong>Investigator legal defense orgs in CC list.</strong> 5 organizations defending citizen investigator rights — ACLU of PA, Government Accountability Project (GAP), National Whistleblower Center, Reporters Committee for Freedom of the Press, PA Legal Aid Network. Included in all complaint CC lists (see COMPLAINT_LETTER_REDACTED.html CC section). |
 
 ### Action Items & Contacts
 
@@ -164,7 +166,7 @@ This investigation was audited on August 1, 2026. See [AUDIT_REPORT.html](AUDIT_
 - [DATA_REFERENCE.html](DATA_REFERENCE.html) created as canonical numbers reference
 - Board roster standardized — [INVESTMENT_PEOPLE_REPORT.html](INVESTMENT_PEOPLE_REPORT.html) is canonical source
 
-**Remaining:** 5 critical, 11 medium issues documented in AUDIT_REPORT.html.
+**Remaining:** 6 critical, 12 medium issues documented in AUDIT_REPORT.html.
 
 ---
 
