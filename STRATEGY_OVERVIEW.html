@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strategy Overview — BCC Investigation</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; --p:#d2a8ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); padding:24px; line-height:1.65; }
+  .container { max-width:900px; margin:0 auto; }
+  h1 { color:var(--r); text-align:center; font-size:1.8rem; margin-bottom:4px; }
+  .subtitle { text-align:center; color:#8b949e; margin-bottom:24px; font-size:0.9rem; }
+
+  .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:20px; margin-bottom:16px; }
+  .card-red { border-left:4px solid var(--r); }
+  .card-green { border-left:4px solid var(--g); }
+  .card-yellow { border-left:4px solid var(--y); }
+
+  h2 { color:var(--a); font-size:1.15rem; margin-bottom:12px; padding-bottom:6px; border-bottom:1px solid var(--border); }
+  h3 { color:var(--y); font-size:1rem; margin:16px 0 8px; }
+
+  .section-label { display:inline-block; background:var(--r); color:#fff; padding:2px 10px; border-radius:4px; font-size:0.7rem; font-weight:800; text-transform:uppercase; letter-spacing:0.6px; margin-right:8px; vertical-align:middle; }
+  .section-label-green { background:var(--g); }
+  .section-label-yellow { background:#6e5a00; }
+
+  .verdict-box { background:#1a1015; border:2px solid var(--r); border-radius:10px; padding:18px; text-align:center; margin-bottom:16px; }
+  .verdict-box h2 { color:var(--r); border:none; margin:0; font-size:1.3rem; }
+
+  .reason { padding:10px 0; border-bottom:1px solid #1c2128; }
+  .reason:last-child { border-bottom:none; }
+  .reason::before { content:"▸ "; color:var(--r); font-weight:bold; }
+
+  .cc-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }
+  @media (max-width:600px) { .cc-grid { grid-template-columns:1fr; } }
+  .cc-cat { background:#1a1f26; border-radius:6px; padding:10px 12px; font-size:0.82rem; }
+  .cc-cat strong { color:var(--y); display:block; margin-bottom:3px; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.4px; }
+
+  .evidence-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  @media (max-width:600px) { .evidence-grid { grid-template-columns:1fr; } }
+  .evidence-item { background:#1a1510; border-left:3px solid var(--y); border-radius:0 6px 6px 0; padding:10px 12px; font-size:0.82rem; }
+  .evidence-item strong { color:var(--y); display:block; margin-bottom:2px; font-size:0.8rem; }
+
+  .gap-item { background:#1d1530; border-left:3px solid var(--p); border-radius:0 6px 6px 0; padding:10px 12px; margin-bottom:6px; font-size:0.84rem; }
+  .gap-item strong { color:var(--p); }
+
+  .next-step { display:flex; align-items:flex-start; gap:8px; padding:8px 0; border-bottom:1px solid #1c2128; }
+  .next-step:last-child { border-bottom:none; }
+  .step-num { background:var(--a); color:#000; border-radius:50%; width:22px; height:22px; text-align:center; font-weight:800; font-size:0.75rem; line-height:22px; flex-shrink:0; }
+
+  .status-badge { display:inline-block; padding:1px 8px; border-radius:10px; font-size:0.65rem; font-weight:700; }
+  .s-red { background:#2d1010; color:var(--r); }
+  .s-green { background:#1b3826; color:var(--g); }
+  .s-yellow { background:#2d1b00; color:var(--y); }
+
+  .footer { text-align:center; margin-top:20px; font-size:0.78rem; color:#8b949e; }
+  .footer a { color:var(--a); }
+
+  @media print { body { background:#fff; color:#000; } .card,.verdict-box,.cc-cat,.evidence-item,.gap-item { background:#fff; border:1px solid #ccc; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>📋 STRATEGY OVERVIEW</h1>
+<p class="subtitle">
+  <strong>Berks Counseling Center Investigation</strong> — EIN 23-2043478, Reading, PA<br>
+  Executive Summary for Journalists, Legislators &amp; Regulators · August 1, 2026
+</p>
+
+<!-- ====== THE HEADLINE ====== -->
+<div class="verdict-box">
+  <h2>This is a systemic corruption investigation.<br>BCC is the subject — not a partner.</h2>
+  <p style="color:#8b949e;margin-top:8px;font-size:0.9rem;">
+    Berks Counseling Center, a $12.5M/year behavioral health nonprofit deriving 94% of its revenue from government sources,
+    exhibits a self-reinforcing system of board-funder interlocks, financial opacity, and governance failures
+    that requires higher-level intervention. <strong>BCC leadership is not contacted — all complaints
+    go to oversight bodies with enforcement authority.</strong>
+  </p>
+</div>
+
+<!-- ====== WHY BCC IS NOT CONTACTED ====== -->
+<div class="card card-red">
+  <h2><span class="section-label">STRATEGY</span> Why BCC Is NOT Contacted</h2>
+
+  <div class="reason">
+    <strong>1. Alerting BCC destroys the investigation.</strong> Tipping off the subjects before oversight bodies act gives them time to coordinate responses, align board members, and potentially alter or destroy documents.
+  </div>
+  <div class="reason">
+    <strong>2. The pattern is self-protecting.</strong> The board chair's employer may manage the portfolio. The treasurer owns an undisclosed consulting firm. The funder sits on the board. This is a system designed to resist scrutiny — not one that will self-correct when asked.
+  </div>
+  <div class="reason">
+    <strong>3. BCC already litigated against oversight.</strong> When Community Care Behavioral Health found $105,486 in Medicaid documentation deficiencies, BCC sued and won (898 MDA 2017) — on procedural grounds, never addressing the underlying issues. BCC's response to scrutiny is litigation, not transparency.
+  </div>
+  <div class="reason">
+    <strong>4. The COI policy has never been requested.</strong> The single most important governance document — the Conflict of Interest policy required under IRC §6104(d) — should be obtained by an oversight body with enforcement authority, not a private complainant. Once BCC is asked, they can review, revise, or limit what they provide.
+  </div>
+  <div class="reason">
+    <strong>5. Complainant safety.</strong> A PA state parolee with a 7-year MMJ certification reports being coerced into abstinence-only protocols under threat of arrest. Contacting BCC risks retaliation against this vulnerable patient.
+  </div>
+  <div class="reason">
+    <strong>6. Oversight bodies have the authority BCC lacks.</strong> The PA Attorney General can subpoena. SAMHSA can audit. PA DDAP can investigate licensing. These bodies should ask the questions — simultaneously, without warning.
+  </div>
+
+  <p style="margin-top:12px;text-align:center;font-size:0.85rem;">
+    📄 Full justification: <a href="SYSTEMIC_CORRUPTION_JUSTIFICATION.html" style="color:var(--r);">SYSTEMIC_CORRUPTION_JUSTIFICATION.html</a>
+  </p>
+</div>
+
+<!-- ====== WHO IS CONTACTED ====== -->
+<div class="card card-green">
+  <h2><span class="section-label-green">RECIPIENTS</span> Who IS Contacted — Oversight Bodies Only</h2>
+  <p style="font-size:0.9rem;color:#8b949e;margin-bottom:10px;">
+    <strong>TO:</strong> 10 primary recipients — Berks County Commissioners (3) + Reading City Council (7).<br>
+    <strong>CC:</strong> 30+ oversight recipients across 8 categories. All parties receive the same complaint simultaneously.
+  </p>
+
+  <div class="cc-grid">
+    <div class="cc-cat"><strong>📰 MEDIA</strong>Spotlight PA · Reading Eagle · WFMZ Berks · LNP/Caucus Watchdog</div>
+    <div class="cc-cat"><strong>⚖️ LEGAL OVERSIGHT</strong>PA Attorney General (Charitable Trusts) · PA DDAP · Disability Rights PA</div>
+    <div class="cc-cat"><strong>🏛️ CITY OF READING</strong>Reading City Council — council@readingpa.gov</div>
+    <div class="cc-cat"><strong>🏘️ BERKS COUNTY</strong>Berks County Human Services Department</div>
+    <div class="cc-cat"><strong>🏛️ PENNSYLVANIA STATE</strong>PA Auditor General · PA OMHSAS · Sen. Judith Schwank (D-11, Berks)</div>
+    <div class="cc-cat"><strong>📜 PA SENATE COMMITTEES</strong>Senate Health & Human Services (Brooks, Haywood) · State Government (Dush, Santarsiero) · Appropriations (Martin)</div>
+    <div class="cc-cat"><strong>🇺🇸 FEDERAL</strong>SAMHSA CCBHC Program · SAMHSA FOIA · HHS OIG · Sens. Casey &amp; Fetterman (D-PA)</div>
+    <div class="cc-cat"><strong>🤝 FUNDERS &amp; COMMUNITY</strong>United Way of Berks County · Wesley Butler alternate</div>
+  </div>
+
+  <p style="margin-top:12px;font-size:0.82rem;color:#8b949e;">
+    <strong>Why the CC list matters:</strong> The CC field demonstrates to every recipient that every other oversight body has been notified.
+    No single agency can bury this. This is the structural counter to BCC's structural opacity.
+  </p>
+  <p style="font-size:0.82rem;text-align:center;">
+    📧 Complaint: <a href="COMPLAINT_LETTER_REDACTED.html" style="color:var(--g);">COMPLAINT_LETTER_REDACTED.html</a> (default shareable) &nbsp;|&nbsp;
+    📋 Agency version: <a href="COMPLAINT_AGENCY_LETTER.txt" style="color:var(--a);">COMPLAINT_AGENCY_LETTER.txt</a>
+  </p>
+</div>
+
+<!-- ====== SYSTEMIC CORRUPTION EVIDENCE ====== -->
+<div class="card card-yellow">
+  <h2><span class="section-label-yellow">EVIDENCE</span> Systemic Corruption Pattern — 5 Categories</h2>
+
+  <div class="evidence-grid">
+    <div class="evidence-item">
+      <strong>💰 FINANCIAL ANOMALIES</strong>
+      CFO paid $4,360 more than CEO ($149,792 vs $145,432). CFO "other comp" 3.2× CEO's. CFO>CEO crossover began FY2022 — one year earlier than known. $796,924 deficit (first in 7 years). $11.68M in single-category program spending. 11× investment income growth ($40K→$446K) with manager undisclosed.
+    </div>
+    <div class="evidence-item">
+      <strong>🦉 BOARD-FUNDER INTERLOCKS</strong>
+      Chair Plageman + Director Krause both work at Edward Jones (22% board control) while BCC holds $10.48M in securities. Director Orlando works at United Way ($685K funder). Treasurer Robinson owns ACTIVE consulting LLC — Schedule L says NO related-party transactions. City Councilmember directs COCA ($3.3M funder).
+    </div>
+    <div class="evidence-item">
+      <strong>⚖️ LITIGATION AGAINST OVERSIGHT</strong>
+      898 MDA 2017 — BCC sued Community Care Behavioral Health after a Fraud, Waste & Abuse audit found $105,486 in Medicaid deficiencies. BCC won on procedural grounds. Defense: "software glitch" hid signatures. Never independently verified. BCC's response to oversight is litigation.
+    </div>
+    <div class="evidence-item">
+      <strong>🏛️ FEDERAL GRANT COMPLIANCE RISK</strong>
+      125 federal awards ($9.3M+ obligated). SAMHSA grant H79SM088878 ($3.94M) amended +301% from $982K. HUD CoC Leasing ($396K) subject to 24 CFR §578.49 — prohibits leasing funds on grantee-owned units. HHS OIG audit series SRS-A-26-025 actively auditing CCBHC Medicaid billing.
+    </div>
+    <div class="evidence-item" style="grid-column:1/-1;">
+      <strong>🔒 STRUCTURAL OPACITY</strong>
+      Schedule B (major donors) structurally redacted by IRS e-filing — unredaction impossible. COI policy never requested. Single-category program reporting hides all $11.68M in spending. Board meeting minutes never requested. BCC website does not disclose board member employers. This opacity is not incidental — it is the mechanism that protects the board-funder interlocks from scrutiny.
+    </div>
+  </div>
+
+  <p style="margin-top:12px;font-size:0.82rem;text-align:center;">
+    📊 Full evidence: <a href="DATA_REFERENCE.html" style="color:var(--a);">DATA_REFERENCE.html</a> · <a href="FUNDING_REVIEW.html" style="color:var(--a);">FUNDING_REVIEW.html</a> · <a href="INVESTMENT_PEOPLE_REPORT.html" style="color:var(--a);">INVESTMENT_PEOPLE_REPORT.html</a>
+  </p>
+</div>
+
+<!-- ====== CRITICAL GAPS ====== -->
+<div class="card card-red">
+  <h2><span class="section-label">GAPS</span> 5 Critical Gaps — What's Still Missing</h2>
+  <p style="font-size:0.85rem;color:#8b949e;margin-bottom:10px;">42 of 49 investigation gaps remain open. These 5 block action:</p>
+
+  <div class="gap-item">
+    <strong>1. COI Policy — Never Obtained.</strong> BCC is legally required to provide it under IRC §6104(d). The request letter exists but has not been routed through an oversight body. Without the COI policy, the board-funder interlock questions cannot be resolved.
+  </div>
+  <div class="gap-item">
+    <strong>2. Is Edward Jones Managing the Portfolio? — Unconfirmed.</strong> The $10.48M securities portfolio's manager is never named in any public filing. Two board members (22%) work at Edward Jones. This is the central question of the entire investigation.
+  </div>
+  <div class="gap-item">
+    <strong>3. No Complaint Filed — Zero Contacts Made.</strong> Despite 20 action items, no oversight body has been contacted. Commissioners, City Council, SAMHSA, PA AG, OMHSAS — all contact info compiled, none used. The investigation has external effect only after delivery.
+  </div>
+  <div class="gap-item">
+    <strong>4. FY2026 Form 990 — Not Yet Available.</strong> The latest 990 covers FY2025 (filed May 2026). FY2026 data won't be available until ~May 2027. The $797K FY2025 deficit may have worsened or improved — unknown.
+  </div>
+  <div class="gap-item">
+    <strong>5. Schedule B (Major Donors) — Structurally Redacted.</strong> BCC e-files its 990s — Schedule B is structurally excluded from public XML by IRS policy. Only paths: direct request from BCC (not advised), IRS FOIA Form 4506-A, or PA RTK for county contracts naming donors.
+  </div>
+
+  <p style="margin-top:12px;font-size:0.82rem;text-align:center;">
+    📋 Full gap inventory: <a href="INVESTIGATION_GAPS.html" style="color:var(--a);">INVESTIGATION_GAPS.html</a> (49 gaps, 7 resolved)
+  </p>
+</div>
+
+<!-- ====== INVESTIGATION STATUS ====== -->
+<div class="card">
+  <h2>📊 Investigation Status at a Glance</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;text-align:center;margin:12px 0;">
+    <div style="background:#1d1530;padding:12px;border-radius:8px;">
+      <div style="font-size:1.6rem;font-weight:800;color:var(--p);">15+</div>
+      <div style="font-size:0.7rem;color:#8b949e;">Documents<br>in investigation</div>
+    </div>
+    <div style="background:#1a1510;padding:12px;border-radius:8px;">
+      <div style="font-size:1.6rem;font-weight:800;color:var(--y);">42</div>
+      <div style="font-size:0.7rem;color:#8b949e;">Open gaps<br>of 49 total</div>
+    </div>
+    <div style="background:#101a15;padding:12px;border-radius:8px;">
+      <div style="font-size:1.6rem;font-weight:800;color:var(--g);">7</div>
+      <div style="font-size:0.7rem;color:#8b949e;">Resolved gaps<br>+ 1 advanced</div>
+    </div>
+    <div style="background:#1a1015;padding:12px;border-radius:8px;">
+      <div style="font-size:1.6rem;font-weight:800;color:var(--r);">0</div>
+      <div style="font-size:0.7rem;color:#8b949e;">Complaints<br>sent</div>
+    </div>
+    <div style="background:#1a1f26;padding:12px;border-radius:8px;">
+      <div style="font-size:1.6rem;font-weight:800;color:var(--a);">16</div>
+      <div style="font-size:0.7rem;color:#8b949e;">Git commits<br>audit trail</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== NEXT STEPS ====== -->
+<div class="card card-green">
+  <h2><span class="section-label-green">NEXT</span> Path to Completion</h2>
+
+  <div class="next-step">
+    <span class="step-num">1</span>
+    <span><strong>Route COI Request through PA AG or SAMHSA.</strong> Do NOT send to BCC directly. The oversight body requests the COI policy from BCC under enforcement authority. <span class="status-badge s-green">READY</span></span>
+  </div>
+  <div class="next-step">
+    <span class="step-num">2</span>
+    <span><strong>Send redacted complaint to all oversight bodies.</strong> 10 TO + 30+ CC. Use COMPLAINT_LETTER_REDACTED.html (CONCERN 8 removed). Broadcast simultaneously — no single agency can bury it. <span class="status-badge s-green">READY</span></span>
+  </div>
+  <div class="next-step">
+    <span class="step-num">3</span>
+    <span><strong>File PA Right-to-Know with Berks County.</strong> Request all BCC contracts, MOUs, and payment records. This surfaces the county's financial relationship with BCC. <span class="status-badge s-green">READY</span></span>
+  </div>
+  <div class="next-step">
+    <span class="step-num">4</span>
+    <span><strong>Confirm Edward Jones portfolio management.</strong> Request BCC's investment management agreement (via oversight body). Contact Herbein auditor. Check audited financial statements for custodian naming. <span class="status-badge s-yellow">BLOCKED</span></span>
+  </div>
+  <div class="next-step">
+    <span class="step-num">5</span>
+    <span><strong>Gather corroborating MMJ testimony.</strong> CONCERN 8 is a single-source allegation. Before filing with DDAP, attempt to gather at least one corroborating witness. <span class="status-badge s-yellow">IN PROGRESS</span></span>
+  </div>
+  <div class="next-step">
+    <span class="step-num">6</span>
+    <span><strong>Monitor FY2026 990 filing.</strong> Expected May 2027. Interim financial statements may be obtainable via oversight-body request. <span class="status-badge s-red">WAITING</span></span>
+  </div>
+
+  <p style="margin-top:12px;font-size:0.82rem;color:var(--y);text-align:center;">
+    ⚠ <strong>Investigation not yet complete.</strong> Nothing to be sent until investigation complete. All complaint letters are drafted but delivery is on hold.
+  </p>
+</div>
+
+<!-- ====== READING ORDER ====== -->
+<div class="card">
+  <h2>📚 For New Reviewers — Start Here</h2>
+  <table style="width:100%;font-size:0.85rem;border-collapse:collapse;">
+    <tr style="background:#21262d;"><th style="text-align:left;padding:6px 10px;color:var(--h);">#</th><th style="text-align:left;padding:6px 10px;color:var(--h);">Document</th><th style="text-align:left;padding:6px 10px;color:var(--h);">What It Tells You</th></tr>
+    <tr><td style="padding:6px 10px;border-bottom:1px solid var(--border);">1</td><td style="padding:6px 10px;border-bottom:1px solid var(--border);"><strong>This document</strong> — STRATEGY_OVERVIEW.html</td><td style="padding:6px 10px;border-bottom:1px solid var(--border);">Why BCC isn't contacted, who is, what the evidence shows</td></tr>
+    <tr><td style="padding:6px 10px;border-bottom:1px solid var(--border);">2</td><td style="padding:6px 10px;border-bottom:1px solid var(--border);"><a href="DATA_REFERENCE.html" style="color:var(--a);">DATA_REFERENCE.html</a></td><td style="padding:6px 10px;border-bottom:1px solid var(--border);">Canonical financial figures, board roster, document inventory</td></tr>
+    <tr><td style="padding:6px 10px;border-bottom:1px solid var(--border);">3</td><td style="padding:6px 10px;border-bottom:1px solid var(--border);"><a href="INVESTIGATION_GAPS.html" style="color:var(--a);">INVESTIGATION_GAPS.html</a></td><td style="padding:6px 10px;border-bottom:1px solid var(--border);">49 gaps — what's known, what's missing</td></tr>
+    <tr><td style="padding:6px 10px;border-bottom:1px solid var(--border);">4</td><td style="padding:6px 10px;border-bottom:1px solid var(--border);"><a href="FUNDING_REVIEW.html" style="color:var(--a);">FUNDING_REVIEW.html</a></td><td style="padding:6px 10px;border-bottom:1px solid var(--border);">Complete funding breakdown, oversight mapping</td></tr>
+    <tr><td style="padding:6px 10px;border-bottom:1px solid var(--border);">5</td><td style="padding:6px 10px;border-bottom:1px solid var(--border);"><a href="COMPLAINT_LETTER_REDACTED.html" style="color:var(--a);">COMPLAINT_LETTER_REDACTED.html</a></td><td style="padding:6px 10px;border-bottom:1px solid var(--border);">The complaint — default shareable version (CONCERN 8 removed)</td></tr>
+    <tr><td style="padding:6px 10px;">6</td><td style="padding:6px 10px;"><a href="SYSTEMIC_CORRUPTION_JUSTIFICATION.html" style="color:var(--a);">SYSTEMIC_CORRUPTION_JUSTIFICATION.html</a></td><td style="padding:6px 10px;">Full justification for why BCC is excluded from all complaints</td></tr>
+  </table>
+
+  <p style="margin-top:12px;font-size:0.82rem;text-align:center;">
+    📋 Full index: <a href="README.md" style="color:var(--a);">README.md</a> — complete document catalog with 25+ files
+  </p>
+</div>
+
+<div class="footer">
+  <strong>STRATEGY_OVERVIEW.html</strong> — August 1, 2026 — Part of the BCC Investigation Audit Trail<br>
+  <a href="README.md">README.md</a> · <a href="DATA_REFERENCE.html">DATA_REFERENCE.html</a> · <a href="INVESTIGATION_GAPS.html">INVESTIGATION_GAPS.html</a> · <a href="AUDIT_REPORT.html">AUDIT_REPORT.html</a><br>
+  <strong>16 git commits</strong> · Investigation in progress · Nothing to be sent until complete
+</div>
+
+</div>
+</body>
+</html>
