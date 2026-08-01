@@ -1,0 +1,806 @@
+{
+  "timestamp": "2026-05-28T07:16:28.626112",
+  "duration_seconds": 0.352246,
+  "summary": {
+    "total": 145,
+    "ok": 31,
+    "errors": 6,
+    "skipped": 69,
+    "warnings": 0
+  },
+  "platform": {
+    "os_name": "nt",
+    "sys_platform": "win32",
+    "executable": "C:\\Users\\clint\\AppData\\Local\\Temp\\onefile_9500_378000_15_fUWo7rQc\\python.exe",
+    "python_version": "3.13.13 (tags/v3.13.13:01104ce, Apr  7 2026, 19:25:48) [MSC v.1944 64 bit (AMD64)]",
+    "cwd": "C:\\Users\\clint",
+    "path": [
+      "C:\\Users\\clint\\Desktop\\AZAZAEL_Standalone",
+      "C:\\Users\\clint\\AppData\\Local\\Temp\\ONB504~1"
+    ],
+    "is_windows": true,
+    "is_wsl": false
+  },
+  "tests": [
+    {
+      "time": "07:16:28.626",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "PLATFORM DETECTION",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "  os_name: nt",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "  sys_platform: win32",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "  executable: C:\\Users\\clint\\AppData\\Local\\Temp\\onefile_9500_378000_15_fUWo7rQc\\python.exe",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "  python_version: 3.13.13 (tags/v3.13.13:01104ce, Apr  7 2026, 19:25:48) [MSC v.1944 64 bit (AMD64",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "  cwd: C:\\Users\\clint",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "  path: ['C:\\\\Users\\\\clint\\\\Desktop\\\\AZAZAEL_Standalone', 'C:\\\\Users\\\\clint\\\\AppData\\\\Local\\\\Temp\\\\ONB504~1']",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "  is_windows: True",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "  is_wsl: False",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "\n======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "INSTALLED PACKAGES",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "\nLoaded modules in current Python: 97",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "\n======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "CORE PYTHON TESTS",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "  Basic types: {'int': True, 'str': True, 'list': True, 'dict': True}",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "  File operations: {'Path': True, 'exists': True}",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "  JSON: {'dumps': True, 'loads': True}",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "  Datetime: {'now': True, 'isoformat': True}",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "  Subprocess: {'run': True}",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "\n======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "SYSTEM INFORMATION",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.626",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.712",
+      "msg": "  machine: AMD64",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  processor: Intel64 Family 6 Model 197 Stepping 2, GenuineIntel",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  system: Windows",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  release: 11",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  version: 10.0.26200",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  architecture: ('64bit', 'WindowsPE')",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  python_build: ('tags/v3.13.13:01104ce', 'Apr  7 2026 19:25:48')",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  byteorder: little",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  maxsize: 9223372036854775807",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  threading_threads: 1",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  memory_rss: N/A (Windows)",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "\n======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "GUI FRAMEWORK TESTS",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  tkinter (Standard GUI): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  PyQt5 (Qt5 Bindings): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  PyQt6 (Qt6 Bindings): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  pygame (Game Framework): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  PyOpenGL (OpenGL Bindings): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  wx (wxWidgets): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  kivy (NUI Framework): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  PySide2 (Qt5 bindings): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  PySide6 (Qt6 bindings): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "\n======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "ML/AI FRAMEWORK TESTS",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  torch (PyTorch): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  tensorflow (TensorFlow): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  keras (Keras): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.713",
+      "msg": "  sklearn (Scikit-learn): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.975",
+      "msg": "  numpy (NumPy): v2.4.6 BLAS: C:\\Users\\clint\\AppData\\Local\\Temp\\onefile_9500_378000_15_fUWo7rQc\\numpy\\_core\\include",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  pandas (Pandas): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  scipy (SciPy): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  jax (JAX): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  flax (Flax): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  optuna (Optuna): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  transformers (HuggingFace): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  torchvision (PyTorch Vision): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  torchaudio (PyTorch Audio): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  accelerate (HF Accelerate): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  datasets (HF Datasets): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  triton (Triton): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  triton_local (Triton Local): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "\n======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "DATA FRAMEWORK TESTS",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  pandas (DataFrames): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  polars (Polars DataFrames): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  dask (Dask Parallel): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  pyspark (Spark): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  modin (Modin Parallel): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  vaex (Vaex Out-of-Core): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  duckdb (DuckDB): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  pyarrow (PyArrow): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "\n======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "WEB FRAMEWORK TESTS",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  fastapi (FastAPI): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  flask (Flask): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  django (Django): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  starlette (Starlette): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  httpx (HTTPX): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  aiohttp (Async HTTP): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  requests (Requests): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  urllib (URLLib): vunknown",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  selenium (Selenium): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "  playwright (Playwright): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "\n======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "IPYTHON/NOTEBOOK TESTS",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.976",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  IPython (Interactive Python): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  jupyter (Jupyter): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  notebook (Classic Notebook): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  nbformat (Notebook Format): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  ipywidgets (IPyWidgets): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  ipykernel (IPython Kernel): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "\n======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "OTHER FRAMEWORK TESTS",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  PIL (Pillow Image): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  cv2 (OpenCV): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  PIL (Pillow): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  moviepy (MoviePy): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  nltk (NLTK): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  spacy (SpaCy): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  gensim (Gensim): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  openai (OpenAI): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  anthropic (Anthropic): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  litellm (LiteLLM): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  langchain (LangChain): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  llama_index (LlamaIndex): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  chromadb (ChromaDB): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  faiss (FAISS): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  pinecone (Pinecone): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  weaviate (Weaviate): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  qdrant_client (Qdrant): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  grpc (gRPC): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  msgpack (MessagePack): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  yaml (PyYAML): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  toml (TOML): NOT INSTALLED",
+      "status": "SKIP"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "\n======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "AZAZAEL MODULE TESTS",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  AzazaelDynamicLogger (Dynamic Logging): NOT FOUND - No module named 'AzazaelDynamicLogger'",
+      "status": "ERROR"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  environment_manager (Environment Manager): NOT FOUND - No module named 'environment_manager'",
+      "status": "ERROR"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  COMPREHENSIVE_FIX (Comprehensive Fix): NOT FOUND - No module named 'COMPREHENSIVE_FIX'",
+      "status": "ERROR"
+    },
+    {
+      "time": "07:16:28.977",
+      "msg": "  azazael_launcher (Launcher): NOT FOUND - No module named 'azazael_launcher'",
+      "status": "ERROR"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  bootstrap (Bootstrapper): NOT FOUND - No module named 'bootstrap'",
+      "status": "ERROR"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "\n======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "QUICK OPERATIONAL TESTS",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  NumPy array: [1 2 3] (0.02ms)",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  Pandas DataFrame: ERROR - No module named 'pandas'",
+      "status": "ERROR"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  JSON parse: {'test': 1} (0.01ms)",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  Path creation: \\tmp\\test (0.01ms)",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  Datetime now: 2026-05-28 07:16:28.978322 (0.00ms)",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "\n======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "GENERATING REPORT",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "PLATFORM DETECTION",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "======================================================================",
+      "status": "INFO"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  os_name: nt",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  sys_platform: win32",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  executable: C:\\Users\\clint\\AppData\\Local\\Temp\\onefile_9500_378000_15_fUWo7rQc\\python.exe",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  python_version: 3.13.13 (tags/v3.13.13:01104ce, Apr  7 2026, 19:25:48) [MSC v.1944 64 bit (AMD64",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  cwd: C:\\Users\\clint",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  path: ['C:\\\\Users\\\\clint\\\\Desktop\\\\AZAZAEL_Standalone', 'C:\\\\Users\\\\clint\\\\AppData\\\\Local\\\\Temp\\\\ONB504~1']",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  is_windows: True",
+      "status": "OK"
+    },
+    {
+      "time": "07:16:28.978",
+      "msg": "  is_wsl: False",
+      "status": "OK"
+    }
+  ]
+}

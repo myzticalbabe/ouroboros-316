@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>SCROLL — COMPLAINT LETTER</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { background:var(--bg); }
+  body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); padding:20px 0; line-height:1.6; }
+  .container { max-width:900px; margin:0 auto; padding:0 20px; }
+  /* Overlay */
+  #overlay { position:fixed; inset:0; z-index:9999; background:#0d1117; display:flex; align-items:center; justify-content:center; flex-direction:column; transition:opacity .5s; }
+  #overlay.hidden { opacity:0; pointer-events:none; }
+  #overlay #cd { font-size:6rem; font-weight:900; color:var(--r); }
+  #overlay #sub { font-size:1.4rem; color:#8b949e; margin-top:12px; }
+  /* Progress */
+  #pbw { position:fixed; top:0; left:0; right:0; height:4px; z-index:9998; background:#21262d; }
+  #pbb { height:100%; width:0; background:var(--r); }
+  /* Done */
+  #done { position:fixed; inset:0; z-index:9997; display:none; align-items:center; justify-content:center; flex-direction:column; background:rgba(13,17,23,.92); }
+  #done.show { display:flex; }
+  #done h2 { font-size:3rem; color:var(--g); }
+  /* Content */
+  h1 { color:var(--r); text-align:center; font-size:1.8rem; margin-bottom:8px; }
+  h2 { color:var(--a); margin:20px 0 10px; font-size:1.2rem; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:16px; }
+  .field { margin:8px 0; }
+  .field-label { color:var(--a); font-weight:700; font-size:0.85rem; text-transform:uppercase; }
+  .field-value { background:#0d1117; border:1px solid var(--border); border-radius:4px; padding:10px; margin:4px 0 12px; font-family:monospace; font-size:0.9rem; word-break:break-all; }
+  .email-list { color:var(--a); }
+  .body-text { white-space:pre-wrap; background:#0d1117; border:1px solid var(--border); border-radius:4px; padding:16px; font-size:0.92rem; line-height:1.7; }
+  .tag { display:inline-block; padding:1px 6px; border-radius:10px; font-size:0.7rem; font-weight:600; margin-right:4px; }
+  .tag-confirmed { background:#1b3826; color:var(--g); }
+  .highlight { background:#2d1b00; border-left:3px solid var(--y); padding:10px; margin:8px 0; border-radius:0 6px 6px 0; font-size:0.9rem; }
+  .spacer { height:60px; }
+</style>
+</head>
+<body>
+
+<div id="overlay"><div id="cd">3</div><div id="sub">Recording starts in...</div></div>
+<div id="pbw"><div id="pbb"></div></div>
+<div id="done"><h2>✅ RECORDING COMPLETE</h2><p>Scroll capture finished</p></div>
+
+<div class="container">
+
+<h1>📝 FORMAL COMPLAINT LETTER</h1>
+<p style="text-align:center;color:#8b949e;margin-bottom:20px;">Copy, paste, and send — all fields pre-filled. July 30, 2026.</p>
+
+<div class="card">
+  <h2>📧 TO: (Primary Recipients — 13 contacts)</h2>
+  <div class="field">
+    <div class="field-label">TO Field</div>
+    <div class="field-value email-list">Christian Y. Leinbach, Chairman, Berks County Commissioners &lt;commissioners@countyofberks.com&gt;;
+Michael S. Rivera, Commissioner, Berks County Commissioners &lt;commissioners@countyofberks.com&gt;;
+Dante Santoni Jr., Commissioner, Berks County Commissioners &lt;commissioners@countyofberks.com&gt;;
+Donna Reed, Council President, Reading City Council &lt;Donna.Reed@readingpa.gov&gt; <span class="tag tag-confirmed">✅ VERIFIED</span>;
+Vanessa Campos, Vice President, Reading City Council &lt;Vanessa.Campos@readingpa.gov&gt;;
+Jaime Baez Jr., Council Member, Reading City Council &lt;Jaime.Baez@readingpa.gov&gt;;
+O. Christopher Miller, Council Member, Reading City Council &lt;Christopher.Miller@readingpa.gov&gt;;
+Marcia Goodman-Hinnershitz, Council Member, Reading City Council &lt;Marcia.Goodman-Hinnershitz@readingpa.gov&gt;;
+Rafael Nunez, Council Member, Reading City Council &lt;Rafael.Nunez@readingpa.gov&gt;;
+Wesley Butler, Council Member, Reading City Council &lt;Wesley.Butler@readingpa.gov&gt;;
+Christine Axford, CEO, Berks Counseling Center &lt;christine.axford@berkscc.org&gt;;
+Greg Little, CFO, Berks Counseling Center &lt;greg.little@berkscc.org&gt; <span class="tag tag-confirmed">✅ VERIFIED</span>;
+Joseph Plageman Jr., Board Chair, Berks Counseling Center &lt;bcc@berkscc.org&gt;</div>
+  </div>
+
+  <div class="field">
+    <div class="field-label">CC Field (10 recipients)</div>
+    <div class="field-value email-list">council@readingpa.gov;
+bcc@berkscc.org;
+SAMHSA CCBHC Program Office (Grant #H79SM088878);
+PA OMHSAS — Office of Mental Health & Substance Abuse Services (717-783-4850);
+PA Attorney General — Charitable Trusts & Organizations Section (717-783-2853);
+United Way of Berks County;
+Berks County Human Services Department (610-478-6150);
+commissioners@berkspa.gov;
+dsantoni@berkspa.gov;
+wesleysavonbutler@gmail.com</div>
+  </div>
+
+  <div class="field">
+    <div class="field-label">SUBJECT</div>
+    <div class="field-value">Formal Complaint Regarding Berks Counseling Center (EIN 23-2043478) — Financial Management, Transparency, and Oversight Concerns</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>📄 LETTER BODY</h2>
+  <div class="body-text">To the Berks County Commissioners, Reading City Council, and Berks Counseling Center Leadership:
+
+I am writing to formally request review and investigation of Berks Counseling Center (BCC), a 501(c)(3) nonprofit organization (EIN 23-2043478) located at 645 Penn Street, Reading, PA 19601. As a $12.5 million organization that derives 94% of its revenue from government sources — primarily Medicaid, Medicare, and a $3.94 million federal SAMHSA grant — BCC serves some of the most vulnerable residents of Berks County. With that public funding comes a responsibility for transparency and accountability.
+
+After extensive review of BCC's IRS Form 990 filings (FY2018–2025), federal grant databases, county budget documents, and public litigation records, I have identified the following concerns that warrant investigation:
+
+🚩 CONCERN 1: $796,924 Operating Deficit (FY2025)
+BCC's revenue has declined $1.41 million (10.1%) over two years, while expenses grew $1.04 million (8.5%), flipping a $1.65 million surplus into a $796,924 deficit. This is the first deficit in at least 7 years — prior years (FY2018–2022) showed surpluses of $1.5M to $6M annually. What changed? Is this deficit structural or temporary?
+
+🚩 CONCERN 2: CFO Compensation Exceeds CEO
+CFO Greg Little's total compensation ($149,792) exceeds CEO Christine Axford's ($145,432). The CFO receives $17,350 in "other compensation" versus the CEO's $5,428. In most nonprofits, the CEO is the highest-paid employee. What constitutes the CFO's "other compensation," and how is executive pay determined?
+
+🚩 CONCERN 3: No Program Spending Visibility
+All $11.68 million in program expenses are reported under a single program category (Program 4a). There is no breakdown between mental health services, substance use disorder treatment, crisis intervention, community outreach, or other programs. This prevents any meaningful assessment of how public funds are allocated.
+
+🚩 CONCERN 4: Above-Average Administrative Overhead
+Management and general expenses consume 12.0% ($1.59 million) of total spending — above the ~10% benchmark for behavioral health nonprofits. Fundraising is only 0.2%, meaning virtually all non-program spending is administrative. What drives this overhead?
+
+🚩 CONCERN 5: Potential Conflicts of Interest & Undisclosed Financial Relationships
+- Major donors are REDACTED in BCC's public 990 (Schedule B withheld)
+- Two board members (Joseph Plageman Jr., Chair, and Linda Krause) work for Edward Jones Investments — BCC holds $19.8 million in assets with investment income that grew 11x in 4 years ($40K to $446K). Who manages this portfolio? Are investment contracts competitively bid?
+- Board member Missy Orlando works for United Way of Berks County, which granted BCC $678,000 (MacKenzie Scott funds). This is a governance conflict.
+- Council Member Marcia Goodman-Hinnershitz serves as Director of Planning at COCA (Council on Chemical Abuse), which provides pass-through funding for BCC's substance use disorder programs — a dual oversight/funding role.
+
+ADDITIONAL FINDING: BCC Litigation History
+In 2015, BCC's managed care organization (Community Care Behavioral Health) conducted a Fraud, Waste & Abuse audit and attempted to retract $105,486 in Medicaid funds, citing documentation deficiencies including missing supervisory physician signatures. BCC sued and won at the Pennsylvania Superior Court (898 MDA 2017), with $81,704 in retractions cancelled. BCC's defense included a claim that a "software glitch" caused signatures to be hidden rather than missing.
+
+FUNDING CONTEXT
+- Total Revenue (FY2025): $12,494,569
+- Program Service Revenue (Medicaid/Medicare/Insurance): $11,778,182 (94.3%)
+- SAMHSA CCBHC Grant #H79SM088878: $3,944,396 (awarded Sept 2023, through Sept 2027)
+- United Way Multi-Year Grant: $678,000 (MacKenzie Scott funds)
+- Investment Income: $446,033 (FY2025) — 11x growth from $40,067 (FY2021)
+- Berks County Human Services Block Grant: ~$16.2M total (BCC allocation embedded in program revenue)
+- HUD Supportive Housing: Ongoing McKinney-Vento Continuum of Care funding
+
+OVERSIGHT GAPS
+Five agencies share responsibility for BCC oversight — SAMHSA ($8.1B budget, lean staffing with hiring freezes), PA OMHSAS (audits every 1–3 years), Berks County Human Services ($16.2M budget monitoring all county providers), PA Attorney General Charitable Trusts ($174M OAG budget, hundreds of investigations), and United Way of Berks County (3-year volunteer review cycles) — yet none publish their most recent BCC-specific audit findings publicly. The 2017 lawsuit demonstrates that problems can escalate to the Superior Court level before oversight agencies intervene.
+
+REQUESTED ACTIONS
+I respectfully request the following:
+1. A detailed program spending breakdown by service line (mental health, substance use, crisis, community outreach, etc.)
+2. The unredacted Schedule B (major donors) and an explanation of the Edward Jones and United Way board relationships
+3. A written explanation of the $796,924 deficit, including whether it is temporary or structural, and a sustainability plan
+4. Justification for the CFO's total compensation exceeding the CEO's, including the composition of "other compensation"
+5. Public posting of all supervisory agency audit findings for BCC from the past 5 years
+6. Confirmation that BCC's Conflict of Interest Policy addresses the Edward Jones and United Way board member relationships
+
+I look forward to your response within 30 days. Please direct all correspondence to the return address on this communication.
+
+Sincerely,
+[Your Name]
+[Your Email]
+[Your Phone]
+[Date]</div>
+</div>
+
+<div class="highlight">
+  <strong>📤 SENDING INSTRUCTIONS:</strong><br>
+  1. Copy the TO field above and paste into your email client<br>
+  2. Copy the CC field and paste into CC/BCC<br>
+  3. Copy the letter body and paste as the message<br>
+  4. Add your name, email, and phone at the bottom<br>
+  5. Send to individual council emails AND CC council@readingpa.gov as backup<br>
+  6. Keep a dated copy. Follow up after 2 weeks if no response.<br>
+  7. If no response after 30 days, escalate to SAMHSA, PA AG, and local media.
+</div>
+
+<div class="highlight" style="background:#1b3826;border-left:3px solid var(--g);">
+  <strong>📊 Related Documents:</strong><br>
+  • COMPLAINT_TODO_LIST.html — Full research with all contacts, emails, and action items<br>
+  • FUNDING_REVIEW.html — Detailed funding breakdown and supervisory agency analysis<br>
+  • TIKTOK_VIDEO_SCRIPT.html — 6-episode video script outline
+</div>
+
+<div class="spacer"></div>
+</div>
+
+<script>
+(async () => {
+  const D = 120, F = 60;
+  const ov = document.getElementById('overlay'), cd = document.getElementById('cd');
+  const pb = document.getElementById('pbb'), dn = document.getElementById('done');
+
+  for (let i = 3; i >= 1; i--) { cd.textContent = i; await new Promise(r => setTimeout(r, 1000)); }
+  cd.textContent = '▶'; document.getElementById('sub').textContent = 'Recording...';
+  await new Promise(r => setTimeout(r, 500));
+  ov.classList.add('hidden');
+
+  const th = document.body.scrollHeight - window.innerHeight;
+  const fi = 1000 / F, tf = D * F, spf = th / tf;
+  let f = 0;
+
+  await new Promise(resolve => {
+    function step() {
+      f++; window.scrollTo({ top: Math.min(spf * f, th), behavior: 'auto' });
+      pb.style.width = Math.min((f / tf) * 100, 100) + '%';
+      f < tf ? setTimeout(step, fi) : resolve();
+    }
+    setTimeout(step, fi);
+  });
+
+  pb.style.width = '100%'; pb.style.background = 'var(--g)';
+  dn.classList.add('show');
+})();
+</script>
+</body>
+</html>

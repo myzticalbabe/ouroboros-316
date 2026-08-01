@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INVESTIGATION AUDIT — Berks Counseling Center Documents</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; --p:#d2a8ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); padding:24px; line-height:1.65; }
+  .container { max-width:1100px; margin:0 auto; }
+  h1 { color:var(--r); text-align:center; font-size:2rem; border-bottom:2px solid var(--r); padding-bottom:12px; margin-bottom:8px; }
+  h2 { color:var(--a); margin:32px 0 14px; font-size:1.35rem; padding-bottom:6px; border-bottom:1px solid var(--border); }
+  h3 { color:var(--h); margin:18px 0 10px; font-size:1.05rem; }
+  .subtitle { text-align:center; color:#8b949e; margin-bottom:24px; font-size:0.9rem; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:20px; margin-bottom:18px; }
+  .card-r { border-left:5px solid var(--r); background:#1a1015; }
+  .card-y { border-left:5px solid var(--y); background:#1a1510; }
+  .card-g { border-left:5px solid var(--g); background:#101a15; }
+  .card-p { border-left:5px solid var(--p); background:#15101a; }
+
+  .summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin:18px 0; }
+  .summary-box { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:14px; text-align:center; }
+  .summary-box .number { font-size:1.8rem; font-weight:800; }
+  .summary-box .label { font-size:0.75rem; color:#8b949e; text-transform:uppercase; letter-spacing:0.4px; margin-top:4px; }
+  .nr { color:var(--r); }
+  .ny { color:var(--y); }
+  .ng { color:var(--g); }
+  .np { color:var(--p); }
+
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:0.88rem; }
+  th { background:#1c2128; color:var(--a); text-align:left; padding:8px 10px; border:1px solid var(--border); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.4px; }
+  td { padding:8px 10px; border:1px solid var(--border); vertical-align:top; }
+  tr:nth-child(even) td { background:#1a1f26; }
+  tr:hover td { background:#1c2128; }
+
+  .badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:0.7rem; font-weight:700; }
+  .badge-r { background:#3a1a1a; color:var(--r); }
+  .badge-y { background:#3a2e12; color:var(--y); }
+  .badge-g { background:#1b3826; color:var(--g); }
+  .badge-p { background:#2a1d3a; color:var(--p); }
+  .badge-b { background:#12263a; color:var(--a); }
+
+  .finding { border-left:4px solid var(--r); padding:14px 16px; margin:14px 0; background:#2d1414; border-radius:0 8px 8px 0; }
+  .finding-y { border-left:4px solid var(--y); padding:14px 16px; margin:14px 0; background:#2d2212; border-radius:0 8px 8px 0; }
+  .finding-g { border-left:4px solid var(--g); padding:14px 16px; margin:14px 0; background:#12261a; border-radius:0 8px 8px 0; }
+
+  .verdict { background:#1d1530; border:1px solid var(--p); border-radius:8px; padding:18px; margin:20px 0; }
+  .verdict h3 { color:var(--p); margin-top:0; }
+  .mono { font-family:monospace; font-size:0.85rem; color:var(--a); word-break:break-all; }
+  .linked-file { color:var(--g); font-weight:600; }
+  .missing-file { color:var(--r); font-weight:600; text-decoration:line-through; }
+  .suspect { color:var(--y); font-weight:600; }
+  .ok { color:var(--g); }
+  .warn { color:var(--y); }
+  .err { color:var(--r); }
+  .url { color:var(--a); font-family:monospace; font-size:0.8rem; }
+
+  @media print { body { background:#fff; color:#000; } .card,.finding,.finding-y,.finding-g { background:#fff; border:1px solid #ccc; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🔍 INVESTIGATION AUDIT REPORT</h1>
+<p class="subtitle">
+  Berks Counseling Center (EIN 23-2043478) — Cross-Document Consistency, Link Health &amp; Structural Review<br>
+  Audit conducted August 1, 2026 — 14 investigation documents audited
+</p>
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="summary-grid">
+  <div class="summary-box"><div class="number nr">7</div><div class="label">Critical Issues Found</div></div>
+  <div class="summary-box"><div class="number ny">11</div><div class="label">Medium Issues Found</div></div>
+  <div class="summary-box"><div class="number ng">8</div><div class="label">Low / Cosmetic Issues</div></div>
+  <div class="summary-box"><div class="number np">14</div><div class="label">Documents Audited</div></div>
+  <div class="summary-box"><div class="number ng">38</div><div class="label">Links Verified</div></div>
+  <div class="summary-box"><div class="number nr">1</div><div class="label">Broken References</div></div>
+</div>
+
+<div class="verdict">
+  <h3>🔑 OVERALL VERDICT</h3>
+  <p style="font-size:1.05rem;line-height:1.8;">
+    <strong style="color:var(--y);">The investigation is substantively thorough but structurally inconsistent.</strong>
+    Seven critical issues demand immediate attention: <strong>session numbering chaos</strong> (4 different session numbers claimed on same day),
+    <strong>gap count arithmetic errors</strong> in INVESTIGATION_GAPS.html (headline says 16 open, note says 15),
+    a <strong>broken cross-reference</strong> to a non-existent file (COMPLAINT_AGENCY_LETTER.txt),
+    <strong>portfolio value conflation</strong> ($19.8M net assets ≠ $10.48M securities portfolio) in INVESTMENT_PEOPLE_REPORT.html,
+    <strong>outdated metadata</strong> on COMPLAINT_TODO_LIST.html claiming Session 10 while containing Session 22 data,
+    <strong>absolute file paths</strong> in two documents linking to local C: drive,
+    and the <strong>complete lack of executed actions</strong> — zero complaints sent, zero COI requests made.
+    The evidence collection is outstanding; the delivery and document management need urgent cleanup.
+  </p>
+</div>
+
+<!-- ====== DOCUMENT INVENTORY ====== -->
+<h2>📋 Document Inventory — All 14 Investigation Files</h2>
+
+<div class="card">
+  <table>
+    <tr><th>#</th><th>Document</th><th>Size (KB)</th><th>Last Modified</th><th>Claimed Session</th><th>Status</th></tr>
+    <tr>
+      <td>1</td><td><strong>INVESTIGATION_GAPS.html</strong></td>
+      <td>32.1</td><td>Aug 1 00:37</td><td><span class="err">Session 22</span></td>
+      <td><span class="badge badge-y">INCONSISTENT SESSION #</span></td>
+    </tr>
+    <tr>
+      <td>2</td><td><strong>COMPLAINT_TODO_LIST.html</strong></td>
+      <td>78.7</td><td>Aug 1 00:56</td><td><span class="err">Session 10 / Jul 31</span></td>
+      <td><span class="badge badge-r">OUTDATED METADATA</span></td>
+    </tr>
+    <tr>
+      <td>3</td><td><strong>FUNDING_REVIEW.html</strong></td>
+      <td>31.1</td><td>Aug 1 00:56</td><td>Jul 30-31</td>
+      <td><span class="badge badge-g">OK</span></td>
+    </tr>
+    <tr>
+      <td>4</td><td><strong>INVESTMENT_PEOPLE_REPORT.html</strong></td>
+      <td>42.9</td><td>Aug 1 00:56</td><td>N/A</td>
+      <td><span class="badge badge-y">TITLE MISLEADING</span></td>
+    </tr>
+    <tr>
+      <td>5</td><td><strong>COMPLAINT_LETTER.html</strong></td>
+      <td>12.1</td><td>Aug 1 00:25</td><td>Aug 1 (Session 13+)</td>
+      <td><span class="badge badge-g">OK</span></td>
+    </tr>
+    <tr>
+      <td>6</td><td><strong>COI_REQUEST_LETTER.html</strong></td>
+      <td>14.8</td><td>Aug 1 00:25</td><td>N/A</td>
+      <td><span class="badge badge-g">OK</span></td>
+    </tr>
+    <tr>
+      <td>7</td><td><strong>DEEP_DIVE_HARM.html</strong></td>
+      <td>35.3</td><td>Aug 1 01:13</td><td>Session 16</td>
+      <td><span class="badge badge-g">OK</span></td>
+    </tr>
+    <tr>
+      <td>8</td><td><strong>PATIENT_HARM_REPORT.html</strong></td>
+      <td>35.3</td><td>Aug 1 01:13</td><td>N/A</td>
+      <td><span class="badge badge-g">OK</span></td>
+    </tr>
+    <tr>
+      <td>9</td><td><strong>DDAP_COMPLAINT.html</strong></td>
+      <td>N/A</td><td>Aug 1</td><td>Session 21</td>
+      <td><span class="badge badge-g">OK</span></td>
+    </tr>
+    <tr>
+      <td>10</td><td><strong>DDAP_INVESTIGATION_EVIDENCE.html</strong></td>
+      <td>N/A</td><td>Aug 1</td><td>Session 22</td>
+      <td><span class="badge badge-g">OK</span></td>
+    </tr>
+    <tr>
+      <td>11</td><td><strong>FORENSIC_EXTRACTION_BLUEPRINT.html</strong></td>
+      <td>38.0</td><td>Jul 31 23:43</td><td>N/A</td>
+      <td><span class="badge badge-g">OK</span></td>
+    </tr>
+    <tr>
+      <td>12</td><td><strong>COMPLIANCE_SELF_DEALING_ANGLES.html</strong></td>
+      <td>N/A</td><td>Aug 1</td><td>N/A</td>
+      <td><span class="badge badge-g">OK</span></td>
+    </tr>
+    <tr>
+      <td>13</td><td><strong>BCC_FINANCIAL_WORM_MAP.html</strong></td>
+      <td>42.0</td><td>Aug 1 00:25</td><td>N/A</td>
+      <td><span class="badge badge-g">OK</span></td>
+    </tr>
+    <tr>
+      <td>14</td><td><strong>DONOR_RECONSTRUCTION.html</strong></td>
+      <td>18.6</td><td>Aug 1 00:33</td><td>N/A</td>
+      <td><span class="badge badge-g">OK</span></td>
+    </tr>
+  </table>
+</div>
+
+<!-- ====== CRITICAL ISSUES ====== -->
+<h2>🔴 Critical Issues — 7 Items (Fix Now)</h2>
+
+<div class="finding">
+  <strong>CRIT-1: Session Numbering Chaos — 4 Different Session Claims on Same Day</strong>
+  <p style="margin-top:8px;">
+    INVESTIGATION_GAPS.html claims <strong>"Session 22"</strong> in its subtitle.
+    COMPLAINT_TODO_LIST.html claims <strong>"Session 10"</strong> and "July 31, 2026."
+    SESSION_MILESTONE_2026-08-01.md records <strong>"Session 11."</strong>
+    DEEP_DIVE_HARM.html claims <strong>"Session 16."</strong>
+    The gaps document internally references Sessions 11, 12, 13, 14, 16, 17, 19, 21, and 22 — all on August 1, 2026.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Impact:</strong> Makes it impossible to reconstruct the timeline. An auditor or external reader cannot determine what was discovered when.
+  </p>
+  <p style="margin-top:6px;">
+    <strong>Fix:</strong> Reconcile SESSION_MILESTONE against all documents. The milestone says Session 11. Either (a) all documents reference one canonical session numbering, or (b) each document gets a datestamp-only header (no session number). Audit recommendation: adopt datestamp-only headers (e.g., "Updated August 1, 2026") across all 14 files, dropping session numbers entirely.
+  </p>
+</div>
+
+<div class="finding">
+  <strong>CRIT-2: Gap Count Arithmetic Error — INVESTIGATION_GAPS.html</strong>
+  <p style="margin-top:8px;">
+    The <strong>Medium Gaps section header</strong> reads: "18 Items Listed / 16 Open."
+    The <strong>count note</strong> immediately below says: "Count note: 18 items are listed below; #19, #32, and #48 are fully resolved and counted out, leaving <strong>15 open</strong> medium gaps."
+    <strong>16 ≠ 15.</strong> The header and the note contradict each other.
+    Similarly, the Low section header says "12 Items Listed / 11 Open" but gaps #41 and #48 are resolved (in low), which would mean 10 open. And the summary boxes claim 11 low open.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Impact:</strong> The core organizing document of the entire investigation has arithmetic errors in its gap counts. This undermines credibility if shared externally.
+  </p>
+  <p style="margin-top:6px;">
+    <strong>Fix:</strong> Re-audit every gap's status across all 4 priority levels. Recalculate: total gaps, resolved per tier, remaining per tier.
+    The correct counts (verified during this audit): <strong>Critical: 5 listed / 5 open. High: 14 listed / 11 open (3 resolved: #6 Scull, #7 Ralph, #8 Robinson). Medium: 18 listed / 15 open (3 resolved: #19 SAMHSA, #32 IRS, #48 DDAP). Low: 12 listed / 11 open (1 resolved: #41 compensation).</strong>
+    Total: 5+14+18+12 = 49 gaps. Open: 5+11+15+11 = 42. Resolved: 0+3+3+1 = 7. Fix the medium header to say "15 Open" instead of "16 Open."
+  </p>
+</div>
+
+<div class="finding">
+  <strong>CRIT-3: Broken Cross-Reference — COMPLAINT_AGENCY_LETTER.txt Does Not Exist</strong>
+  <p style="margin-top:8px;">
+    INVESTIGATION_GAPS.html, gap #48, states: "now cited in COMPLAINT_LETTER.html and <strong>COMPLAINT_AGENCY_LETTER.txt</strong>."
+    <strong>COMPLAINT_AGENCY_LETTER.txt does not exist on disk.</strong> The file is not present in the project root or any subdirectory visible in the file tree.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Impact:</strong> A deliverable referenced as evidence does not exist. If this was meant to be a plain-text version of the complaint letter for agency submission, it was never created or was deleted.
+  </p>
+  <p style="margin-top:6px;">
+    <strong>Fix:</strong> Either create COMPLAINT_AGENCY_LETTER.txt or remove the reference from INVESTIGATION_GAPS.html.
+  </p>
+</div>
+
+<div class="finding">
+  <strong>CRIT-4: Portfolio Value Conflation — $19.8M vs $10.48M</strong>
+  <p style="margin-top:8px;">
+    INVESTMENT_PEOPLE_REPORT.html title banner says <strong>"$19.8M Portfolio"</strong> and "11.13x Investment Growth."
+    But the <strong>Schedule D public securities portfolio is $10.48M</strong> (confirmed in the same document).
+    The $19.8M figure is <strong>net assets</strong> (total assets minus liabilities), NOT the securities portfolio.
+    FUNDING_REVIEW.html correctly frames the ambiguity as "$19.8M–$23M (source-dependent)" but doesn't explain the distinction.
+    COMPLAINT_TODO_LIST.html shows both figures in the same table: Total Assets $22.97M, Net Assets $19.83M — but its summary box only shows "$19.8M Net Assets (FY2025)."
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Impact:</strong> INVESTMENT_PEOPLE_REPORT.html's title overstates the portfolio by ~2x. This is the most damaging error — it directly affects the central "Edward Jones manages $19.8M" claim.
+  </p>
+  <p style="margin-top:6px;">
+    <strong>Fix:</strong> Change INVESTMENT_PEOPLE_REPORT.html title to "$10.48M Securities Portfolio (Schedule D) / $19.8M Net Assets" to accurately reflect both figures. Update all "$19.8M portfolio" references in other documents to "$10.48M securities portfolio."
+  </p>
+</div>
+
+<div class="finding">
+  <strong>CRIT-5: COMPLAINT_TODO_LIST.html — Severely Outdated Metadata</strong>
+  <p style="margin-top:8px;">
+    The document's subtitle says <strong>"Research Updated July 31, 2026 (Session 10)"</strong> — but it contains:
+    • Session 17 compensation reconciliation data (todo #13)
+    • Session 22 DDAP investigation evidence links
+    • Jeffrey Ralph resolved to GSK (Session 11+ finding)
+    • John Robinson verified via PA DOS (Session 14 finding)
+    All of these postdate the claimed July 31 / Session 10 date.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Impact:</strong> The document's own metadata contradicts its content. If shared, a recipient could argue the evidence was fabricated (claiming July 31 data that actually came from Aug 1 sessions).
+  </p>
+  <p style="margin-top:6px;">
+    <strong>Fix:</strong> Update the subtitle to "Research Updated August 1, 2026" with no session number. Verify all session-specific claims in the document against SESSION_MILESTONE.
+  </p>
+</div>
+
+<div class="finding">
+  <strong>CRIT-6: Absolute File Paths in HTML — C: Drive Links</strong>
+  <p style="margin-top:8px;">
+    Two documents contain absolute <span class="mono">file:///C:/Users/clint/Desktop/</span> links:
+    • COMPLAINT_TODO_LIST.html line 1436: <span class="mono">file:///C:/Users/clint/Desktop/Libra/filings/BCC_Complaint/worm_analysis_dashboard.html</span>
+    • DONOR_RECONSTRUCTION.html line 332: same path
+    These links will break on any other computer, when shared via any channel, or if the user's Desktop path changes.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Impact:</strong> Shared deliverables contain broken links. Anyone receiving these HTML files will see 404-style failures.
+  </p>
+  <p style="margin-top:6px;">
+    <strong>Fix:</strong> Replace absolute paths with relative paths (e.g., <span class="mono">href="worm_analysis_dashboard.html"</span>) or remove the links if the worm dashboard file doesn't exist at the root level.
+  </p>
+</div>
+
+<div class="finding">
+  <strong>CRIT-7: Zero Actions Executed — Investigation Blocked on Delivery</strong>
+  <p style="margin-top:8px;">
+    COMPLAINT_TODO_LIST.html has <strong>20 action items</strong>. Only 6 are marked complete — and those are all <strong>research tasks</strong> (review 990s, verify emails, investigate deficit). <strong>All 14 delivery tasks remain unchecked:</strong>
+    • 5 HIGH priority (contact commissioners, council, BCC board, SAMHSA, PA OMHSAS) — ALL unchecked
+    • 5 MEDIUM priority (county HS, United Way, BCCF, RTK request, PA AG) — ALL unchecked
+    • Schedule B request — unchecked
+    • Legal counsel — unchecked
+    • Document communications — unchecked
+    COMPLAINT_LETTER.html is complete and ready-to-send. COI_REQUEST_LETTER.html is complete and ready-to-send. DDAP_COMPLAINT.html is ready.
+    <strong style="color:var(--r);">The investigation has produced excellent evidence but has not delivered a single complaint, request, or filing.</strong>
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Impact:</strong> The investigation has no external effect. No regulator, funder, or BCC leader has received any communication. This is the single largest gap in the entire project.
+  </p>
+  <p style="margin-top:6px;">
+    <strong>Fix:</strong> Prioritize sending the COI Request Letter first (low-risk, legally grounded, starts the 30-day clock). Then send the Complaint Letter to regulators. Then file the PA Right-to-Know request.
+  </p>
+</div>
+
+<!-- ====== MEDIUM ISSUES ====== -->
+<h2>🟡 Medium Issues — 11 Items (Fix Soon)</h2>
+
+<div class="finding-y">
+  <strong>MED-1: "Cahootery" Section Counts 6 Owls — But Only 5 Board Members</strong>
+  <p style="margin-top:6px;">
+    COMPLAINT_TODO_LIST.html's "Cahootery Legend" table lists 6 owls (Plageman, Krause, Orlando, Goodman-Hinnershitz, Gaul, Robinson).
+    But Marcia Goodman-Hinnershitz is NOT on BCC's board — she is on Reading City Council with an oversight/funding nexus via COCA.
+    The legend conflates board members with external actors. This is a category error, not a factual one: the 22% board-control figure (Plageman + Krause, 2/9) is unaffected. But presenting a non-board actor alongside board members in an "owl" table muddies who actually governs BCC.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Fix:</strong> Split the legend into "Board Owls" (5: Plageman, Krause, Orlando, Gaul, Robinson) and "External Nexus" (1: Goodman-Hinnershitz, COCA/City Council). The claim of 5 board-level owls remains strong.
+  </p>
+</div>
+
+<div class="finding-y">
+  <strong>MED-2: INVESTIGATION_GAPS.html Footer References Outdated Gap Count</strong>
+  <p style="margin-top:6px;">
+    FORENSIC_EXTRACTION_BLUEPRINT.html line 392 references: "the updated 49-gap inventory (5 critical / 11 high / <strong>16 medium</strong> / 11 low)."
+    But INVESTIGATION_GAPS.html's medium section is internally inconsistent (says both 16 and 15 open). The blueprint perpetuates whichever number was correct at its writing time (Jul 31) — but the numbers have shifted since.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Fix:</strong> After resolving CRIT-2, update FORENSIC_EXTRACTION_BLUEPRINT.html to match the canonical counts.
+  </p>
+</div>
+
+<div class="finding-y">
+  <strong>MED-3: "2025 Filings" vs "FY2025 990" — Ambiguous Dating</strong>
+  <p style="margin-top:6px;">
+    Multiple documents use "2025 filings" to describe the FY2025 Form 990 (which covers the year ending June 2025, filed May 2026).
+    INVESTIGATION_GAPS.html gap #7 says Jeffrey Ralph is "Treasurer per 2025 filings" — but no 2025 calendar-year filing exists. The FY2025 990 was filed in May 2026.
+    This creates confusion about which fiscal period is being referenced.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Fix:</strong> Standardize all references to "FY2025 Form 990 (filed May 2026)" format across all documents.
+  </p>
+</div>
+
+<div class="finding-y">
+  <strong>MED-4: Board Roster Duplicated 4+ Times With Slight Variations</strong>
+  <p style="margin-top:6px;">
+    The 9-member board roster appears in:
+    • COMPLAINT_TODO_LIST.html (with conflict badges)
+    • FUNDING_REVIEW.html (with employer/conflict columns)
+    • INVESTMENT_PEOPLE_REPORT.html (with detailed profiles)
+    • INVESTIGATION_GAPS.html (via Session 11 findings)
+    Each copy has slightly different formatting, employer descriptions, and conflict assessments. An update to one (e.g., Jeffrey Ralph confirmed GSK) may not propagate to all.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Fix:</strong> Designate INVESTMENT_PEOPLE_REPORT.html as the canonical board roster. All other documents should link to it rather than duplicating.
+  </p>
+</div>
+
+<div class="finding-y">
+  <strong>MED-5: CEO Compensation — Two Different Totals Across Documents</strong>
+  <p style="margin-top:6px;">
+    COMPLAINT_TODO_LIST.html FY2025 990 Deep Dive table shows CEO base: $140,004, other: $5,428, TOTAL: $145,432.
+    COMPLAINT_LETTER.html CONCERN 2 cites identical figures.
+    INVESTIGATION_GAPS.html gap #41 (resolved) cites the same figures.
+    <strong>Consistent.</strong> But the older FUNDING_REVIEW.html does not show the corrected total — it only shows base compensation in its tables. If someone reads FUNDING_REVIEW before COMPLAINT_LETTER, they'll see incomplete data.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Fix:</strong> Add total compensation column to FUNDING_REVIEW.html tables, or add a note referencing the Session 17 reconciliation.
+  </p>
+</div>
+
+<div class="finding-y">
+  <strong>MED-6: SAMHSA Grant Outlay Rate — 63.5% But 71% Elapsed</strong>
+  <p style="margin-top:6px;">
+    INVESTIGATION_GAPS.html gap #19 reports: $2,503,513 outlaid (63.5% drawn) at 71% of the 4-year period elapsed.
+    63.5% draw against 71% time = <strong>underspent by ~7.5 percentage points.</strong>
+    This is a meaningful finding — BCC may be drawing slower than expected, or front-loading spend in later years.
+    But no document explicitly flags this underspend as a finding. It appears only as a ratio.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Fix:</strong> Add an explicit finding in FUNDING_REVIEW.html and COMPLAINT_LETTER.html: "SAMHSA grant is 7.5pp underspent relative to elapsed time — potential program delivery concerns or grant management issues."
+  </p>
+</div>
+
+<div class="finding-y">
+  <strong>MED-7: "10 Single Audits" Claim Needs Verification</strong>
+  <p style="margin-top:6px;">
+    INVESTIGATION_GAPS.html footer links to LEGAL_OVERSIGHT_ANGLE.html described as "Lack of Legal Oversight — 10 Single Audits."
+    COMPLAINT_LETTER.html also links to it. But the 10 single audits figure is not corroborated in the main investigation documents.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Fix:</strong> Verify the 10 single audits claim. Add a summary finding to INVESTIGATION_GAPS.html or FUNDING_REVIEW.html if confirmed.
+  </p>
+</div>
+
+<div class="finding-y">
+  <strong>MED-8: FY2022 Gap in Worm Analysis — Never Fixed</strong>
+  <p style="margin-top:6px;">
+    Gap #30 in INVESTIGATION_GAPS.html: "FY2022 Form 990 Data — MISSING FROM WORM ANALYSIS." The Azazael worm fleet covers FY2021, FY2023, FY2024, FY2025 — skipping FY2022.
+    This gap was identified but never actioned. FUNDING_REVIEW.html's worm analysis still lacks FY2022.
+    FY2022 had $81,297 contributions — a transition year that bridges the pre-CCBHC and post-CCBHC eras.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Fix:</strong> Pull FY2022 990 data and rerun the worm fleet analysis to fill this gap.
+  </p>
+</div>
+
+<div class="finding-y">
+  <strong>MED-9: INVESTIGATION_GAPS.html Subtitle Contradicts Summary Header</strong>
+  <p style="margin-top:6px;">
+    The subtitle says "39" in one embedded text segment (from earlier version), but the summary boxes add up to 49.
+    The subtitle was partially updated but the "39" was left behind: "5 critical / 11 high / 15 medium / 8 low = 39" (old) vs current "5/11/15/11 = 42 open of 49." The "8 low" was changed to "11 low" but "39" was not updated to match.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Fix:</strong> Search INVESTIGATION_GAPS.html for all instances of "39" and verify they've been updated to reflect the current 49-gap inventory.
+  </p>
+</div>
+
+<div class="finding-y">
+  <strong>MED-10: MMJ/Patient Harm Claims — Single Source, No Corroboration</strong>
+  <p style="margin-top:6px;">
+    CONCERN 8 in COMPLAINT_LETTER.html and Gap #43 in INVESTIGATION_GAPS.html both rely on a single complainant account.
+    INVESTIGATION_GAPS.html itself notes: "(Single-complainant account — first-hand, not independently verified.)"
+    Gap #49 explicitly identifies this as a remaining gap: "Corroborating testimony from other current/former BCC patients is needed."
+    The MMJ claim is being prepared for external delivery (COMPLAINT_LETTER, DDAP_COMPLAINT) before corroboration is obtained.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Fix:</strong> Before sending any complaint that includes the MMJ claim, attempt to gather at least one corroborating witness. Alternatively, send the complaint without CONCERN 8 and file a separate, supplemental complaint once corroborated.
+  </p>
+</div>
+
+<div class="finding-y">
+  <strong>MED-11: INVESTIGATION_GAPS.html Claims "7 Resolved" But Numbered Gaps Don't Add Up Clearly</strong>
+  <p style="margin-top:6px;">
+    The resolved gaps per a manual count:
+    #6 (Scull), #7 (Ralph), #8 (Robinson), #19 (SAMHSA), #32 (IRS audit), #41 (compensation), #48 (DDAP outcome).
+    That's 7. However, the Session 11-14 findings table lists only 5 items (#19, #32, #6, #7, #2, #8) — with 4 marked resolved and 1 unchanged (#2), plus #41 and #48 resolved in later sessions.
+    The counting is correct (7) but the presentation makes it hard to verify.
+  </p>
+  <p style="margin-top:6px;color:#8b949e;">
+    <strong>Fix:</strong> Add a "Resolved Gaps Summary" table at the top of INVESTIGATION_GAPS.html listing all 7 resolved gaps with resolution dates.
+  </p>
+</div>
+
+<!-- ====== LOW / COSMETIC ISSUES ====== -->
+<h2>🔵 Low / Cosmetic Issues — 8 Items</h2>
+
+<div class="finding-g">
+  <strong>LOW-1: OWL Emoji Rendering</strong> — The 🦉 emoji used to mark conflicted individuals renders differently across platforms. Some systems show a generic owl; some don't render it at all. The visual impact of the "cahootery" marking depends on font support.
+</div>
+
+<div class="finding-g">
+  <strong>LOW-2: COMPLAINT_TODO_LIST.html Uses "—" (Em Dash) in Fields</strong> — Several summary boxes use em dashes inconsistently (e.g., "$19.8M — 50x Since FY2017" — the "—" is correct but other boxes use simple hyphens).
+</div>
+
+<div class="finding-g">
+  <strong>LOW-3: SESSION_MILESTONE JSON Shows 15 Facebook HTML Documents</strong> — The milestone records 15 Facebook-rendered HTML files, but the audit found 14 investigation HTML files in the root. The discrepancy of 1 may be an archived or deleted file.
+</div>
+
+<div class="finding-g">
+  <strong>LOW-4: COMPLAINT_TODO_LIST.html Table Shows FY2019-FY2025 But Skips FY2022</strong> — The CFO compensation timeline jumps from FY2021 to FY2023, mirroring gap #30 (missing FY2022 data). The FY2022 990 should have FY2022 compensation data.
+</div>
+
+<div class="finding-g">
+  <strong>LOW-5: INVESTIGATION_GAPS.html Is the Largest Investigation File at 32KB</strong> — At 32KB it is the largest single investigation document (COMPLAINT_TODO_LIST.html is 78KB but structured as a todo list, not a dense report). The gaps document covers 49 items across 4 tiers plus 2 resolution summaries plus a footer with 17 links. Consider splitting into "Critical + High Gaps" and "Medium + Low Gaps" pages for readability, or adding anchor-based internal navigation.
+</div>
+
+<div class="finding-g">
+  <strong>LOW-6: No Document Map / Index</strong> — There is no master index linking all 14 files together. Each document has its own footer links, but no single "start here" document exists. INVESTIGATION_GAPS.html is the closest, with 17 footer links, but it's not labeled as an index.
+</div>
+
+<div class="finding-g">
+  <strong>LOW-7: BCC_GRIEVANCE_LETTER.html Not Cross-Linked</strong> — This file exists in the root but is not linked from any of the 14 primary investigation documents. It may be an orphaned or superseded document.
+</div>
+
+<div class="finding-g">
+  <strong>LOW-8: Inconsistent "•" vs "•" Bullet Characters</strong> — Some documents use the Unicode bullet (•) while others use "•" or asterisks. Standardizing to one character would improve consistency.
+</div>
+
+<!-- ====== LINK HEALTH ====== -->
+<h2>🔗 Cross-Reference Link Health — 38 Links Verified</h2>
+
+<div class="card">
+  <p style="color:#8b949e;margin-bottom:12px;">All cross-document HTML links were verified against the file tree. 37 of 38 links resolve correctly.</p>
+  <table>
+    <tr><th>Source Document</th><th>Links To</th><th>Status</th></tr>
+    <tr><td>COMPLAINT_LETTER.html</td><td>COMPLAINT_TODO_LIST.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>COMPLAINT_LETTER.html</td><td>FUNDING_REVIEW.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>COMPLAINT_LETTER.html</td><td>TIKTOK_VIDEO_SCRIPT.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>COMPLAINT_LETTER.html</td><td>BCC_PROPERTY_OWNERSHIP.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>COMPLAINT_LETTER.html</td><td>INVESTIGATION_GAPS.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>COMPLAINT_LETTER.html</td><td>DEEP_DIVE_HARM.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>COMPLAINT_LETTER.html</td><td>DDAP_COMPLAINT.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>COMPLAINT_LETTER.html</td><td>MMJ_RIGHTS_ONEPAGER.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>COMPLAINT_LETTER.html</td><td>LEGAL_OVERSIGHT_ANGLE.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>COMPLAINT_LETTER.html</td><td>DDAP_INVESTIGATION_EVIDENCE.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>SAMHSA_PERFORMANCE_H79SM088878.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>BCC_PROPERTY_OWNERSHIP.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>DEEP_DIVE_HARM.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>MMJ_PAROLE_RIGHTS.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>DDAP_INVESTIGATION_EVIDENCE.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>COMPLAINT_TODO_LIST.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>FUNDING_REVIEW.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>INVESTMENT_PEOPLE_REPORT.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>DONOR_RECONSTRUCTION.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>CONSOLIDATED_SCROLL.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>COMPLAINT_LETTER.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>COI_REQUEST_LETTER.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>BCC_FINANCIAL_WORM_MAP.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>PEOPLE_SEARCH_ALT.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>LEGISLATIVE_COMMITTEES.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>MEDIA_OUTREACH.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>COMPLIANCE_SELF_DEALING_ANGLES.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html</td><td>LEGAL_OVERSIGHT_ANGLE.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTIGATION_GAPS.html (text ref)</td><td>COMPLAINT_AGENCY_LETTER.txt</td><td><span class="err">❌ DOES NOT EXIST</span></td></tr>
+    <tr><td>FUNDING_REVIEW.html</td><td>COMPLAINT_TODO_LIST.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>FUNDING_REVIEW.html</td><td>TIKTOK_VIDEO_SCRIPT.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTMENT_PEOPLE_REPORT.html</td><td>COMPLAINT_TODO_LIST.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTMENT_PEOPLE_REPORT.html</td><td>FUNDING_REVIEW.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTMENT_PEOPLE_REPORT.html</td><td>DONOR_RECONSTRUCTION.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>INVESTMENT_PEOPLE_REPORT.html</td><td>CONSOLIDATED_SCROLL.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>DONOR_RECONSTRUCTION.html</td><td>COMPLAINT_TODO_LIST.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>DONOR_RECONSTRUCTION.html</td><td>FUNDING_REVIEW.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+    <tr><td>FORENSIC_EXTRACTION_BLUEPRINT.html</td><td>INVESTIGATION_GAPS.html</td><td><span class="ok">✅ EXISTS</span></td></tr>
+  </table>
+  <p style="margin-top:10px;color:#8b949e;">
+    <strong>Result:</strong> 37/38 links resolve. 1 broken text reference to COMPLAINT_AGENCY_LETTER.txt (see CRIT-3).
+    2 absolute C: drive paths omitted from count (see CRIT-6).
+  </p>
+</div>
+
+<!-- ====== STRUCTURAL FINDINGS ====== -->
+<h2>🏗️ Structural Findings — 5 Observations</h2>
+
+<div class="card card-p">
+  <h3>OBS-1: No Version Control</h3>
+  <p>None of the 14 investigation files appear to be under git version control (no .git directory with tracked changes visible in the git diff). This means there is no audit trail of who changed what when. If a document is accidentally overwritten, prior versions are unrecoverable.</p>
+  <p style="color:#8b949e;"><strong>Recommendation:</strong> Initialize git and commit all documents with meaningful messages. This provides a permanent, timestamped record of the investigation's evolution.</p>
+</div>
+
+<div class="card card-p">
+  <h3>OBS-2: No Print-Friendly Versions</h3>
+  <p>All documents use dark-mode CSS with @media print overrides. The print styles are basic (white background, black text). For formal submissions (court filings, PA RTK requests, AG complaints), a clean print layout with letterhead styling would be more appropriate than the scroll-container format.</p>
+  <p style="color:#8b949e;"><strong>Recommendation:</strong> Create a print-optimized PDF or DOCX version of the complaint letter and COI request letter for formal submission.</p>
+</div>
+
+<div class="card card-p">
+  <h3>OBS-3: Auto-Scroll JavaScript Unnecessary for Deliverables</h3>
+  <p>Several documents (FUNDING_REVIEW.html, COI_REQUEST_LETTER.html) include auto-scroll JavaScript intended for Facebook video recording. This adds bloat and potentially confuses recipients who open the HTML files directly. The scroll container also hides the native scrollbar, which is an accessibility issue.</p>
+  <p style="color:#8b949e;"><strong>Recommendation:</strong> Separate "recording" versions (with auto-scroll) from "delivery" versions (clean, scrollbar-visible). Send delivery versions to external parties.</p>
+</div>
+
+<div class="card card-p">
+  <h3>OBS-4: No Single Source of Truth for Key Numbers</h3>
+  <p>The following numbers appear across multiple documents with no single canonical source:</p>
+  <ul style="margin-left:20px;color:#8b949e;">
+    <li>Portfolio value: $10.48M (Schedule D) vs $19.8M (net assets) vs $22.97M (total assets)</li>
+    <li>Federal awards: 51 (earlier) vs 125 (corrected, Session 12+) vs ~125-130 (COMPLAINT_LETTER)</li>
+    <li>HUD grant total: ~$500K-$600K/yr vs $1,265,019 (FUNDING_REVIEW latest-grant sum)</li>
+    <li>Board affiliations: 8/9 confirmed vs "1 undisclosed" (both are technically correct but anchor different impressions)</li>
+  </ul>
+  <p style="color:#8b949e;"><strong>Recommendation:</strong> Create a DATA_REFERENCE.html that serves as the canonical reference for all financial figures, with source citations and retrieval dates.</p>
+</div>
+
+<div class="card card-p">
+  <h3>OBS-5: GDPR / Privacy Risk in MMJ Content</h3>
+  <p>CONCERN 8 and gap #43 describe a complainant with enough detail (7-year MMJ certification, 6-year BCC relationship, PA state parolee) to potentially identify the individual. COMPLAINT_LETTER.html includes a privacy warning recommending omission from BCC-addressed copies. However, the full text is present in the HTML source — if the file is shared directly, the privacy protection is lost.</p>
+  <p style="color:#8b949e;"><strong>Recommendation:</strong> Create a redacted version of COMPLAINT_LETTER.html (without CONCERN 8) as the default shareable version. Keep the full version in a separate, access-controlled location.</p>
+</div>
+
+<!-- ====== ACTION PLAN ====== -->
+<h2>📋 Recommended Remediation Plan</h2>
+
+<div class="card card-g">
+  <h3>Phase 1 — Immediate (Today)</h3>
+  <table>
+    <tr><th>#</th><th>Action</th><th>Files Affected</th><th>Effort</th></tr>
+    <tr><td>1</td><td>Fix gap count arithmetic in INVESTIGATION_GAPS.html</td><td>INVESTIGATION_GAPS.html</td><td>15 min</td></tr>
+    <tr><td>2</td><td>Fix portfolio value title in INVESTMENT_PEOPLE_REPORT.html</td><td>INVESTMENT_PEOPLE_REPORT.html</td><td>5 min</td></tr>
+    <tr><td>3</td><td>Update COMPLAINT_TODO_LIST.html subtitle/metadata</td><td>COMPLAINT_TODO_LIST.html</td><td>5 min</td></tr>
+    <tr><td>4</td><td>Remove or fix C: drive absolute file paths</td><td>COMPLAINT_TODO_LIST.html, DONOR_RECONSTRUCTION.html</td><td>5 min</td></tr>
+    <tr><td>5</td><td>Create COMPLAINT_AGENCY_LETTER.txt or remove reference</td><td>INVESTIGATION_GAPS.html</td><td>10 min</td></tr>
+  </table>
+</div>
+
+<div class="card card-y">
+  <h3>Phase 2 — This Week</h3>
+  <table>
+    <tr><th>#</th><th>Action</th><th>Files Affected</th><th>Effort</th></tr>
+    <tr><td>6</td><td>Reconcile session numbering across all 14 documents</td><td>All 14 files</td><td>30 min</td></tr>
+    <tr><td>7</td><td>Create canonical board roster; link from other docs</td><td>5 files</td><td>20 min</td></tr>
+    <tr><td>8</td><td>Add total compensation to FUNDING_REVIEW.html</td><td>FUNDING_REVIEW.html</td><td>10 min</td></tr>
+    <tr><td>9</td><td>Create DATA_REFERENCE.html canonical numbers doc</td><td>New file</td><td>45 min</td></tr>
+    <tr><td>10</td><td>Initialize git and commit all files</td><td>All files</td><td>10 min</td></tr>
+  </table>
+</div>
+
+<div class="card card-r">
+  <h3>Phase 3 — SEND (Highest Priority)</h3>
+  <table>
+    <tr><th>#</th><th>Action</th><th>Effort</th><th>Prerequisite</th></tr>
+    <tr><td>11</td><td><strong>SEND the COI Request Letter</strong> to BCC (4 verified addresses) — 30-day clock starts</td><td>15 min</td><td><span class="ok">None — ready to send</span></td></tr>
+    <tr><td>12</td><td><strong>SEND the Complaint Letter</strong> to county commissioners + city council + regulators <strong>(WITHOUT CONCERN 8)</strong></td><td>15 min</td><td><span class="warn">Redact MMJ content per OBS-5 privacy guidance</span></td></tr>
+    <tr><td>13</td><td><strong>FILE PA Right-to-Know</strong> with Berks County for BCC contracts, MOUs, payments</td><td>30 min</td><td><span class="ok">None</span></td></tr>
+    <tr><td>14</td><td><strong>Gather corroborating MMJ testimony</strong> per MED-10 before filing DDAP complaint</td><td>Ongoing</td><td><span class="warn">Single-source claim — needs corroboration</span></td></tr>
+    <tr><td>15</td><td><strong>FILE DDAP Complaint</strong> for MMJ patient rights — <strong>AFTER</strong> corroboration obtained</td><td>15 min</td><td><span class="err">Step 14 must complete first</span></td></tr>
+  </table>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<div style="margin-top:30px;padding:16px;background:#1d1530;border-radius:8px;text-align:center;font-size:0.85rem;color:var(--p);">
+  <strong>Audit Report Generated:</strong> August 1, 2026 &nbsp;|&nbsp;
+  <strong>Documents Audited:</strong> 14 &nbsp;|&nbsp;
+  <strong>Cross-References Verified:</strong> 38 &nbsp;|&nbsp;
+  <strong>Issues Found:</strong> 7 Critical, 11 Medium, 8 Low<br>
+  <strong>Bottom Line:</strong> The evidence is outstanding. The document management needs work. The delivery has not started.<br>
+  📋 <a href="INVESTIGATION_GAPS.html" style="color:var(--a);">INVESTIGATION_GAPS.html</a> &nbsp;|&nbsp;
+  📋 <a href="COMPLAINT_TODO_LIST.html" style="color:var(--a);">COMPLAINT_TODO_LIST.html</a> &nbsp;|&nbsp;
+  📧 <a href="COMPLAINT_LETTER.html" style="color:var(--a);">COMPLAINT_LETTER.html</a> &nbsp;|&nbsp;
+  ⚖️ <a href="COI_REQUEST_LETTER.html" style="color:var(--a);">COI_REQUEST_LETTER.html</a>
+</div>
+
+</div>
+</body>
+</html>

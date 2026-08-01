@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1100">
+<title>SCROLL CAPTURE — FUNDING REVIEW</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); padding:20px; line-height:1.6; width:1100px; margin:0 auto; }
+  /* ── Overlay ── */
+  #overlay { position:fixed; inset:0; z-index:9999; background:#0d1117; display:flex; align-items:center; justify-content:center; flex-direction:column; transition:opacity .5s; }
+  #overlay.hidden { opacity:0; pointer-events:none; }
+  #overlay #cd { font-size:6rem; font-weight:900; color:var(--r); }
+  #overlay #sub { font-size:1.4rem; color:#8b949e; margin-top:12px; }
+  /* ── Progress bar ── */
+  #pbw { position:fixed; top:0; left:0; right:0; height:4px; z-index:9998; background:#21262d; }
+  #pbb { height:100%; width:0; background:var(--r); }
+  /* ── Done ── */
+  #done { position:fixed; inset:0; z-index:9997; display:none; align-items:center; justify-content:center; flex-direction:column; background:rgba(13,17,23,.92); }
+  #done.show { display:flex; }
+  #done h2 { font-size:3rem; color:var(--g); }
+  /* ── Content ── */
+  h1 { color:var(--r); text-align:center; font-size:2rem; margin-bottom:24px; border-bottom:2px solid var(--r); padding-bottom:12px; }
+  h2 { color:var(--a); margin:28px 0 12px; border-bottom:1px solid var(--border); padding-bottom:6px; }
+  h3 { color:#d2a8ff; margin:16px 0 8px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:16px; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.92rem; }
+  th { text-align:left; background:#21262d; color:var(--h); padding:10px 12px; border-bottom:2px solid var(--border); }
+  td { padding:10px 12px; border-bottom:1px solid var(--border); }
+  .amt { font-size:1.2rem; font-weight:700; color:var(--g); }
+  .amt-neg { font-size:1.2rem; font-weight:700; color:var(--r); }
+  .tag { display:inline-block; padding:2px 8px; border-radius:12px; font-size:.75rem; font-weight:600; }
+  .tag-fed { background:#1b3826; color:var(--g); }
+  .tag-state { background:#2d1b00; color:var(--y); }
+  .tag-private { background:#1d1530; color:#d2a8ff; }
+  .highlight { background:#2d1b00; border-left:3px solid var(--y); padding:12px; margin:10px 0; border-radius:0 6px 6px 0; }
+  .highlight-red { background:#2d1b00; border-left:3px solid var(--r); padding:12px; margin:10px 0; border-radius:0 6px 6px 0; }
+  .highlight-green { background:#1b3826; border-left:3px solid var(--g); padding:12px; margin:10px 0; border-radius:0 6px 6px 0; }
+  .pending { color:var(--y); font-style:italic; }
+  .spacer { height:60px; }
+</style>
+</head>
+<body>
+
+<div id="overlay"><div id="cd">3</div><div id="sub">Recording starts in...</div></div>
+<div id="pbw"><div id="pbb"></div></div>
+<div id="done"><h2>✅ RECORDING COMPLETE</h2><p>Scroll capture finished</p></div>
+
+<!-- ====== CONTENT ====== -->
+<h1>💰 FUNDING REVIEW<br>Berks Counseling Center & Supervisory Agencies</h1>
+<p style="text-align:center;color:#8b949e;margin-bottom:20px;">Research compiled July 30, 2026</p>
+
+<h2>📊 BCC — Total Funding by Source (FY2025)</h2>
+<div class="card">
+  <table>
+    <tr><th>Source</th><th>FY2025</th><th>FY2024</th><th>FY2023</th><th>%</th></tr>
+    <tr><td><strong>Medicaid/Medicare/Insurance</strong></td><td class="amt">$11,778,182</td><td class="amt">$12,369,645</td><td class="amt">$13,222,659</td><td>94.3%</td></tr>
+    <tr><td><strong>SAMHSA CCBHC Grant</strong></td><td class="amt">$3,944,396</td><td colspan="2" style="color:#8b949e;">Multi-year 2023-2027</td><td>—</td></tr>
+    <tr><td><strong>Investment Income</strong></td><td class="amt">$446,033</td><td class="amt">$412,569</td><td class="amt">$263,459</td><td>3.6%</td></tr>
+    <tr><td><strong>Contributions & Grants</strong></td><td class="amt">$204,333</td><td class="amt">$844,835</td><td class="amt">$401,527</td><td>1.6%</td></tr>
+    <tr style="font-weight:700;background:#21262d;"><td><strong>TOTAL REVENUE</strong></td><td class="amt">$12,494,569</td><td class="amt">$13,641,565</td><td class="amt">$13,904,040</td><td>100%</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>Revenue Summary (IRS Form 990, FY2021–2025)</h3>
+  <table>
+    <tr><th>Fiscal Year</th><th>Total Revenue</th><th>Program Service</th><th>Contributions</th><th>Investment</th><th>Net Income</th></tr>
+    <tr><td><strong>FY2025</strong></td><td class="amt">$12,494,569</td><td>$11,778,182</td><td>$204,333</td><td>$446,033</td><td class="amt-neg">-$796,924</td></tr>
+    <tr><td><strong>FY2024</strong></td><td class="amt">$13,641,565</td><td>$12,369,645</td><td>$844,835</td><td>$412,569</td><td class="amt">+$1,352,167</td></tr>
+    <tr><td><strong>FY2023</strong></td><td class="amt">$13,904,040</td><td>$13,222,659</td><td>$401,527</td><td>$263,459</td><td class="amt">+$1,653,195</td></tr>
+    <tr><td><strong>FY2022</strong></td><td class="amt">$13,462,400</td><td>$13,131,132</td><td>$81,297</td><td>$119,723</td><td>—</td></tr>
+    <tr><td><strong>FY2021</strong></td><td class="amt">$15,171,755</td><td>$15,084,073</td><td>$3,615</td><td>$40,067</td><td>—</td></tr>
+  </table>
+</div>
+
+<h2>🏛️ FEDERAL FUNDING</h2>
+<div class="card">
+  <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+    <span class="tag tag-fed">FEDERAL</span> <strong>SAMHSA CCBHC Expansion Grant #H79SM088878</strong><br>
+    <span class="amt">$3,944,396</span> total | Awarded Sept 2023 – Sept 2027<br>
+    Purpose: Expand behavioral health access for underserved populations
+  </div>
+  <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+    <span class="tag tag-fed">FEDERAL</span> <strong>CCBHC Enhanced PPS Reimbursement</strong><br>
+    Since July 2017 — Enhanced federal Prospective Payment System rates via PA's CCBHC demonstration
+  </div>
+  <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+    <span class="tag tag-fed">FEDERAL</span> <strong>Medicaid/Medicare Reimbursements</strong><br>
+    <span class="amt">$11.7M–$13.2M/year</span> (90-95% of program revenue)<br>
+    Via PA HealthChoices managed care
+  </div>
+  <div style="padding:10px 0;">
+    <span class="tag tag-fed">FEDERAL</span> <strong>HUD Continuum of Care — 8 Properties</strong><br>
+    <span class="amt">~$500K–$600K+/year</span><br>
+    <table>
+      <tr><th>Property</th><th>Grant</th><th>Property</th><th>Grant</th></tr>
+      <tr><td>1135/37 Franklin St.</td><td>$288,274</td><td>BCC Leasing 1</td><td>$203,168</td></tr>
+      <tr><td>BCC Leasing 2</td><td>$193,072</td><td>New Hope PSH</td><td>$204,220</td></tr>
+      <tr><td>13 S. 10th St.</td><td>$87,534</td><td>239 S. 5th St.</td><td>$123,524</td></tr>
+      <tr><td>PS Recovery Housing</td><td>$105,511</td><td>Phoenix House</td><td>$59,716</td></tr>
+    </table>
+  </div>
+  <div class="highlight-green"><strong>ℹ COVID Relief:</strong> No PPP loans or direct COVID stimulus identified.</div>
+</div>
+
+<h2>🏢 STATE & COUNTY FUNDING</h2>
+<div class="card">
+  <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+    <span class="tag tag-state">STATE</span> <strong>PA OMHSAS — ICWC Designation</strong><br>
+    BCC operates as a state-designated Integrated Community Wellness Center
+  </div>
+  <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+    <span class="tag tag-state">STATE</span> <strong>PA Council on Chemical Abuse (COCA)</strong><br>
+    Pass-through funding for substance use disorder treatment
+  </div>
+  <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+    <span class="tag tag-state">COUNTY</span> <strong>Berks County Human Services Block Grant</strong><br>
+    County HS budget: <strong>~$16.2M/year</strong> (15,000 residents)<br>
+    BCC is contracted ICWC/Crisis Walk-In provider
+  </div>
+  <div style="padding:10px 0;">
+    <span class="tag tag-state">COUNTY</span> <strong>City of Reading CDBG</strong><br>
+    Municipal support for community health and homeless prevention
+  </div>
+</div>
+
+<h2>🤝 PRIVATE & FOUNDATION FUNDING</h2>
+<div class="card">
+  <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+    <span class="tag tag-private">PRIVATE</span> <strong>United Way of Berks County</strong><br>
+    <span class="amt">$678,000</span> (3-year MacKenzie Scott grant)<br>
+    Additional: $685K–$700K+ across multi-year cycles
+  </div>
+  <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+    <span class="tag tag-private">PRIVATE</span> <strong>Berks County Community Foundation</strong><br>
+    Trauma-informed care: $5,000 | Emergency grants: $10,000+
+  </div>
+  <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+    <span class="tag tag-private">PRIVATE</span> <strong>Investment Income (11x growth in 4 years)</strong><br>
+    FY2025: <span class="amt">$446,033</span> | FY2021: $40,067<br>
+    $19.8M in assets — portfolio undisclosed
+  </div>
+  <div style="padding:10px 0;">
+    <span class="tag tag-private">PRIVATE</span> <strong>Other Partners</strong><br>
+    Penn State Health St. Joseph | Berks Coalition to End Homelessness
+  </div>
+</div>
+
+<div class="highlight-red">
+  <strong>🚨 KEY FINDINGS:</strong><br>
+  • 90-99% of revenue from Medicaid/Medicare — only 0.6-6.2% from charitable contributions<br>
+  • Investment income grew 11x in 4 years — extraordinary for behavioral health nonprofit<br>
+  • $19.8M portfolio undisclosed — two Edward Jones board members<br>
+  • Major donors REDACTED in Schedule B
+</div>
+
+<h2>⚠️ Conflict of Interest Red Flags</h2>
+<div class="card">
+  <table>
+    <tr><th>Person</th><th>Role</th><th>External</th><th>Conflict</th></tr>
+    <tr><td><strong>Missy Orlando</strong></td><td>Board Director</td><td>United Way of Berks County</td><td style="color:var(--r);">UW funds BCC $678K. Board member works for funder = governance conflict.</td></tr>
+    <tr><td><strong>Plageman & Krause</strong></td><td>Chair & Director</td><td>Edward Jones Investments</td><td style="color:var(--y);">Two board members from same firm. $19.8M assets. Who manages investments?</td></tr>
+    <tr><td><strong>Marcia Goodman-Hinnershitz</strong></td><td>City Council (Dist 4)</td><td>Director of Planning, COCA</td><td style="color:var(--y);">COCA funds BCC. Council member works for funder = dual role.</td></tr>
+  </table>
+  <div class="highlight-red"><strong>⚠️ Are conflicts disclosed? Are contracts competitively bid?</strong></div>
+</div>
+
+<h2>⚖️ BCC v. Community Care — Lawsuit</h2>
+<div class="card">
+  <div class="highlight-red"><strong>🚨 BCC SUED its managed care organization over Medicaid audit retractions — and WON.</strong></div>
+  <table>
+    <tr><th>Detail</th><th>Finding</th></tr>
+    <tr><td><strong>Case</strong></td><td>898 MDA 2017 — PA Superior Court</td></tr>
+    <tr><td><strong>Trigger</strong></td><td>2015 FWA audit — $105K+ attempted retraction</td></tr>
+    <tr><td><strong>Allegations</strong></td><td>Missing supervisory physician signatures (55 Pa. Code § 1223.52)</td></tr>
+    <tr><td><strong>Ruling</strong></td><td>BCC WON — CCBH used wrong FWA policy. 2011 agreement required provider education first.</td></tr>
+    <tr><td><strong>Result</strong></td><td>$81,000+ in retractions cancelled</td></tr>
+  </table>
+  <div class="highlight">
+    <strong>🔍 OPEN:</strong> Were deficiencies resolved? Why did no oversight agency catch this before Superior Court?
+  </div>
+</div>
+
+<h2>🔍 Supervisory Agency Budgets & Oversight Capacity</h2>
+<div class="card">
+  <h3>SAMHSA</h3>
+  <table>
+    <tr><td><strong>Budget</strong></td><td>$8.1B ($385M CCBHC)</td></tr>
+    <tr><td><strong>Staffing</strong></td><td>Hiring freezes — ~21% excepted. Thousands of grantees per project officer.</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>PA OMHSAS</h3>
+  <table>
+    <tr><td><strong>Audit Cycle</strong></td><td>Rotational every 1–3 years</td></tr>
+    <tr><td><strong>Structure</strong></td><td>County contractors → BH-MCOs → OMHSAS regional offices</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>Berks County Human Services</h3>
+  <table>
+    <tr><td><strong>Budget</strong></td><td>$16.2M: MH $10.1M | DD $3.39M | BH/D&A $1.84M | Homeless ~$0.9M</td></tr>
+    <tr><td><strong>Oversight</strong></td><td>Contract renewals + annual fiscal audits</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>PA Attorney General — Charitable Trusts</h3>
+  <table>
+    <tr><td><strong>OAG Budget</strong></td><td>$174.4M. Small dedicated Charitable Trusts team handles 1,000+ cases/year.</td></tr>
+  </table>
+</div>
+<div class="card">
+  <h3>United Way of Berks County</h3>
+  <table>
+    <tr><td><strong>Monitoring</strong></td><td>3-year funding cycles. Volunteer-led annual reviews. Limited to funded programs only.</td></tr>
+  </table>
+</div>
+
+<div class="highlight">
+  <strong>⚠️ OVERSIGHT GAPS:</strong><br>
+  • SAMHSA — thousands of grantees, limited bandwidth<br>
+  • PA OMHSAS — 1-3 year audit gaps<br>
+  • Berks County — $16.2M covers ALL providers<br>
+  • PA AG — reactive, 1,000+ cases, small team<br>
+  • United Way — volunteer reviews, funded programs only<br>
+  • <strong>No agency publishes recent BCC-specific findings publicly</strong>
+</div>
+
+<div class="spacer"></div>
+
+<!-- ====== AUTO-SCROLL ====== -->
+<script>
+(async () => {
+  const D = 210, F = 60;
+  const ov = document.getElementById('overlay'), cd = document.getElementById('cd');
+  const pb = document.getElementById('pbb'), dn = document.getElementById('done');
+
+  for (let i = 3; i >= 1; i--) { cd.textContent = i; await new Promise(r => setTimeout(r, 1000)); }
+  cd.textContent = '▶'; document.getElementById('sub').textContent = 'Recording...';
+  await new Promise(r => setTimeout(r, 500));
+  ov.classList.add('hidden');
+
+  const th = document.body.scrollHeight - window.innerHeight;
+  const fi = 1000 / F, tf = D * F, spf = th / tf;
+  let f = 0;
+
+  await new Promise(resolve => {
+    function step() {
+      f++; window.scrollTo({ top: Math.min(spf * f, th), behavior: 'auto' });
+      pb.style.width = Math.min((f / tf) * 100, 100) + '%';
+      f < tf ? setTimeout(step, fi) : resolve();
+    }
+    setTimeout(step, fi);
+  });
+
+  pb.style.width = '100%'; pb.style.background = 'var(--g)';
+  dn.classList.add('show');
+})();
+</script>
+</body>
+</html>

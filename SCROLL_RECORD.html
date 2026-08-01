@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080, initial-scale=1.0">
+<title>SCROLL CAPTURE — COMPLAINT TODO LIST</title>
+<style>
+  :root {
+    --bg: #0d1117; --card-bg: #161b22; --border: #30363d;
+    --text: #c9d1d9; --heading: #f0f6fc; --accent: #58a6ff;
+    --accent2: #f78166; --accent3: #3fb950; --accent4: #d2a8ff; --accent5: #ffa657;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.6;
+    padding: 20px; width: 1100px; margin:0 auto;
+  }
+  /* ── Overlay ── */
+  #overlay {
+    position: fixed; inset:0; z-index:9999; background: #0d1117;
+    display:flex; align-items:center; justify-content:center; flex-direction:column;
+    transition: opacity 0.5s;
+  }
+  #overlay.hidden { opacity:0; pointer-events:none; }
+  #overlay #countdown { font-size: 6rem; font-weight:900; color: var(--accent2); }
+  #overlay #subtitle { font-size: 1.4rem; color: #8b949e; margin-top: 12px; }
+  /* ── Progress bar ── */
+  #progress-wrap {
+    position: fixed; top:0; left:0; right:0; height:4px; z-index:9998; background:#21262d;
+  }
+  #progress-bar { height:100%; width:0; background: var(--accent2); transition: width 50ms linear; }
+  /* ── Done banner ── */
+  #done-banner {
+    position: fixed; inset:0; z-index:9997; display:none;
+    align-items:center; justify-content:center; flex-direction:column;
+    background: rgba(13,17,23,0.92);
+  }
+  #done-banner.show { display:flex; }
+  #done-banner h2 { font-size:3rem; color: var(--accent3); }
+  #done-banner p { font-size:1.2rem; color:#8b949e; margin-top:8px; }
+
+  /* ── Content styles (mirrors COMPLAINT_TODO_LIST.html) ── */
+  h1 { font-size:2rem; color:var(--accent2); border-bottom:2px solid var(--accent2); padding-bottom:12px; margin-bottom:24px; text-align:center; }
+  h2 { font-size:1.4rem; color:var(--accent); margin:28px 0 14px; padding-bottom:6px; border-bottom:1px solid var(--border); }
+  h3 { font-size:1.1rem; color:var(--accent4); margin:16px 0 8px; }
+  .card { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:16px; }
+  .card.priority-high { border-left:4px solid var(--accent2); }
+  .card.priority-med { border-left:4px solid var(--accent5); }
+  .card.priority-info { border-left:4px solid var(--accent3); }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:0.92rem; }
+  th { text-align:left; background:#21262d; color:var(--heading); padding:10px 12px; border-bottom:2px solid var(--border); font-weight:600; }
+  td { padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+  .email { color:var(--accent); font-family:'SF Mono','Fira Code',monospace; font-size:0.9rem; word-break:break-all; }
+  .email-missing { color:var(--accent5); font-style:italic; font-size:0.85rem; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:12px; font-size:0.75rem; font-weight:600; }
+  .badge-verified { background:#1b3826; color:var(--accent3); }
+  .badge-form { background:#2d1b00; color:var(--accent5); }
+  .badge-pending { background:#1d1530; color:var(--accent4); }
+  .funding-item { padding:10px 0; border-bottom:1px solid var(--border); }
+  .funding-item:last-child { border-bottom:none; }
+  .funding-amount { font-size:1.2rem; font-weight:700; color:var(--accent3); }
+  .funding-source { color:var(--accent5); font-weight:600; }
+  .funding-detail { font-size:0.88rem; color:#8b949e; margin-top:4px; }
+  .todo-item { display:flex; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px solid var(--border); }
+  .todo-item:last-child { border-bottom:none; }
+  .todo-checkbox { width:22px; height:22px; border:2px solid var(--border); border-radius:4px; flex-shrink:0; margin-top:2px; background:transparent; }
+  .todo-checkbox.done { background:var(--accent3); border-color:var(--accent3); position:relative; }
+  .todo-checkbox.done::after { content:'✓'; color:#fff; font-size:14px; font-weight:bold; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
+  .summary-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:14px 0; }
+  .summary-box { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:16px; text-align:center; }
+  .summary-box .number { font-size:2rem; font-weight:800; color:var(--accent); }
+  .summary-box .label { font-size:0.82rem; color:#8b949e; margin-top:4px; }
+  .footer-note { margin-top:30px; padding:16px; background:#1d1530; border-radius:8px; font-size:0.85rem; color:var(--accent4); text-align:center; }
+  .spacer { height:60px; }
+</style>
+</head>
+<body>
+
+<!-- COUNTDOWN OVERLAY -->
+<div id="overlay">
+  <div id="countdown">3</div>
+  <div id="subtitle">Recording starts in...</div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div id="progress-wrap"><div id="progress-bar"></div></div>
+
+<!-- DONE BANNER -->
+<div id="done-banner"><h2>✅ RECORDING COMPLETE</h2><p>Scroll capture finished</p></div>
+
+<!-- ====== CONTENT ====== -->
+<h1>📋 COMPLAINT TODO LIST</h1>
+<p style="text-align:center;color:#8b949e;margin-bottom:24px;">Berks County, Pennsylvania — Research Compiled July 30, 2026</p>
+
+<div class="summary-grid">
+  <div class="summary-box"><div class="number">3</div><div class="label">County Commissioners</div></div>
+  <div class="summary-box"><div class="number">7</div><div class="label">City Council Members</div></div>
+  <div class="summary-box"><div class="number">9</div><div class="label">BCC Board Members</div></div>
+  <div class="summary-box"><div class="number">~$14M</div><div class="label">Annual Funding (est.)</div></div>
+  <div class="summary-box"><div class="number">$3.94M</div><div class="label">SAMHSA Federal Grant</div></div>
+  <div class="summary-box"><div class="number">-797K</div><div class="label">FY2025 Operating Deficit</div></div>
+  <div class="summary-box"><div class="number">$19.8M</div><div class="label">Net Assets (FY2025)</div></div>
+  <div class="summary-box"><div class="number">87.9%</div><div class="label">Program Spending Ratio</div></div>
+</div>
+
+<h2>✅ Action Items / Complaint Checklist</h2>
+
+<div class="card priority-high">
+  <h3>🔴 HIGH PRIORITY</h3>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Contact Berks County Commissioners (ALL THREE)</strong><br><span style="color:#8b949e;">Use individual web contact forms or general office email. Document all correspondence.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Contact Reading City Council Members (ALL SEVEN)</strong><br><span style="color:#8b949e;">Send to individual emails (Donna.Reed@ SMTP-verified DELIVERABLE). Pattern Firstname.Lastname@readingpa.gov confirmed. CC council@readingpa.gov.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Contact Berks Counseling Center Board of Directors</strong><br><span style="color:#8b949e;">Send formal complaint to Board Chair 🦉 Joseph Plageman Jr. and CEO Christine Axford.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>File complaint with SAMHSA re: CCBHC Grant #H79SM088878</strong><br><span style="color:#8b949e;">$3.94M federal grant for expanding behavioral health access. Report concerns about service delivery.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>File complaint with PA OMHSAS</strong><br><span style="color:#8b949e;">State oversight body for behavioral health funding and CCBHC certification.</span></div></div>
+</div>
+
+<div class="card priority-med">
+  <h3>🟠 MEDIUM PRIORITY</h3>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Contact Berks County Human Services Department</strong><br><span style="color:#8b949e;">Re: Human Services Block Grant allocations to BCC. Verify contract compliance.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Contact United Way of Berks County</strong><br><span style="color:#8b949e;">Re: Multi-year funding to BCC. Request grant compliance review.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Contact Berks County Community Foundation</strong><br><span style="color:#8b949e;">Re: Emergency & programmatic grant allocations to BCC.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Submit FOIA / Right-to-Know Request to Berks County</strong><br><span style="color:#8b949e;">Request all county contracts, MOUs, and payment records with Berks Counseling Center.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>File complaint with PA Attorney General's Office (Charitable Trusts)</strong><br><span style="color:#8b949e;">Re: nonprofit governance and use of charitable funds by BCC.</span></div></div>
+</div>
+
+<div class="card priority-info">
+  <h3>🟢 INFORMATION / DOCUMENTATION</h3>
+  <div class="todo-item"><div class="todo-checkbox done"></div><div><strong>Download & Review BCC IRS Form 990 (FY2023–2025) ✅ COMPLETED</strong><br><span style="color:var(--accent3);">Reviewed FY2025 Form 990 from ProPublica. See detailed analysis below.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Investigate FY2025 $796,924 operating deficit</strong><br><span style="color:#8b949e;">Revenue dropped $1.41M over two years while expenses rose $1.04M. What drove this? Is it sustainable?</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Review CFO compensation structure ($149,792 > CEO $145,432)</strong><br><span style="color:#8b949e;">CFO total compensation exceeds CEO. Unusual for a nonprofit. Verify justification.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Request Schedule B (Major Donors) from BCC directly</strong><br><span style="color:#8b949e;">Schedule B is redacted in public 990. Request unredacted version or file RTK.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Review SAMHSA Grant H79SM088878 performance reports</strong><br><span style="color:#8b949e;">Check HigherGov or USASpending.gov for grant progress and compliance data.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Document all communications and responses</strong><br><span style="color:#8b949e;">Keep a chronological log with dates, recipients, and summaries.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox done"></div><div><strong>Verify BCC website contact info ✅ COMPLETED</strong><br><span style="color:var(--accent3);">Visited berkscounselingcenter.org — confirmed email bcc@berkscc.org, phone 610-373-4281. ⚠ No public staff directory found.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox done"></div><div><strong>Discover Reading PA council emails via email finder tools ✅ COMPLETED</strong><br><span style="color:var(--accent3);">Pattern Firstname.Lastname@readingpa.gov confirmed. Donna.Reed@ SMTP-verified DELIVERABLE (96/100 score).</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Test staff email patterns: firstname.lastname@berkscc.org ⚠ PARTIAL</strong><br><span style="color:var(--accent5);">greg.little@berkscc.org SMTP-verified OK. christine.axford@berkscc.org follows same confirmed pattern.</span></div></div>
+  <div class="todo-item"><div class="todo-checkbox"></div><div><strong>Consult with legal counsel</strong><br><span style="color:#8b949e;">Review complaint strategy, potential claims, and jurisdictional issues.</span></div></div>
+</div>
+
+<h2>🏛️ Berks County Commissioners</h2>
+<div class="card">
+  <table>
+    <thead><tr><th>Name</th><th>Title</th><th>Email / Contact</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Christian Y. Leinbach</strong></td><td>Chairman</td><td><span class="email-missing">⚠ No public direct email</span><br><a href="#" style="color:var(--accent);">Web Contact Form →</a></td><td><span class="badge badge-form">WEB FORM</span></td></tr>
+      <tr><td><strong>Michael S. Rivera</strong></td><td>Commissioner</td><td><span class="email-missing">⚠ No public direct email</span><br><a href="#" style="color:var(--accent);">Web Contact Form →</a></td><td><span class="badge badge-form">WEB FORM</span></td></tr>
+      <tr><td><strong>Dante Santoni, Jr.</strong></td><td>Commissioner</td><td><span class="email-missing">⚠ No public direct email</span><br><a href="#" style="color:var(--accent);">Web Contact Form →</a></td><td><span class="badge badge-form">WEB FORM</span></td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:14px;padding:12px;background:#21262d;border-radius:6px;">
+    <strong>Commissioners' Office — General Contact:</strong><br>
+    📍 633 Court Street, 13th Floor, Reading, PA 19601<br>
+    📞 <strong>610-478-6136</strong> &nbsp;|&nbsp; 📠 <strong>610-478-6293</strong><br>
+    📧 <span class="email">commissioners@countyofberks.com</span><br>
+    📧 Santoni (historical): <span class="email">dsantoni@berkspa.gov</span>
+  </div>
+</div>
+
+<h2>🏙️ Reading City Council</h2>
+<div class="card">
+  <table>
+    <thead><tr><th>Name</th><th>Position / District</th><th>Email</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Donna Reed</strong></td><td>Council President</td><td><span class="email">Donna.Reed@readingpa.gov</span></td><td><span class="badge badge-verified">✅ VERIFIED</span></td></tr>
+      <tr><td><strong>Jaime Baez Jr.</strong></td><td>District 1</td><td><span class="email">Jaime.Baez@readingpa.gov</span></td><td><span class="badge badge-pending">PATTERN</span></td></tr>
+      <tr><td><strong>Vanessa Campos</strong> <span class="badge badge-verified">VP</span></td><td>Vice President — District 1 (elected Jan 2026)</td><td><span class="email">Vanessa.Campos@readingpa.gov</span></td><td><span class="badge badge-pending">PATTERN</span></td></tr>
+      <tr><td><strong>O. Christopher Miller</strong></td><td>District 3</td><td><span class="email">Christopher.Miller@readingpa.gov</span></td><td><span class="badge badge-pending">PATTERN</span></td></tr>
+      <tr><td><strong>Marcia Goodman-Hinnershitz</strong> <span class="badge badge-form">⚠ COCA</span></td><td>District 4 — Director of Planning, COCA</td><td><span class="email">Marcia.Goodman-Hinnershitz@readingpa.gov</span></td><td><span class="badge badge-form">⚠ LONG</span></td></tr>
+      <tr><td><strong>Rafael Nunez</strong></td><td>District 5</td><td><span class="email">Rafael.Nunez@readingpa.gov</span></td><td><span class="badge badge-pending">PATTERN</span></td></tr>
+      <tr><td><strong>Wesley Butler</strong></td><td>District 6</td><td><span class="email">Wesley.Butler@readingpa.gov</span><br><span style="font-size:0.75rem;color:#8b949e;">Alt: wesleysavonbutler@gmail.com</span></td><td><span class="badge badge-pending">PATTERN</span></td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:14px;padding:14px;background:#1b3826;border-radius:6px;border-left:3px solid var(--accent3);">
+    <strong>🔑 EMAIL PATTERN CONFIRMED & VERIFIED:</strong> City of Reading uses <strong>Firstname.Lastname@readingpa.gov</strong>. Confirmed via 15+ city employee emails. <strong>Donna.Reed@readingpa.gov</strong> SMTP-verified <strong>DELIVERABLE</strong> (96/100). MX: gw16014.fortimail.com.
+  </div>
+  <div style="margin-top:10px;padding:14px;background:#2d1b00;border-radius:6px;border-left:3px solid var(--accent5);">
+    <strong>⚠️ NOT PUBLISHED ON OFFICIAL SITE:</strong> Individual council emails not listed on readingpa.gov. Donna.Reed@ SMTP-verified DELIVERABLE. Remaining 6 emails follow identical pattern.
+  </div>
+  <div style="margin-top:14px;padding:12px;background:#21262d;border-radius:6px;">
+    <strong>🏛️ Reading City Council — Official Contact:</strong><br>
+    📍 815 Washington Street, Reading, PA 19601<br>
+    📞 Main: <strong>610-655-6204</strong> &nbsp;|&nbsp; 📞 Clerk: <strong>610-655-6205</strong><br>
+    📧 <span class="email">council@readingpa.gov</span> <span class="badge badge-verified">✅ VERIFIED</span><br>
+    📧 Mayor: <span class="email">Eddie.Moran@readingpa.gov</span> <span class="badge badge-verified">✅ VERIFIED</span>
+  </div>
+</div>
+
+<h2>🏥 Berks Counseling Center — Board of Directors & Leadership</h2>
+<div class="card">
+  <h3>Executive Leadership</h3>
+  <table>
+    <thead><tr><th>Name</th><th>Title</th><th>Contact</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Christine Axford</strong></td><td>President & CEO</td><td><span class="email">christine.axford@berkscc.org</span> <span class="badge badge-pending">PATTERN</span></td></tr>
+      <tr><td><strong>Greg Little</strong></td><td>CFO</td><td><span class="email">greg.little@berkscc.org</span> <span class="badge badge-verified">✅ VERIFIED</span></td></tr>
+    </tbody>
+  </table>
+  <h3 style="margin-top:18px;">Board of Directors <span style="font-size:0.75rem;color:var(--accent3);">(FY2025 Form 990 Part VII + berkscounselingcenter.org)</span> <span class="badge badge-verified">✅ VERIFIED</span></h3>
+  <table>
+    <thead><tr><th>Name</th><th>Role</th><th>Affiliation</th><th>Compensation</th></tr></thead>
+    <tbody>
+      <tr><td>      <strong>🦉 Joseph Plageman Jr.</strong></td><td>Chairperson</td><td>Edward Jones Investments</td><td style="color:var(--accent3);">$0 ✓</td></tr>
+      <tr><td><strong>Crystal Seitz</strong></td><td>Vice Chair</td><td>PA's Americana Region</td><td style="color:var(--accent3);">$0 ✓</td></tr>
+      <tr><td><strong>John Robinson</strong></td><td>Treasurer</td><td>Community Volunteer</td><td style="color:var(--accent3);">$0 ✓</td></tr>
+      <tr><td><strong>James Brooks</strong></td><td>Director</td><td>—</td><td style="color:var(--accent3);">$0 ✓</td></tr>
+      <tr><td><strong>Linda Krause</strong></td><td>Director</td><td>Edward Jones Investments</td><td style="color:var(--accent3);">$0 ✓</td></tr>
+      <tr><td><strong>Deborah Scull</strong></td><td>Director</td><td>—</td><td style="color:var(--accent3);">$0 ✓</td></tr>
+      <tr><td><strong>Brenda Gaul</strong></td><td>Director</td><td>—</td><td style="color:var(--accent3);">$0 ✓</td></tr>
+      <tr><td><strong>🦉 Missy Orlando</strong> <span class="badge badge-form">⚠ UW</span></td><td>Director (as of Aug)</td><td>🦉 United Way of Berks County <span style="font-size:0.75rem;color:var(--accent5);">— governance conflict</span></td><td style="color:var(--accent3);">$0 ✓</td></tr>
+      <tr><td><strong>Jeffrey Ralph</strong></td><td>Director (as of Feb)</td><td>—</td><td style="color:var(--accent3);">$0 ✓</td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:14px;padding:12px;background:#21262d;border-radius:6px;">
+    <strong>🏥 Berks Counseling Center — Main Office:</strong><br>
+    📍 645 Penn Street, 2nd Floor, Reading, PA 19601-3543<br>
+    📞 <strong>610-373-4281</strong> &nbsp;|&nbsp; 📠 <strong>610-373-0250</strong><br>
+    📧 <span class="email">bcc@berkscc.org</span> <span class="badge badge-verified">✅ VERIFIED</span><br>
+    <span style="color:var(--accent5);font-size:0.82rem;">⚠ Domain: <strong>berkscc.org</strong> (NOT berkscounselingcenter.org). MX: Barracuda Networks</span><br>
+    🆔 EIN: <strong>23-2043478</strong>
+  </div>
+</div>
+
+<h2>💰 Funding Sources — Berks Counseling Center</h2>
+
+<div class="card">
+  <h3>Federal Funding</h3>
+  <div class="funding-item">
+    <div class="funding-source">SAMHSA — CCBHC Expansion Grant</div>
+    <div class="funding-amount">$3,944,396</div>
+    <div class="funding-detail">Grant #H79SM088878 | Awarded Sept 30, 2023 | Through Sept 29, 2027 | Purpose: Expand behavioral health access for underserved populations in Berks County.</div>
+  </div>
+  <div class="funding-item">
+    <div class="funding-source">Federal CCBHC Demonstration (via PA OMHSAS)</div>
+    <div style="color:var(--accent3);font-weight:600;">Enhanced PPS Reimbursement</div>
+    <div class="funding-detail">BCC became a CCBHC in July 2017, unlocking enhanced federal Prospective Payment System rates through PA's demonstration program.</div>
+  </div>
+  <div class="funding-item">
+    <div class="funding-source">HUD Continuum of Care — Supportive Housing (8 properties)</div>
+    <div class="funding-amount">~$500K–$600K+/year</div>
+    <div class="funding-detail">8 properties: 1135/37 Franklin St. ($288K), Leasing 1 ($203K), Leasing 2 ($193K), New Hope PSH ($204K), 13 S. 10th St. ($87K), 239 S. 5th St. ($123K), PS Recovery ($105K), Phoenix House ($59K).</div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Program Service Revenue (Insurance Reimbursements)</h3>
+  <table>
+    <thead><tr><th>Fiscal Year</th><th>Revenue</th><th>% of Total</th></tr></thead>
+    <tbody>
+      <tr><td>FY2025</td><td class="funding-amount">$11,778,182</td><td>94.3%</td></tr>
+      <tr><td>FY2024</td><td class="funding-amount">$12,369,645</td><td>90.7%</td></tr>
+      <tr><td>FY2023</td><td class="funding-amount">$13,222,659</td><td>95.1%</td></tr>
+    </tbody>
+  </table>
+  <div class="funding-detail" style="margin-top:10px;">Sources: Medicaid/Medical Assistance, Medicare, dual-eligible, and private commercial insurance. Sliding-scale self-pay available.</div>
+</div>
+
+<div class="card">
+  <h3>State & County Funding</h3>
+  <div class="funding-item">
+    <div class="funding-source">Berks County Human Services Block Grant</div>
+    <div class="funding-detail">BCC operates as an <strong>Integrated Community Wellness Center (ICWC)</strong> under county contract for comprehensive mental health and co-occurring SUD services.</div>
+  </div>
+  <div class="funding-item">
+    <div class="funding-source">PA OMHSAS</div>
+    <div class="funding-detail">State-level oversight and funding coordination for CCBHC operations, behavioral health programming, and transition-age ACT team services.</div>
+  </div>
+  <div class="funding-item">
+    <div class="funding-source">City of Reading Consolidated Plans</div>
+    <div class="funding-detail">Local municipal support for community health care, homeless prevention, and youth/adult behavioral health intervention.</div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Private & Foundation Funding</h3>
+  <div class="funding-item"><div class="funding-source">United Way of Berks County</div><div class="funding-detail">Regular multi-year contributor supporting holistic treatment and community engagement.</div></div>
+  <div class="funding-item"><div class="funding-source">Berks County Community Foundation</div><div class="funding-detail">Occasional emergency and programmatic grants for health disparity and emergency relief programs.</div></div>
+  <div class="funding-item"><div class="funding-source">Contributions & Grants</div><div class="funding-amount">$204,333 (FY2025) | $844,835 (FY2024)</div></div>
+  <div class="funding-item"><div class="funding-source">Investment Income</div><div class="funding-amount">$446,033 (FY2025) | $412,569 (FY2024)</div></div>
+</div>
+
+<div class="card">
+  <h3>📊 Financial Summary (IRS Form 990)</h3>
+  <table>
+    <thead><tr><th>Metric</th><th>FY2025</th><th>FY2024</th><th>FY2023</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Total Revenue</strong></td><td style="color:var(--accent3);">$12,494,569</td><td style="color:var(--accent3);">$13,641,565</td><td style="color:var(--accent3);">$13,904,040</td></tr>
+      <tr><td><strong>Total Expenses</strong></td><td style="color:var(--accent2);">$13,291,493</td><td style="color:var(--accent2);">$12,289,398</td><td style="color:var(--accent2);">$12,250,845</td></tr>
+      <tr><td><strong>Net Income</strong></td><td style="color:var(--accent2);">-$796,924</td><td style="color:var(--accent3);">+$1,352,167</td><td style="color:var(--accent3);">+$1,653,195</td></tr>
+      <tr><td><strong>Net Assets</strong></td><td>$19,830,778</td><td>—</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:14px;padding:14px;background:#2d1b00;border-radius:6px;border-left:3px solid var(--accent2);">
+    <strong>🚨 CRITICAL TREND:</strong> Revenue declined <strong>$1.41M (10.1%)</strong> over two years while expenses grew <strong>$1.04M (8.5%)</strong>, flipping a <strong>$1.65M surplus into a $796,924 deficit</strong>.
+  </div>
+</div>
+
+<h2>🔬 IRS Form 990 Deep Dive — FY2025</h2>
+
+<div class="card">
+  <h3>💼 Executive Compensation (Part VII)</h3>
+  <table>
+    <thead><tr><th>Name</th><th>Title</th><th>Base</th><th>Other</th><th style="color:var(--accent5);">TOTAL</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Christine Axford</strong></td><td>CEO</td><td>$140,004</td><td>$5,428</td><td style="color:var(--accent5);font-weight:700;">$145,432</td></tr>
+      <tr><td><strong>Greg Little</strong></td><td>CFO</td><td>$132,442</td><td>$17,350</td><td style="color:var(--accent5);font-weight:700;">$149,792</td></tr>
+    </tbody>
+  </table>
+  <div style="margin-top:14px;padding:14px;background:#2d1b00;border-radius:6px;border-left:3px solid var(--accent5);">
+    <strong>⚠️ CFO comp ($149,792) exceeds CEO ($145,432).</strong> $17,350 in "other compensation" vs CEO's $5,428. Requires explanation.
+  </div>
+</div>
+
+<div class="card">
+  <h3>📊 Functional Expense Breakdown (Part IX)</h3>
+  <table>
+    <thead><tr><th>Category</th><th>Amount</th><th>%</th><th>Rating</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Program Services</strong></td><td style="color:var(--accent3);">$11,681,226</td><td>87.9%</td><td><span style="color:var(--accent3);">⭐⭐⭐⭐</span></td></tr>
+      <tr><td><strong>Management & General</strong></td><td style="color:var(--accent5);">$1,589,606</td><td>12.0%</td><td><span style="color:var(--accent5);">⚠ Above avg</span></td></tr>
+      <tr><td><strong>Fundraising</strong></td><td style="color:var(--accent3);">$20,661</td><td>0.2%</td><td><span style="color:var(--accent3);">⭐⭐⭐⭐⭐</span></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h3>📋 Program Service (Part III)</h3>
+  <div style="padding:14px;background:#2d1b00;border-radius:6px;border-left:3px solid var(--accent5);">
+    <strong>⚠️ RED FLAG:</strong> ALL $11.68M reported under <strong>single program (4a)</strong>. Programs 4b and 4c show $0. Impossible to evaluate spending distribution across services.
+  </div>
+</div>
+
+<h2>🔍 Key Oversight & Complaint Bodies</h2>
+<div class="card">
+  <table>
+    <thead><tr><th>Agency</th><th>Jurisdiction</th><th>Contact</th></tr></thead>
+    <tbody>
+      <tr><td><strong>SAMHSA</strong></td><td>Federal — CCBHC Grant Oversight</td><td>🌐 samhsa.gov/contact | Grant #H79SM088878 | Budget: $8.1B ($385M CCBHC)</td></tr>
+      <tr><td><strong>PA OMHSAS</strong></td><td>State — Behavioral Health</td><td>📞 717-783-4850 | 🌐 dhs.pa.gov</td></tr>
+      <tr><td><strong>PA AG — Charitable Trusts</strong></td><td>State — Nonprofit Governance</td><td>📞 717-783-2853 | 🌐 attorneygeneral.gov/charities</td></tr>
+      <tr><td><strong>Berks County Human Services</strong></td><td>County — Contract Compliance</td><td>📞 610-478-6150 | 🌐 berkspa.gov/human-services</td></tr>
+      <tr><td><strong>Berks County RTK Officer</strong></td><td>County — FOIA/RTK</td><td>🌐 berkspa.gov/right-to-know</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>⚖️ BCC v. Community Care Behavioral Health — Lawsuit</h2>
+<div class="card">
+  <div style="padding:14px;background:#2d1b00;border-radius:6px;border-left:3px solid var(--accent2);">
+    <strong>🚨 KEY FINDING:</strong> In 2015, Community Care Behavioral Health conducted an FWA audit of BCC and attempted to <strong>retract over $105,000</strong> in Medicaid funds citing documentation deficiencies. BCC <strong>filed suit and WON</strong>. PA Superior Court (<em>898 MDA 2017</em>) ruled CCBH applied wrong policy. <strong>Over $81,000 in retractions cancelled.</strong><br><br>
+    <span style="color:var(--accent5);">Questions remain: What were the original audit findings? Were documentation issues resolved? Why did oversight agencies not intervene before Superior Court?</span>
+  </div>
+</div>
+
+<div class="footer-note">
+  <strong>📌 KEY FINDINGS:</strong><br>
+  • <strong>BCC v. Community Care:</strong> BCC sued MCO over $105K retraction — WON. $81K+ cancelled (898 MDA 2017).<br>
+  • <strong>Marcia Goodman-Hinnershitz:</strong> Works at COCA — potential conflict with behavioral health oversight.<br>
+  • <strong>🦉 Missy Orlando:</strong> United Way employee on BCC board — UW funds BCC. Governance conflict.<br>
+  • <strong>HUD Housing:</strong> 8 properties, ~$500K-600K+/year Continuum of Care grants.<br>
+  • <strong>Berks County HS:</strong> $16.2M block grant — MH $10.1M, DD $3.39M, BH/D&A $1.84M.<br>
+  • <strong>Email pattern VERIFIED:</strong> Firstname.Lastname@readingpa.gov. Donna.Reed@ DELIVERABLE.<br>
+  • <strong>Domain:</strong> berkscc.org (NOT berkscounselingcenter.org). MX: Barracuda Networks.<br>
+  • Compiled July 30, 2026. All data from IRS 990 (ProPublica), SAMHSA, HUD, Berks County public records.
+</div>
+<div class="spacer"></div>
+
+<!-- ====== AUTO-SCROLL SCRIPT ====== -->
+<script>
+(async () => {
+  const SCROLL_DURATION = 210; // seconds (3.5 minutes)
+  const FPS = 60;
+
+  const overlay = document.getElementById('overlay');
+  const countdownEl = document.getElementById('countdown');
+  const subtitle = document.getElementById('subtitle');
+  const progressBar = document.getElementById('progress-bar');
+  const doneBanner = document.getElementById('done-banner');
+
+  // ── Countdown: 3, 2, 1 ──
+  for (let i = 3; i >= 1; i--) {
+    countdownEl.textContent = i;
+    await new Promise(r => setTimeout(r, 1000));
+  }
+  countdownEl.textContent = '▶';
+  subtitle.textContent = 'Recording...';
+  await new Promise(r => setTimeout(r, 500));
+  overlay.classList.add('hidden');
+
+  // ── Calculate scroll ──
+  const totalHeight = document.body.scrollHeight - window.innerHeight;
+  const frameInterval = 1000 / FPS;
+  const totalFrames = SCROLL_DURATION * FPS;
+  const scrollPerFrame = totalHeight / totalFrames;
+  let frame = 0;
+
+  // ── Smooth scroll loop ──
+  await new Promise(resolve => {
+    function step() {
+      frame++;
+      const target = Math.min(scrollPerFrame * frame, totalHeight);
+      window.scrollTo({ top: target, behavior: 'auto' });
+      progressBar.style.width = Math.min((frame / totalFrames) * 100, 100) + '%';
+
+      if (frame < totalFrames) {
+        setTimeout(step, frameInterval);
+      } else {
+        resolve();
+      }
+    }
+    setTimeout(step, frameInterval);
+  });
+
+  // ── Done ──
+  progressBar.style.width = '100%';
+  progressBar.style.background = 'var(--accent3)';
+  doneBanner.classList.add('show');
+
+  // Log completion for the capture script to detect
+  console.log('SCROLL_COMPLETE');
+})();
+</script>
+</body>
+</html>

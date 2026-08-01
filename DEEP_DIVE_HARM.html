@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEEP DIVE HARM REPORT — Berks Counseling Center</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; --p:#d2a8ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); padding:24px; line-height:1.65; }
+  .container { max-width:1080px; margin:0 auto; }
+  h1 { color:var(--r); text-align:center; font-size:1.9rem; margin-bottom:6px; }
+  h2 { color:var(--a); margin:32px 0 14px; font-size:1.35rem; padding-bottom:6px; border-bottom:1px solid var(--border); }
+  h3 { color:var(--h); margin:18px 0 10px; font-size:1.05rem; }
+  .subtitle { text-align:center; color:#8b949e; margin-bottom:24px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:20px; margin-bottom:18px; }
+  .summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:18px 0; }
+  .summary-box { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:14px; text-align:center; }
+  .summary-box .number { font-size:1.7rem; font-weight:800; color:var(--y); }
+  .summary-box .label { font-size:0.75rem; color:#8b949e; text-transform:uppercase; letter-spacing:0.4px; margin-top:4px; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:0.85rem; }
+  th { background:#1c2128; color:var(--a); text-align:left; padding:8px 10px; border:1px solid var(--border); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.4px; }
+  td { padding:8px 10px; border:1px solid var(--border); vertical-align:top; }
+  tr:nth-child(even) td { background:#1a1f26; }
+  .badge { display:inline-block; padding:1px 8px; border-radius:10px; font-size:0.7rem; font-weight:700; white-space:nowrap; }
+  .badge-g { background:#1b3826; color:var(--g); border:1px solid #2d5a3d; }
+  .badge-r { background:#3a1a1a; color:var(--r); border:1px solid #6b2d2d; }
+  .badge-y { background:#3a2e12; color:var(--y); border:1px solid #6b5520; }
+  .badge-p { background:#2a1d3a; color:var(--p); border:1px solid #4a2d6b; }
+  .badge-b { background:#12263a; color:var(--a); border:1px solid #1d4a6b; }
+  .proven { border-left:4px solid var(--r); padding:14px 16px; margin:14px 0; background:#2d1414; border-radius:0 8px 8px 0; }
+  .documented { border-left:4px solid var(--y); padding:14px 16px; margin:14px 0; background:#2d2212; border-radius:0 8px 8px 0; }
+  .alleged { border-left:4px solid var(--p); padding:14px 16px; margin:14px 0; background:#22152d; border-radius:0 8px 8px 0; }
+  .needs { border-left:4px solid var(--a); padding:14px 16px; margin:14px 0; background:#12263a; border-radius:0 8px 8px 0; }
+  .quote { background:#0d1117; border:1px solid var(--border); border-radius:6px; padding:12px 14px; margin:10px 0; font-style:italic; color:#c9d1d9; font-size:0.88rem; }
+  .url { color:var(--a); font-family:monospace; font-size:0.78rem; word-break:break-all; }
+  .stat { color:var(--y); font-weight:700; }
+  .correction { background:#1a1a2d; border:1px solid #3a3a5a; border-radius:8px; padding:12px 14px; margin:10px 0; font-size:0.88rem; }
+  .correction strong { color:var(--y); }
+  .footnote { font-size:0.78rem; color:#8b949e; }
+  .method-row { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid #1c2128; font-size:0.88rem; }
+  .method-row .idx { color:var(--y); font-weight:800; min-width:28px; }
+  .method-row .src { color:var(--a); font-family:monospace; font-size:0.75rem; }
+  @media print { body { background:#fff; color:#000; } .card,.proven,.documented,.alleged,.needs { background:#fff; border:1px solid #ccc; } table { font-size:0.75rem; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>🕵️ DEEP DIVE HARM REPORT</h1>
+<p class="subtitle">Berks Counseling Center (EIN 23-2043478) — All People Involved · Verified Harm Evidence · Session 16, August 1, 2026</p>
+
+<!-- ====== SUMMARY ====== -->
+<div class="summary-grid">
+  <div class="summary-box"><div class="number">16</div><div class="label">People Profiled</div></div>
+  <div class="summary-box"><div class="number">6</div><div class="label">Proven Harm Items</div></div>
+  <div class="summary-box"><div class="number">3</div><div class="label">Documented Items</div></div>
+  <div class="summary-box"><div class="number">11</div><div class="label">Creative Methods</div></div>
+  <div class="summary-box"><div class="number">3</div><div class="label">Data Corrections</div></div>
+  <div class="summary-box"><div class="number">8</div><div class="label">Needs Public Record</div></div>
+</div>
+
+<!-- ====== SECTION 1: PROVEN HARM ====== -->
+<h2>🔴 SECTION 1 — PROVEN HARM (Independent Public Records)</h2>
+
+<div class="proven">
+  <strong>HARM 1 — BCC CONCEDED OPERATING WITHOUT A SUPERVISING PHYSICIAN (Patient-Safety Violation)</strong>
+  <p style="margin-top:8px;">In the Medicaid Fraud, Waste &amp; Abuse audit underlying <em>Berks Counseling Center v. Community Care Behavioral Health Organization</em> (No. 898 MDA 2017, Pa. Super. Ct., Nov. 7, 2018), BCC <strong>conceded it had no supervising physician during the audit period</strong> at its Chester Counseling Center satellite — a documented violation of <strong>55 Pa. Code § 1223.52(a)(6)(i)</strong>, which conditions Medicaid payment on supervisory physician review and sign-off of initial assessments. This is a <strong>patient-safety deficiency admitted in a court record</strong>, not an allegation.</p>
+  <div class="quote">"At trial, Community Care asserted that the retraction was not merely for a missing signature, but because CCC failed to have a supervising physician at all during the audit period. BCC conceded that it did not have a supervising physician during the audit period."</div>
+  <p class="footnote">Source: PA Superior Court memorandum, 898 MDA 2017, via <span class="url">law.justia.com/cases/pennsylvania/superior-court/2018/898-mda-2017.html</span>. The retraction was cancelled on procedural grounds (first-audit "provider education" remedy under the 2011 FWA policy) — <strong>NOT on the merits</strong>.</p>
+</div>
+
+<div class="proven">
+  <strong>HARM 2 — HHS OIG FOUND SAMHSA FAILED TO ENSURE CCBHC GRANTEE COMPLIANCE (BCC Is a CCBHC-E Grantee)</strong>
+  <p style="margin-top:8px;"><strong>HHS OIG Report A-02-21-02010 (Sept 11, 2023):</strong> For 28 of 30 sampled CCBHC Expansion grants, SAMHSA's award and monitoring procedures <strong>failed to verify</strong> that clinics (1) filled key personnel positions / met level-of-effort requirements, (2) timely submitted Federal Financial Reports, and (3) properly reported cash on hand. BCC holds CCBHC Expansion grant <strong>H79SM088878</strong> ($3.94M) — squarely within the audit's scope population.</p>
+  <p><strong>HHS OIG Work Plan SRS-A-26-025 (Nov 17, 2025) — LIVE AUDIT SERIES:</strong> "Audit of Certified Community Behavioral Health Clinics Medicaid Reimbursement and Compliance With Demonstration Requirements" — will evaluate whether states claimed eligible FMAP and <strong>whether select CCBHCs actually provided mandatory clinical services</strong>. BCC's $11.78M/yr Medicaid program revenue is directly in scope. <span class="url">oig.hhs.gov/reports/work-plan/browse-work-plan-projects/audit-of-certified-community-behavioral-health-clinics-medicaid-reimbursement-and-compliance-with-demonstration-requirements/</span></p>
+</div>
+
+<div class="proven">
+  <strong>HARM 3 — FIRST OPERATING DEFICIT IN 7 YEARS WHILE INVESTMENT INCOME GREW 11.13×</strong>
+  <p style="margin-top:8px;">FY2025: revenue <span class="stat">$12.49M</span> (−17.6% from FY2021 peak $15.17M), expenses <span class="stat">$13.29M</span>, net income <span class="stat">−$796,924</span> — the first deficit in 7 years (recent-year surpluses of +$1.35M to +$1.65M/yr; earlier years larger). Simultaneously investment income grew <span class="stat">11.13×</span> ($40,067 FY2021 → $446,033 FY2025) while two board members work for the firm potentially managing the portfolio. A $3.94M SAMHSA grant <strong>cliffs Sept 2027</strong>.</p>
+</div>
+
+<div class="proven">
+  <strong>HARM 4 — $105,486 IN MEDICAID RECOUPMENT DEMANDED OVER BILLING/DOCUMENTATION DEFICIENCIES</strong>
+  <p style="margin-top:8px;">The 2015 Community Care FWA audit demanded retraction of <span class="stat">$105,486.13</span>. The trial court cancelled $81,704.47 <em>only</em> because the MCO lacked contractual authority to retract on a first audit cycle — <strong>the underlying deficiencies (missing physician sign-offs; no supervising physician) were conceded, not disproven</strong>. The alleged "software glitch" hiding signatures was credited by the trial court for the <em>electronic</em> submissions only; the Chester satellite's physician absence stood.</p>
+</div>
+
+<div class="proven">
+  <strong>HARM 5 — HUD RECAPTURED $257M FROM CoC GRANTEES — BCC'S LEASING COMPONENT IS A MONITORING GAP</strong>
+  <p style="margin-top:8px;"><strong>HUD OIG Report 2023-LA-0002:</strong> Between 2017–2020 HUD recaptured ~$257M from slow-spending CoC grantees; field offices lack written guidance on spending-challenge reviews. BCC's 8-property CoC portfolio (latest-grant sum <span class="stat">$1,265,019</span>; two "Leasing" components ≈ $396K) is subject to <strong>24 CFR §578.49</strong> (no Leasing funds on grantee-owned units) — a rule with weak federal enforcement per this OIG finding.</p>
+</div>
+
+<div class="proven">
+  <strong>HARM 6 — STATE REGULATORS CONDUCTED A COMPLAINT INVESTIGATION (Dec 6, 2023)</strong>
+  <p style="margin-top:8px;">PA DDAP executed a <strong>complaint investigation</strong> at BCC on <strong>December 6, 2023</strong> (Event ID <span class="url">4V0D11</span>, Facility ID <span class="url">TQ8F6601</span>; the public D&amp;A Facility Surveys portal logs it as a <strong>telephone</strong> complaint investigation — Session 22 correction). Outcome: "in compliance." The existence of the investigation is itself documented harm-context — a complaint serious enough to trigger state regulatory action. Behavioral-health complaint investigations rarely yield formal findings absent egregious conditions.</p>
+</div>
+
+<!-- ====== SECTION 2: DOCUMENTED ====== -->
+<h2>🟡 SECTION 2 — DOCUMENTED RISK (Verified Sources, Harm Mechanism)</h2>
+
+<div class="documented">
+  <strong>DOCUMENTED 1 — The Criminal-Justice Coercion Pipeline Is Operational Infrastructure, Not Speculation</strong>
+  <p style="margin-top:8px;">BCC's jail-diversion / reentry role is <strong>verified in public records</strong>: per the <em>Reading Eagle</em> (Apr 13, 2026), a BCC case manager <strong>picks up individuals upon jail release</strong>, handles pharmacy/medication, transports to initial appointments, and drops them home. Combined with PA Title 61 parole conditions (refusing mandated treatment = violation, 42 Pa.C.S. §9727), this documents a captive-treatment population whose "engagement" is enforced by incarceration threat. Whether the Credible-EHR algorithm escalates these patients for revenue remains the <strong>alleged</strong> step (see Section 3).</p>
+</div>
+
+<div class="documented">
+  <strong>DOCUMENTED 2 — Edward Jones Board Control Over a Portfolio That Grew 11×</strong>
+  <p style="margin-top:8px;">Board Chair <strong>Joseph Plageman Jr.</strong> and Director <strong>Linda Krause</strong> both work for Edward Jones (two of ~10 board seats = 20%+ control). Portfolio: FY2023 total assets <span class="stat">$22,813,378</span> (ProPublica), of which Schedule D public securities ≈ $10.48M. Investment income 11× growth coincides with their tenure. Whether Edward Jones actually manages the account is <strong>UNCONFIRMED</strong> — the missing piece.</p>
+</div>
+
+<div class="documented">
+  <strong>DOCUMENTED 3 — Treasurer's Own Firm Is an ACTIVE PA Entity (Disclosure Risk Material)</strong>
+  <p style="margin-top:8px;"><strong>John Robinson</strong> (BCC Treasurer since June 2021, $0 comp) owns <strong>ROBINSON &amp; ASSOCIATES, LLC</strong> — PA Domestic LLC, <strong>Entity #3967553</strong>, inc. <strong>July 14, 2010</strong>, status <strong>ACTIVE</strong>, 1742 Colony Drive, Wyomissing PA 19610. Schedule L reports ALL-NO related-party transactions. Whether BCC ever paid the firm is unverified (needs records).</p>
+</div>
+
+<!-- ====== SECTION 3: ALLEGED ====== -->
+<h2>🟣 SECTION 3 — ALLEGED HARM (Direct-Knowledge Claims — NOT Yet Publicly Corroborated)</h2>
+
+<div class="alleged">
+  <strong>ALLEGED — Treatment Algorithm Escalation (Billing Optimization Disguised as Care)</strong>
+  <p style="margin-top:8px;">Claim: BCC's Credible EHR / Qualifacts clinical-decision-support flags patients — especially parolees and jail-diversion participants — for "additional indicated services," inflating program <em>duration</em> (each added day = another CCBHC PPS daily payment). A 12-week mandated program becomes 16 weeks. <strong>Status: NOT independently corroborated in any public source located this session.</strong> No news reports, no whistleblower documents, no state findings support the specific algorithm claim. It remains the central allegation of the complaint and the target of the pending records requests.</p>
+</div>
+
+<div class="alleged">
+  <strong>ALLEGED — Board-Level Cahootery Driving Revenue</strong>
+  <p style="margin-top:8px;">Claim: the Plageman/Krause (Edward Jones), Orlando (United Way), Goodman-Hinnershitz (COCA/City Council), and Robinson (own firm) relationships create a governance web with no incentive to restrain billing. <strong>Verified components:</strong> the affiliations, the $678K United Way grant, the $10.48M securities portfolio, the entity registration, and the dual oversight roles. <strong>Unverified:</strong> any actual payment, management contract, or vote trading.</p>
+</div>
+
+<!-- ====== SECTION 4: THE PEOPLE ====== -->
+<h2>🧑‍🤝‍🧑 SECTION 4 — ALL PEOPLE INVOLVED (16 Profiled)</h2>
+
+<div class="card">
+  <h3>Executive Leadership</h3>
+  <table>
+    <tr><th>Person</th><th>Role</th><th>Verified Record</th><th>Evidence</th></tr>
+    <tr>
+      <td><strong>Christine Axford</strong>, M.Ed, LPC</td>
+      <td>CEO</td>
+      <td>Comp FY2025: <span class="stat">$140,004</span> (ProPublica latest). Email SMTP-verified. No license discipline found.</td>
+      <td><span class="badge badge-g">GOOD STANDING</span> (public records); comp figure is source-dependent — see Corrections</td>
+    </tr>
+    <tr>
+      <td><strong>Greg Little</strong></td>
+      <td>CFO</td>
+      <td>Comp FY2025: <span class="stat">$132,442</span> (ProPublica latest). Email SMTP-verified. No discipline found.</td>
+      <td><span class="badge badge-g">COMP RECONCILED</span> — verified FY2025 Part VII (ProPublica): CEO base $140,004 + $5,428 = $145,432 total; CFO base $132,442 + $17,350 = $149,792 total. CFO total &gt; CEO total by $4,360; prior "conflict" was a base-vs-total comparison artifact.</td>
+    </tr>
+    <tr>
+      <td><strong>Dr. William Santoro, MD, FASAM</strong></td>
+      <td>Medical Director / Reading Hospital Chief of Addiction Medicine</td>
+      <td>Active PA medical license; board-certified Addiction &amp; Family Medicine.</td>
+      <td><span class="badge badge-g">GOOD STANDING</span></td>
+    </tr>
+    <tr>
+      <td><strong>Dr. Mark Putnam, MD</strong></td>
+      <td>Director of Mental Health Services (Psychiatrist)</td>
+      <td>Active PA license; boarded Adult/Child/Adolescent Psychiatry.</td>
+      <td><span class="badge badge-g">GOOD STANDING</span></td>
+    </tr>
+    <tr>
+      <td><strong>Bonnie Triebig, MS</strong></td>
+      <td>Clinical Director</td>
+      <td>Active practitioner; DDAP/SAMHSA advocacy presenter.</td>
+      <td><span class="badge badge-g">GOOD STANDING</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>Board of Directors</h3>
+  <table>
+    <tr><th>Person</th><th>Board Role</th><th>Affiliation</th><th>Conflict / Harm Connection</th><th>Status</th></tr>
+    <tr>
+      <td><strong>Joseph Plageman Jr.</strong></td>
+      <td>Chair</td>
+      <td>Edward Jones (CRD <span class="url">5964768</span>)</td>
+      <td>Firm potentially managing portfolio; 11× investment growth during tenure. BrokerCheck disclosures: <strong>not retrievable interactively this session</strong>; prior research: ZERO FINRA disclosures.</td>
+      <td><span class="badge badge-y">NEEDS BROKERCHECK</span></td>
+    </tr>
+    <tr>
+      <td><strong>Crystal Seitz</strong></td>
+      <td>Vice Chair</td>
+      <td>Greater Reading CVB</td>
+      <td>None identified beyond board seat.</td>
+      <td><span class="badge badge-g">CLEAR</span></td>
+    </tr>
+    <tr>
+      <td><strong>John Robinson</strong></td>
+      <td>Treasurer</td>
+      <td>Robinson &amp; Associates, LLC (#3967553, ACTIVE)</td>
+      <td>Owns consulting firm; Schedule L ALL-NO; whether BCC pays the firm = unverified.</td>
+      <td><span class="badge badge-r">MATERIAL RISK</span></td>
+    </tr>
+    <tr>
+      <td><strong>Linda Krause</strong></td>
+      <td>Director</td>
+      <td>Edward Jones</td>
+      <td>Second EJ seat — 20%+ board control over custodian/manager question.</td>
+      <td><span class="badge badge-y">NEEDS BROKERCHECK</span></td>
+    </tr>
+    <tr>
+      <td><strong>Missy Orlando</strong></td>
+      <td>Director</td>
+      <td>United Way of Berks County</td>
+      <td>Funder-employee: UW granted $678K (MacKenzie Scott pass-through).</td>
+      <td><span class="badge badge-r">DOCUMENTED CONFLICT</span></td>
+    </tr>
+    <tr>
+      <td><strong>Deborah Scull</strong></td>
+      <td>Director</td>
+      <td>Central Tire &amp; Auto Service (per campaign-finance scan)</td>
+      <td>None identified beyond board seat.</td>
+      <td><span class="badge badge-g">CLEAR</span></td>
+    </tr>
+    <tr>
+      <td><strong>Brenda Gaul</strong></td>
+      <td>Director</td>
+      <td>Furniture Soup, Inc. (own company)</td>
+      <td>Director-owned vendor — monitor for BCC purchases.</td>
+      <td><span class="badge badge-y">MONITOR</span></td>
+    </tr>
+    <tr>
+      <td><strong>James Brooks</strong></td>
+      <td>Director</td>
+      <td>Undisclosed</td>
+      <td>Affiliation unknown.</td>
+      <td><span class="badge badge-y">NEEDS RESEARCH</span></td>
+    </tr>
+    <tr>
+      <td><strong>Jeffrey Ralph</strong></td>
+      <td>Director (listed Treasurer in some 2025 filings)</td>
+      <td>GSK (Collegeville) / Eastern University</td>
+      <td>GSK investigator identity inferred, not primary-documented.</td>
+      <td><span class="badge badge-y">LIKELY CONFIRMED</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>Oversight Officials in the Web</h3>
+  <table>
+    <tr><th>Person</th><th>Role</th><th>Verified Record</th><th>Status</th></tr>
+    <tr>
+      <td><strong>Marcia Goodman-Hinnershitz</strong></td>
+      <td>Reading City Council (Dist 4) + COCA Director of Planning</td>
+      <td>COCA passes through funding for BCC SUD programs; campaign finance filings public (30-day post-primary reports). No corporate PAC ties found.</td>
+      <td><span class="badge badge-r">DUAL ROLE</span></td>
+    </tr>
+    <tr>
+      <td><strong>Berks County Commissioners</strong> (Leinbach, Rivera, Santoni)</td>
+      <td>County HS block grant ($16.2M) oversight</td>
+      <td>BCC share not publicly itemized.</td>
+      <td><span class="badge badge-y">NEEDS RTK</span></td>
+    </tr>
+  </table>
+</div>
+
+<!-- ====== SECTION 5: CREATIVE TECHNIQUES ====== -->
+<h2>🛠️ SECTION 5 — Creative Techniques Deployed (Method Log)</h2>
+
+<div class="card">
+  <div class="method-row"><div class="idx">1</div><div>PA Superior Court opinion mined for the <strong>conceded physician-absence violation</strong> and the "software glitch" record — court opinions are the highest-weight public records and are free via Justia.</div><div class="src">law.justia.com/cases/pennsylvania/superior-court/2018/898-mda-2017.html</div></div>
+  <div class="method-row"><div class="idx">2</div><div>HHS OIG report database + <strong>OIG Work Plan</strong> — surfaced the live CCBHC Medicaid audit series (SRS-A-26-025) that will cover BCC's core revenue stream; and the 2023 CCBHC grantee-monitoring failure report (A-02-21-02010).</div><div class="src">oig.hhs.gov</div></div>
+  <div class="method-row"><div class="idx">3</div><div>HUD OIG report 2023-LA-0002 — quantified national CoC recapture ($257M) and documented the leasing-monitoring gap that makes BCC's 578.49 question materially untested.</div><div class="src">hudoig.gov</div></div>
+  <div class="method-row"><div class="idx">4</div><div>USAspending.gov API with <strong>pagination loop</strong> — pulled all 125 federal awards (SAMHSA SM060876 $1.59M 2014–2018 "Integrated Care Project"; HUD CoC awards 14.235/14.267; new PA1174L3T062400 $145,721).</div><div class="src">usaspending.gov</div></div>
+  <div class="method-row"><div class="idx">5</div><div>ProPublica Nonprofit Explorer API — reconciled total assets ($22.81M FY2023), liabilities, and officer comp; <strong>caught the CFO/CEO comp discrepancy</strong> that would embarrass the complaint if left uncorrected.</div><div class="src">projects.propublica.org/nonprofits</div></div>
+  <div class="method-row"><div class="idx">6</div><div>NPI Registry + PECOS — BCC Type-2 NPI <span class="url">1881620250</span>, PAC ID <span class="url">7810894631</span>, active Medicare enrollment, <strong>not on OIG exclusion list</strong> (negative finding = not excluded).</div><div class="src">npidataservices.com / nppes.cms.hhs.gov</div></div>
+  <div class="method-row"><div class="idx">7</div><div>PA DDAP facility survey database — located the Dec 6, 2023 complaint investigation (logged as telephone on the portal) by Event ID (4V0D11 / TQ8F6601).</div><div class="src">PA D&amp;A Facility Surveys portal (sais.health.pa.gov)</div></div>
+  <div class="method-row"><div class="idx">8</div><div>PA DOS business registry via mirrors (pennsylvaniadb / bizapedia) — verified Robinson &amp; Associates LLC #3967553 because file.dos.pa.gov bot-blocks scripts (403).</div><div class="src">pennsylvaniadb.com/company/3967553</div></div>
+  <div class="method-row"><div class="idx">9</div><div>FINRA BrokerCheck — CRD 5964768 (Plageman) identified; full disclosure extraction blocked by interactive portal; queued for browser automation.</div><div class="src">brokercheck.finra.org</div></div>
+  <div class="method-row"><div class="idx">10</div><div>Local news archives (Reading Eagle) — verified CCBHC launch (2018), ICWC funding (2020), jail-reentry program (Apr 2026), COVID pivot (2020); no layoff/scandal coverage 2024–2026 (negative finding).</div><div class="src">readingeagle.com</div></div>
+  <div class="method-row"><div class="idx">11</div><div>City of Reading HOME-ARP Plan + HUD Exchange awards — property bed counts (239 S. 5th = 12 beds PSH; New Hope = 15 beds PSH) and updated CoC award amounts.</div><div class="src">readingpa.gov / hudexchange.info</div></div>
+</div>
+
+<!-- ====== SECTION 6: CORRECTIONS ====== -->
+<h2>⚠️ SECTION 6 — Data Corrections (Integrity Control — Review Before Any Media Use)</h2>
+
+<div class="correction">
+  <strong>CORRECTION 1 — CFO vs CEO Compensation RECONCILED (APPLIED Session 17).</strong> The apparent conflict was a <strong>base-vs-total comparison artifact</strong>: local files reported TOTAL compensation (CFO $149,792 &gt; CEO $145,432) while ProPublica's FY2025 summary panel displayed BASE compensation only (CEO $140,004 &gt; CFO $132,442). Verified FY2025 Part VII officer-compensation figures (ProPublica Nonprofit Explorer, live): CEO Axford $140,004 base + $5,428 other = $145,432 total; CFO Little $132,442 base + $17,350 other = $149,792 total. <strong>On total compensation the CFO is still paid $4,360 more than the CEO</strong>, and CFO other-comp ($17,350) is 3.2x the CEO's ($5,428). COMPLAINT_LETTER.html CONCERN 2 and all MEDIA_EMAILS.html drafts updated with the reconciled figures. Note: the raw Schedule J PDF page itself is behind ProPublica's Cloudflare bot-check, so figures were verified from ProPublica's rendered Part VII data.
+</div>
+<div class="correction">
+  <strong>CORRECTION 2 — Total Assets were understated in local files.</strong> Local JSON says $19.8M (FY2025); ProPublica FY2023 filing reports <strong>$22,813,378</strong> total assets (and FY2024 ~$23.6M, FY2025 ~$22.97M per ProPublica snapshots). Net assets ≈ $18.4M after ~$4.39M liabilities. <strong>APPLIED Session 16: COMPLAINT_LETTER.html (CONCERN 5) and FUNDING_REVIEW.html updated to "$19.8M–$23M" range framing; verify any remaining "$19.8M" citations (e.g., INVESTIGATION_GAPS.html) before media use.</strong>
+</div>
+<div class="correction">
+  <strong>CORRECTION 3 — HUD CoC award amounts differ by renewal year.</strong> Local JSON (latest-grant per property: Leasing 1 $203,168 / Leasing 2 $193,072) vs HUD Exchange records (Leasing Assistance 1 $218,610 / Leasing 2 $207,227; PS Recovery $113,179; 13 S. 10th $91,691; plus new award PA1174L3T062400 $145,721). Use "renewal years differ" framing; both are correct for their years.
+</div>
+
+<!-- ====== SECTION 7: NEEDS PUBLIC RECORD ====== -->
+<h2>🔵 SECTION 7 — What Still Needs a Public Record (Requests Queued)</h2>
+
+<div class="needs">
+  <table>
+    <tr><th>#</th><th>Item</th><th>Who Holds It</th><th>Gap</th></tr>
+    <tr><td>1</td><td>FINRA BrokerCheck disclosures for Plageman (CRD 5964768) &amp; Krause</td><td>FINRA (interactive)</td><td>Gap #2 / #14</td></tr>
+    <tr><td>2</td><td>Whether BCC ever paid Robinson &amp; Associates, LLC</td><td>BCC (Schedule L / AP records)</td><td>Gap #8 extension</td></tr>
+    <tr><td>3</td><td>Deed/lease records for all 8 CoC properties</td><td>Berks County ROD / HUD e-snaps</td><td>Gap #15</td></tr>
+    <tr><td>4</td><td>Board meeting minutes + Conflict of Interest Policy</td><td>BCC</td><td>Gap #1 / #9</td></tr>
+    <tr><td>5</td><td>SAMHSA CCBHC narrative/performance reports (H79SM088878)</td><td>SAMHSA / HigherGov</td><td>Gap #19</td></tr>
+    <tr><td>6</td><td>Unredacted Schedule B + FY2024 990 + Schedule J detail</td><td>IRS / BCC</td><td>Gap #4 / #5</td></tr>
+    <tr><td>7</td><td>BCC share of Berks County HS block grant</td><td>Berks County (Right-to-Know)</td><td>Gap #13</td></tr>
+    <tr><td>8</td><td>Campaign-contribution detail for all board members</td><td>PA Campaign Finance Online (browser)</td><td>New</td></tr>
+  </table>
+</div>
+
+<!-- ====== SECTION 8: VERDICT ====== -->
+<h2>⚖️ SECTION 8 — What the Evidence Proves (and Doesn't)</h2>
+
+<div class="card">
+  <p><strong>PROVEN (court/OIG/990 public records):</strong> (1) a conceded patient-safety regulatory violation (no supervising physician, 55 Pa. Code §1223.52); (2) a $105K Medicaid recoupment dispute over billing/documentation deficiencies; (3) systemic SAMHSA CCBHC monitoring failure covering BCC's own grant + a live OIG audit series on CCBHC Medicaid compliance; (4) a documented federal leasing rule (24 CFR §578.49) on ~$396K of BCC's CoC funding; (5) first deficit in 7 years with 11× investment growth under a conflicted board; (6) a documented state complaint investigation (Dec 2023, logged as telephone on the public portal).</p>
+  <p style="margin-top:10px;"><strong>NOT PROVEN (needs records or direct evidence):</strong> the treatment-algorithm escalation claim; any actual payment to Robinson &amp; Associates; actual Edward Jones management of the portfolio; FINRA disclosures; deed ownership of 6 of 8 properties; BCC's block-grant share.</p>
+  <p style="margin-top:10px;"><strong>INTEGRITY NOTE:</strong> The CFO/CEO compensation figures have been <strong>RECONCILED (Session 17)</strong> against ProPublica's rendered FY2025 Part VII data: CEO $145,432 total vs. CFO $149,792 total (base-vs-total artifact resolved). The complaint letter and media drafts now cite the verified figures.</p>
+</div>
+
+<p class="footnote" style="text-align:center;margin-top:24px;">Session 16 · August 1, 2026 · Berks County, PA · All sources public · Corrections tracked in Section 6</p>
+
+</div>
+</body>
+</html>

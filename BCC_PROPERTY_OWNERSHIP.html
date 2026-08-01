@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
+<title>BCC Property Ownership vs. Leasing — Gap #15</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; --p:#d2a8ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body {
+    font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.6;
+    overflow: hidden; width: 100vw; height: 100vh;
+  }
+  #scroll-container {
+    width: 100%; height: 100vh; overflow-y: scroll; scroll-behavior: smooth;
+    scrollbar-width: none; -ms-overflow-style: none;
+  }
+  #scroll-container::-webkit-scrollbar { display: none; }
+  .container { max-width:1100px; margin-left:170px; margin-right:auto; padding: 40px 60px 200px 60px; }
+  h1 { color:var(--y); text-align:center; font-size:2rem; margin-bottom:0; border-bottom:2px solid var(--y); padding-bottom:12px; }
+  h2 { color:var(--a); margin:28px 0 12px; border-bottom:1px solid var(--border); padding-bottom:6px; font-size:1.35rem; }
+  h3 { color:var(--p); margin:16px 0 8px; font-size:1.1rem; }
+  .subtitle { text-align:center; color:#8b949e; margin-bottom:20px; font-size:0.9rem; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:16px; }
+  .card-green { border-left:5px solid var(--g); background:#101a15; }
+  .card-yellow { border-left:5px solid var(--y); background:#1a1510; }
+  .card-red { border-left:5px solid var(--r); background:#1a1015; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.9rem; }
+  th { text-align:left; background:#21262d; color:var(--h); padding:10px 12px; border-bottom:2px solid var(--border); font-weight:600; }
+  td { padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+  tr:hover td { background:#1c2128; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:12px; font-size:0.72rem; font-weight:700; }
+  .badge-g { background:#1b3826; color:var(--g); }
+  .badge-y { background:#2d1b00; color:var(--y); }
+  .badge-r { background:#2d1010; color:var(--r); }
+  .badge-p { background:#1d1530; color:var(--p); }
+  .badge-b { background:#0d2a3d; color:var(--a); }
+  .summary-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:12px; margin:14px 0; }
+  .summary-box { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; text-align:center; }
+  .summary-box .number { font-size:1.8rem; font-weight:800; color:var(--a); }
+  .summary-box .label { font-size:0.78rem; color:#8b949e; margin-top:4px; }
+  .url { color:var(--a); word-break:break-all; }
+  .highlight { background:#1d1530; border-left:3px solid var(--p); padding:10px 14px; margin:10px 0; border-radius:0 6px 6px 0; }
+  .highlight-red { background:#2d1010; border-left:3px solid var(--r); padding:10px 14px; margin:10px 0; border-radius:0 6px 6px 0; }
+  .highlight-green { background:#101a15; border-left:3px solid var(--g); padding:10px 14px; margin:10px 0; border-radius:0 6px 6px 0; }
+</style>
+</head>
+<body>
+<div id="scroll-container">
+<div class="container">
+
+<h1>🏘️ BCC HUD PROPERTY OWNERSHIP vs. LEASING</h1>
+<p class="subtitle">
+  Berks Counseling Center — 8 Continuum of Care (CoC) Supportive Housing Properties<br>
+  Berks County property records check — Session 13, August 1, 2026 · Gap #15 → ADVANCED
+</p>
+
+<!-- SUMMARY -->
+<div class="summary-grid">
+  <div class="summary-box"><div class="number">8</div><div class="label">CoC Properties<br>(2021–2024 grants)</div></div>
+  <div class="summary-box"><div class="number">2</div><div class="label">"Leasing" Components<br>(regulatory determinable)</div></div>
+  <div class="summary-box"><div class="number">6</div><div class="label">PSH/Recovery<br>(deed check needed)</div></div>
+  <div class="summary-box"><div class="number">$1.27M</div><div class="label">Latest-Grant Sum<br>(concurrent ~$500–600K/yr)</div></div>
+  <div class="summary-box"><div class="number">2</div><div class="label">County Portals<br>(bot-blocked)</div></div>
+  <div class="summary-box"><div class="number">3</div><div class="label">Properties with<br>Addresses Known</div></div>
+</div>
+
+<!-- PROPERTY INVENTORY -->
+<h2>📋 1. The 8 Properties — Component Types & Grants</h2>
+<div class="card">
+  <table>
+    <tr><th>Property</th><th>CoC Component</th><th>Latest Grant</th><th>Year</th><th>Ownership Determination</th></tr>
+    <tr>
+      <td><strong>1135/37 Franklin St.</strong></td><td><span class="badge badge-b">PSH</span></td><td>$288,274</td><td>2024</td>
+      <td><span class="badge badge-y">UNDETERMINED</span> — address known; deed record needed (portal blocked)</td>
+    </tr>
+    <tr>
+      <td><strong>BCC Leasing 1</strong></td><td><span class="badge badge-g">LEASING</span></td><td>$203,168</td><td>2021</td>
+      <td><span class="badge badge-g">LEASED (by rule)</span> — 24 CFR §578.49 prohibits leasing funds on grantee-owned units</td>
+    </tr>
+    <tr>
+      <td><strong>BCC Leasing 2</strong></td><td><span class="badge badge-g">LEASING</span></td><td>$193,072</td><td>2022</td>
+      <td><span class="badge badge-g">LEASED (by rule)</span> — 24 CFR §578.49 prohibits leasing funds on grantee-owned units</td>
+    </tr>
+    <tr>
+      <td><strong>New Hope PSH</strong></td><td><span class="badge badge-b">PSH</span></td><td>$204,220</td><td>2021</td>
+      <td><span class="badge badge-y">UNDETERMINED</span> — program-named; no address on record</td>
+    </tr>
+    <tr>
+      <td><strong>13 S. 10th St.</strong></td><td><span class="badge badge-b">PSH</span></td><td>$87,534</td><td>2021</td>
+      <td><span class="badge badge-y">UNDETERMINED</span> — address known; deed record needed (portal blocked)</td>
+    </tr>
+    <tr>
+      <td><strong>239 S. 5th St.</strong></td><td><span class="badge badge-b">PSH</span></td><td>$123,524</td><td>2021</td>
+      <td><span class="badge badge-y">UNDETERMINED</span> — address known; deed record needed (portal blocked)</td>
+    </tr>
+    <tr>
+      <td><strong>PS Recovery Housing</strong></td><td><span class="badge badge-p">RECOVERY</span></td><td>$105,511</td><td>2021</td>
+      <td><span class="badge badge-y">UNDETERMINED</span> — program-named; no address on record</td>
+    </tr>
+    <tr>
+      <td><strong>Phoenix House</strong></td><td><span class="badge badge-b">PSH</span></td><td>$59,716</td><td>2021</td>
+      <td><span class="badge badge-y">UNDETERMINED</span> — program-named; no address on record</td>
+    </tr>
+  </table>
+  <p style="color:#8b949e;font-size:0.85rem;margin-top:8px;">
+    Component types from the HUD CoC grant records compiled in <span class="url">bcc_hud_grants.json</span> (latest-grant sum $1,265,019; concurrent-year estimate ~$500–600K+ per prior research, since renewal years differ). PSH = Permanent Supportive Housing; Leasing = CoC leasing component.
+  </p>
+</div>
+
+<!-- LEGAL FRAMEWORK -->
+<h2>⚖️ 2. Decisive Legal Framework — 24 CFR §578.49</h2>
+<div class="card-green">
+  <p>
+    <strong>HUD Continuum of Care "Leasing" funds cannot be used on grantee-owned property.</strong> Under 24 CFR §578.49 and HUD CoC program rules, leasing funds pay rent on units leased from an <strong>independent third-party owner</strong> under a master or unit lease. HUD explicitly prohibits using leasing funds on units owned by the recipient, subrecipient, parent organization, or related organizations.
+  </p>
+  <div class="highlight-green">
+    <strong>CONSEQUENCE FOR BCC:</strong> The two grants literally named <strong>"BCC Leasing 1"</strong> ($203K) and <strong>"BCC Leasing 2"</strong> ($193K) are funded under the Leasing component. Under the federal rule, the units they fund <strong>cannot be owned by BCC</strong> — they must be leased from third-party owners. Either BCC leases these units from independent landlords (compliant, and the most likely reading of the component label), or BCC is out of compliance with 24 CFR §578.49 if any leased unit is in fact BCC-owned.
+  </div>
+  <p style="color:#8b949e;font-size:0.85rem;">
+    Reference: eCFR Title 24 Part 578 (Continuum of Care Program), HUD Exchange CoC Eligible Activities — Leasing. This regulatory rule is what makes the ownership question legally material: misclassifying owned units under Leasing is a federal grant-compliance violation with recoupment risk.
+  </p>
+</div>
+
+<!-- 990 EVIDENCE -->
+<h2>📊 3. Balance-Sheet Evidence — What BCC's 990 Shows</h2>
+<div class="card">
+  <table>
+    <tr><th>990 Line / Fact</th><th>Value</th><th>Implication</th></tr>
+    <tr><td><strong>Total Assets (FY2025)</strong></td><td>$19.8M (990) / $22.97M (reconciled)</td><td>Net assets $19.83M — substantial balance sheet</td></tr>
+    <tr><td><strong>Schedule D — real estate / alternatives</strong></td><td><strong>$0 — ALL ZERO</strong></td><td>Investment portfolio is 100% public securities ($10.48M); <strong>no real estate held in the investment portfolio</strong></td></tr>
+    <tr><td><strong>Public securities (Schedule D)</strong></td><td>$10,479,575</td><td>53% of net assets; portfolio grew $836,824 in one year</td></tr>
+    <tr><td><strong>Remaining ~$9.3M</strong></td><td>Cash, AR, <strong>fixed assets</strong></td><td>Fixed assets NOT itemized in the public 990 detail reviewed — the 8 HUD properties, if owned, would appear here as land/buildings</td></tr>
+  </table>
+  <div class="highlight">
+    <strong>READING:</strong> BCC's <strong>investment</strong> portfolio contains no real estate (Schedule D lines 2–10 all zero). The 8 supportive-housing properties, <strong>if owned</strong>, would sit on the balance sheet as <strong>operating fixed assets</strong> (Part X, land/buildings/equipment) — but the ~$9.3M cash/AR/fixed-asset block is not broken out in the extracted public data. The 990 therefore neither proves nor disproves ownership of the 6 PSH/Recovery properties — deed records are required.
+  </div>
+</div>
+
+<!-- BLOCKED METHODS -->
+<h2>🚫 4. County Property Records — Blocked-Methods Audit (Attempted Aug 1, 2026)</h2>
+<div class="card-red">
+  <table>
+    <tr><th>#</th><th>Source</th><th>Attempted</th><th>Result</th><th>Workaround</th></tr>
+    <tr><td>1</td><td><strong>Berks Assessment Portal</strong><br><span class="url">propertyrecords.berkspa.gov</span></td><td>Homepage + search pages + SOAP services (PublicServices.asmx, ConfigManager.asmx) with session cookies</td><td><span class="badge badge-r">BLOCKED</span> — SOAP services return HTTP 500; search pages 404; requires proprietary session handshake</td><td>Manual browser lookup (owner name "Berks Counseling Center", addresses: 1135/37 Franklin St., 13 S. 10th St., 239 S. 5th St.)</td></tr>
+    <tr><td>2</td><td><strong>Register of Deeds</strong><br><span class="url">berks.pa.publicsearch.us</span></td><td>React SPA search input (data-testid="searchInputBox", "grantor/grantee search") + API endpoint probing of JS bundles</td><td><span class="badge badge-r">BLOCKED</span> — search is client-side React over a locked API (probed /api/search, /Search/GetResults, etc. → 404); KoFile platform requires interactive session</td><td>Manual grantee search "Berks Counseling Center" in Real Property / Grantor-Grantee index</td></tr>
+    <tr><td>3</td><td><strong>County Open Data Hub</strong><br><span class="url">opendata.berkspa.gov</span></td><td>Parcel/property dataset search</td><td><span class="badge badge-r">NO PARCEL API</span> — data hub serves docs/GIS layers, no owner-name parcel lookup API</td><td>GIS parcel shapefile download (owner field), offline join</td></tr>
+    <tr><td>4</td><td><strong>Browser automation</strong></td><td>Chrome DevTools automation of both portals</td><td><span class="badge badge-r">UNAVAILABLE</span> — browser automation tooling failed this session</td><td>Manual browser or re-run automation on a working session</td></tr>
+  </table>
+  <p style="color:#8b949e;font-size:0.85rem;margin-top:8px;">
+    Both county portals are public and free but enforce interactive/bot-protection measures that blocked scripted retrieval this session. All four avenues were genuinely attempted; none returned deed-level ownership for the 6 PSH/Recovery properties.
+  </p>
+</div>
+
+<!-- ACTION ITEMS -->
+<h2>✅ 5. Action Items — How Gap #15 Gets Fully Closed</h2>
+<div class="card">
+  <table>
+    <tr><th>#</th><th>Action</th><th>Effort</th><th>Unblocks</th></tr>
+    <tr><td><strong>1</strong></td><td><strong>Manual deed search</strong> — berks.pa.publicsearch.us → Real Property / Grantor-Grantee index → search "Berks Counseling Center" (last-name field; first blank) for all 8 properties</td><td>30 min</td><td>Definitive ownership of all 8</td></tr>
+    <tr><td><strong>2</strong></td><td><strong>Manual assessment lookup</strong> — propertyrecords.berkspa.gov for the 3 known addresses (Franklin St., 10th St., 5th St.) → owner name + PROPID</td><td>15 min</td><td>3 street-addressed parcels</td></tr>
+    <tr><td><strong>3</strong></td><td><strong>Request HUD CoC project component detail</strong> — e-snaps / CoC grant award notices for BCC projects (which units, which component, who owns)</td><td>1 hr</td><td>Confirms Leasing units are third-party owned</td></tr>
+    <tr><td><strong>4</strong></td><td><strong>PA Right-to-Know to Berks County</strong> — deed/assessment records for the 5 program-named properties (New Hope PSH, PS Recovery, Phoenix House, BCC Leasing 1/2 addresses)</td><td>1–2 hrs</td><td>Program-named properties without public addresses</td></tr>
+  </table>
+  <div class="highlight-green">
+    <strong>STATUS (Session 13):</strong> Gap #15 <strong>ADVANCED</strong> — not yet fully closed. The two Leasing-component properties are determinable by HUD regulation (third-party owned by rule). The six PSH/Recovery properties require deed records that the county portals blocked from automated retrieval; the manual lookup paths above are documented and ready.
+  </div>
+</div>
+
+<div style="margin-top:30px;padding:16px;background:#1d1530;border-radius:8px;text-align:center;font-size:0.85rem;">
+  🔍 <a href="INVESTIGATION_GAPS.html" style="color:var(--a);">Investigation Gaps</a> &nbsp;|&nbsp;
+  💰 <a href="FUNDING_REVIEW.html" style="color:var(--a);">Funding Review</a> &nbsp;|&nbsp;
+  📊 <a href="SAMHSA_PERFORMANCE_H79SM088878.html" style="color:var(--a);">SAMHSA Grant Performance</a> &nbsp;|&nbsp;
+  📰 <a href="MEDIA_OUTREACH.html" style="color:var(--a);">Media Outreach</a>
+</div>
+
+</div><!-- /container -->
+</div><!-- /scroll-container -->
+
+<div id="scroll-indicator" style="position:fixed;bottom:40px;left:50%;transform:translateX(-50%);color:var(--a);font-size:0.9rem;z-index:10;background:rgba(13,17,23,0.85);padding:8px 20px;border-radius:20px;border:1px solid var(--border);pointer-events:none;transition:opacity 0.5s;">▼ Auto-scrolling — BCC Property Ownership vs. Leasing</div>
+
+<script>
+(function() {
+  const container = document.getElementById('scroll-container');
+  const indicator = document.getElementById('scroll-indicator');
+  const scrollSpeed = 0.07;
+  let lastTime = null;
+  let animating = true;
+  let paused = false;
+  container.addEventListener('mouseenter', () => { paused = true; indicator.textContent = '⏸ Paused — move mouse away to resume'; });
+  container.addEventListener('mouseleave', () => { paused = false; indicator.textContent = '▼ Auto-scrolling — BCC Property Ownership vs. Leasing'; lastTime = null; });
+  function animate(timestamp) {
+    if (!animating) return;
+    if (!lastTime) lastTime = timestamp;
+    const elapsed = timestamp - lastTime;
+    lastTime = timestamp;
+    if (!paused && elapsed > 0 && elapsed < 200) {
+      container.scrollTop += scrollSpeed * elapsed;
+      const maxScroll = container.scrollHeight - container.clientHeight;
+      if (container.scrollTop >= maxScroll - 10) {
+        container.scrollTop = maxScroll;
+        indicator.textContent = '✅ Scroll complete — End of report';
+        animating = false;
+        return;
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+  setTimeout(() => { indicator.style.opacity = '0.6'; }, 5000);
+  requestAnimationFrame(animate);
+})();
+</script>
+
+</body>
+</html>

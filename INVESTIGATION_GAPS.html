@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
+<title>Investigatory Gaps — BCC Investigation</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; --p:#d2a8ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { 
+    font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.6;
+    overflow: hidden; width: 100vw; height: 100vh;
+  }
+  #scroll-container {
+    width: 100%; height: 100vh; overflow-y: scroll; scroll-behavior: smooth;
+    scrollbar-width: none; -ms-overflow-style: none;
+  }
+  #scroll-container::-webkit-scrollbar { display: none; }
+  .container { max-width:1100px; margin-left:170px; margin-right:auto; padding: 40px 60px 200px 60px; }
+  h1 { color:var(--r); text-align:center; font-size:2rem; margin-bottom:0; border-bottom:2px solid var(--r); padding-bottom:12px; }
+  h2 { color:var(--a); margin:28px 0 12px; border-bottom:1px solid var(--border); padding-bottom:6px; font-size:1.35rem; }
+  h3 { color:var(--p); margin:16px 0 8px; font-size:1.1rem; }
+  .subtitle { text-align:center; color:#8b949e; margin-bottom:20px; font-size:0.9rem; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:16px; }
+  .card-red { border-left:5px solid var(--r); background:#1a1015; }
+  .card-yellow { border-left:5px solid var(--y); background:#1a1510; }
+  .card-green { border-left:5px solid var(--g); background:#101a15; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.9rem; }
+  th { text-align:left; background:#21262d; color:var(--h); padding:10px 12px; border-bottom:2px solid var(--border); font-weight:600; }
+  td { padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+  tr:hover td { background:#1c2128; }
+  .gap-critical { color:var(--r); font-weight:700; }
+  .gap-high { color:var(--y); font-weight:600; }
+  .gap-medium { color:var(--p); font-weight:600; }
+  .gap-low { color:var(--a); }
+  .status-blocked { background:#2d1010; border-left:3px solid var(--r); padding:10px 14px; margin:6px 0; border-radius:0 6px 6px 0; }
+  .status-partial { background:#2d1b00; border-left:3px solid var(--y); padding:10px 14px; margin:6px 0; border-radius:0 6px 6px 0; }
+  .status-open { background:#1d1530; border-left:3px solid var(--p); padding:10px 14px; margin:6px 0; border-radius:0 6px 6px 0; }
+  .badge { display:inline-block; padding:2px 8px; border-radius:12px; font-size:0.72rem; font-weight:700; }
+  .badge-r { background:#2d1010; color:var(--r); }
+  .badge-y { background:#2d1b00; color:var(--y); }
+  .badge-p { background:#1d1530; color:var(--p); }
+  .badge-g { background:#1b3826; color:var(--g); }
+  .summary-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:12px; margin:14px 0; }
+  .summary-box { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; text-align:center; }
+  .summary-box .number { font-size:1.8rem; font-weight:800; color:var(--a); }
+  .summary-box .label { font-size:0.78rem; color:#8b949e; margin-top:4px; }
+</style>
+</head>
+<body>
+<div id="scroll-container">
+<div class="container">
+
+<h1>🔍 INVESTIGATORY GAPS — Complete Audit</h1>
+<p class="subtitle">
+  Berks Counseling Center (EIN 23-2043478) — What We Don't Know & What's Still Missing<br>
+  Updated August 1, 2026 (Session 22) — 7 gaps resolved (incl. #48 DDAP outcome pulled) + compensation reconciled + 5 cross-referenced gaps added (49 total)
+</p>
+
+<!-- SUMMARY -->
+<div class="summary-grid">
+  <div class="summary-box"><div class="number">5</div><div class="label">Critical Gaps<br>(MUST resolve)</div></div>
+  <div class="summary-box"><div class="number">11</div><div class="label">High-Priority Gaps<br>(Open — 14 listed)</div></div>
+  <div class="summary-box"><div class="number">15</div><div class="label">Medium Gaps<br>(Open — 18 listed)</div></div>
+  <div class="summary-box"><div class="number">11</div><div class="label">Low / Nice-to-Have<br>(Open — 12 listed)</div></div>
+  <div class="summary-box"><div class="number">49</div><div class="label">TOTAL GAPS<br>Identified (42 open)</div></div>
+</div>
+<p style="font-size:0.8rem;color:#8b949e;margin-top:10px;">
+  📌 <strong>Numbering note:</strong> gap IDs are assigned by discovery session, so they are <em>not</em> sequential in reading order — #42/#43 (reclassified High) precede #18, and #45–#49 (added Session 19) sit in their priority sections. Do not renumber; cross-references in other deliverables use these IDs.
+</p>
+
+<!-- ====== SESSION 11 FINDINGS ====== -->
+<h2>🆕 Session 11–14 Findings — August 1, 2026</h2>
+
+<div class="card-green">
+  <h3>What was resolved (Sessions 11–12)</h3>
+  <table>
+    <tr><th>Gap</th><th>Status</th><th>Finding</th></tr>
+    <tr>
+      <td><strong>#19 SAMHSA Grant</strong></td>
+      <td><span class="badge badge-g">RESOLVED</span></td>
+      <td>HigherGov narrative pulled (Session 12): "Enhancing Mental Health Care Access Diverse Communities in Berks County" — $3,944,396 obligated / $2,503,513 outlaid (63.5%) after +301% amendment from $982,780; client targets 830 (140/185/230/275); staffing commitments (peer/recovery specialists + case managers on every team). Actual GPRA outcomes NOT public — FOIA path documented. <a href="SAMHSA_PERFORMANCE_H79SM088878.html" style="color:var(--a);">Full report →</a></td>
+    </tr>
+    <tr>
+      <td><strong>#32 IRS Audit History</strong></td>
+      <td><span class="badge badge-g">RESOLVED</span></td>
+      <td>BCC: ACTIVE 501(c)(3), ruling Feb 1979, no revocation, no public IRS examination history. TEOS API Akamai-blocked (403) — manual lookup works.</td>
+    </tr>
+    <tr>
+      <td><strong>#6 Deborah Scull</strong></td>
+      <td><span class="badge badge-g">RESOLVED</span></td>
+      <td>FOUND — former Lower Heidelberg Township Supervisor (12+ yrs), Central Tire Co. family (Mogel family, Sinking Spring), Wernersville resident. Prior "invisible" finding overturned.</td>
+    </tr>
+    <tr>
+      <td><strong>#7 Jeffrey Ralph</strong></td>
+      <td><span class="badge badge-g">RESOLVED</span></td>
+      <td>LIKELY CONFIRMED (inferred): Dr. Jeffrey Ralph, GSK medicinal chemistry investigator (Collegeville/Downingtown PA R&amp;D hub), US Undergraduate Outreach Lead. Distinctive name + region + outreach profile. Listed as BCC Treasurer per 2025 filings.</td>
+    </tr>
+    <tr>
+      <td><strong>#2 Edward Jones</strong></td>
+      <td><span class="badge badge-p">UNCHANGED</span></td>
+      <td>No public filing substantiates EJ managing BCC's portfolio. 990s don't name custodians; audit public summaries don't either. Board interlock confirmed; central question still open.</td>
+    </tr>
+    <tr>
+      <td><strong>#8 John Robinson</strong></td>
+      <td><span class="badge badge-g">RESOLVED</span></td>
+      <td>CONFIRMED (4 sources): LinkedIn (in/john-robinson-61bab55) + jrassociatesconsulting.com (Wyomissing) + 990 filings + PA DOS registry (ROBINSON &amp; ASSOCIATES, LLC — Entity #3967553, incorporated 2010-07-14, ACTIVE, 1742 Colony Dr, Wyomissing PA 19610). Owner, Robinson &amp; Associates, LLC; ex-Vanguard; BCC Treasurer since June 2021, $0 comp.</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ====== CRITICAL GAPS ====== -->
+<h2>🔴 Critical Gaps — 5 Items That Block Action</h2>
+
+<div class="card-red">
+  <p style="color:#8b949e;margin-bottom:16px;">These gaps must be resolved before any complaint can be effectively filed. Without these, the complaint lacks actionable evidence.</p>
+
+  <div class="status-blocked">
+    <strong class="gap-critical">1. Conflict of Interest Policy — NEVER OBTAINED</strong><br>
+    BCC is legally required to provide their COI policy under IRS public disclosure rules (IRC §6104(d)(1)(A)). The COI_REQUEST_LETTER.html was drafted but <strong>never sent</strong>. Without the COI policy, we cannot verify:<br>
+    • Whether board members from Edward Jones recuse from investment votes<br>
+    • Whether 🦉 Missy Orlando recuses from United Way funding decisions<br>
+    • Whether John Robinson's consulting firm is disclosed as a related party<br>
+    • Whether board member employer disclosure forms exist<br>
+    <strong style="color:var(--r);">ACTION: Send COI_REQUEST_LETTER.html — 4 verified email addresses ready.</strong>
+  </div>
+
+  <div class="status-blocked">
+    <strong class="gap-critical">2. Is Edward Jones Actually Managing BCC's Portfolio? — UNCONFIRMED</strong><br>
+    This is the central question of the entire investigation. Schedule D shows $10.48M in publicly traded securities but does NOT name the investment manager. Schedule L says NO to related-party transactions. Two possibilities:<br>
+    • Edward Jones manages it → 22% board control at the investment manager = appearance of self-dealing<br>
+    • Another firm manages it → the EJ board presence is incidental, no conflict<br>
+    <strong style="color:var(--r);">ACTION: Request BCC's investment management agreement. Contact Herbein auditor for confirmation. Check if BCC's financial statements (separate from 990) name the custodian/advisor.</strong>
+  </div>
+
+  <div class="status-blocked">
+    <strong class="gap-critical">3. No Complaint Actually Filed — ZERO CONTACTS MADE</strong><br>
+    Despite 20 todo items in COMPLAINT_TODO_LIST.html, <strong>none of the complaint items have been executed</strong>:<br>
+    • Commissioners: not contacted (only web forms available)<br>
+    • City Council: not contacted (7 emails confirmed, 1 SMTP-verified)<br>
+    • BCC Board: not contacted<br>
+    • PA AG Charitable Trusts: not contacted<br>
+    • SAMHSA: not contacted<br>
+    • PA OMHSAS: not contacted<br>
+    <strong style="color:var(--r);">ACTION: Execute the complaint. All contact info is compiled. The letter template exists.</strong>
+  </div>
+
+  <div class="status-blocked">
+    <strong class="gap-critical">4. FY2026 Form 990 — NOT YET AVAILABLE</strong><br>
+    The latest available Form 990 is FY2025 (filed May 2026, covering year ending June 2025). FY2026 has not been filed yet. This means we have no data on the most recent 13 months of BCC operations. The FY2025 deficit ($797K) could have worsened or improved — we don't know.<br>
+    <strong style="color:var(--r);">ACTION: Monitor ProPublica for FY2026 990 filing (expected May 2027). Request interim financial statements directly from BCC.</strong>
+  </div>
+
+  <div class="status-blocked">
+    <strong class="gap-critical">5. Schedule B (Major Donors) — STRUCTURALLY REDACTED (IRS e-file)</strong><br>
+    <strong style="color:var(--r);">✅ INVESTIGATED August 1, 2026:</strong> Attempted pdf-parser unredaction (Function #2 from forensic blueprint). <strong>DEAD END for BCC.</strong> BCC's 990s are e-filed (IRS XML format), not paper PDFs. Schedule B is structurally excluded from public XML by IRS policy — there are no black rectangles to remove, no hidden text underneath. The "pdf-parser unredaction" approach only works on paper-filed 990s where redaction is cosmetic. BCC's redaction is structural.<br><br>
+    Only 1 individual donor found across 19 OSINT methods (Krisann Selbst — masks, not money). Who are the major individual donors?<br>
+    <strong style="color:var(--r);">REMAINING PATHS: (A) Request unredacted Schedule B from BCC directly (COI_REQUEST_LETTER.html is ready). (B) IRS FOIA Form 4506-A. (C) PA Right-to-Know for county contracts naming donors. (D) Berks Register of Wills for bequests.</strong>
+  </div>
+</div>
+
+<!-- ====== HIGH-PRIORITY GAPS ====== -->
+<h2>🟠 High-Priority Gaps — 14 Items Listed / 11 Open</h2>
+
+<div class="card-yellow">
+  <h3>Board & Governance</h3>
+
+  <div class="status-partial">
+    <strong class="gap-high">6. Deborah Scull — ✅ RESOLVED (Session 11, Aug 1 2026)</strong><br>
+    <span class="badge badge-g">FOUND</span> Extensive biographical record surfaced despite the earlier "zero web presence" finding. Scull has served on the BCC board since at least <strong>2014 (10-12 years)</strong>. She is a <strong>former Lower Heidelberg Township Supervisor</strong> (Berks County) — served 12+ years in office, ran for reelection in the 2021 Republican primary. Business background: <strong>Central Tire Co. / Central Tire & Auto Service</strong> (Sinking Spring/Reading, family-owned since 1917; Mogel family). Resident of Wernersville, PA. Married to Richard C. Scull. Her late brother Jeffrey R. Mogel (d. Sept 2022) ran the 3rd generation of the business. <em>Governance note: a municipal supervisor + longstanding director — the prior invisibility finding is overturned; she has a civic footprint that was simply not indexed by the channels searched.</em>
+  </div>
+
+  <div class="status-partial">
+    <strong class="gap-high">7. Jeffrey Ralph — ✅ RESOLVED (Session 11, Aug 1 2026)</strong><br>
+    <span class="badge badge-g">LIKELY CONFIRMED (inferred)</span> — Identified as <strong>Dr. Jeffrey Ralph, Investigator in Medicinal Chemistry, Immuno-Oncology &amp; Combinations DPU at GlaxoSmithKline (GSK)</strong>, Collegeville/Downingtown PA R&amp;D hub (~45-60 min from Reading). Also GSK's <strong>US Undergraduate Outreach Lead</strong> (co-op/internship programs; Penn State medicinal chemistry collaboration). Publications: GSK2656157 PERK inhibitor (ACS Med Chem Lett 2013), Molecular Pharmacology 2015. Distinctive name + regional + public outreach profile → identity inferred (no primary identity document found — flagged as inference). Listed as BCC <strong>Treasurer</strong> per 2025 filings.
+  </div>
+
+  <div class="status-partial">
+    <strong class="gap-high">8. John Robinson's Consulting Firm — ✅ RESOLVED (Session 11, Aug 1 2026)</strong><br>
+    <span class="badge badge-g">CONFIRMED — PA DOS REGISTRY VERIFIED</span> — Now triangulated across <strong>4 sources</strong>: (1) <strong>LinkedIn</strong> <span class="url">linkedin.com/in/john-robinson-61bab55</span> — Business Owner, <strong>Robinson &amp; Associates, LLC</strong> (Reading PA; financial analysis &amp; strategic planning); (2) consulting site <strong>jrassociatesconsulting.com</strong> — Wyomissing PA base, confirms <strong>Vanguard Group</strong> background; (3) BCC 990 filings — Director/Treasurer since June 2021, $0 volunteer comp; (4) <strong>PA Dept of State business registry (verified Session 14, Aug 1 2026):</strong> <strong>ROBINSON &amp; ASSOCIATES, LLC</strong> — Pennsylvania Domestic Limited Liability Company, <strong>Entity ID #3967553</strong>, incorporated <strong>July 14, 2010</strong>, status <strong>ACTIVE</strong> (no dissolution/termination on record), principal address <strong>1742 Colony Drive, Wyomissing PA 19610</strong>. <em>Portal note: file.dos.pa.gov blocks scripted access (HTTP 403 on all paths); registry record confirmed via PA DOS-indexing mirrors pennsylvaniadb.com/company/3967553 and bizapedia.com/pa/robinson-associates-llc.</em> <strong>CAHOOTERY NOTE:</strong> BCC's Treasurer runs his own consulting firm while Schedule L reports ALL-NO related-party transactions — disclosure risk now material, not just a name-match question.
+  </div>
+
+  <div class="status-partial">
+    <strong class="gap-high">9. Board Meeting Minutes — NEVER REQUESTED</strong><br>
+    501(c)(3) organizations are required to keep board meeting minutes. These would show:<br>
+    • Who votes on investment decisions (does 🦉 Plageman/Krause recuse?)<br>
+    • Who votes on UW funding (does 🦉 Orlando recuse?)<br>
+    • Discussion of the $796K deficit<br>
+    • Any mention of the Community Care lawsuit<br>
+    <strong>ACTION: Request minutes from BCC. IRS Form 990 Part VI, Line 8 requires documentation of meetings.</strong>
+  </div>
+
+  <div class="status-partial">
+    <strong class="gap-high">10. Board Member Term Limits & Selection Process — UNKNOWN</strong><br>
+    How long do board members serve? 🦉 Plageman, Brooks, Krause, and Scull have all served 9+ years. Are there term limits? Who selects new members? The FY2025 990 shows 2 new members (🦉 Orlando, Ralph) — how were they chosen?
+  </div>
+</div>
+
+<div class="card-yellow">
+  <h3>Financial & Compensation</h3>
+
+  <div class="status-partial">
+    <strong class="gap-high">11. CFO "Other Compensation" ($17,350) — UNEXPLAINED</strong><br>
+    Greg Little's "other compensation" is 3.2x the CEO's ($5,428). What is it? Deferred compensation? Housing allowance? Bonus? Health benefits disproportionately allocated? Schedule J (compensation methodology) is not public. <strong>ACTION: Request Schedule J directly from BCC.</strong>
+  </div>
+
+  <div class="status-partial">
+    <strong class="gap-high">12. Single-Program Reporting — NO SERVICE BREAKDOWN</strong><br>
+    ALL $11.68M in program expenses reported under ONE program. We cannot evaluate spending on mental health vs. substance use disorder vs. crisis services vs. community outreach. <strong>ACTION: Request detailed programmatic spending breakdown from BCC.</strong>
+  </div>
+
+  <div class="status-partial">
+    <strong class="gap-high">13. Berks County Human Services Contract Value — UNKNOWN</strong><br>
+    BCC operates as an ICWC under county contract, but the specific dollar amount allocated to BCC is not publicly itemized in county budget documents (total HS budget: ~$16.2M). <strong>ACTION: File PA Right-to-Know request with Berks County for all BCC contracts, MOUs, and payment records.</strong>
+  </div>
+
+  <div class="status-partial">
+    <strong class="gap-high">14. Investment Manager Identity — STILL "UNCONFIRMED"</strong><br>
+    Listed as "Investment Manager — UNCONFIRMED" in COMPLAINT_TODO_LIST.html. Pershing LLC (BNY Mellon) is assumed as custodian (Edward Jones' standard clearing firm), but this is NOT independently confirmed for BCC. <strong>ACTION: Check BCC's audited financial statements for custodian/advisor naming. Contact Herbein.</strong>
+  </div>
+
+  <div class="status-partial">
+    <strong class="gap-high">15. HUD Property Ownership vs. Leasing — ✅ ADVANCED (Session 13, Aug 1 2026)</strong><br>
+    <span class="badge badge-g">REGULATORY DETERMINATION + BLOCKED-METHODS AUDIT</span> — full analysis in <a href="BCC_PROPERTY_OWNERSHIP.html" style="color:var(--a);">BCC_PROPERTY_OWNERSHIP.html</a>:
+    • <strong>2 of 8 properties determinable by HUD rule:</strong> "BCC Leasing 1" ($203K) and "BCC Leasing 2" ($193K) are CoC <strong>Leasing-component</strong> grants. 24 CFR §578.49 prohibits CoC leasing funds on grantee-owned units — so these units are <strong>leased from third-party owners by rule</strong> (or BCC is non-compliant).
+    • <strong>6 of 8 undetermined</strong> (PSH/Recovery): 1135/37 Franklin St., 13 S. 10th St., 239 S. 5th St. (addresses known), New Hope PSH, PS Recovery Housing, Phoenix House (program-named, no address).
+    • <strong>990 evidence:</strong> Schedule D real estate/alternatives = $0 (100% public securities, $10.48M); 8 properties if owned would appear as operating fixed assets in the ~$9.3M cash/AR/fixed block — not itemized, so 990 neither proves nor disproves ownership.
+    • <strong>County portals bot-blocked:</strong> propertyrecords.berkspa.gov (SOAP HTTP 500, search pages 404) and berks.pa.publicsearch.us (React SPA, locked API) both blocked scripted retrieval; browser automation unavailable this session.
+    <strong>ACTION: manual deed search at berks.pa.publicsearch.us (grantee "Berks Counseling Center") + assessment lookup of the 3 addresses + HUD e-snaps component detail + PA RTK for program-named properties.</strong>
+  </div>
+
+  <div class="status-partial">
+    <strong class="gap-high">16. $204,333 Contributions Drop (FY2025 vs $844,835 FY2024) — WHY?</strong><br>
+    Private contributions dropped by 75.8% in one year. Is this related to the Community Care lawsuit? Donor fatigue? A one-time grant cycle timing difference? Economy? <strong>This needs explanation.</strong>
+  </div>
+</div>
+
+<div class="card-yellow">
+  <h3>Legal & Regulatory</h3>
+
+  <div class="status-partial">
+    <strong class="gap-high">17. BCC v. Community Care — Were Deficiencies Ever Fixed?</strong><br>
+    BCC won the lawsuit on procedural grounds (CCBH used wrong FWA policy), but the <strong>underlying documentation issues</strong> (missing supervisory physician signatures on initial assessments per 55 Pa. Code § 1223.52) were never adjudicated. BCC's defense included a claim that "software glitch" caused signatures to be hidden — was this ever independently verified? Are the signatures present in subsequent audits?
+  </div>
+</div>
+
+<div class="card-yellow">
+  <h3>Regulatory Exposure &amp; Patient Harm (reclassified from Low — Session 19 gap review)</h3>
+
+  <div class="status-open">
+    <strong class="gap-high">42. HHS OIG CCBHC Audit Series — LIVE COVERAGE OF BCC'S CORE REVENUE</strong><br>
+    HHS OIG Work Plan <strong>SRS-A-26-025</strong> (announced Nov 17, 2025): multi-year audit of CCBHC Medicaid reimbursement &amp; mandatory-service compliance. Covers BCC's $11.78M/yr Medicaid revenue. Also: HHS OIG Report <strong>A-02-21-02010</strong> (Sept 2023) found SAMHSA failed to verify key personnel, FFRs, and cash-on-hand for 28/30 sampled CCBHC-E grants — BCC's grant H79SM088878 sits in that population. <strong>ACTION: monitor OIG report releases; cite both in complaint to regulators.</strong> Full analysis: <a href="DEEP_DIVE_HARM.html" style="color:var(--a);">DEEP_DIVE_HARM.html</a>
+  </div>
+
+  <div class="status-partial">
+    <strong class="gap-high">43. Medical-Marijuana Patient Coercion — FIRST-HAND CORROBORATION (Session 19, Aug 1 2026)</strong><br>
+    A complainant — PA state parolee with a <strong>7-year PA DOH medical-marijuana certification</strong> and <strong>6-year accepted BCC treatment relationship</strong> — reports BCC <strong>arbitrarily changed requirements to abstinence-only SUD protocols after the algorithm change</strong>, enforced <strong>under threat of parole arrest</strong>. <em>(Single-complainant account — first-hand, not independently verified.)</em> <strong>LEGAL FRAMEWORK (researched):</strong> PA MMA <strong>35 P.S. §10231.2103(a)</strong> — registered patients shall not be "subject to arrest, prosecution, or penalty in any manner, or denied any right or privilege ... solely for the lawful use of medical marijuana"; <strong>Gass v. 52nd Judicial District, 232 A.3d 706 (Pa. 2020)</strong> (unanimous) — blanket MMJ bans on community-supervised patients violate the MMA; <em>PA Cannabis Coalition v. 23rd Judicial District</em> (Pa. 2026) — case-by-case framework; <strong>Baldassano</strong> (2025 PA Super 26) — condition must be explicit in the order. <strong>REMEDIES:</strong> Gagnon I/II defenses, DDAP licensing complaint (717-783-8675, RA-licensuredivision@pa.gov), Board administrative remedy PB-40 (30-day), DRP (1-800-692-7443), SAMHSA CCBHC@samhsa.hhs.gov. Full analysis: <a href="MMJ_PAROLE_RIGHTS.html" style="color:var(--a);">MMJ_PAROLE_RIGHTS.html</a>.<br><span class="badge badge-r">PRIVACY</span> — no complainant identifiers attached to deliverables.
+  </div>
+</div>
+
+<!-- ====== MEDIUM GAPS ====== -->
+<h2>🟣 Medium-Priority Gaps — 18 Items Listed / 15 Open</h2>
+<p style="font-size:0.8rem;color:#8b949e;margin-top:-8px;margin-bottom:12px;">Count note: 18 items are listed below; #19, #32, and #48 are fully resolved and counted out, leaving 15 open medium gaps. #48 and #49 were cross-referenced in the Session 19 gap review; #48 resolved Session 22.</p>
+
+<div class="card">
+  <h3>Oversight & Accountability</h3>
+
+  <div class="status-open">
+    <strong class="gap-medium">18. PA OMHSAS Audit Findings — NOT PUBLIC</strong><br>
+    PA's Office of Mental Health & Substance Abuse Services audits CCBHCs every 1-3 years. BCC's most recent audit findings are NOT publicly available. <strong>ACTION: File PA Right-to-Know request with OMHSAS for BCC audit reports.</strong>
+  </div>
+
+  <div class="status-partial">
+    <strong class="gap-medium">19. SAMHSA Grant Performance Reports — ✅ RESOLVED (Session 12, Aug 1 2026)</strong><br>
+    <span class="badge badge-g">HIGHERGOV NARRATIVE PULLED</span> — full grant narrative &amp; performance data for H79SM088878 retrieved from HigherGov + USASpending (see <a href="SAMHSA_PERFORMANCE_H79SM088878.html" style="color:var(--a);">SAMHSA_PERFORMANCE_H79SM088878.html</a>). Key data:
+    • <strong>Budget vs. Actual:</strong> $3,944,396 obligated / $2,503,513 outlaid (63.5% drawn) at 71% of the 4-year period elapsed (2023-09-30 → 2027-09-29). Initial award $982,780 amended <strong>+301%</strong> to $3,944,396.
+    • <strong>Federal award inventory (CORRECTED — Session 12+ pagination):</strong> USASpending pagination loop now captures <strong>125 total federal awards</strong> — $9,348,544.60 obligated across HHS (SAMHSA series SM060876 2014–2018 → H79SM088878 2023–2027) + HUD (CoC 14.231/14.235/14.267, incl. PA1174L3T062400 $145,721) — superseding the earlier ~50-award single-page enumeration.
+    • <strong>Client outcome commitments (narrative):</strong> <strong>830</strong> unduplicated clients (Y1–Y4: 140/185/230/275); <strong>80%</strong> of clients resolve ≥1 SDOH barrier at follow-up screening; <strong>+15%/yr</strong> increase in LGBTQ/BIPOC clients seeking &amp; retained in treatment.
+    • <strong>Staffing commitments (narrative):</strong> certified peer specialist + certified recovery specialist embedded in <strong>every</strong> clinical team; case manager on every team; DEI cultural competency training.
+    • <strong>Actual GPRA/NOMS outcome data NOT public</strong> — per-grantee performance reports are filed in SAMHSA's Online Data Collection system. <strong>FOIA PATH:</strong> SAMHSA FOIA Office, 5600 Fishers Lane, Rockville MD 20857 · SAMHSAFOIA@samhsa.hhs.gov (cite FAIN H79SM088878).
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-medium">20. HHS OIG Subrecipient Monitoring Report — RELEVANT?</strong><br>
+    HHS OIG reports highlight subrecipient monitoring weaknesses, quality measure tracking gaps, and documentation issues across CCBHC grantees. Does this apply to BCC specifically? Were they one of the flagged grantees?
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-medium">21. United Way Grant Compliance — NOT VERIFIED</strong><br>
+    UW grants BCC ~$685K (including MacKenzie Scott $678K). UW has 3-year volunteer review cycles. Has BCC been reviewed recently? Were there any findings? The board member (🦉 Orlando) who works for the funder creates a governance risk during reviews.
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-medium">22. COCA Grant Details — CUMULATIVE, NOT ANNUAL</strong><br>
+    The $3.3M from Council on Chemical Abuse is cumulatively 5 grants across 2019-2023. Annual amounts are unknown. COCA is a state pass-through for PA DHS/Drug & Alcohol funds. City Council member Marcia Goodman-Hinnershitz directs COCA planning — creating a city council / funder / BCC nexus.
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-medium">23. City Council's Goodman-Hinnershitz — RECUSAL PRACTICES UNKNOWN</strong><br>
+    She directs COCA (BCC's largest funder at $3.3M cumulative) AND sits on Reading City Council. Does she recuse from council votes involving BCC or COCA? Reading ethics rules should require this.
+  </div>
+</div>
+
+<div class="card">
+  <h3>Technical & Infrastructure</h3>
+
+  <div class="status-open">
+    <strong class="gap-medium">24. UJS Portal CAPTCHA — NEVER SOLVED</strong><br>
+    The Libra scraper automated docket retrieval was blocked by CAPTCHA. Manual browser-based retrieval through the PA Unified Judicial System portal would pull ALL BCC court records — not just 898 MDA 2017. Any other lawsuits, judgments, or filings would be visible.
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-medium">25. Berks County Register of Wills — NOT SEARCHED</strong><br>
+    Probate and estate records naming BCC as beneficiary would reveal major bequest donors. Pennsylvania probate records are public. A manual search at the Berks County Register of Wills would find any estates that left money to BCC.
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-medium">26. PA Bureau of Charitable Organizations — 404 ERROR</strong><br>
+    The state charity database returns 404 for EIN-based searches. PA BCO-10 filings (the state-level equivalent of the 990) are not publicly indexed. <strong>ACTION: Contact PA Department of State directly for BCC's BCO-10 filings.</strong>
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-medium">27. Herbein Auditor Independence — NOT QUESTIONED DIRECTLY</strong><br>
+    Herbein + Company both prepares BCC's Form 990 AND conducts the independent audit. AICPA rules permit this for non-issuers with separate engagement teams, but it reduces independence checks. Has Herbein ever raised concerns about the Edward Jones relationship or single-program reporting?
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-medium">28. readingpa.gov DMARC — NONE CONFIGURED</strong><br>
+    No DMARC record for readingpa.gov. This means email from council members can be easily spoofed. For a city government handling public funds, this is a governance failure. Every other domain checked (berkscc.org, countyofberks.com, samhsa.gov, uwberks.org) has DMARC.
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-medium">29. Berks County Commissioners — NO DIRECT EMAILS</strong><br>
+    Unlike Reading City Council (which uses Firstname.Lastname@readingpa.gov), Berks Commissioners do NOT publish direct emails. Only web contact forms are available. This makes documentation of correspondence harder. <strong>Are there internal email patterns to discover?</strong>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Financial Data Completeness</h3>
+
+  <div class="status-open">
+    <strong class="gap-medium">30. FY2022 Form 990 Data — MISSING FROM WORM ANALYSIS</strong><br>
+    The Azazael worm fleet analysis only covers FY2021, FY2023, FY2024, FY2025 — skipping FY2022. Why? The FY2022 990 should be on ProPublica. This gap in the time series may hide a key transition year.
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-medium">31. BCC Audited Financial Statements — NEVER REQUESTED</strong><br>
+    The CPA audit (separate from the Form 990) contains the management letter, investment policy notes, related-party transaction footnotes, and the auditor's opinion on internal controls. Herbein + Company prepares both the 990 and the audit, but the audit provides richer detail on portfolio management, investment policies, and any material weaknesses. <strong>ACTION: Request audited financial statements from BCC — 501(c)(3) organizations must provide them upon request under IRC §6104(d).</strong>
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-medium">32. IRS Audit History — ✅ RESOLVED (Session 11, Aug 1 2026)</strong><br>
+    <span class="badge badge-g">NO PUBLIC AUDIT HISTORY</span> — BCC holds an <strong>ACTIVE 501(c)(3)</strong> status (public charity, ruling year <strong>February 1979</strong>). No revocation, no suspension flags, no IRS Pub 78 delisting, and <strong>no record of any IRS examination/audit</strong> in public records. TEOS status confirmed via ProPublica Nonprofit Explorer + GuideStar/Candid. <em>Note: the automated TEOS API (irs_teos_bot.py) is Akamai-blocked (HTTP 403) from this residential network — manual web lookup works fine. The 2015 Community Care FWA audit was a state/Medicaid managed-care contract review, not an IRS examination.</em>
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-medium">33. Employee Reviews / Whistleblower Complaints — NOT SEARCHED</strong><br>
+    Former and current BCC employees may have flagged the same governance and financial issues internally or on platforms like Glassdoor, Indeed, and Comparably. Whistleblower complaints to oversight agencies would also be relevant. <strong>ACTION: Search Glassdoor, Indeed, and state whistleblower databases for BCC-related complaints.</strong>
+  </div>
+
+  <h3>Evidence &amp; Corroboration (cross-referenced — Session 19 gap review)</h3>
+
+  <div class="status-partial">
+    <strong class="gap-medium">48. Dec 6 2023 DDAP Complaint Outcome — ✅ RESOLVED (Session 22, Aug 1 2026)</strong><br>
+    <span class="badge badge-g">OUTCOME PULLED</span> — The PA D&amp;A Facility Surveys public portal record for <strong>Event 4V0D11 / Facility TQ8F6601</strong> (retrieved Aug 1, 2026) confirms a <strong>December 6, 2023 complaint investigation</strong> of BCC that closed with BCC found <strong>"in compliance"</strong> (within the scope of that investigation; portal logs the event as a telephone complaint investigation — supersedes earlier "on-site" phrasing). The investigation predates the MMJ complainant (gap #43), which remains un-investigated by DDAP. <strong>Evidence added:</strong> <a href="DDAP_INVESTIGATION_EVIDENCE.html" style="color:var(--a);">DDAP_INVESTIGATION_EVIDENCE.html</a> (created Session 22) — now cited in COMPLAINT_LETTER.html and COMPLAINT_AGENCY_LETTER.txt. <strong>REMAINING:</strong> the new MMJ/abstinence-only patient-rights complaint (DDAP_COMPLAINT.html) asks BPL to expand review to coercion/treatment-condition practices.</div>
+
+  <div class="status-open">
+    <strong class="gap-medium">49. Patient Testimony Collection — TO BE GATHERED</strong><br>
+    PATIENT_HARM_REPORT.html carries an explicit <strong>"PATIENT TESTIMONY — TO BE COLLECTED"</strong> section. Gap #43 (MMJ coercion) is the first such account — <em>single-complainant, not independently verified</em>. Corroborating testimony from other current/former BCC patients (jail MAT cohort, Treatment Court referrals, SUD clients) is needed to move the harm claims from "alleged" to "documented." <strong>ACTION: privacy-protected outreach to additional complainants; no identifiers attached to deliverables.</strong>
+  </div>
+</div>
+
+<!-- ====== LOW-PRIORITY GAPS ====== -->
+<h2>🔵 Low-Priority / Nice-to-Have — 12 Items Listed / 11 Open</h2>
+
+<div class="card-green">
+  <div class="status-open">
+    <strong class="gap-low">34. LinkedIn Profiles — AUTOMATED ACCESS BLOCKED</strong><br>
+    Manual LinkedIn searches for 🦉 Plageman, 🦉 Krause, Axford, Little, and undisclosed board members would likely reveal professional histories and connections that public search engines miss.
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-low">35. BCC Staff Directory — NOT PUBLISHED</strong><br>
+    BCC's website has no public staff directory. How many employees? What's the organizational structure? Who are the program directors? This opacity extends beyond the board to the entire organization.
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-low">36. 990 Schedule O (Narrative) — NOT EXTRACTED</strong><br>
+    Schedule O contains the narrative explanations for responses to Form 990 Part VI questions (governance, management, policies). This would explain BCC's answers about conflict of interest, whistleblower, and document retention policies — all marked "Yes" but without narrative context.
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-low">37. TPUC IRS Filings — BELOW PUBLIC THRESHOLD</strong><br>
+    The Trustees of the Pennsylvania Universalist Convention (where 🦉 Plageman is President) has no ProPublica profile — likely a small religious trust below the $50K public filing threshold. Its actual endowment size and investment manager are unknown.
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-low">38. BCC's Satellite Sites — INCOMPLETE INFORMATION</strong><br>
+    The Community Care lawsuit involved BCC's Chester County satellite. Does that satellite still operate? What other satellite sites exist? Are they separately licensed or audited?
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-low">39. Frances Malley (Former CEO) Transition — WHY?</strong><br>
+    Malley earned $123K-$137K as CEO through FY2019, then was replaced by Axford & Little in January 2019. Why did Malley leave? Was it retirement, termination, or something else? The leadership transition coincides with the beginning of the CCBHC-driven asset explosion.
+  </div>
+
+  <div class="status-partial">
+    <strong class="gap-low">40. PA Campaign Finance Records — PARTIAL (Session 16, Aug 1 2026)</strong><br>
+    Contributor-search URLs generated for all 11 board members + executives + 4 entities (Edward Jones, Furniture Soup, Robinson &amp; Associates, United Way) via campaignfinanceonline.pa.gov (browser-based portal — needs Playwright automation). No corporate PAC ties found to date. <strong>NEXT: browser-automate the contributor searches, cross-reference contributions to commissioners/council.</strong>
+  </div>
+
+  <div class="status-partial">
+    <strong class="gap-low">41. CFO/CEO Compensation — ✅ RECONCILED (Session 17, Aug 1 2026)</strong><br>
+    <span class="badge badge-g">RECONCILED — NO CONFLICT REMAINS</span> The apparent discrepancy was a <strong>base-vs-total comparison artifact</strong>. Local research files reported <em>total</em> compensation (CFO $149,792 &gt; CEO $145,432); ProPublica's summary panel displayed <em>base</em> compensation only (CEO $140,004 &gt; CFO $132,442). Both figures are correct. <strong>VERIFIED FY2025 Part VII (ProPublica rendered data):</strong> CEO Axford $140,004 base + $5,428 other = <strong>$145,432</strong> total; CFO Little $132,442 base + $17,350 other = <strong>$149,792</strong> total. On <em>total</em> compensation the CFO is still paid <strong>$4,360 more</strong> than the CEO, and the CFO's "other compensation" ($17,350) is <strong>3.2x</strong> the CEO's ($5,428). COMPLAINT_LETTER CONCERN 2 updated to the verified figures. <strong>REMAINING ACTION: Schedule J (compensation methodology) still not public — request directly from BCC.</strong> (Also: local total-assets figure $19.8M vs ProPublica $22.97M FY2025 — range framing applied to CONCERN 5.)
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-low">44. Insurance Mix Detail — NOT KNOWN</strong><br>
+    Of the $11.78M program service revenue, what's the breakdown between Medicaid, Medicare, dual-eligible, and commercial insurance? This would reveal dependency on specific payers and reimbursement rate risk.
+  </div>
+
+  <h3>Federal Compliance Sweeps (cross-referenced from EXCLUSION_INTEGRITY_SWEEP.html — Session 19 gap review)</h3>
+
+  <div class="status-open">
+    <strong class="gap-low">45. HHS Provider Relief Fund Reporting — STATUS UNCHECKED</strong><br>
+    The PRF sweep (taggs.hhs.gov CSV) confirmed exclusion status, but <strong>BCC's PRF reporting/return compliance was never pulled</strong>. If BCC received PRF funds and failed to report or return per HHS terms, that is itself a compliance gap. <strong>ACTION: pull BCC's PRF reporting status from the HHS PRF reporting portal.</strong>
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-low">46. SAM.gov Entity Registration &amp; Exclusion — NOT VERIFIED</strong><br>
+    Manual 10-minute check pending: confirm on sam.gov that (1) BCC has <strong>no active exclusion/debarment record</strong> and (2) its <strong>UEI/DUNS entity registration is ACTIVE</strong>. A registration lapse would itself be a federal-award compliance gap under 2 CFR Part 25. <strong>ACTION: sam.gov → "Berks Counseling Center" → Entity &amp; Exclusions tabs.</strong>
+  </div>
+
+  <div class="status-open">
+    <strong class="gap-low">47. HIPAA Breach Portal — NOT CHECKED</strong><br>
+    Verify BCC against the <strong>HHS Breach Portal</strong> for any large-breach report (500+ individuals). Expected yield is low — most breaches at this scale are hospital/health-system events — but the check closes the gap definitively. <strong>ACTION: search HHS OCR breach portal for "Berks Counseling Center".</strong>
+  </div>
+</div>
+
+<!-- ====== BLOCKED METHODS ====== -->
+<h2>🚫 Permanently Blocked Investigative Methods — 7 Channels</h2>
+
+<div class="card-red">
+  <p style="color:#8b949e;margin-bottom:12px;">These methods were attempted and permanently failed. They won't yield results without legal compulsion or insider access.</p>
+  <table>
+    <tr><th>#</th><th>Method</th><th>Reason Blocked</th><th>Workaround?</th></tr>
+    <tr><td>1</td><td>Schedule B via ProPublica</td><td>IRS-restricted — redacted by law in public 990 filings</td><td>Request directly from BCC</td></tr>
+    <tr><td>2</td><td>Schedule J via ProPublica</td><td>Compensation methodology section not included in ProPublica e-files</td><td>Request directly from BCC</td></tr>
+    <tr><td>3</td><td>PA BCO-10 Filings</td><td>State charity database returns 404 for EIN-based searches</td><td>Contact PA Dept of State directly</td></tr>
+    <tr><td>4</td><td>Edward Jones API</td><td>Geoblocked — returns 301 redirects</td><td>Manual EJ advisor search (done: Plageman confirmed)</td></tr>
+    <tr><td>5</td><td>LinkedIn Automated Access</td><td>Anti-bot protection blocks automated scraping</td><td>Manual browser-based LinkedIn searches</td></tr>
+    <tr><td>6</td><td>BCC Investment Policy</td><td>Not published on website or in any public filing</td><td>COI request letter includes this</td></tr>
+    <tr><td>7</td><td>PA Dept of Banking Filings</td><td>No BCC-specific filings exist — nonprofits not regulated by Banking</td><td>N/A — wrong regulator</td></tr>
+  </table>
+</div>
+
+<!-- ====== COMPLETED vs INCOMPLETE ====== -->
+<h2>✅ What IS Complete — Investigation Achievements</h2>
+
+<div class="card-green">
+  <p style="color:#8b949e;margin-bottom:12px;">To put the gaps in context, here's what the investigation HAS accomplished:</p>
+  <table>
+    <tr><th>Area</th><th>Completed</th><th>Remaining</th></tr>
+    <tr><td><strong>Form 990 Review</strong></td><td>FY2017–FY2025 (9 years), all parts</td><td>FY2022 worm analysis, FY2026 filing</td></tr>
+    <tr><td><strong>Board Roster</strong></td><td>9/9 members identified, 8/9 employers confirmed (Sessions 11–12)</td><td>1 employer unconfirmed (Brooks)</td></tr>
+    <tr><td><strong>Schedule D</strong></td><td>$10.48M public securities confirmed</td><td>Individual holdings unknown</td></tr>
+    <tr><td><strong>Schedule L</strong></td><td>All-NO confirmed — no related-party disclosures</td><td>Whether this is accurate</td></tr>
+    <tr><td><strong>FINRA BrokerCheck</strong></td><td>Plageman (#5964768) — clean record. Bromley — inactive.</td><td>None remaining</td></tr>
+    <tr><td><strong>Funding Sources</strong></td><td>Federal, state, county, private mapped</td><td>Exact contract amounts, donor identities</td></tr>
+    <tr><td><strong>Email Contacts</strong></td><td>17+ confirmed addresses, SMTP verified 2</td><td>15 unverified, commissioners no direct email</td></tr>
+    <tr><td><strong>Lawsuit</strong></td><td>898 MDA 2017 — BCC won on procedure</td><td>Substantive findings, current compliance status</td></tr>
+    <tr><td><strong>CCBHC Growth</strong></td><td>FY2020→2021 $6.3M jump explained</td><td>Sustainability of the model</td></tr>
+    <tr><td><strong>CFO Compensation</strong></td><td>23.4x growth, exceeds CEO documented</td><td>"Other comp" breakdown, Schedule J</td></tr>
+    <tr><td><strong>Donor Reconstruction</strong></td><td>8 institutional funders, $7.4M+ value</td><td>Individual donors, Schedule B</td></tr>
+    <tr><td><strong>Worm Fleet Analysis</strong></td><td>6-metric extraction, 5-year z-scores</td><td>FY2022 gap, governance audit</td></tr>
+  </table>
+</div>
+
+<!-- ====== IMMEDIATE NEXT ACTIONS ====== -->
+<h2>⚡ Immediate Next Actions — Priority Order</h2>
+
+<div class="card-red">
+  <p style="color:var(--r);font-weight:700;font-size:1.1rem;margin-bottom:12px;">To move this investigation forward, execute in this order:</p>
+
+  <table>
+    <tr><th style="width:30px;">#</th><th>Action</th><th>Estimated Effort</th><th>Impact</th></tr>
+    <tr style="background:#2d1010;">
+      <td><strong>1</strong></td>
+      <td><strong>SEND the COI Request Letter</strong> — COI_REQUEST_LETTER.html is ready. 4 verified addresses. This triggers BCC's legal obligation to respond.</td>
+      <td>10 minutes</td>
+      <td class="gap-critical">CRITICAL</td>
+    </tr>
+    <tr style="background:#2d1010;">
+      <td><strong>2</strong></td>
+      <td><strong>Contact Herbein + Company</strong> — Ask the auditor: does Edward Jones manage the portfolio? Were there competitive bids? Are there any related-party concerns?</td>
+      <td>1 hour</td>
+      <td class="gap-critical">CRITICAL</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>SEND the Complaint Letter</strong> to all 7 city council members (emails confirmed) + BCC board (4 verified addresses). <strong>Note:</strong> Commissioners have NO direct emails — use web contact forms or send via commissioners@countyofberks.com and follow up by mail to 633 Court Street, 13th Floor, Reading PA 19601.</td>
+      <td>30 minutes</td>
+      <td class="gap-high">HIGH</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>File PA Right-to-Know</strong> with Berks County for all BCC contracts, MOUs, payment records.</td>
+      <td>1-2 hours</td>
+      <td class="gap-high">HIGH</td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td><strong>Pull SAMHSA Grant Reports</strong> from HigherGov / USASpending.gov for H79SM088878. <span class="badge badge-g">✅ DONE (Session 12)</span> — see SAMHSA_PERFORMANCE_H79SM088878.html. Next: SAMHSA FOIA for actual GPRA/NOMS outcomes.</td>
+      <td>1 hour</td>
+      <td>MEDIUM</td>
+    </tr>
+    <tr>
+      <td><strong>6</strong></td>
+      <td><strong>Search Berks Register of Wills</strong> for estates naming BCC as beneficiary.</td>
+      <td>2-3 hours</td>
+      <td>MEDIUM</td>
+    </tr>
+    <tr>
+      <td><strong>7</strong></td>
+      <td><strong>Manual UJS Portal Search</strong> for ALL BCC court records (not just 898 MDA 2017).</td>
+      <td>2 hours</td>
+      <td>MEDIUM</td>
+    </tr>
+    <tr>
+      <td><strong>8</strong></td>
+      <td><strong>Manual LinkedIn Searches</strong> for all undisclosed board members.</td>
+      <td>1 hour</td>
+      <td>LOW</td>
+    </tr>
+    <tr style="background:#1b3826;">
+      <td><strong>9</strong></td>
+      <td><strong>Pull the Dec 6 2023 DDAP complaint outcome</strong> (gap #48) — <span class="badge badge-g">✅ DONE (Session 22)</span> — Event 4V0D11 pulled: BCC found "in compliance"; see DDAP_INVESTIGATION_EVIDENCE.html.</td>
+      <td>DONE</td>
+      <td class="gap-medium">RESOLVED</td>
+    </tr>
+    <tr>
+      <td><strong>10</strong></td>
+      <td><strong>Run federal compliance sweeps</strong> (new gaps #45–#47) — SAM.gov registration/exclusion, HHS PRF reporting, HIPAA breach portal.</td>
+      <td>20 minutes</td>
+      <td>LOW</td>
+    </tr>
+  </table>
+</div>
+
+<div style="margin-top:30px;padding:16px;background:#1d1530;border-radius:8px;text-align:center;font-size:0.85rem;">
+  📋 <a href="COMPLAINT_TODO_LIST.html" style="color:var(--a);">Complaint TODO</a> &nbsp;|&nbsp;
+  💰 <a href="FUNDING_REVIEW.html" style="color:var(--a);">Funding Review</a> &nbsp;|&nbsp;
+  👥 <a href="INVESTMENT_PEOPLE_REPORT.html" style="color:var(--a);">Investment & People</a> &nbsp;|&nbsp;
+  🕵️ <a href="DONOR_RECONSTRUCTION.html" style="color:var(--a);">Donor Recon</a> &nbsp;|&nbsp;
+  📜 <a href="CONSOLIDATED_SCROLL.html" style="color:var(--a);">Consolidated Scroll</a><br>
+  📧 <a href="COMPLAINT_LETTER.html" style="color:var(--a);">Complaint Letter</a> &nbsp;|&nbsp;
+  ⚖️ <a href="COI_REQUEST_LETTER.html" style="color:var(--a);">COI Request Letter</a> &nbsp;|&nbsp;
+  🪱 <a href="BCC_FINANCIAL_WORM_MAP.html" style="color:var(--a);">Worm Map</a><br>
+  🔍 <a href="PEOPLE_SEARCH_ALT.html" style="color:var(--a);">People Search</a> &nbsp;|&nbsp;
+  🏛️ <a href="LEGISLATIVE_COMMITTEES.html" style="color:var(--a);">Legislative Committees</a> &nbsp;|&nbsp;
+  📰 <a href="MEDIA_OUTREACH.html" style="color:var(--a);">Media Outreach</a> &nbsp;|&nbsp;
+  📊 <a href="SAMHSA_PERFORMANCE_H79SM088878.html" style="color:var(--a);">SAMHSA Grant Performance</a> &nbsp;|&nbsp;
+  🏘️ <a href="BCC_PROPERTY_OWNERSHIP.html" style="color:var(--a);">Property Ownership</a><br>
+  🕵️ <a href="DEEP_DIVE_HARM.html" style="color:var(--a);">Deep Dive — Harm &amp; People</a> &nbsp;|&nbsp;
+  ⚖️ <a href="COMPLIANCE_SELF_DEALING_ANGLES.html" style="color:var(--a);">Compliance &amp; Self-Dealing Angles</a><br>
+  🕵️ <a href="LEGAL_OVERSIGHT_ANGLE.html" style="color:var(--a);">Lack of Legal Oversight — 10 Single Audits</a><br>
+  🌿 <a href="MMJ_PAROLE_RIGHTS.html" style="color:var(--a);">MMJ &amp; Parole Rights</a><br>
+  49 gaps identified — 5 critical, 11 high, 15 medium, 11 low (42 open / 7 resolved). Top priority: Send COI request + confirm investment manager.
+</div>
+
+</div><!-- /container -->
+</div><!-- /scroll-container -->
+
+<div id="scroll-indicator" style="position:fixed;bottom:40px;left:50%;transform:translateX(-50%);color:var(--a);font-size:0.9rem;z-index:10;background:rgba(13,17,23,0.85);padding:8px 20px;border-radius:20px;border:1px solid var(--border);pointer-events:none;transition:opacity 0.5s;">▼ Auto-scrolling — Investigation Gaps Audit</div>
+
+<script>
+(function() {
+  const container = document.getElementById('scroll-container');
+  const indicator = document.getElementById('scroll-indicator');
+  const scrollSpeed = 0.07;
+  let lastTime = null;
+  let animating = true;
+  let paused = false;
+  container.addEventListener('mouseenter', () => { paused = true; indicator.textContent = '⏸ Paused — move mouse away to resume'; });
+  container.addEventListener('mouseleave', () => { paused = false; indicator.textContent = '▼ Auto-scrolling — Investigation Gaps Audit'; lastTime = null; });
+  function animate(timestamp) {
+    if (!animating) return;
+    if (!lastTime) lastTime = timestamp;
+    const elapsed = timestamp - lastTime;
+    lastTime = timestamp;
+    if (!paused && elapsed > 0 && elapsed < 200) {
+      container.scrollTop += scrollSpeed * elapsed;
+      const maxScroll = container.scrollHeight - container.clientHeight;
+      if (container.scrollTop >= maxScroll - 10) {
+        container.scrollTop = maxScroll;
+        indicator.textContent = '✅ Scroll complete — End of report';
+        animating = false;
+        return;
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+  setTimeout(() => { indicator.style.opacity = '0.6'; }, 5000);
+  requestAnimationFrame(animate);
+})();
+</script>
+
+</body>
+</html>

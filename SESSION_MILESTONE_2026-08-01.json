@@ -1,0 +1,175 @@
+{
+  "session_date": "2026-08-01T01:20:11.420105",
+  "session": "August 1, 2026",
+  "documents": {
+    "COMPLAINT_TODO_LIST.html": {
+      "owls_root": 22,
+      "owls_facebook": 22,
+      "synced": true,
+      "size_kb": 78.7,
+      "modified": "2026-08-01T00:56:39.468631"
+    },
+    "PATIENT_HARM_REPORT.html": {
+      "owls_root": 11,
+      "owls_facebook": 11,
+      "synced": true,
+      "size_kb": 35.3,
+      "modified": "2026-08-01T01:13:22.825024"
+    },
+    "FUNDING_REVIEW.html": {
+      "owls_root": 14,
+      "owls_facebook": 14,
+      "synced": true,
+      "size_kb": 31.1,
+      "modified": "2026-08-01T00:56:27.686788"
+    },
+    "INVESTMENT_PEOPLE_REPORT.html": {
+      "owls_root": 24,
+      "owls_facebook": 24,
+      "synced": true,
+      "size_kb": 42.9,
+      "modified": "2026-08-01T00:56:27.686788"
+    },
+    "CONSOLIDATED_SCROLL.html": {
+      "owls_root": 12,
+      "owls_facebook": 12,
+      "synced": true,
+      "size_kb": 52.9,
+      "modified": "2026-08-01T00:14:31.577626"
+    },
+    "BCC_FINANCIAL_WORM_MAP.html": {
+      "owls_root": 7,
+      "owls_facebook": 7,
+      "synced": true,
+      "size_kb": 42.0,
+      "modified": "2026-08-01T00:25:42.590343"
+    },
+    "COMPLAINT_LETTER.html": {
+      "owls_root": 4,
+      "owls_facebook": 4,
+      "synced": true,
+      "size_kb": 12.1,
+      "modified": "2026-08-01T00:25:42.592218"
+    },
+    "COI_REQUEST_LETTER.html": {
+      "owls_root": 5,
+      "owls_facebook": 5,
+      "synced": true,
+      "size_kb": 14.8,
+      "modified": "2026-08-01T00:25:42.592218"
+    },
+    "SCROLL_DEEPDIVE.html": {
+      "owls_root": 1,
+      "owls_facebook": 1,
+      "synced": true,
+      "size_kb": 18.4,
+      "modified": "2026-08-01T00:07:21.349452"
+    },
+    "DONOR_RECONSTRUCTION.html": {
+      "owls_root": 3,
+      "owls_facebook": 3,
+      "synced": true,
+      "size_kb": 18.6,
+      "modified": "2026-08-01T00:33:13.157552"
+    },
+    "PEOPLE_NETWORK_CARD.html": {
+      "owls_root": 3,
+      "owls_facebook": 3,
+      "synced": true,
+      "size_kb": 10.6,
+      "modified": "2026-08-01T00:33:13.164169"
+    },
+    "INVESTIGATION_GAPS.html": {
+      "owls_root": 9,
+      "owls_facebook": 9,
+      "synced": true,
+      "size_kb": 32.1,
+      "modified": "2026-08-01T00:37:50.649552"
+    },
+    "FORENSIC_EXTRACTION_BLUEPRINT.html": {
+      "owls_root": 0,
+      "owls_facebook": 0,
+      "synced": true,
+      "size_kb": 38.0,
+      "modified": "2026-07-31T23:43:53.356607"
+    },
+    "PEOPLE_NETWORK_SCROLL.html": {
+      "owls_root": 3,
+      "owls_facebook": 3,
+      "synced": true,
+      "size_kb": 16.0,
+      "modified": "2026-08-01T00:38:52.807123"
+    },
+    "SCROLL_RECORD.html": {
+      "owls_root": 5,
+      "owls_facebook": 5,
+      "synced": true,
+      "size_kb": 30.5,
+      "modified": "2026-08-01T00:38:52.807123"
+    }
+  },
+  "forensic_scripts": {
+    "usaspending_api.py": {
+      "exists": true,
+      "size_kb": 8.1,
+      "modified": "2026-08-01T01:09:51.994717"
+    },
+    "irs_teos_bot.py": {
+      "exists": true,
+      "size_kb": 6.9,
+      "modified": "2026-08-01T01:09:30.523425"
+    },
+    "pa_campaign_finance.py": {
+      "exists": true,
+      "size_kb": 6.6,
+      "modified": "2026-08-01T01:08:16.327239"
+    },
+    "ujs_portal/ujs_captcha_breaker.py": {
+      "exists": true,
+      "size_kb": 12.3,
+      "modified": "2026-08-01T01:19:32.358989"
+    },
+    "schedule_b_unredactor.sh": {
+      "exists": true,
+      "size_kb": 8.3,
+      "modified": "2026-08-01T01:19:32.375101"
+    },
+    "uaa_foundation.marker": {
+      "exists": false,
+      "size_kb": 0
+    }
+  },
+  "skills": {
+    "bcc-investigation": {
+      "exists": true,
+      "size_kb": 3.3,
+      "modified": "2026-08-01T01:16:48.770748"
+    },
+    "bcc-forensic-extraction": {
+      "exists": true,
+      "size_kb": 2.2,
+      "modified": "2026-08-01T01:17:26.540511"
+    },
+    "bcc-owl-framework": {
+      "exists": true,
+      "size_kb": 2.3,
+      "modified": "2026-08-01T01:17:26.556482"
+    },
+    "bcc-legal-framework": {
+      "exists": true,
+      "size_kb": 2.7,
+      "modified": "2026-08-01T01:17:26.556482"
+    }
+  },
+  "summary": {
+    "total_owls": 123,
+    "total_documents": 15,
+    "total_size_kb": 474.0,
+    "facebook_html": 15,
+    "facebook_mp4": 7,
+    "tiktok_mp4": 39,
+    "board_confirmed": "7/9",
+    "board_owls": 5,
+    "board_undisclosed": 2
+  }
+}

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
+<title>BCC Investment People Network — Scrolling Video</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; --p:#d2a8ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  #scroll-container {
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  #scroll-container::-webkit-scrollbar { display: none; }
+
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 80px 300px 80px;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 100px 0 60px;
+    border-bottom: 2px solid var(--r);
+    margin-bottom: 60px;
+  }
+  .header h1 { font-size: 3rem; color: var(--r); letter-spacing: 2px; margin-bottom: 12px; }
+  .header .sub { font-size: 1.2rem; color: #8b949e; }
+
+  /* NODE CARDS — stacked vertically */
+  .node {
+    background: #161b22;
+    border-radius: 12px;
+    padding: 40px 48px;
+    margin-bottom: 40px;
+    border: 2px solid var(--border);
+    position: relative;
+  }
+  .node.plageman { border-color: var(--r); background: linear-gradient(135deg, #1a1015 0%, #161b22 100%); }
+  .node.krause { border-color: var(--y); }
+  .node.herbein { border-color: var(--p); }
+  .node.portfolio { border-color: var(--g); background: linear-gradient(135deg, #101a15 0%, #161b22 100%); }
+
+  .node-title { font-size: 1.8rem; font-weight: 700; margin-bottom: 6px; }
+  .node.plageman .node-title { color: var(--r); }
+  .node.krause .node-title { color: var(--y); }
+  .node.herbein .node-title { color: var(--p); }
+  .node.portfolio .node-title { color: var(--g); }
+
+  .node-sub { font-size: 1.05rem; color: #8b949e; margin-bottom: 20px; }
+
+  table { width:100%; border-collapse:collapse; margin:16px 0; font-size: 1.05rem; }
+  table td { padding: 10px 16px; border-bottom: 1px solid #2a2e35; }
+  table td:first-child { color: #8b949e; width: 25%; font-weight: 500; }
+  table td:last-child { color: var(--text); font-weight: 600; }
+
+  .org-list {
+    margin-top: 20px; padding: 16px 20px;
+    background: #1a1015; border-radius: 10px;
+    border-left: 4px solid var(--r);
+  }
+  .org-list .org-row {
+    display: flex; align-items: center; gap: 16px;
+    padding: 10px 0; border-bottom: 1px solid #2a2025;
+    font-size: 1.1rem;
+  }
+  .org-list .org-row:last-child { border-bottom: none; }
+  .org-name { font-weight: 700; color: var(--h); }
+  .org-role { color: var(--r); font-weight: 600; }
+  .org-amount { color: var(--g); margin-left: auto; }
+
+  .big-stat { font-size: 4rem; font-weight: 900; text-align: center; margin: 16px 0; }
+  .big-stat.green { color: var(--g); }
+
+  .highlight-line {
+    padding: 14px 20px; margin: 14px 0;
+    border-radius: 8px; border-left: 4px solid var(--y);
+    background: #1a1510;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .highlight-line.red { border-left-color: var(--r); background: #1a1015; }
+
+  .disclosure-stamp {
+    position: absolute; top: 20px; right: 24px;
+    font-size: 0.95rem; font-weight: 700;
+    padding: 6px 18px; border-radius: 20px;
+  }
+  .disclosure-stamp.clean { background: #1b3826; color: var(--g); border: 1px solid var(--g); }
+  .disclosure-stamp.warn { background: #2d1b00; color: var(--y); border: 1px solid var(--y); }
+
+  /* FOOTER */
+  .footer-strip {
+    display: flex; gap: 20px; flex-wrap: wrap;
+    justify-content: center; align-items: center;
+    margin-top: 60px; padding: 30px 0;
+    border-top: 2px solid var(--r);
+  }
+  .footer-stat {
+    text-align: center; padding: 14px 24px;
+    background: #21262d; border-radius: 10px;
+  }
+  .footer-stat .num { font-size: 1.5rem; font-weight: 800; color: var(--a); }
+  .footer-stat .lbl { font-size: 0.8rem; color: #8b949e; margin-top: 4px; }
+
+  /* SCROLL INDICATOR */
+  #scroll-indicator {
+    position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
+    color: var(--a); font-size: 1rem; z-index: 10;
+    background: rgba(13,17,23,0.85); padding: 10px 24px;
+    border-radius: 20px; border: 1px solid var(--border);
+    pointer-events: none; transition: opacity 0.5s;
+  }
+
+  /* SECTION HEADER */
+  .section-header {
+    text-align: center;
+    margin: 60px 0 30px;
+  }
+  .section-header h2 {
+    font-size: 2rem; color: var(--a);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<div id="scroll-container">
+<div class="content">
+
+<!-- TITLE -->
+<div class="header">
+  <h1>🏦 BCC INVESTMENT GOVERNANCE</h1>
+  <div class="sub">People Network — Executive Summary</div>
+  <div class="sub" style="font-size:1rem;color:var(--p);margin-top:6px;">Berks Counseling Center (EIN 23-2043478) &nbsp;|&nbsp; $19.8M Total Assets &nbsp;|&nbsp; July 31, 2026</div>
+</div>
+
+<!-- NODE 1: PLAGEMAN -->
+<div class="section-header"><h2>👤 Board Chair — Joseph Plageman Jr.</h2></div>
+<div class="node plageman">
+  <div class="node-title">🦉 Joseph Plageman Jr. — Board Chair</div>
+  <div class="node-sub">Edward Jones Financial Advisor &nbsp;|&nbsp; 918 Penn Ave, Wyomissing PA</div>
+  <div class="disclosure-stamp clean">✅ ZERO FINRA Disclosures</div>
+
+  <table>
+    <tr><td>FINRA CRD</td><td style="font-size:1.3rem;color:var(--a);">#5964768</td></tr>
+    <tr><td>Licenses</td><td>Series 66/7 (no CFP/CFA)</td></tr>
+    <tr><td>Tenure</td><td>14 years at Edward Jones (since 2011)</td></tr>
+    <tr><td>BCC Role</td><td>Board Chair — over a decade</td></tr>
+    <tr><td>BCC Comp</td><td style="color:var(--g);">$0 — Independent board member</td></tr>
+    <tr><td>Disclosures</td><td style="color:var(--g);">NONE — customer, regulatory, criminal, civil, liens, bankruptcies: ALL ZERO</td></tr>
+    <tr><td>BrokerCheck</td><td><a href="https://brokercheck.finra.org/individual/summary/5964768" target="_blank" style="color:var(--a);">brokercheck.finra.org/individual/summary/5964768</a></td></tr>
+  </table>
+
+  <div class="org-list">
+    <div class="org-row">
+      <span class="org-name">🏥 Berks Counseling Center</span>
+      <span class="org-role">Board Chair</span>
+      <span class="org-amount">Portfolio: $10.48M</span>
+    </div>
+    <div class="org-row">
+      <span class="org-name">⛪ PA Universalist Convention (TPUC)</span>
+      <span class="org-role">President</span>
+      <span class="org-amount">Endowment: undisclosed</span>
+    </div>
+  </div>
+
+  <div class="highlight-line red" style="margin-top:20px;">        🦉 <strong>DUAL-BOARD PATTERN:</strong> Presides over TWO organizations with investment portfolios. Both may be managed by Edward Jones — his employer. Schedule L reports ZERO related-party transactions at BCC.
+  </div>
+</div>
+
+<!-- NODE 2: KRAUSE -->
+<div class="section-header"><h2>👩‍💼 Board Director — Linda Krause</h2></div>
+<div class="node krause">
+  <div class="node-title">🦉 Linda Krause — Board Director</div>
+  <div class="node-sub">Edward Jones &nbsp;|&nbsp; Sr. Branch Office Administrator &nbsp;|&nbsp; NOT a Registered Advisor</div>
+  <div class="disclosure-stamp warn">⚠ NOT Registered</div>
+
+  <table>
+    <tr><td>Role at EJ</td><td style="color:var(--y);">Sr. Branch Office Administrator</td></tr>
+    <tr><td>FINRA CRD</td><td style="color:var(--y);">NONE — not a registered rep</td></tr>
+    <tr><td>Licenses</td><td style="color:var(--y);">NONE — admin only (no securities licenses)</td></tr>
+    <tr><td>Team</td><td>Works directly on Joseph Plageman's team</td></tr>
+    <tr><td>BCC Comp</td><td style="color:var(--g);">$0 — Independent</td></tr>
+  </table>
+
+  <div class="highlight-line" style="margin-top:6px;">
+    Together, Plageman + Krause = <strong>22%</strong> of BCC's 9-member board from the same Edward Jones office at 918 Penn Ave, Wyomissing PA.
+  </div>
+
+  <div class="highlight-line">
+    As Sr. Branch Office Administrator, Krause handles client account processing and would be <strong>aware of all Edward Jones-BCC transactions</strong>. Her financial influence is indirect (not an advisor) but her access to account information is direct.
+  </div>
+</div>
+
+<!-- NODE 3: HERBEIN -->
+<div class="section-header"><h2>📋 Auditor — Herbein + Company</h2></div>
+<div class="node herbein">
+  <div class="node-title">Herbein + Company, Inc.</div>
+  <div class="node-sub">Independent Auditor & Tax Preparer &nbsp;|&nbsp; Reading, PA</div>
+
+  <table>
+    <tr><td>Lead CPA</td><td>Linda S. Himeback, CPA</td></tr>
+    <tr><td>Address</td><td>2763 Century Blvd, Reading PA 19610</td></tr>
+    <tr><td>Dual Role</td><td style="color:var(--y);">Tax Preparer (Form 990) + Independent Auditor (Financial Statements)</td></tr>
+    <tr><td>Firm</td><td>One of the largest CPA firms in Berks County — dedicated nonprofit practice</td></tr>
+    <tr><td>AICPA Rules</td><td>Permitted for non-issuers with separate engagement teams</td></tr>
+  </table>
+
+  <div class="highlight-line">
+    <strong>⚠ GOVERNANCE NOTE:</strong> Same firm both prepares the 990 (including Schedule D investment data and Schedule L disclosures) AND audits the financial statements. This is not illegal — but it means the firm reporting BCC's "NO" on all Schedule L questions is also verifying those answers during the audit. <strong>Who checks the checker?</strong>
+  </div>
+</div>
+
+<!-- NODE 4: PORTFOLIO -->
+<div class="section-header"><h2>📊 The Portfolio — Schedule D & L</h2></div>
+<div class="node portfolio">
+  <div class="node-title">The Portfolio — $10,479,575</div>
+  <div class="node-sub">IRS Form 990 Schedule D (FY2025) &nbsp;|&nbsp; ProPublica E-File Viewer</div>
+
+  <div class="big-stat green">$10,479,575</div>
+  <div style="text-align:center;color:#8b949e;margin-top:-10px;margin-bottom:20px;font-size:1.1rem;">Publicly Traded Securities — 53% of $19.8M Net Assets</div>
+
+  <table>
+    <tr><td>Beginning → End of Year</td><td style="color:var(--a);font-size:1.1rem;">$9,642,751 → <strong style="color:var(--g);">$10,479,575</strong> (+$836,824)</td></tr>
+    <tr><td>Investment Income</td><td style="color:var(--g);font-size:1.1rem;">$446,033 (~4.4% portfolio yield)</td></tr>
+    <tr><td>5-Year Growth</td><td style="color:var(--r);font-size:1.1rem;">11.13x ($40,067 → $446,033)</td></tr>
+    <tr><td>Bonds / Gov't / Real Estate</td><td style="color:var(--r);">$0 — ALL ZERO. 100% public securities.</td></tr>
+  </table>
+
+  <div class="highlight-line red">
+    <strong>🚨 Schedule L — BCC Claims ZERO Related-Party Transactions:</strong> IRS Form 990 Part IV, lines 25a-28 — BCC answered <strong>NO</strong> to ALL four questions (excess benefits, loans, grants, and business transactions with interested persons). If Edward Jones manages this $10.48M portfolio, standard management fees would constitute a business transaction requiring Schedule L disclosure.
+  </div>
+
+  <div class="highlight-line">
+    <strong>🔮 INVESTMENT MANAGER — Unconfirmed:</strong> Custodian is likely Pershing LLC (BNY Mellon) — Edward Jones' standard clearing firm. Manager is assumed to be Edward Jones based on dual board presence (Plageman as Chair + Krause as Director = 22% of board), but this has NOT been independently confirmed. The portfolio's <strong>100% public securities concentration</strong> with zero bonds or alternatives is unusual for a $19.8M nonprofit.
+  </div>
+</div>
+
+<!-- TPUC PATTERN -->
+<div class="section-header"><h2>⛪ TPUC — The Second Organization</h2></div>
+<div class="node" style="border-color: var(--y);">
+  <div class="node-title" style="color:var(--y);">Trustees of the Pennsylvania Universalist Convention</div>
+  <div class="node-sub">Est. 1831 &nbsp;|&nbsp; Plageman is <strong style="color:var(--r);">PRESIDENT</strong> &nbsp;|&nbsp; Elected April 2026</div>
+
+  <table>
+    <tr><td>Function</td><td>Endowment / trust fund manager — distributes interest to 6 member Universalist congregations across PA</td></tr>
+    <tr><td>Financial Committee</td><td style="color:var(--y);">Active Financial Committee overseeing the trust portfolio</td></tr>
+    <tr><td>Financial Advisor</td><td style="color:var(--g);">Richard Bromley Jr. — <strong>INACTIVE FINRA (source ID #2395729).</strong> 23.7 years in industry, currently ZERO approved registrations, ZERO current employments. <strong>NOT at Edward Jones.</strong> The "three-person EJ network" theory is DISPROVEN.</td></tr>
+    <tr><td>Member Churches</td><td>Reading, Athens-Sheshequin, Brooklyn/Kingsley, Girard, Mt. Airy (Philadelphia), Smithton</td></tr>
+  </table>
+
+  <div class="highlight-line red" style="margin-top:16px;">
+    <strong>⚠ PATTERN IDENTIFIED:</strong> Plageman holds leadership at TWO organizations with investment portfolios — BCC (Board Chair, $10.48M) and TPUC (President, endowment manager). In both cases, he is a registered Edward Jones financial advisor. If Edward Jones manages either portfolio, Plageman presides over organizations whose investment manager is his own employer. <strong>The same potential conflict appears at both organizations.</strong>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-strip">
+  <div class="footer-stat"><div class="num">CRD #5964768</div><div class="lbl">FINRA BrokerCheck</div></div>
+  <div class="footer-stat"><div class="num" style="color:var(--g);">0</div><div class="lbl">FINRA Disclosures</div></div>
+  <div class="footer-stat"><div class="num">$19.8M</div><div class="lbl">Total Assets</div></div>
+  <div class="footer-stat"><div class="num" style="color:var(--g);">$10.48M</div><div class="lbl">Public Securities</div></div>
+  <div class="footer-stat"><div class="num" style="color:var(--y);">22%</div><div class="lbl">EJ Board Control</div></div>
+  <div class="footer-stat"><div class="num" style="color:var(--y);">2</div><div class="lbl">Orgs Led by Plageman</div></div>
+  <div class="footer-stat"><div class="num" style="color:var(--r);">0</div><div class="lbl">Schedule L Disclosures</div></div>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:#8b949e;font-size:1rem;">
+  Research completed July 31, 2026 &nbsp;|&nbsp; Berks County, Pennsylvania &nbsp;|&nbsp; 12 OSINT Methods<br>
+  FINRA BrokerCheck &nbsp;|&nbsp; ProPublica Schedules D & L &nbsp;|&nbsp; Edward Jones Advisor Search
+</div>
+
+</div><!-- /content -->
+</div><!-- /scroll-container -->
+
+<!-- SCROLL INDICATOR -->
+<div id="scroll-indicator">▼ Auto-scrolling — Recording for Facebook (16:9)</div>
+
+<script>
+(function() {
+  const container = document.getElementById('scroll-container');
+  const indicator = document.getElementById('scroll-indicator');
+  const scrollSpeed = 0.07; // pixels per ms — steady readable pace
+  let lastTime = null;
+  let animating = false; // Start paused — show title first
+  let paused = false;
+
+  container.addEventListener('mouseenter', () => { paused = true; indicator.textContent = '⏸ Paused'; });
+  container.addEventListener('mouseleave', () => { paused = false; indicator.textContent = '▼ Auto-scrolling — Recording for Facebook (16:9)'; lastTime = null; });
+
+  function animate(timestamp) {
+    if (!animating) { requestAnimationFrame(animate); return; }
+    if (!lastTime) lastTime = timestamp;
+    
+    const elapsed = timestamp - lastTime;
+    lastTime = timestamp;
+    
+    if (!paused && elapsed > 0 && elapsed < 200) {
+      container.scrollTop += scrollSpeed * elapsed;
+      
+      const maxScroll = container.scrollHeight - container.clientHeight;
+      if (container.scrollTop >= maxScroll - 5) {
+        container.scrollTop = maxScroll;
+        indicator.textContent = '✅ Scroll complete — End of report';
+        indicator.style.opacity = '1';
+        animating = false;
+        return;
+      }
+    }
+    
+    requestAnimationFrame(animate);
+  }
+
+  // Start the animation loop immediately (renders the page)
+  requestAnimationFrame(animate);
+  
+  // After 3 seconds of showing the title, begin auto-scrolling
+  setTimeout(() => { 
+    animating = true;
+    indicator.style.opacity = '0.6';
+  }, 3000);
+})();
+</script>
+
+</body>
+</html>

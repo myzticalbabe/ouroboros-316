@@ -1,0 +1,119 @@
+================================================================================
+FORMAL COMPLAINT — BERKS COUNSELING CENTER (EIN 23-2043478)
+Plain-Text Version for Agency Submission
+Prepared August 1, 2026
+================================================================================
+
+To the Berks County Commissioners, Reading City Council, and Berks Counseling
+Center Leadership:
+
+I am writing to formally request review and investigation of Berks Counseling
+Center (BCC), a 501(c)(3) nonprofit organization (EIN 23-2043478) located at
+645 Penn Street, Reading, PA 19601. As a $12.5 million organization that
+derives 94% of its revenue from government sources — primarily Medicaid,
+Medicare, a $3.94 million federal SAMHSA grant, and federal HUD Continuum of
+Care grants — BCC serves some of the most vulnerable residents of Berks
+County. With that public funding comes a responsibility for transparency and
+accountability.
+
+After extensive review of BCC's IRS Form 990 filings (FY2018-2025), federal
+grant databases, county budget documents, and public litigation records, I
+have identified the following concerns that warrant investigation:
+
+CONCERN 1: $796,924 Operating Deficit (FY2025)
+BCC's revenue has declined $1.41 million (10.1%) over two years, while
+expenses grew $1.04 million (8.5%), flipping a $1.65 million surplus into a
+$796,924 deficit. This is the first deficit in at least 7 years.
+
+CONCERN 2: Executive Compensation — CFO Paid More Than CEO
+CEO Christine Axford: $140,004 base + $5,428 other = $145,432 total (FY2025)
+CFO Greg Little: $132,442 base + $17,350 other = $149,792 total (FY2025)
+The CFO is paid $4,360 more than the CEO. The CFO's "other compensation"
+($17,350) is 3.2x the CEO's ($5,428).
+
+CONCERN 3: No Program Spending Visibility
+All $11.68 million in program expenses are reported under a single program
+category. There is no breakdown between mental health services, substance use
+disorder treatment, crisis intervention, or community outreach.
+
+CONCERN 4: Above-Average Administrative Overhead
+Management and general expenses consume 12.0% ($1.59 million) of total
+spending — above the ~10% benchmark for behavioral health nonprofits.
+
+CONCERN 5: Potential Conflicts of Interest & Undisclosed Financial Relationships
+- Major donors are REDACTED in BCC's public 990 (Schedule B withheld)
+- Two board members (Joseph Plageman Jr., Chair, and Linda Krause) work for
+  Edward Jones Investments — BCC holds $10.48M in publicly traded securities
+  (Schedule D). Investment income grew 11x in 4 years ($40K to $446K).
+- Board member Missy Orlando works for United Way of Berks County, which
+  granted BCC ~$685,000.
+- Council Member Marcia Goodman-Hinnershitz serves as Director of Planning at
+  COCA, which provides pass-through funding for BCC's SUD programs.
+
+CONCERN 6: Board Treasurer's Consulting Firm — Verified Registered Entity
+John Robinson, BCC Board Treasurer, owns ROBINSON & ASSOCIATES, LLC — verified
+as an ACTIVE PA-registered entity (Entity ID #3967553, incorporated July 14,
+2010, Wyomissing PA 19610). BCC's Form 990 Schedule L reports ALL-NO
+related-party transactions, yet no verification exists that BCC has never
+contracted with or paid its own Treasurer's consulting firm.
+
+CONCERN 7: HUD Continuum of Care Leasing Compliance — 24 CFR §578.49
+BCC receives ~$500K-600K+ annually in HUD CoC grants for 8 supportive housing
+properties. Two "Leasing" components ($396K combined) are subject to 24 CFR
+§578.49, which PROHIBITS using CoC Leasing funds on grantee-owned units. BCC
+must demonstrate these units are third-party leased.
+
+ADDITIONAL FINDING: BCC Litigation History
+In 2015, BCC's managed care organization (Community Care Behavioral Health)
+conducted a Fraud, Waste & Abuse audit and attempted to retract $105,486 in
+Medicaid funds. BCC sued and won at the PA Superior Court (898 MDA 2017), with
+$81,704 in retractions cancelled on procedural grounds.
+
+ADDITIONAL FINDING: Prior DDAP Regulatory Scrutiny (Dec 6, 2023)
+On December 6, 2023, the PA Department of Drug and Alcohol Programs (DDAP)
+conducted a complaint investigation of BCC (Event 4V0D11, Facility TQ8F6601)
+and closed it with BCC found "in compliance" within the scope of that
+investigation. (Source: DDAP_INVESTIGATION_EVIDENCE.html — public portal
+record retrieved August 1, 2026.)
+
+FUNDING CONTEXT
+- Total Revenue (FY2025): $12,494,569
+- Program Service Revenue (Medicaid/Medicare/Insurance): $11,778,182 (94.3%)
+- SAMHSA CCBHC Grant #H79SM088878: $3,944,396 (awarded Sept 2023, through
+  Sept 2027)
+- Federal Award Inventory (corrected): 125 federal awards enumerated via
+  USASpending.gov
+- United Way Multi-Year: ~$685,000
+- Investment Income: $446,033 (FY2025) — 11x growth from $40,067 (FY2021)
+- HUD Supportive Housing: 8 properties, ~$500K-600K+/year
+
+REQUESTED ACTIONS
+1. A detailed program spending breakdown by service line.
+2. The unredacted Schedule B (major donors) and explanation of board
+   relationships with Edward Jones and United Way.
+3. A written explanation of the $796,924 deficit and a sustainability plan.
+4. Schedule J detail for executive compensation (CFO paid more than CEO).
+5. Public posting of all supervisory agency audit findings (past 5 years).
+6. Confirmation that BCC's Conflict of Interest Policy addresses the Edward
+   Jones and United Way board member relationships.
+7. Verification of whether BCC has ever contracted with or paid Robinson &
+   Associates, LLC.
+8. Lease agreements or ownership documentation for all 8 HUD CoC-funded
+   properties, with confirmation of 24 CFR §578.49 compliance.
+9. HUD e-snaps / CoC project component detail for the 8 properties.
+10. BCC's documented clinical justification for any abstinence-only treatment
+    mandate imposed on registered medical-marijuana patients.
+
+I look forward to your response within 30 days.
+
+Sincerely,
+[Your Name]
+[Your Email]
+[Your Phone]
+[Date]
+
+================================================================================
+NOTE: This is the plain-text agency version of COMPLAINT_LETTER.html.
+For the full HTML letter with email fields, copy buttons, and cross-references,
+see COMPLAINT_LETTER.html.
+================================================================================

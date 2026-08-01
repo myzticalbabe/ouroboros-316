@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BCC Investment People Network — Executive Summary</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; --p:#d2a8ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body {
+    width: 100%; min-height: 100vh;
+    overflow-y: auto; overflow-x: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+  }
+  body {
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 2vh 1.5vw;
+  }
+
+  .card {
+    width: 97vw; max-width: 1400px; min-height: 90vh;
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 1.5vh;
+    padding: 3vh 3.5vw;
+    display: flex; flex-direction: column;
+    gap: 2vh;
+  }
+
+  .header {
+    text-align: center;
+    border-bottom: 2px solid var(--r);
+    padding-bottom: 1.5vh;
+  }
+  .header h1 { font-size: clamp(1.2rem, 2.5vw, 2.4rem); color: var(--r); letter-spacing: 1px; }
+  .header .sub { font-size: clamp(0.7rem, 1.1vw, 1.1rem); color: #8b949e; margin-top: 0.5vh; }
+
+  /* 3-column grid: Plageman left (wider), Krause + Herbein center, Portfolio right */
+  .network-grid {
+    display: flex; gap: 1.5vw;
+  }
+
+  .col-left { flex: 2; display: flex; flex-direction: column; justify-content: flex-start; }
+  .col-mid  { flex: 1; display: flex; flex-direction: column; gap: 1.5vw; justify-content: flex-start; }
+  .col-right { flex: 1.4; display: flex; flex-direction: column; justify-content: flex-start; }
+
+  .node {
+    background: #21262d;
+    border-radius: 1.2vh;
+    padding: 2vh 1.8vw;
+    border: 2px solid var(--border);
+    position: relative;
+    display: flex; flex-direction: column;
+  }
+  .node.plageman { border-color: var(--r); background: linear-gradient(135deg, #1a1015 0%, #161b22 100%); }
+  .node.krause { border-color: var(--y); }
+  .node.herbein { border-color: var(--p); }
+  .node.portfolio { 
+    border-color: var(--g); 
+    background: linear-gradient(135deg, #101a15 0%, #161b22 100%);
+  }
+
+  .node-title { font-size: clamp(0.85rem, 1.3vw, 1.5rem); font-weight: 700; margin-bottom: 0.3vh; }
+  .node.plageman .node-title { color: var(--r); }
+  .node.krause .node-title { color: var(--y); }
+  .node.herbein .node-title { color: var(--p); }
+  .node.portfolio .node-title { color: var(--g); }
+
+  .node-sub { font-size: clamp(0.6rem, 0.85vw, 0.95rem); color: #8b949e; margin-bottom: 1.5vh; }
+
+  table { width:100%; border-collapse:collapse; font-size: clamp(0.55rem, 0.78vw, 0.88rem); }
+  table td { padding: 0.4vh 0.6vw; border-bottom: 1px solid #2a2e35; }
+  table td:first-child { color: #8b949e; width: 35%; font-weight: 500; }
+  table td:last-child { color: var(--text); font-weight: 600; }
+
+  .org-list {
+    margin-top: 1.5vh; padding: 1vh 1.2vw;
+    background: #1a1015; border-radius: 0.8vh;
+    border-left: 3px solid var(--r);
+  }
+  .org-list .org-row {
+    display: flex; align-items: center; gap: 0.8vw;
+    padding: 0.6vh 0; border-bottom: 1px solid #2a2025;
+    font-size: clamp(0.6rem, 0.82vw, 0.9rem);
+  }
+  .org-list .org-row:last-child { border-bottom: none; }
+  .org-name { font-weight: 700; color: var(--h); }
+  .org-role { color: var(--r); font-weight: 600; }
+  .org-amount { color: var(--g); margin-left: auto; }
+
+  .big-stat { font-size: clamp(1.5rem, 3vw, 2.8rem); font-weight: 900; text-align: center; margin: 1vh 0; }
+  .big-stat.green { color: var(--g); }
+
+  .highlight-line {
+    padding: 0.8vh 1vw; margin: 0.8vh 0;
+    border-radius: 0.6vh; border-left: 3px solid var(--y);
+    background: #1a1510;
+    font-size: clamp(0.55rem, 0.72vw, 0.8rem);
+    line-height: 1.35;
+  }
+
+  .footer-strip {
+    display: flex; gap: 1vw; flex-wrap: wrap;
+    justify-content: center; align-items: center;
+  }
+  .footer-stat {
+    text-align: center; padding: 0.8vh 1.4vw;
+    background: #21262d; border-radius: 0.8vh;
+  }
+  .footer-stat .num { font-size: clamp(0.8rem, 1.3vw, 1.5rem); font-weight: 800; color: var(--a); }
+  .footer-stat .lbl { font-size: clamp(0.5rem, 0.6vw, 0.75rem); color: #8b949e; margin-top: 0.2vh; }
+
+  .disclosure-stamp {
+    position: absolute; top: 1.2vh; right: 1.2vw;
+    font-size: clamp(0.55rem, 0.72vw, 0.8rem); font-weight: 700;
+    padding: 0.4vh 1vw; border-radius: 2vh;
+  }
+  .disclosure-stamp.clean { background: #1b3826; color: var(--g); border: 1px solid var(--g); }
+  .disclosure-stamp.warn { background: #2d1b00; color: var(--y); border: 1px solid var(--y); }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <div class="header">
+    <h1>🏦 BCC INVESTMENT GOVERNANCE — People Network</h1>
+    <div class="sub">Berks Counseling Center (EIN 23-2043478) &nbsp;|&nbsp; $19.8M Total Assets &nbsp;|&nbsp; Investigation: July 31, 2026</div>
+  </div>
+
+  <div class="network-grid">
+
+    <!-- LEFT COLUMN: Plageman (full height) -->
+    <div class="col-left">
+      <div class="node plageman">
+        <div class="node-title">🦉 Joseph Plageman Jr. — Board Chair</div>
+        <div class="node-sub">Edward Jones Financial Advisor &nbsp;|&nbsp; 918 Penn Ave, Wyomissing PA</div>
+        <div class="disclosure-stamp clean">✅ ZERO FINRA Disclosures</div>
+
+        <table>
+          <tr><td>FINRA CRD</td><td>#5964768</td></tr>
+          <tr><td>Licenses</td><td>Series 66/7 (no CFP/CFA)</td></tr>
+          <tr><td>Tenure</td><td>14 years at Edward Jones (since 2011)</td></tr>
+          <tr><td>BCC Role</td><td>Board Chair — over a decade</td></tr>
+          <tr><td>BCC Comp</td><td style="color:var(--g);">$0 — Independent board member</td></tr>
+          <tr><td>Disclosures</td><td style="color:var(--g);">NONE — customer, regulatory, criminal, civil, liens, bankruptcies: ALL ZERO</td></tr>
+        </table>
+
+        <div class="org-list">
+          <div class="org-row">
+            <span class="org-name">🏥 Berks Counseling Center</span>
+            <span class="org-role">Board Chair</span>
+            <span class="org-amount">Portfolio: $10.48M</span>
+          </div>
+          <div class="org-row">
+            <span class="org-name">⛪ PA Universalist Convention (TPUC)</span>
+            <span class="org-role">President</span>
+            <span class="org-amount">Endownment: undisclosed</span>
+          </div>
+        </div>
+
+        <div class="highlight-line" style="margin-top:auto;">
+          🦉 <strong>DUAL-BOARD PATTERN:</strong> Presides over TWO organizations with investment portfolios. Both may be managed by Edward Jones — his employer. Schedule L reports ZERO related-party transactions at BCC.
+        </div>
+      </div>
+    </div>
+
+    <!-- MIDDLE COLUMN: Krause + Herbein (stacked) -->
+    <div class="col-mid">
+      <div class="node krause">
+        <div class="node-title">🦉 Linda Krause</div>
+        <div class="node-sub">Board Director &nbsp;|&nbsp; Edward Jones Sr. Branch Office Admin</div>
+        <div class="disclosure-stamp warn">⚠ NOT Registered</div>
+
+        <table>
+          <tr><td>Role at EJ</td><td>Sr. Branch Office Administrator</td></tr>
+          <tr><td>FINRA CRD</td><td style="color:var(--y);">NONE — not a registered rep</td></tr>
+          <tr><td>Licenses</td><td style="color:var(--y);">NONE — admin only</td></tr>
+          <tr><td>Team</td><td>Works on Plageman's team</td></tr>
+          <tr><td>BCC Comp</td><td style="color:var(--g);">$0 — Independent</td></tr>
+        </table>
+
+        <div class="highlight-line" style="margin-top:auto;">
+          Together, Plageman + Krause = <strong>22%</strong> of BCC's 9-member board from same EJ office.
+        </div>
+      </div>
+
+      <div class="node herbein">
+        <div class="node-title">📋 Herbein + Company, Inc.</div>
+        <div class="node-sub">Independent Auditor & Tax Preparer &nbsp;|&nbsp; Reading PA</div>
+
+        <table>
+          <tr><td>Lead CPA</td><td>Linda S. Himeback, CPA</td></tr>
+          <tr><td>Address</td><td>2763 Century Blvd, Reading PA 19610</td></tr>
+          <tr><td>Roles</td><td>990 Tax Preparer + Independent Auditor</td></tr>
+          <tr><td>Firm</td><td>One of largest CPA firms in Berks County</td></tr>
+        </table>
+
+        <div class="highlight-line" style="margin-top:auto;">
+          Same firm prepares 990 <strong>and</strong> conducts the audit. AICPA-permitted for non-issuers, but reduces independence check on investment reporting.
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN: Portfolio -->
+    <div class="col-right">
+      <div class="node portfolio">
+        <div class="node-title">📊 The Portfolio</div>
+        <div class="node-sub">IRS Form 990 Schedule D (FY2025) — ProPublica</div>
+
+        <div class="big-stat green">$10,479,575</div>
+        <div style="text-align:center;color:#8b949e;margin-top:-0.5vh;margin-bottom:1vh;font-size:clamp(0.6rem,0.85vw,0.95rem);">Publicly Traded Securities</div>
+
+        <table>
+          <tr><td>Beginning → End of Year</td><td style="color:var(--a);">$9.64M → <strong style="color:var(--g);">$10.48M</strong> (+$837K)</td></tr>
+          <tr><td>Investment Income</td><td style="color:var(--g);">$446,033 (~4.4% yield)</td></tr>
+          <tr><td>5-Year Growth</td><td style="color:var(--r);">11.13x ($40K → $446K)</td></tr>
+          <tr><td>Other Asset Classes</td><td style="color:var(--r);">$0 — 100% public securities</td></tr>
+        </table>
+
+        <div class="highlight-line">
+          <strong>🗂 Schedule L:</strong> BCC answered NO to all four related-party questions. If EJ manages this, fees should be disclosed.
+        </div>
+
+        <div class="highlight-line">
+          <strong>🔮 Manager unconfirmed.</strong> Custodian likely Pershing LLC (EJ's clearing firm). Manager assumed EJ based on dual board presence.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-strip">
+    <div class="footer-stat"><div class="num">CRD #5964768</div><div class="lbl">Plageman FINRA ID</div></div>
+    <div class="footer-stat"><div class="num">0</div><div class="lbl">FINRA Disclosures</div></div>
+    <div class="footer-stat"><div class="num">$19.8M</div><div class="lbl">Total Assets</div></div>
+    <div class="footer-stat"><div class="num">$10.48M</div><div class="lbl">Public Securities</div></div>
+    <div class="footer-stat"><div class="num">22%</div><div class="lbl">EJ Board Control</div></div>
+    <div class="footer-stat"><div class="num">2</div><div class="lbl">Orgs Led by Plageman</div></div>
+    <div class="footer-stat"><div class="num" style="color:var(--r);">0</div><div class="lbl">Schedule L Disclosures</div></div>
+  </div>
+
+</div>
+
+</body>
+</html>

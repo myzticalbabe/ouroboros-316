@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
+<title>Forensic Extraction Blueprint — BCC Investigation</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; --p:#d2a8ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; overflow:hidden; width:100vw; height:100vh; }
+  #scroll-container { width:100%; height:100vh; overflow-y:scroll; scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none; }
+  #scroll-container::-webkit-scrollbar { display:none; }
+  .container { max-width:1100px; margin-left:170px; margin-right:auto; padding:40px 60px 200px 60px; }
+  h1 { color:var(--p); text-align:center; font-size:2rem; margin-bottom:0; border-bottom:2px solid var(--p); padding-bottom:12px; }
+  h2 { color:var(--a); margin:28px 0 12px; border-bottom:1px solid var(--border); padding-bottom:6px; font-size:1.35rem; }
+  h3 { color:var(--p); margin:16px 0 8px; font-size:1.1rem; }
+  .subtitle { text-align:center; color:#8b949e; margin-bottom:20px; font-size:0.9rem; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:16px; }
+  .card-r { border-left:5px solid var(--r); background:#1a1015; }
+  .card-y { border-left:5px solid var(--y); background:#1a1510; }
+  .card-g { border-left:5px solid var(--g); background:#101a15; }
+  .card-p { border-left:5px solid var(--p); background:#15101a; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:.88rem; }
+  th { text-align:left; background:#21262d; color:var(--h); padding:10px 12px; border-bottom:2px solid var(--border); font-weight:600; }
+  td { padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+  tr:hover td { background:#1c2128; }
+  .tag { display:inline-block; padding:2px 8px; border-radius:12px; font-size:0.7rem; font-weight:700; }
+  .t-r { background:#2d1010; color:var(--r); }
+  .t-y { background:#2d1b00; color:var(--y); }
+  .t-g { background:#1b3826; color:var(--g); }
+  .t-p { background:#1d1530; color:var(--p); }
+  .function-card { padding:16px; border-radius:8px; margin:12px 0; border-left:5px solid var(--p); background:#15101a; }
+  .function-card h3 { color:var(--p); margin:0 0 8px; }
+  .function-card .repurpose { color:var(--y); font-size:0.85rem; font-style:italic; margin-bottom:8px; }
+  .function-card .gaps { color:var(--g); font-size:0.85rem; margin:8px 0; }
+  .function-card .impl { font-size:0.85rem; color:#8b949e; margin-top:8px; }
+  .pipeline-step { display:flex; align-items:center; gap:8px; padding:8px 12px; background:#21262d; border-radius:6px; margin:4px 0; font-size:0.85rem; }
+  .step-num { background:var(--p); color:#fff; width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8rem; flex-shrink:0; }
+  .highlight { background:#2d1b00; border-left:3px solid var(--y); padding:12px; margin:10px 0; border-radius:0 6px 6px 0; }
+  .summary-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:12px; margin:14px 0; }
+  .summary-box { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:14px; text-align:center; }
+  .summary-box .num { font-size:1.8rem; font-weight:800; color:var(--a); }
+  .summary-box .lbl { font-size:0.78rem; color:#8b949e; margin-top:4px; }
+</style>
+</head>
+<body>
+<div id="scroll-container">
+<div class="container">
+
+<h1>🛠️ FORENSIC EXTRACTION BLUEPRINT</h1>
+<p class="subtitle">
+  Creative Repurposing of Existing Codebase for BCC Investigation — 8 Functions: 3 Built · 1 Dead End · 4 Remaining<br>
+  Berks Counseling Center (EIN 23-2043478) | Updated August 1, 2026 (Session 19)
+</p>
+
+<!-- SUMMARY -->
+<div class="summary-grid">
+  <div class="summary-box"><div class="num">17</div><div class="lbl">Existing Functions<br>Already Usable</div></div>
+  <div class="summary-box"><div class="num">3</div><div class="lbl">New Functions<br>✅ Already Built</div></div>
+  <div class="summary-box"><div class="num">4</div><div class="lbl">Functions<br>🔧 Remaining To Build</div></div>
+  <div class="summary-box"><div class="num">1</div><div class="lbl">Function<br>🚫 Dead End (#2)</div></div>
+  <div class="summary-box"><div class="num">10</div><div class="lbl">Open Gaps Remaining 4<br>Would Unblock</div></div>
+</div>
+
+<!-- ====== SECTION 1: EXISTING CAPABILITIES ====== -->
+<h2>🧰 SECTION 1 — Existing Capabilities & What They Already Solve</h2>
+
+<div class="card-g">
+  <h3>License: Azazael Worm Fleet (13 Worms Activated)</h3>
+  <table>
+    <tr><th>Worm / Module</th><th>Original Purpose</th><th>Repurposed For</th><th>Gaps Addressed</th></tr>
+    <tr><td><strong>DataPipelineWorm</strong></td><td>ETL pipeline — ingest, validate, deduplicate</td><td>Ingest BCC 990 JSON, validate 5-year data</td><td>#30 (FY2022 gap — ready to ingest)</td></tr>
+    <tr><td><strong>FeatureEngineer</strong></td><td>Feature extraction from worm data</td><td>Financial feature extraction (CAGR, Herfindahl, deficit ratio, volatility)</td><td>#31 (Herfindahl documented)</td></tr>
+    <tr><td><strong>SYSTEMZ_ML</strong></td><td>System trend analysis</td><td>Revenue trajectory, inflection points, grant cliff detection, fragility scoring</td><td>#16 (contributions drop correlation pattern)</td></tr>
+    <tr><td><strong>ClusterInspector</strong></td><td>Cross-document pattern matching</td><td>Cross-reference FUNDING_REVIEW.html + COMPLAINT_TODO_LIST.html for patterns</td><td>#2 (EJ/portfolio pattern flagged)</td></tr>
+    <tr><td><strong>RLTrainLoop</strong></td><td>Q-learning anomaly detection</td><td>Z-score anomaly detection on FY2021-2025 — flagged FY2024/FY2025 as anomalous</td><td>#12 (deficit detection confirmed)</td></tr>
+    <tr><td><strong>VulnScanner</strong></td><td>CVE vulnerability scanning</td><td><strong>CREATIVELY REPURPOSED:</strong> Governance dependency mapper — identifies board members whose employers have financial stakes</td><td>#2, #6-9 (governance conflicts)</td></tr>
+    <tr><td><strong>PermissionScanner</strong></td><td>File permission auditing</td><td><strong>CREATIVELY REPURPOSED:</strong> Voting rights auditor — identifies votes requiring board member recusal</td><td>#9, #10 (recusal tracking)</td></tr>
+    <tr><td><strong>DashboardGen</strong></td><td>HTML dashboard generation</td><td>Worm analysis dashboard (worm_analysis_dashboard.html)</td><td>Output layer</td></tr>
+    <tr><td><strong>MetaCluster</strong></td><td>Cross-cluster orchestration</td><td>Orchestrate worm fleet across categories</td><td>Pipeline coordinator</td></tr>
+  </table>
+</div>
+
+<div class="card-g">
+  <h3>License: Libra Legal Infrastructure</h3>
+  <table>
+    <tr><th>Module</th><th>Purpose</th><th>Gaps Addressed</th></tr>
+    <tr><td><strong>EmailVerifier (email_verifier.py)</strong></td><td>SMTP MX lookup + RCPT TO handshake — verifies deliverability of 17+ complaint emails</td><td>#3 (all emails verified before sending)</td></tr>
+    <tr><td><strong>BCCDocketParser (bcc_parser.py)</strong></td><td>Parses PA Superior Court dockets — extracts case info, parties, judges, events</td><td>#17 (ready to parse Community Care docket — blocked by CAPTCHA)</td></tr>
+    <tr><td><strong>BCCProthonotaryParser (bcc_parser.py)</strong></td><td>Parses prothonotary receipts, rejections, fee statements</td><td>#17 (filing verification)</td></tr>
+    <tr><td><strong>Template Generator (template_generator.py)</strong></td><td>Motion, IFP, caption, verification templates</td><td>#1, #13 (COI request, RTK templates)</td></tr>
+    <tr><td><strong>Filing Submitter (filing_submitter.py)</strong></td><td>Paper + ECF filing submitters</td><td>#13, #18 (ready to generate filing packets)</td></tr>
+    <tr><td><strong>UJS Session Manager (session_manager.py)</strong></td><td>Rate limiting, exponential backoff for UJS Portal</td><td>#24 (infrastructure ready — just needs CAPTCHA)</td></tr>
+    <tr><td><strong>Docket Retriever (docket_retriever.py)</strong></td><td>End-to-end UJS search→retrieve→parse pipeline</td><td>#24 (390 lines — blocked at CAPTCHA step)</td></tr>
+    <tr><td><strong>Browser Base (browser_base.py)</strong></td><td>Playwright lifecycle, persistent context, thread-safe async (~180 lines)</td><td>Foundation for ALL new scrapers</td></tr>
+  </table>
+</div>
+
+<div class="card-g">
+  <h3>License: Kali OSINT Arsenal</h3>
+  <table>
+    <tr><th>Tool</th><th>Repurposed For</th><th>Gaps Addressed</th></tr>
+    <tr><td><strong>swaks</strong></td><td>SMTP verification bypass — null sender "<>" to avoid Spamhaus PBL blocks</td><td>#3 (9 remaining unverified emails)</td></tr>
+    <tr><td><strong>dnsrecon / dig</strong></td><td>SPF/DMARC/DKIM enumeration — governance transparency audit</td><td>#28 (readingpa.gov NO DMARC confirmed)</td></tr>
+    <tr><td><strong>whois</strong></td><td>Domain ownership tracing — who registered berkscc.org? when? through whom?</td><td>Infrastructure audit</td></tr>
+    <tr><td><strong>sslscan / curl</strong></td><td>SSL/TLS audit — does BCC meet HUD cybersecurity requirements (24 CFR 5.112)?</td><td>IT governance quality</td></tr>
+    <tr><td><strong>theHarvester</strong></td><td>OSINT email harvesting — find undiscovered BCC/board member email addresses</td><td>#29 (commissioner email discovery)</td></tr>
+    <tr><td><strong>pdf-parser</strong></td><td><strong style="color:var(--r);">DEAD END (Session 19):</strong> Schedule B UN-REDACTOR confirmed structurally redacted for BCC's e-filed 990s — no text layer to recover. Reallocated to paper-document metadata forensics only.</td><td>#5 → rerouted (direct request / 4506-A / RTK / Register of Wills)</td></tr>
+    <tr><td><strong>spiderfoot</strong></td><td><strong>Board Member Undiscovery:</strong> Automated OSINT mapping of forgotten business emails, corporate registrations, and social profiles</td><td>#6-9 (board member discovery)</td></tr>
+    <tr><td><strong>exiftool</strong></td><td>990 PDF metadata — who prepared it? when? what software? Author fields may reveal the preparer</td><td>990 provenance</td></tr>
+  </table>
+</div>
+
+<!-- ====== SECTION 2: 8 NEW FUNCTIONS ====== -->
+<h2>⚡ SECTION 2 — Extraction Functions: 3 Built · 1 Dead End · 4 Remaining</h2>
+<p style="color:#8b949e;margin-bottom:16px;">Status updated August 1, 2026 (Session 19): <strong style="color:var(--g);">#4, #5, #7 already built</strong>; <strong style="color:var(--r);">#2 dead end</strong>; <strong style="color:var(--y);">#1, #3, #6, #8 remain to build</strong> — reprioritized in Section 5 against open gaps.</p>
+
+<!-- Function 1 -->
+<div class="function-card" style="border-left-color:var(--r);">
+  <h3 style="color:var(--r);">#1 🔴 UJS CAPTCHA BREAKER — <code>ujs_captcha_breaker.py</code> <span class="tag t-y">REMAINING · PRIORITY 2</span></h3>
+  <div class="repurpose">🔄 Repurposes: azazael/src/vision/ocr.py + ujs_portal/docket_retriever.py + browser_base.py</div>
+  <div class="gaps">✅ Unblocks Gaps: #17 (Community Care deficiencies status), #24 (ALL BCC court records — any other lawsuits, judgments, filings)</div>
+  <p style="margin:8px 0;"><strong>What it does:</strong> Solves the UJS Portal CAPTCHA that has been blocking automated docket retrieval. This is the biggest <em>data-access</em> blocker — it gates access to all BCC court records (Auto-FOIA Mailer is now priority #1 because sending requests unblocks more critical gaps).</p>
+  <p><strong>Implementation approach:</strong></p>
+  <div class="pipeline-step"><span class="step-num">1</span> Playwright isolates CAPTCHA element &rarr; bounding-box screenshot</div>
+  <div class="pipeline-step"><span class="step-num">2</span> OpenCV preprocesses image (threshold, denoise, remove interference lines)</div>
+  <div class="pipeline-step"><span class="step-num">3</span> OCR module (azazael/src/vision/ocr.py) reads the text</div>
+  <div class="pipeline-step"><span class="step-num">4</span> If OCR fails: download audio CAPTCHA .wav → Speech Recognition fallback</div>
+  <div class="pipeline-step"><span class="step-num">5</span> <strong>⚠ If reCAPTCHA v2/v3 (checkbox/behavioral):</strong> OCR won't work — reCAPTCHA uses risk scoring, not text. Fallback: manual browser intervention with human solving in a visible window.</div>
+  <div class="pipeline-step"><span class="step-num">6</span> Feed solved CAPTCHA + search params → docket_retriever.py → BCCDocketParser</div>
+  <div class="impl"><strong>Files to create:</strong> Desktop/Libra/scrapers/ujs_portal/captcha_breaker.py (~200 lines)<br><strong>Dependencies:</strong> OpenCV, Pillow, azazael/src/vision/ocr.py, SpeechRecognition (fallback)<br><strong>⚠ RISK:</strong> If UJS Portal uses reCAPTCHA v2/v3 (behavioral scoring, not text OCR), automated solving won't work. The fallback is manual browser intervention.</div>
+</div>
+
+<!-- Function 2 -->
+<div class="function-card" style="border-left-color:var(--r);">
+  <h3 style="color:var(--r);">#2 🚫 SCHEDULE B UN-REDACTOR — <code>schedule_b_unredactor.sh</code> — <span class="tag t-r">DEAD END — DO NOT BUILD</span></h3>
+  <div class="repurpose">🔄 Would have repurposed: Kali pdf-parser + peepdf + exiftool</div>
+  <div class="gaps">❌ Gap #5 (Schedule B donor names) remains <strong>OPEN</strong> — this method cannot solve it; donor paths rerouted below.</div>
+  <p style="margin:8px 0;"><strong>Why it's a dead end:</strong> BCC's 990s are <strong>e-filed (IRS XML format)</strong>, not paper PDFs. Schedule B is <strong>structurally excluded from the public XML by IRS policy</strong> — there are no black rectangles to remove and no hidden text underneath. The "pdf-parser unredaction" approach only works on paper-filed 990s where redaction is cosmetic. <strong>CONFIRMED:</strong> pdf-parser attempt made (Function #2 from forensic blueprint) — DEAD END for BCC.</p>
+  <p><strong>Replacement paths (same goal — donor discovery):</strong></p>
+  <div class="pipeline-step"><span class="step-num">A</span> Request unredacted Schedule B directly from BCC (COI_REQUEST_LETTER.html — ready to send, 4 verified addresses)</div>
+  <div class="pipeline-step"><span class="step-num">B</span> IRS FOIA — Form 4506-A</div>
+  <div class="pipeline-step"><span class="step-num">C</span> PA Right-to-Know for county contracts naming donors</div>
+  <div class="pipeline-step"><span class="step-num">D</span> Berks Register of Wills bequest search (see Function #8)</div>
+  <div class="impl"><strong>Status:</strong> 🚫 DEAD END — do not build. Donor discovery now routes through <strong>#6 (Auto-FOIA mailer)</strong> + <strong>#8 (Register of Wills)</strong>.</div>
+</div>
+
+<!-- Function 3 -->
+<div class="function-card" style="border-left-color:var(--y);">
+  <h3 style="color:var(--y);">#3 🟠 PA CORPORATE RECORDS SCRAPER — <code>pa_dos_corps.py</code> <span class="tag t-y">REMAINING · PRIORITY 4</span></h3>
+  <div class="repurpose">🔄 Repurposes: browser_base.py (Playwright) + WORMZ_ML (pattern matching)</div>
+  <div class="gaps">✅ Unblocks Gap: #26 (PA BCO-10) — <strong>only remaining item</strong>. #6/#7/#8 (board members) were <strong>resolved Sessions 11–14</strong> by manual research, so this scraper is demoted.</div>
+  <p style="margin:8px 0;"><strong>What it does:</strong> Automates searches against the PA Department of State business entity database (corporations.pa.gov) for all 9 board members, finding registered businesses, officer roles, and entity status.</p>
+  <p><strong>Implementation approach:</strong></p>
+  <div class="pipeline-step"><span class="step-num">1</span> Playwright navigates to corporations.pa.gov/search/corpsearch</div>
+  <div class="pipeline-step"><span class="step-num">2</span> For each of 9 board member names: submit search, scrape result table</div>
+  <div class="pipeline-step"><span class="step-num">3</span> For each business found: scrape entity detail page (officers, address, status, filing history)</div>
+  <div class="pipeline-step"><span class="step-num">4</span> Cross-reference business addresses with BCC's 645 Penn Street address</div>
+  <div class="pipeline-step"><span class="step-num">5</span> Flag any business that: (a) shares BCC's address, (b) is in healthcare/accounting/law, (c) has board member as officer</div>
+  <div class="pipeline-step"><span class="step-num">6</span> Output: board_member_businesses.json with entity details + conflict flags</div>
+  <div class="impl"><strong>Files to create:</strong> Desktop/Libra/scrapers/pa_dos_corps.py (~250 lines)<br><strong>Dependencies:</strong> Playwright, Desktop/Libra/scrapers/common/browser_base.py</div>
+</div>
+
+<!-- Function 4 -->
+<div class="function-card" style="border-left-color:var(--y);">
+  <h3 style="color:var(--y);">#4 🟠 USASPENDING.GOV GRANT TRACKER — <code>usaspending_api.py</code> <span class="tag t-g">✅ BUILT (Session 12)</span></h3>
+  <div class="repurpose">🔄 Repurposes: EmailVerifier pattern (API call → structured response → report)</div>
+  <div class="gaps">✅ Unblocks Gaps: #19 (SAMHSA — ✅ RESOLVED Session 12), #20 (HHS OIG subrecipient — open)</div>
+  <p style="margin:8px 0;"><strong>What it does:</strong> Queries the USASpending.gov API directly (no scraper needed — it has a public REST API) for all federal awards to BCC, pulling performance reports, sub-award data, and compliance flags.</p>
+  <p><strong>Implementation approach:</strong></p>
+  <div class="pipeline-step"><span class="step-num">1</span> Query api.usaspending.gov/api/v2/recipient with BCC's UEI/DUNS</div>
+  <div class="pipeline-step"><span class="step-num">2</span> Pull all award IDs for BCC (SAMHSA H79SM088878 + any others)</div>
+  <div class="pipeline-step"><span class="step-num">3</span> For each award: pull sub-award data, performance reports, CFDA details</div>
+  <div class="pipeline-step"><span class="step-num">4</span> Cross-reference award amounts with BCC 990 reported revenue</div>
+  <div class="pipeline-step"><span class="step-num">5</span> Check for any compliance flags, audit findings, or termination notices</div>
+  <div class="pipeline-step"><span class="step-num">6</span> Output: bcc_federal_awards.json + compliance report</div>
+  <div class="impl"><strong>Files to create:</strong> Desktop/Libra/scrapers/usaspending_api.py (~200 lines)<br><strong>Dependencies:</strong> requests, no API key required (public API)</div>
+</div>
+
+<!-- Function 5 -->
+<div class="function-card" style="border-left-color:var(--y);">
+  <h3 style="color:var(--y);">#5 🟠 IRS COMPLIANCE AUDITOR — <code>irs_teos_bot.py</code> <span class="tag t-g">✅ BUILT</span></h3>
+  <div class="repurpose">🔄 Repurposes: browser_base.py (Playwright) + EmailVerifier (structured validation pattern)</div>
+  <div class="gaps">✅ Unblocks Gaps: #32 (IRS history — ✅ RESOLVED Session 11), #37 (TPUC EIN — open), #10 (Form 1023 — open)</div>
+  <p style="margin:8px 0;"><strong>What it does:</strong> Queries the IRS Tax Exempt Organization Search (TEOS) for BCC's examination history, revocation status, and available filings. Also searches for the TPUC EIN.</p>
+  <p><strong>Implementation approach:</strong></p>
+  <div class="pipeline-step"><span class="step-num">1</span> Navigate to apps.irs.gov/app/eos/ with Playwright</div>
+  <div class="pipeline-step"><span class="step-num">2</span> Search by EIN 23-2043478 for BCC</div>
+  <div class="pipeline-step"><span class="step-num">3</span> Scrape: determination letter date, revocation status, examination history</div>
+  <div class="pipeline-step"><span class="step-num">4</span> Check if Form 1023 (original exemption application) is available</div>
+  <div class="pipeline-step"><span class="step-num">5</span> Search for TPUC EIN (if discoverable via name search)</div>
+  <div class="pipeline-step"><span class="step-num">6</span> Output: irs_compliance_report.json with determination + examination history</div>
+  <div class="impl"><strong>Files to create:</strong> Desktop/Libra/scrapers/irs_teos_bot.py (~180 lines)<br><strong>Dependencies:</strong> Playwright, browser_base.py</div>
+</div>
+
+<!-- Function 6 -->
+<div class="function-card" style="border-left-color:var(--p);">
+  <h3 style="color:var(--p);">#6 🟣 AUTO-FOIA MAILER — <code>auto_foia_mailer.py</code> <span class="tag t-r">🔥 NEW #1 PRIORITY</span></h3>
+  <div class="repurpose">🔄 Repurposes: EmailVerifier (SMTP connection) + template_generator.py (document templates) + PayloadInjectorWorm (automated dispatch)</div>
+  <div class="gaps">✅ Unblocks Gaps: #1 (COI request — to send), #2 (auditor inquiry — to send), #13 (county contract RTK), #18 (OMHSAS RTK), #22 (COCA RTK request)</div>
+  <p style="margin:8px 0;"><strong>What it does:</strong> Takes the pre-filled request letters (COI_REQUEST_LETTER.html, COMPLAINT_LETTER.html) and actually sends them via SMTP, then tracks delivery and schedules automated follow-ups.</p>
+  <p><strong>Implementation approach:</strong></p>
+  <div class="pipeline-step"><span class="step-num">1</span> Load COI_REQUEST_LETTER.html → extract TO/CC/Subject/Body fields</div>
+  <div class="pipeline-step"><span class="step-num">2</span> Connect via SMTP (authenticated — requires user's email credentials)</div>
+  <div class="pipeline-step"><span class="step-num">3</span> Send to all verified deliverable addresses (skip bounced/blocked)</div>
+  <div class="pipeline-step"><span class="step-num">4</span> Generate PA Right-to-Know requests for Berks County + PA OMHSAS</div>
+  <div class="pipeline-step"><span class="step-num">5</span> Log all sends with timestamps → auto_foia_log.json</div>
+  <div class="pipeline-step"><span class="step-num">6</span> Schedule 14-day follow-up reminders (cron / Task Scheduler)</div>
+  <div class="impl"><strong>Files to create:</strong> Desktop/Libra/scrapers/auto_foia_mailer.py (~250 lines)<br><strong>Dependencies:</strong> smtplib, email_verifier.py, template_generator.py<br><strong>⚠ CAUTION:</strong> Requires user email credentials. Use a dedicated sending address. Test with one recipient first.</div>
+</div>
+
+<!-- Function 7 -->
+<div class="function-card" style="border-left-color:var(--p);">
+  <h3 style="color:var(--p);">#7 🟣 PA CAMPAIGN FINANCE SCRAPER — <code>pa_campaign_finance.py</code> <span class="tag t-g">✅ BUILT</span></h3>
+  <div class="repurpose">🔄 Repurposes: browser_base.py (Playwright) + LogAnalyzerWorm (pattern analysis)</div>
+  <div class="gaps">✅ Unblocks Gap: #40 (campaign finance records), #23 (Goodman-Hinnershitz recusal evidence)</div>
+  <p style="margin:8px 0;"><strong>What it does:</strong> Searches the PA Department of State campaign finance database for contributions by BCC board members to Berks County commissioners, state legislators, and local officials overseeing behavioral health funding.</p>
+  <p><strong>Implementation approach:</strong></p>
+  <div class="pipeline-step"><span class="step-num">1</span> Navigate to campaignfinanceonline.pa.gov</div>
+  <div class="pipeline-step"><span class="step-num">2</span> Search by contributor name for all 9 board members + Axford + Little</div>
+  <div class="pipeline-step"><span class="step-num">3</span> Also search by recipient: Berks County Commissioners, PA state reps/senators</div>
+  <div class="pipeline-step"><span class="step-num">4</span> Extract: donor, recipient, amount, date, committee, election cycle</div>
+  <div class="pipeline-step"><span class="step-num">5</span> Flag contributions to officials with BCC oversight authority</div>
+  <div class="pipeline-step"><span class="step-num">6</span> Output: pa_campaign_finance_bcc.json</div>
+  <div class="impl"><strong>Files to create:</strong> Desktop/Libra/scrapers/pa_campaign_finance.py (~200 lines)<br><strong>Dependencies:</strong> Playwright, browser_base.py</div>
+</div>
+
+<!-- Function 8 -->
+<div class="function-card" style="border-left-color:var(--p);">
+  <h3 style="color:var(--p);">#8 🟣 BERKS PROPERTY & PROBATE SPIDER — <code>berks_property_spider.py</code> <span class="tag t-y">REMAINING · PRIORITY 3</span></h3>
+  <div class="repurpose">🔄 Repurposes: browser_base.py (Playwright) + BCCDocketParser (structured extraction pattern)</div>
+  <div class="gaps">✅ Unblocks Gaps: #15 (HUD property ownership), #25 (Register of Wills bequests)</div>
+  <p style="margin:8px 0;"><strong>What it does:</strong> Scrapes the Berks County Recorder of Deeds and Register of Wills for property records linked to BCC and estate bequests naming BCC as beneficiary.</p>
+  <p><strong>Implementation approach:</strong></p>
+  <div class="pipeline-step"><span class="step-num">1</span> Search Berks County property records for all 8 HUD property addresses</div>
+  <div class="pipeline-step"><span class="step-num">2</span> Determine: owner name, purchase date, purchase price, mortgage holder</div>
+  <div class="pipeline-step"><span class="step-num">3</span> Search Register of Wills for "Berks Counseling Center" as beneficiary</div>
+  <div class="pipeline-step"><span class="step-num">4</span> Cross-reference estate names with any known BCC donors</div>
+  <div class="pipeline-step"><span class="step-num">5</span> Search for 645 Penn Street property records (BCC HQ — own or lease?)</div>
+  <div class="pipeline-step"><span class="step-num">6</span> Output: bcc_property_portfolio.json + probate_bequests.json</div>
+  <div class="impl"><strong>Files to create:</strong> Desktop/Libra/scrapers/berks_property_spider.py (~250 lines)<br><strong>Dependencies:</strong> Playwright, browser_base.py<br><strong>Note:</strong> Berks County may use a third-party land records system — verify portal URL before building.</div>
+</div>
+
+<!-- ====== SECTION 3: WORM REPURPOSING MAP ====== -->
+<h2>🪱 SECTION 3 — Creative Worm Repurposing Map</h2>
+
+<div class="card-p">
+  <p style="color:#8b949e;margin-bottom:12px;">Azazael has 99 registered worms across 18 categories. Beyond the 13 already activated for BCC, these additional worms can be creatively repurposed for financial investigation:</p>
+  <table>
+    <tr><th>Worm</th><th>Original Purpose</th><th>Creative Repurpose</th><th>New Function</th></tr>
+    <tr>
+      <td><strong>LogAnalyzerWorm</strong></td>
+      <td>Parse server logs, detect patterns</td>
+      <td><strong>Campaign Finance Cross-Referencer:</strong> Ingest PA campaign finance CSV exports, search for board member names, detect donation patterns to oversight officials</td>
+      <td>#7 (pa_campaign_finance.py)</td>
+    </tr>
+    <tr>
+      <td><strong>NetworkScannerWorm</strong></td>
+      <td>Map IP networks and subnets</td>
+      <td><strong>Corporate Entity Mapper:</strong> Map board member LLCs, their registered addresses, and corporate officer overlaps — build a network graph of business relationships</td>
+      <td>#3 (pa_dos_corps.py)</td>
+    </tr>
+    <tr>
+      <td><strong>PayloadInjectorWorm</strong></td>
+      <td>Inject payloads into worm pipelines</td>
+      <td><strong>Automated FOIA Dispatcher:</strong> Inject pre-filled request letters into an SMTP queue, dispatch on schedule, track responses</td>
+      <td>#6 (auto_foia_mailer.py)</td>
+    </tr>
+    <tr>
+      <td><strong>WORMZ_ML</strong></td>
+      <td>ML-based file classification + predictive crawl</td>
+      <td><strong>Document Classification Pipeline:</strong> Classify retrieved court documents (motions, orders, opinions), predict which docket entries contain financial findings</td>
+      <td>#1 (post-CAPTCHA document triage)</td>
+    </tr>
+    <tr>
+      <td><strong>PortScannerWorm</strong></td>
+      <td>Scan network ports for open services</td>
+      <td><strong>Entity Presence Scanner:</strong> Scan the web for board member business registrations across all 50 states (not just PA) — detect out-of-state LLCs</td>
+      <td>#3 (multi-state expansion)</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ====== SECTION 4: KALI TOOLS MAP ====== -->
+<h2>🐉 SECTION 4 — Kali Linux Tools Creative Repurposing</h2>
+
+<div class="card-p">
+  <p style="color:#8b949e;margin-bottom:12px;">Beyond the 8 tools already in kali_bcc_osint.sh, these Kali tools can be repurposed for financial forensic work:</p>
+  <table>
+    <tr><th>Kali Tool</th><th>Original Purpose</th><th>Financial Repurpose</th></tr>
+    <tr>
+      <td><strong>pdf-parser + peepdf</strong></td>
+      <td>PDF malware analysis, object stream extraction</td>
+      <td><strong style="color:var(--r);">DEAD END (Session 19):</strong> Schedule B Un-Redactor — BCC 990s are e-filed XML; redaction is structural. Reallocate: metadata/provenance forensics on paper documents (exiftool, metagoofil).</td>
+    </tr>
+    <tr>
+      <td><strong>spiderfoot</strong></td>
+      <td>Automated OSINT reconnaissance</td>
+      <td><strong>Board Member Undiscovery:</strong> Feed all 9 board member names → auto-map forgotten emails, business registrations, social profiles, domain registrations</td>
+    </tr>
+    <tr>
+      <td><strong>metagoofil</strong></td>
+      <td>Metadata extraction from public documents</td>
+      <td><strong>Document Provenance:</strong> Extract author, software, timestamps from BCC board meeting PDFs, grant applications, audit reports</td>
+    </tr>
+    <tr>
+      <td><strong>recon-ng</strong></td>
+      <td>Web reconnaissance framework</td>
+      <td><strong>Contact Harvesting:</strong> Auto-discover email addresses, phone numbers, and social profiles for all BCC staff/board from public sources</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ====== SECTION 5: IMPLEMENTATION PRIORITY ====== -->
+<h2>📋 SECTION 5 — Implementation Priority & Effort Estimate</h2>
+
+<div class="card-r">
+  <h3 style="color:var(--r);">Build Order — Reprioritized Against Open Gaps (Session 19)</h3>
+  <table>
+    <tr><th style="width:30px;">#</th><th>Function</th><th>Status</th><th>Open Gaps Unblocked</th><th>Impact</th><th>Risk</th></tr>
+    <tr style="background:#2d1010;">
+      <td><strong>1</strong></td>
+      <td><strong>Auto-FOIA Mailer</strong></td>
+      <td><span class="tag t-r">TO BUILD</span></td>
+      <td>#1, #2, #13, #18, #22 (5 open)</td>
+      <td class="t-r">CRITICAL — sends the COI request (gap #1 blocker) + complaint + RTKs. Directly fixes "zero contacts made."</td>
+      <td>Medium (needs email credentials; test one recipient first)</td>
+    </tr>
+    <tr style="background:#2d1010;">
+      <td><strong>2</strong></td>
+      <td><strong>UJS CAPTCHA Breaker</strong></td>
+      <td><span class="tag t-y">TO BUILD</span></td>
+      <td>#17, #24 (2 open — Register of Wills #25 is Property Spider's domain)</td>
+      <td class="t-r">HIGH — gates ALL BCC court records</td>
+      <td>Medium (OCR may fail on distorted CAPTCHAs)</td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>Berks Property &amp; Probate Spider</strong></td>
+      <td><span class="tag t-y">TO BUILD</span></td>
+      <td>#15, #25 (2 open)</td>
+      <td class="t-y">MEDIUM — 6/8 HUD properties undetermined + bequest donors</td>
+      <td>Medium (county portals bot-blocked; manual fallback)</td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>PA Corporate Records Scraper</strong></td>
+      <td><span class="tag t-y">TO BUILD</span></td>
+      <td>#26 (1 open — #6/#7/#8 resolved)</td>
+      <td class="t-p">LOW — demoted; only BCO-10 remains &amp; PA DOS 403s scripts</td>
+      <td>Low (site simple, but file.dos.pa.gov blocks scripts)</td>
+    </tr>
+    <tr style="background:#1b3826;">
+      <td><strong>✅</strong></td>
+      <td><strong>USASpending.gov API</strong></td>
+      <td><span class="tag t-g">BUILT</span></td>
+      <td>#19 (✅ resolved), #20</td>
+      <td class="t-g">DONE — 51 awards / $9.35M enumerated (Session 12)</td>
+      <td>—</td>
+    </tr>
+    <tr style="background:#1b3826;">
+      <td><strong>✅</strong></td>
+      <td><strong>IRS Compliance Auditor</strong></td>
+      <td><span class="tag t-g">BUILT</span></td>
+      <td>#32 (✅ resolved), #37, #10</td>
+      <td class="t-g">DONE — TEOS status verified (Session 11)</td>
+      <td>—</td>
+    </tr>
+    <tr style="background:#1b3826;">
+      <td><strong>✅</strong></td>
+      <td><strong>PA Campaign Finance Scraper</strong></td>
+      <td><span class="tag t-g">BUILT</span></td>
+      <td>#40 (partial), #23</td>
+      <td class="t-g">DONE — 1 contribution found (Plageman $50, clean)</td>
+      <td>—</td>
+    </tr>
+    <tr style="background:#2d1010;">
+      <td><strong>🚫</strong></td>
+      <td><strong>Schedule B Un-Redactor</strong></td>
+      <td><span class="tag t-r">DEAD END</span></td>
+      <td>#5 — structural redaction; un-redaction impossible</td>
+      <td class="t-r">RETIRED — reroute to #6 (direct request) + #8 (Register of Wills)</td>
+      <td>—</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ====== SECTION 6: GAP COVERAGE MAP ====== -->
+<h2>🗺️ SECTION 6 — Gap Coverage — Updated for 49-Gap List (Session 19)</h2>
+
+<div class="card-g">
+  <p style="color:#8b949e;margin-bottom:12px;">Blueprint coverage against the <a href="INVESTIGATION_GAPS.html" style="color:var(--a);">updated 49-gap inventory</a> (5 critical / 11 high / 16 medium / 11 low):</p>
+  <table>
+    <tr><th>Status</th><th>Count</th><th>Gaps</th></tr>
+    <tr>
+      <td style="color:var(--g);font-weight:700;">✅ SOLVED BY BUILT FUNCTIONS (3 built)</td>
+      <td>7</td>
+      <td>#19 (SAMHSA — resolved), #20 (OIG subrecipient), #32 (IRS history — resolved), #37 (TPUC EIN), #10 (Form 1023), #40 (campaign finance — partial), #23 (recusal evidence)</td>
+    </tr>
+    <tr>
+      <td style="color:var(--y);font-weight:700;">🔧 UNBLOCKED BY REMAINING 4 FUNCTIONS</td>
+      <td>10</td>
+      <td>#1 (COI request), #2 (EJ portfolio), #13 (county RTK), #15 (HUD properties), #17 (Community Care), #18 (OMHSAS RTK), #22 (COCA RTK), #24 (court records), #25 (Register of Wills), #26 (PA BCO-10)</td>
+    </tr>
+    <tr>
+      <td style="color:var(--g);">✅ RESOLVED BY INVESTIGATION (not functions)</td>
+      <td>6</td>
+      <td>#6 (Scull), #7 (Ralph), #8 (Robinson), #28 (DMARC), #31 (Herfindahl), #41 (CFO/CEO comp)</td>
+    </tr>
+    <tr>
+      <td style="color:var(--r);">🚫 DEAD END (retired) — gap #5</td>
+      <td>1</td>
+      <td>Blueprint Function #2 → gap #5 (Schedule B donor names): structural redaction makes un-redaction impossible; donor paths rerouted to #6 (direct request) + #8 (Register of Wills)</td>
+    </tr>
+    <tr>
+      <td style="color:var(--p);">🔮 REQUIRES EXTERNAL ACTION (can't automate)</td>
+      <td>25</td>
+      <td>#3, #4, #9, #11, #12, #14, #16, #21, #27, #29, #30, #33, #34, #35 (staff directory), #36, #38, #39, #42, #43, #44, #45, #46, #47, #48, #49</td>
+    </tr>
+  </table>
+  <div class="highlight" style="margin-top:16px;">
+    <strong>BOTTOM LINE (updated Session 19):</strong> 3 functions are already built (USASpending, TEOS, Campaign Finance). Of the <strong>5 remaining, 1 is retired</strong> (#2 Schedule B — structural redaction, gap #5 rerouted) and <strong>4 are to build</strong>, in order: <strong>Auto-FOIA Mailer → UJS CAPTCHA → Property Spider → PA Corps</strong>. The mailer alone unblocks the #1 critical gap (COI request never sent). Remaining donor-discovery paths: direct Schedule B request, IRS Form 4506-A, county RTK, Register of Wills.
+  </div>
+</div>
+
+<!-- ====== SECTION 7: WIRING DIAGRAM ====== -->
+<h2>🔌 SECTION 7 — System Wiring Diagram</h2>
+
+<div class="card-p">
+  <p style="color:#8b949e;margin-bottom:16px;">How the new functions plug into the existing architecture:</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+    <div style="padding:14px;background:#21262d;border-radius:6px;">
+      <strong style="color:var(--p);">DATA INGESTION LAYER</strong><br>
+      <span style="font-size:0.85rem;color:#8b949e;">
+      📥 pa_dos_corps.py → PA business entity data<br>
+      📥 usaspending_api.py → Federal grant data<br>
+      📥 irs_teos_bot.py → IRS compliance history<br>
+      📥 pa_campaign_finance.py → Political donations<br>
+      📥 berks_property_spider.py → Property records<br>
+      📥 ujs_captcha_breaker.py → Court dockets<br>
+      🚫 schedule_b_unredactor.sh → DEAD END (structural redaction — do not build)
+      </span>
+    </div>
+    <div style="padding:14px;background:#21262d;border-radius:6px;">
+      <strong style="color:var(--p);">ANALYSIS LAYER (Existing)</strong><br>
+      <span style="font-size:0.85rem;color:#8b949e;">
+      🪱 activate_bcc_analysis.py → 6-phase pipeline<br>
+      🪱 FeatureEngineer → Financial feature extraction<br>
+      🪱 SYSTEMZ_ML → Trend + anomaly detection<br>
+      🪱 ClusterInspector → Cross-document patterns<br>
+      🪱 GovernanceAuditor → Conflict dependency map<br>
+      🪱 DashboardGen → HTML/JSON report output
+      </span>
+    </div>
+    <div style="padding:14px;background:#21262d;border-radius:6px;">
+      <strong style="color:var(--p);">OUTPUT & DISPATCH LAYER</strong><br>
+      <span style="font-size:0.85rem;color:#8b949e;">
+      📤 auto_foia_mailer.py → Send COI/RTK requests<br>
+      📤 verify_complaint_emails.py → Pre-send verification<br>
+      📤 DashboardGen → HTML dashboards<br>
+      📤 ReportCompiler → JSON reports<br>
+      📤 Capture_Scroll.ps1 → MP4 video generation
+      </span>
+    </div>
+    <div style="padding:14px;background:#21262d;border-radius:6px;">
+      <strong style="color:var(--p);">FOUNDATION LAYER (Existing)</strong><br>
+      <span style="font-size:0.85rem;color:#8b949e;">
+      🔧 browser_base.py → Playwright lifecycle<br>
+      🔧 email_verifier.py → SMTP verification<br>
+      🔧 bcc_parser.py → Docket parsing<br>
+      🔧 template_generator.py → Document assembly<br>
+      🔧 session_manager.py → Rate limiting<br>
+      🔧 azazael/src/vision/ocr.py → OCR engine
+      </span>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top:30px;padding:16px;background:#1d1530;border-radius:8px;text-align:center;font-size:0.85rem;">
+  🛠️ <a href="INVESTIGATION_GAPS.html" style="color:var(--a);">49 Investigation Gaps</a> &nbsp;|&nbsp;
+  📊 <a href="BCC_FINANCIAL_WORM_MAP.html" style="color:var(--a);">Worm Fleet Map</a> &nbsp;|&nbsp;
+  📋 <a href="COMPLAINT_TODO_LIST.html" style="color:var(--a);">Complaint TODO</a> &nbsp;|&nbsp;
+  💰 <a href="FUNDING_REVIEW.html" style="color:var(--a);">Funding Review</a><br>
+  👥 <a href="INVESTMENT_PEOPLE_REPORT.html" style="color:var(--a);">Investment People</a> &nbsp;|&nbsp;
+  🕵️ <a href="DONOR_RECONSTRUCTION.html" style="color:var(--a);">Donor Reconstruction</a> &nbsp;|&nbsp;
+  📜 <a href="CONSOLIDATED_SCROLL.html" style="color:var(--a);">Consolidated Scroll</a><br>
+  8 functions designed — 3 built (✅ #4, #5, #7) · 1 dead end (🚫 #2 Schedule B) · 4 remaining (#1, #3, #6, #8). Priority: Auto-FOIA Mailer first — sends the COI request (critical gap #1).
+</div>
+
+</div><!-- /container -->
+</div><!-- /scroll-container -->
+
+<div id="si" style="position:fixed;bottom:40px;left:50%;transform:translateX(-50%);color:var(--a);font-size:0.9rem;z-index:10;background:rgba(13,17,23,0.85);padding:8px 20px;border-radius:20px;border:1px solid var(--border);pointer-events:none;transition:opacity 0.5s;">▼ Auto-scrolling — Forensic Extraction Blueprint</div>
+
+<script>
+(function() {
+  const c = document.getElementById('scroll-container');
+  const i = document.getElementById('si');
+  const s = 0.07;
+  let lt = null, an = true, pa = false;
+  c.addEventListener('mouseenter', () => { pa = true; i.textContent = '⏸ Paused'; });
+  c.addEventListener('mouseleave', () => { pa = false; i.textContent = '▼ Auto-scrolling'; lt = null; });
+  function a(ts) {
+    if (!an) return;
+    if (!lt) lt = ts;
+    const e = ts - lt; lt = ts;
+    if (!pa && e > 0 && e < 200) {
+      c.scrollTop += s * e;
+      const mx = c.scrollHeight - c.clientHeight;
+      if (c.scrollTop >= mx - 10) { c.scrollTop = mx; i.textContent = '✅ Complete'; an = false; return; }
+    }
+    requestAnimationFrame(a);
+  }
+  setTimeout(() => { i.style.opacity = '0.6'; }, 5000);
+  requestAnimationFrame(a);
+})();
+</script>
+</body>
+</html>

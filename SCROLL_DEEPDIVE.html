@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>DEEP DIVE — Berks Counseling Center</title>
+<style>
+  :root{--bg:#0d1117;--c:#161b22;--b:#30363d;--t:#c9d1d9;--h:#f0f6fc;--a:#58a6ff;--r:#f78166;--g:#3fb950;--y:#ffa657;--p:#d2a8ff}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{background:var(--bg)}
+  body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--t);padding:20px 0;line-height:1.6}
+  .w{max-width:960px;margin:0 auto;padding:0 20px}
+  h1{color:var(--r);text-align:center;font-size:2rem;margin-bottom:8px;border-bottom:2px solid var(--r);padding-bottom:12px}
+  h2{color:var(--a);margin:28px 0 12px;border-bottom:1px solid var(--b);padding-bottom:6px;font-size:1.3rem}
+  h3{color:var(--p);margin:16px 0 8px;font-size:1.1rem}
+  .card{background:var(--c);border:1px solid var(--b);border-radius:8px;padding:20px;margin-bottom:16px}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:.9rem}
+  th{text-align:left;background:#21262d;color:var(--h);padding:10px 12px;border-bottom:2px solid var(--b)}
+  td{padding:10px 12px;border-bottom:1px solid var(--b);vertical-align:top}
+  .amt{font-size:1.15rem;font-weight:700;color:var(--g)}
+  .neg{color:var(--r);font-weight:700}
+  .tag{display:inline-block;padding:2px 8px;border-radius:12px;font-size:.7rem;font-weight:600}
+  .t-fed{background:#1b3826;color:var(--g)}
+  .t-state{background:#2d1b00;color:var(--y)}
+  .t-alert{background:rgba(247,129,102,.2);color:var(--r)}
+  .t-info{background:#1d1530;color:var(--p)}
+  .hl-red{background:#2d1b00;border-left:3px solid var(--r);padding:12px;margin:10px 0;border-radius:0 6px 6px 0}
+  .hl-y{background:#2d1b00;border-left:3px solid var(--y);padding:12px;margin:10px 0;border-radius:0 6px 6px 0}
+  .hl-g{background:#1b3826;border-left:3px solid var(--g);padding:12px;margin:10px 0;border-radius:0 6px 6px 0}
+  .gap{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+  .kpi{background:var(--c);border:1px solid var(--b);border-radius:8px;padding:16px;text-align:center}
+  .kpi .n{font-size:2rem;font-weight:800;color:var(--a)}
+  .kpi .l{font-size:.8rem;color:#8b949e;margin-top:4px}
+  .spacer{height:60px}
+  #ov{position:fixed;inset:0;z-index:9999;background:#0d1117;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .5s}
+  #ov.hidden{opacity:0;pointer-events:none}
+  #ov .cd{font-size:6rem;font-weight:900;color:var(--r)}
+  #ov .sub{font-size:1.4rem;color:#8b949e;margin-top:12px}
+  #pbw{position:fixed;top:0;left:0;right:0;height:4px;z-index:9998;background:#21262d}
+  #pbb{height:100%;width:0;background:var(--r)}
+  #done{position:fixed;inset:0;z-index:9997;display:none;align-items:center;justify-content:center;flex-direction:column;background:rgba(13,17,23,.92)}
+  #done.show{display:flex}
+  #done h2{font-size:3rem;color:var(--g)}
+</style>
+</head>
+<body>
+<div id="ov"><div class="cd">3</div><div class="sub">Recording starts in...</div></div>
+<div id="pbw"><div id="pbb"></div></div>
+<div id="done"><h2>✅ COMPLETE</h2></div>
+
+<div class="w">
+<h1>🔬 DEEP DIVE<br>Berks Counseling Center — Complete Findings</h1>
+<p style="text-align:center;color:#8b949e;margin-bottom:20px">Research compiled July 30-31, 2026 | EIN 23-2043478</p>
+
+<div class="gap">
+  <div class="kpi"><div class="n">$12.5M</div><div class="l">Annual Revenue (FY2025)</div></div>
+  <div class="kpi"><div class="n">-$797K</div><div class="l">Operating Deficit (FY2025)</div></div>
+  <div class="kpi"><div class="n">94.3%</div><div class="l">Govt-Funded (Medicaid/Medicare)</div></div>
+  <div class="kpi"><div class="n">$19.8M</div><div class="l">Net Assets</div></div>
+  <div class="kpi"><div class="n">$3.94M</div><div class="l">SAMHSA Grant</div></div>
+  <div class="kpi"><div class="n">8</div><div class="l">HUD Properties</div></div>
+  <div class="kpi"><div class="n">9</div><div class="l">Board Members</div></div>
+  <div class="kpi"><div class="n">5</div><div class="l">Oversight Agencies</div></div>
+</div>
+
+<h2>💰 FINANCIAL DEEP DIVE</h2>
+<div class="card">
+  <h3>Revenue Trend: Declining</h3>
+  <table>
+    <tr><th>Year</th><th>Total Revenue</th><th>Program Revenue</th><th>Contributions</th><th>Investments</th><th>Net Income</th></tr>
+    <tr><td>FY2025</td><td class="amt">$12,494,569</td><td>$11,778,182</td><td>$204,333</td><td class="amt">$446,033</td><td class="neg">-$796,924</td></tr>
+    <tr><td>FY2024</td><td class="amt">$13,641,565</td><td>$12,369,645</td><td>$844,835</td><td>$412,569</td><td class="amt">+$1.35M</td></tr>
+    <tr><td>FY2023</td><td class="amt">$13,904,040</td><td>$13,222,659</td><td>$401,527</td><td>$263,459</td><td class="amt">+$1.65M</td></tr>
+    <tr><td>FY2022</td><td class="amt">$13,462,400</td><td>$13,131,132</td><td>$81,297</td><td>$119,723</td><td>—</td></tr>
+    <tr><td>FY2021</td><td class="amt">$15,171,755</td><td>$15,084,073</td><td>$3,615</td><td>$40,067</td><td>—</td></tr>
+  </table>
+  <div class="hl-red"><strong>🚨 Revenue down $2.68M (17.6%) from FY2021 peak. First deficit in 7 years.</strong> Investment income grew 11x ($40K→$446K) — extraordinary for a behavioral health nonprofit. Who manages this portfolio?</div>
+</div>
+
+<div class="card">
+  <h3>Executive Compensation</h3>
+  <table>
+    <tr><th>Name</th><th>Title</th><th>Base</th><th>Other Comp</th><th>Total</th></tr>
+    <tr><td>Christine Axford</td><td>CEO</td><td>$140,004</td><td>$5,428</td><td class="amt">$145,432</td></tr>
+    <tr><td>Greg Little</td><td>CFO</td><td>$132,442</td><td class="neg">$17,350</td><td class="neg" style="font-weight:700">$149,792</td></tr>
+  </table>
+  <div class="hl-y"><strong>⚠️ CFO exceeds CEO by $4,360.</strong> CFO "other compensation" is 3.2x the CEO's. What is in the $17,350? Only 2 key employees over $100K — lean but unusual ratio.</div>
+</div>
+
+<div class="card">
+  <h3>Expense Analysis</h3>
+  <table>
+    <tr><th>Category</th><th>Amount</th><th>%</th><th>Assessment</th></tr>
+    <tr><td>Program Services</td><td class="amt">$11,681,226</td><td>87.9%</td><td style="color:var(--g)">✅ Good (≥75% benchmark)</td></tr>
+    <tr><td>Management/General</td><td style="color:var(--y)">$1,589,606</td><td>12.0%</td><td style="color:var(--y)">⚠ Above ~10% ideal</td></tr>
+    <tr><td>Fundraising</td><td style="color:var(--g)">$20,661</td><td>0.2%</td><td style="color:var(--g)">✅ Exceptionally efficient</td></tr>
+  </table>
+  <div class="hl-red"><strong>🚩 All $11.68M in a SINGLE program category (4a).</strong> No breakdown between mental health, substance use, crisis, outreach. Impossible to evaluate spending distribution.</div>
+</div>
+
+<h2>🏛️ FEDERAL FUNDING DEEP DIVE</h2>
+<div class="card">
+  <div style="padding:10px 0;border-bottom:1px solid var(--b)">
+    <span class="tag t-fed">FEDERAL</span> <strong>SAMHSA CCBHC Grant #H79SM088878</strong><br>
+    <span class="amt">$3,944,396</span> total | Sept 2023 – Sept 2027<br>
+    71% timeline elapsed | No subawards — all direct | No spending-to-date data public
+  </div>
+  <div style="padding:10px 0;border-bottom:1px solid var(--b)">
+    <span class="tag t-fed">FEDERAL</span> <strong>HUD Continuum of Care — 8 Properties</strong><br>
+    <span class="amt">~$500K–$600K+/year</span> combined
+    <table>
+      <tr><th>Property</th><th>Grant</th><th>Property</th><th>Grant</th></tr>
+      <tr><td>1135/37 Franklin St.</td><td>$288,274</td><td>BCC Leasing 1</td><td>$203,168</td></tr>
+      <tr><td>BCC Leasing 2</td><td>$193,072</td><td>New Hope PSH</td><td>$204,220</td></tr>
+      <tr><td>13 S. 10th St.</td><td>$87,534</td><td>239 S. 5th St.</td><td>$123,524</td></tr>
+      <tr><td>PS Recovery Housing</td><td>$105,511</td><td>Phoenix House</td><td>$59,716</td></tr>
+    </table>
+  </div>
+  <div style="padding:10px 0">
+    <span class="tag t-fed">FEDERAL</span> <strong>CCBHC PPS Reimbursement</strong><br>
+    Enhanced federal rates since July 2017 via PA demonstration program
+  </div>
+  <div class="hl-g"><strong>ℹ No PPP loans or COVID stimulus received.</strong> No HRSA grants. Zero federal relief funds.</div>
+</div>
+
+<div class="card">
+  <h3>State & County Funding</h3>
+  <table>
+    <tr><th>Source</th><th>Detail</th></tr>
+    <tr><td><span class="tag t-state">COUNTY</span> Berks County Human Services</td><td>$16.2M block grant: MH $10.1M | DD $3.39M | BH/D&A $1.84M | Homeless ~$0.9M. BCC is contracted ICWC/Crisis Walk-In provider. <strong>Exact BCC allocation not publicly itemized.</strong></td></tr>
+    <tr><td><span class="tag t-state">STATE</span> PA OMHSAS</td><td>CCBHC coordination + behavioral health oversight. Audits every 1-3 years.</td></tr>
+    <tr><td><span class="tag t-state">STATE</span> PA COCA</td><td>Pass-through SUD treatment funding. Marcia Goodman-Hinnershitz (City Council) is Director of Planning.</td></tr>
+    <tr><td><span class="tag t-state">COUNTY</span> City of Reading</td><td>CDBG/Consolidated Plan support for community health + homeless prevention.</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>Private Funding</h3>
+  <table>
+    <tr><th>Source</th><th>Amount</th><th>Notes</th></tr>
+    <tr><td>United Way of Berks County</td><td class="amt">$678,000</td><td>3-year MacKenzie Scott grant. Board member Missy Orlando works at UW — governance conflict.</td></tr>
+    <tr><td>Berks County Community Foundation</td><td>$15,000+</td><td>Trauma-informed care + emergency grants</td></tr>
+    <tr><td>Investment Income</td><td class="amt">$446,033</td><td>11x growth in 4 years. Portfolio undisclosed. Two Edward Jones board members.</td></tr>
+    <tr><td>Total Contributions (FY2025)</td><td class="amt">$204,333</td><td>Schedule B (major donors) REDACTED</td></tr>
+  </table>
+</div>
+
+<h2>⚠️ CONFLICTS & GOVERNANCE</h2>
+<div class="card">
+  <table>
+    <tr><th>Person</th><th>BCC Role</th><th>External Role</th><th>Conflict</th></tr>
+    <tr><td><strong>Missy Orlando</strong></td><td>Board Director</td><td>United Way of Berks County</td><td style="color:var(--r)"><strong>DIRECT:</strong> UW granted BCC $678K. Board member employed by primary funder.</td></tr>
+    <tr><td><strong>Joseph Plageman Jr.</strong></td><td>Board Chair</td><td>Edward Jones Investments</td><td style="color:var(--y)"><strong>POTENTIAL:</strong> $19.8M assets, 11x investment growth. Who manages the portfolio?</td></tr>
+    <tr><td><strong>Linda Krause</strong></td><td>Board Director</td><td>Edward Jones Investments</td><td style="color:var(--y)"><strong>POTENTIAL:</strong> Second Edward Jones board member. Investment contracts competitively bid?</td></tr>
+    <tr><td><strong>Marcia Goodman-Hinnershitz</strong></td><td>City Council (Dist 4)</td><td>Director of Planning, COCA</td><td style="color:var(--y)"><strong>DUAL ROLE:</strong> COCA funds BCC. Council member works for BCC funder.</td></tr>
+  </table>
+  <div class="hl-red"><strong>⚠️ Are these disclosed in Conflict of Interest Policy? Does board recuse conflicted members? Are Edward Jones contracts competitively bid?</strong></div>
+</div>
+
+<h2>⚖️ LITIGATION: BCC v. Community Care</h2>
+<div class="card">
+  <table>
+    <tr><th>Detail</th><th>Finding</th></tr>
+    <tr><td>Case</td><td><strong>898 MDA 2017</strong> — PA Superior Court</td></tr>
+    <tr><td>Year</td><td>2015 FWA audit → 2017 court ruling</td></tr>
+    <tr><td>Amount</td><td>CCBH attempted to retract <strong>$105,486</strong> in Medicaid funds</td></tr>
+    <tr><td>Allegations</td><td>Missing supervisory physician signatures on assessments (55 Pa. Code § 1223.52)</td></tr>
+    <tr><td>BCC Defense</td><td>"Software glitch" caused signatures to be hidden, not missing</td></tr>
+    <tr><td>Court Ruling</td><td><strong>BCC WON.</strong> CCBH used wrong FWA policy. 2011 agreement required progressive "provider education" before financial retraction.</td></tr>
+    <tr><td>Result</td><td><strong>$81,704 in retractions cancelled.</strong> Remaining $23,782 status unclear.</td></tr>
+    <tr><td>BCC Satellite</td><td>Chester County location — is it still operating? Separate oversight?</td></tr>
+  </table>
+  <div class="hl-y"><strong>🔍 Why did NONE of 5 oversight agencies intervene before this reached Superior Court? Were documentation issues ever substantively resolved or just procedurally dismissed?</strong></div>
+</div>
+
+<h2>🔍 OVERSIGHT GAP ANALYSIS</h2>
+<div class="card">
+  <table>
+    <tr><th>Agency</th><th>Budget</th><th>Oversight Capacity</th><th>Gap</th></tr>
+    <tr><td>SAMHSA</td><td>$8.1B ($385M CCBHC)</td><td>Project officers for 1000s of grantees. Hiring freezes — ~21% excepted.</td><td style="color:var(--r)">Severely understaffed for individual provider scrutiny</td></tr>
+    <tr><td>PA OMHSAS</td><td>Billions via DHS</td><td>Rotational reviews every 1-3 years. County→BH-MCO→OMHSAS chain.</td><td style="color:var(--y)">Multi-year gaps between audits</td></tr>
+    <tr><td>Berks County HS</td><td>$16.2M</td><td>Contract renewals + annual fiscal audits. Covers ALL county providers.</td><td style="color:var(--y)">BCC is one of many. Exact allocation not public.</td></tr>
+    <tr><td>PA AG Charitable Trusts</td><td>$174.4M (OAG total)</td><td>Small dedicated team. 1,000+ cases/year. Reactive posture.</td><td style="color:var(--r)">Cannot proactively monitor all PA charities</td></tr>
+    <tr><td>United Way Berks</td><td>Millions</td><td>3-year funding cycles. Volunteer-led annual reviews. Funded programs only.</td><td style="color:var(--y)">Limited scope. Governance conflict with board member.</td></tr>
+  </table>
+  <div class="hl-red"><strong>🚨 NO agency publishes recent BCC-specific audit findings publicly. The 2017 lawsuit proves oversight gaps are real — problems escalated to Superior Court without agency intervention.</strong></div>
+</div>
+
+<h2>👥 BOARD OF DIRECTORS — FULL ANALYSIS</h2>
+<div class="card">
+  <table>
+    <tr><th>Name</th><th>Role</th><th>Affiliation</th><th>Since</th><th>Comp</th></tr>
+    <tr><td>Joseph Plageman Jr.</td><td>Chair</td><td>Edward Jones Investments <span class="tag t-alert">⚠</span></td><td>—</td><td style="color:var(--g)">$0</td></tr>
+    <tr><td>Crystal Seitz</td><td>Vice Chair</td><td>PA's Americana Region</td><td>—</td><td style="color:var(--g)">$0</td></tr>
+    <tr><td>John Robinson</td><td>Treasurer</td><td>Community Volunteer</td><td>—</td><td style="color:var(--g)">$0</td></tr>
+    <tr><td>James Brooks</td><td>Director</td><td>—</td><td>—</td><td style="color:var(--g)">$0</td></tr>
+    <tr><td>Linda Krause</td><td>Director</td><td>Edward Jones Investments <span class="tag t-alert">⚠</span></td><td>—</td><td style="color:var(--g)">$0</td></tr>
+    <tr><td>Deborah Scull</td><td>Director</td><td>—</td><td>—</td><td style="color:var(--g)">$0</td></tr>
+    <tr><td>Brenda Gaul</td><td>Director</td><td>—</td><td>—</td><td style="color:var(--g)">$0</td></tr>
+    <tr><td>Missy Orlando</td><td>Director</td><td>United Way of Berks County <span class="tag t-alert">⚠</span></td><td>Aug 2025</td><td style="color:var(--g)">$0</td></tr>
+    <tr><td>Jeffrey Ralph</td><td>Director</td><td>—</td><td>Feb 2026</td><td style="color:var(--g)">$0</td></tr>
+  </table>
+  <div style="background:#2d1010;padding:14px;border-radius:6px;border-left:3px solid #f78166;"><strong>🦉 CAHOOTERY — All 9 board members serve unpaid. $0 compensation is NOT independence when overlapping financial interests (Edward Jones, United Way, COCA) converge on BCC revenue streams. Without cash compensation, accountability goes dark while value flows through investment custody, grant steering, and referral pipelines.</strong></div>
+  <div class="hl-y"><strong>⚠️ Two Edward Jones board members + $19.8M assets. One United Way board member + $678K grant. These relationships require disclosure and recusal protocols.</strong></div>
+</div>
+
+<h2>📋 OPEN QUESTIONS & MISSING DATA</h2>
+<div class="card">
+  <table>
+    <tr><th>#</th><th>Question</th><th>Status</th></tr>
+    <tr><td>1</td><td>What is in CFO Greg Little's $17,350 "other compensation"?</td><td><span class="tag t-alert">Schedule J not public</span></td></tr>
+    <tr><td>2</td><td>Who manages BCC's $19.8M investment portfolio?</td><td><span class="tag t-alert">Schedule D not public</span></td></tr>
+    <tr><td>3</td><td>Who are the major donors? (Schedule B)</td><td><span class="tag t-alert">Redacted in public 990</span></td></tr>
+    <tr><td>4</td><td>Are Edward Jones investment contracts competitively bid?</td><td><span class="tag t-alert">Not disclosed</span></td></tr>
+    <tr><td>5</td><td>How many patients does BCC serve annually?</td><td><span class="tag t-alert">Not publicly available</span></td></tr>
+    <tr><td>6</td><td>What is BCC's CCBHC PPS reimbursement rate?</td><td><span class="tag t-alert">Not publicly available</span></td></tr>
+    <tr><td>7</td><td>$23,782 from CCBH retraction — resolved or outstanding?</td><td><span class="tag t-info">Unknown</span></td></tr>
+    <tr><td>8</td><td>Is BCC's Chester County satellite still operating?</td><td><span class="tag t-info">Unknown</span></td></tr>
+    <tr><td>9</td><td>What drove the $1.41M revenue decline (FY2023→FY2025)?</td><td><span class="tag t-alert">Requires BCC explanation</span></td></tr>
+    <tr><td>10</td><td>Any other lawsuits, complaints, or regulatory actions?</td><td><span class="tag t-info">None found publicly</span></td></tr>
+  </table>
+</div>
+
+<div class="hl-red">
+  <strong>🔑 BOTTOM LINE:</strong> BCC is a $12.5M nonprofit that derives 94% of revenue from taxpayers (Medicaid/Medicare). It has a $797K deficit, a CFO paid more than its CEO, an 11x investment income surge with undisclosed portfolio management by board members' employer, redacted donor records, a won lawsuit over $105K in Medicaid audit retractions, and 5 oversight agencies that publish zero recent findings. These are structural transparency problems that the complaint letter addresses directly.
+</div>
+
+<div class="spacer"></div>
+</div>
+
+<script>(async()=>{const D=120,F=60;const ov=document.getElementById('ov'),cd=ov.querySelector('.cd');const pb=document.getElementById('pbb'),dn=document.getElementById('done');for(let i=3;i>=1;i--){cd.textContent=i;await new Promise(r=>setTimeout(r,1000))}cd.textContent='▶';ov.querySelector('.sub').textContent='Recording...';await new Promise(r=>setTimeout(r,500));ov.classList.add('hidden');const th=document.body.scrollHeight-window.innerHeight;const fi=1000/F,tf=D*F,spf=th/tf;let f=0;await new Promise(resolve=>{function step(){f++;window.scrollTo({top:Math.min(spf*f,th),behavior:'auto'});pb.style.width=Math.min((f/tf)*100,100)+'%';f<tf?setTimeout(step,fi):resolve()}setTimeout(step,fi)});pb.style.width='100%';pb.style.background='var(--g)';dn.classList.add('show')})()</script>
+</body>
+</html>

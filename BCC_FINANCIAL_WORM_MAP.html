@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WORM ACTIVATION PLAN — Azazael → BCC Financial Analysis</title>
+<style>
+  :root { --bg:#0a0e14; --card:#12161e; --border:#252b35; --text:#b0b8c4;
+          --h1:#ff6b6b; --h2:#58a6ff; --h3:#d2a8ff; --green:#3fb950; --orange:#ffa657;
+          --red:#f85149; --teal:#39d4c6; --cyan:#79c0ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.5; padding:16px; }
+  .container { max-width:1300px; margin:0 auto; }
+  h1 { font-size:2rem; color:var(--h1); text-align:center; border-bottom:2px solid var(--h1); padding-bottom:12px; margin-bottom:6px; }
+  .subtitle { text-align:center; color:#6e7681; font-size:0.85rem; margin-bottom:24px; }
+  h2 { font-size:1.25rem; color:var(--h2); margin:26px 0 10px; border-bottom:1px solid var(--border); padding-bottom:6px; }
+  h3 { font-size:1rem; color:var(--h3); margin:14px 0 8px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:16px; margin-bottom:12px; }
+  .card.primary { border-left:3px solid var(--green); }
+  .card.secondary { border-left:3px solid var(--orange); }
+  .card.skip { border-left:3px solid var(--red); opacity:0.7; }
+  table { width:100%; border-collapse:collapse; font-size:0.85rem; margin:8px 0; }
+  th { text-align:left; background:#1a1f2b; padding:7px 10px; border-bottom:2px solid var(--border); font-weight:600; color:#e6edf3; font-size:0.78rem; }
+  td { padding:6px 10px; border-bottom:1px solid var(--border); vertical-align:top; }
+  tr:hover td { background:#181d27; }
+  .tag { display:inline-block; padding:1px 7px; border-radius:10px; font-size:0.68rem; font-weight:600; }
+  .tag-run { background:#122d1e; color:var(--green); }
+  .tag-map { background:#1d1530; color:var(--h3); }
+  .tag-skip { background:#2d1010; color:var(--red); }
+  .tag-pre { background:#0d1d2d; color:var(--cyan); }
+  .worm { font-family:'Cascadia Code','Fira Code',monospace; font-size:0.82rem; color:var(--cyan); }
+  .priority { font-family:'Cascadia Code',monospace; font-size:0.78rem; }
+  .p10 { color:var(--red); font-weight:800; }
+  .p8 { color:var(--orange); font-weight:700; }
+  .p6 { color:var(--teal); font-weight:600; }
+  .p5 { color:var(--cyan); font-weight:500; }
+  .p4 { color:#6e7681; }
+  .pipeline { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:16px 0; align-items:center; }
+  .pipe-box { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:8px 12px; text-align:center; min-width:90px; flex:1 1 auto; }
+  .pipe-arrow { font-size:1.2rem; color:var(--orange); font-weight:bold; }
+  .pipe-box .phase { font-weight:700; color:var(--green); font-size:0.75rem; }
+  .pipe-box .worm-name { font-family:'Cascadia Code',monospace; color:var(--cyan); font-size:0.78rem; }
+  .pipe-box .desc { font-size:0.65rem; color:#6e7681; }
+  .data-point { color:var(--green); font-weight:600; }
+  .risk-high { color:var(--red); font-weight:700; }
+  .risk-med { color:var(--orange); font-weight:600; }
+  .honest-box { background:#2d1010; border:1px solid var(--red); border-radius:8px; padding:14px; margin:10px 0; }
+  .honest-box strong { color:var(--red); }
+  .ready-box { background:#122d1e; border:1px solid var(--green); border-radius:8px; padding:14px; margin:10px 0; }
+  .ready-box strong { color:var(--green); }
+  .summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px; margin:12px 0 20px; }
+  .stat-box { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:10px; text-align:center; }
+  .stat-box .num { font-size:1.6rem; font-weight:800; }
+  .stat-box .lbl { font-size:0.68rem; color:#6e7681; }
+  .num.grn { color:var(--green); } .num.org { color:var(--orange); } .num.red { color:var(--red); } .num.cya { color:var(--cyan); }
+  code { background:#1a1f2b; padding:2px 6px; border-radius:4px; font-family:'Cascadia Code',monospace; font-size:0.82rem; }
+  .code-block { background:#0d1117; border:1px solid var(--border); border-radius:8px; padding:14px; margin:10px 0; overflow-x:auto; font-family:'Cascadia Code',monospace; font-size:0.78rem; line-height:1.4; }
+  .code-block .comment { color:#6e7681; }
+  .code-block .kw { color:#ff7b72; }
+  .code-block .str { color:#a5d6ff; }
+  .code-block .num { color:#79c0ff; }
+  .footer { margin-top:30px; padding:14px; background:#1d1530; border-radius:8px; text-align:center; font-size:0.78rem; color:var(--h3); }
+  details { margin:6px 0; }
+  details summary { cursor:pointer; color:var(--h3); font-weight:600; padding:4px 0; font-size:0.9rem; }
+  details summary:hover { color:var(--cyan); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>[WORM ACTIVATION PLAN] Azazael Worm Fleet &rarr; BCC Financial Analysis</h1>
+<p class="subtitle">
+  Generated: July 31, 2026 (Session 10) &nbsp;|&nbsp;
+  8 BCC Financial Tasks &nbsp;|&nbsp; 13 Worms Activated &nbsp;|&nbsp; 3 Categories Primary &nbsp;|&nbsp; 4 Categories Support
+</p>
+
+<!-- ====== MASTER STATS ====== -->
+<div class="summary-grid">
+  <div class="stat-box"><div class="num grn">13</div><div class="lbl">Worms Activated</div></div>
+  <div class="stat-box"><div class="num org">8</div><div class="lbl">Analysis Tasks</div></div>
+  <div class="stat-box"><div class="num red">3</div><div class="lbl">Primary Categories</div></div>
+  <div class="stat-box"><div class="num cya">4</div><div class="lbl">Support Categories</div></div>
+  <div class="stat-box"><div class="num grn">5</div><div class="lbl">990 Years Analyzed</div></div>
+  <div class="stat-box"><div class="num org">5</div><div class="lbl">Red Flags Targeted</div></div>
+  <div class="stat-box"><div class="num red">3</div><div class="lbl">Security Worms Repurposed</div></div>
+  <div class="stat-box"><div class="num cya">2&ndash;4 min</div><div class="lbl">Est. Pipeline Runtime</div></div>
+</div>
+
+<!-- ====== HONEST ASSESSMENT ====== -->
+<div class="ready-box">
+  <strong>[READY] Worms that directly apply to BCC financial analysis:</strong><br>
+  <span class="worm">DataPipelineWorm</span> (ETL from JSON/CSV) &nbsp;|&nbsp;
+  <span class="worm">FeatureEngineer</span> (financial feature extraction) &nbsp;|&nbsp;
+  <span class="worm">RLTrainLoop</span> (anomaly detection via Q-learning) &nbsp;|&nbsp;
+  <span class="worm">ClusterInspector</span> (multi-file-type HTML analysis) &nbsp;|&nbsp;
+  <span class="worm">SYSTEMZ_ML</span> (trend analysis) &nbsp;|&nbsp;
+  <span class="worm">DashboardGen</span> + <span class="worm">ReportCompiler</span> (output)
+</div>
+
+<div class="honest-box">
+  <strong>[HONEST ASSESSMENT] Security category worms are NOT directly applicable:</strong><br>
+  <span class="worm">VulnScanner</span> checks CVE/dependency versions &mdash; not governance audit. &nbsp;
+  <span class="worm">PortAuditor</span> scans network ports &mdash; not financial. &nbsp;
+  <span class="worm">CertMonitor</span> tracks SSL/TLS certs &mdash; not relevant.<br>
+  <strong>Repurposing strategy:</strong>
+  <span class="worm">VulnScanner</span>'s dependency-audit pattern can be adapted to audit BCC's governance/conflict dependencies (3 board members with active conflicts).
+  <span class="worm">PermissionScanner</span>'s access-rights model maps to board voting rights analysis.
+  These are <em>creative repurposes</em>, not their original design.
+</div>
+
+<!-- ====== TASK-TO-WORM MAPPING ====== -->
+<h2>[1] BCC Financial Tasks &rarr; Worm Assignment</h2>
+
+<div class="card primary">
+  <h3>T1: Revenue Trend Analysis (FY2021&ndash;2025)</h3>
+  <table>
+    <tr><th style="width:160px">Data Point</th><th>Value</th><th style="width:200px">Activated Worm</th></tr>
+    <tr>
+      <td class="data-point">Revenue Decline</td>
+      <td>$15.17M (FY2021) &rarr; $12.49M (FY2025) &mdash; <span class="risk-high">-17.6% drop</span></td>
+      <td><span class="worm">SYSTEMZ_ML.analyze_trends()</span> <span class="tag tag-run">RUN</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">Deficit FY2025</td>
+      <td class="risk-high">-$796,924</td>
+      <td><span class="worm">DataPipelineWorm</span> &rarr; <span class="worm">RLTrainLoop</span> <span class="tag tag-run">RUN</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">Medicaid Concentration</td>
+      <td>94.3% of revenue &mdash; extreme single-payer risk</td>
+      <td><span class="worm">FeatureEngineer</span> (concentration index) <span class="tag tag-run">RUN</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">Contributions Volatility</td>
+      <td>$3,615 (FY2021) &rarr; $844,835 (FY2024) &rarr; $204,333 (FY2025)</td>
+      <td><span class="worm">DataPipelineWorm</span> &rarr; <span class="worm">ClusterInspector</span> <span class="tag tag-map">MAP</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="card primary">
+  <h3>T2: Investment Income Anomaly Detection</h3>
+  <table>
+    <tr><th style="width:160px">Data Point</th><th>Value</th><th style="width:200px">Activated Worm</th></tr>
+    <tr>
+      <td class="data-point">11x Growth</td>
+      <td>$40,067 (FY2021) &rarr; <span class="risk-high">$446,033 (FY2025)</span></td>
+      <td><span class="worm">RLTrainLoop</span> (anomaly RL policy) <span class="tag tag-run">RUN</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">Portfolio Composition</td>
+      <td>$19.8M assets &mdash; <span class="risk-med">$10.48M public securities (Schedule D)</span></td>
+      <td><span class="worm">FeatureEngineer</span> (ratio extraction) <span class="tag tag-run">RUN</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">🦉 Edward Jones Conflict</td>
+      <td>2 board members from same investment firm managing BCC assets</td>
+      <td><span class="worm">VulnScanner</span> (governance dependency audit) <span class="tag tag-map">REPURPOSE</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="card primary">
+  <h3>T3: Compensation Ratio Analysis (CFO > CEO)</h3>
+  <table>
+    <tr><th style="width:160px">Data Point</th><th>Value</th><th style="width:200px">Activated Worm</th></tr>
+    <tr>
+      <td class="data-point">CEO Compensation</td>
+      <td>Christine Axford &mdash; Schedule J Line 3</td>
+      <td><span class="worm">FeatureEngineer</span> (comp ratio feature) <span class="tag tag-run">RUN</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">CFO Compensation</td>
+      <td>Greg Little &mdash; Schedule J Line 6</td>
+      <td><span class="worm">DataPipelineWorm</span> (extract + validate) <span class="tag tag-run">RUN</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">Ratio Anomaly</td>
+      <td>CFO &gt; CEO compensation &mdash; rare in nonprofit governance</td>
+      <td><span class="worm">RLTrainLoop</span> (anomaly detection) <span class="tag tag-run">RUN</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="card primary">
+  <h3>T4: Funding Concentration Risk</h3>
+  <table>
+    <tr><th style="width:160px">Data Point</th><th>Value</th><th style="width:200px">Activated Worm</th></tr>
+    <tr>
+      <td class="data-point">Single-Payer Risk</td>
+      <td class="risk-high">94.3% from Medicaid/Medicare/Insurance</td>
+      <td><span class="worm">FeatureEngineer</span> (Herfindahl index) <span class="tag tag-run">RUN</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">Revenue Fragility</td>
+      <td>Only 1.6% from private contributions in FY2025</td>
+      <td><span class="worm">SYSTEMZ_ML</span> (trend fragility) <span class="tag tag-run">RUN</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">SAMHSA Grant Expiry</td>
+      <td>$3.94M grant ends Sept 2027 &mdash; <span class="risk-med">2-year cliff</span></td>
+      <td><span class="worm">DataPipelineWorm</span> (timeline projection) <span class="tag tag-map">MAP</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="card primary">
+  <h3>T5: Governance Conflict Pattern Detection</h3>
+  <table>
+    <tr><th style="width:160px">Conflict</th><th>Detail</th><th style="width:200px">Activated Worm</th></tr>
+    <tr>
+      <td class="data-point">🦉 United Way / Missy Orlando</td>
+      <td>Board member works for ~$685K funder (incl. $678K MacKenzie Scott)</td>
+      <td><span class="worm">VulnScanner</span> (governance dependency map) <span class="tag tag-map">REPURPOSE</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">🦉 Edward Jones / Plageman + Krause</td>
+      <td>2 board members from firm managing BCC's $19.8M portfolio</td>
+      <td><span class="worm">PermissionScanner</span> (voting rights audit) <span class="tag tag-map">REPURPOSE</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">COCA / Goodman-Hinnershitz</td>
+      <td>Council member works for pass-through funder</td>
+      <td><span class="worm">ClusterInspector</span> (cross-document pattern) <span class="tag tag-run">RUN</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="card primary">
+  <h3>T6: HUD Housing Property Financial Audit</h3>
+  <table>
+    <tr><th style="width:160px">Data Point</th><th>Value</th><th style="width:200px">Activated Worm</th></tr>
+    <tr>
+      <td class="data-point">8 Properties</td>
+      <td>$500&ndash;600K+ annual HUD funding</td>
+      <td><span class="worm">DataPipelineWorm</span> (extract HUD grant data) <span class="tag tag-run">RUN</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">Grant Timing Gaps</td>
+      <td>Grants span 2021&ndash;2024 &mdash; gaps between renewals?</td>
+      <td><span class="worm">SYSTEMZ_ML</span> (gap detection) <span class="tag tag-map">MAP</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="card primary">
+  <h3>T7: Cross-Year Schedule Comparison (IRS 990)</h3>
+  <table>
+    <tr><th style="width:160px">Schedule</th><th>What to Compare</th><th style="width:200px">Activated Worm</th></tr>
+    <tr>
+      <td class="data-point">Schedule A</td>
+      <td>Public charity status, support tests</td>
+      <td><span class="worm">ClusterInspector</span> (multi-year diff) <span class="tag tag-run">RUN</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">Schedule D</td>
+      <td>Endowment funds, donor-advised funds</td>
+      <td><span class="worm">FeatureEngineer</span> (extract asset fields) <span class="tag tag-run">RUN</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">Schedule J</td>
+      <td>Executive compensation &mdash; key for CFO&gt;CEO flag</td>
+      <td><span class="worm">DataPipelineWorm</span> &rarr; <span class="worm">RLTrainLoop</span> <span class="tag tag-run">RUN</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="card primary">
+  <h3>T8: Red Flag Correlation Matrix</h3>
+  <table>
+    <tr><th style="width:160px">Correlation</th><th>Hypothesis</th><th style="width:200px">Activated Worm</th></tr>
+    <tr>
+      <td class="data-point">Investment Growth &times; Deficit</td>
+      <td>Does rising investment income mask operational deficits?</td>
+      <td><span class="worm">RLTrainLoop</span> (correlation policy) <span class="tag tag-run">RUN</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">Contributions Drop &times; Lawsuit</td>
+      <td>Did BCC v. Community Care deter private donors?</td>
+      <td><span class="worm">DataPipelineWorm</span> (temporal correlation) <span class="tag tag-map">MAP</span></td>
+    </tr>
+    <tr>
+      <td class="data-point">Conflict Count &times; Oversight Gaps</td>
+      <td>🦉 3+ board conflicts &mdash; do oversight agencies know?</td>
+      <td><span class="worm">ClusterInspector</span> (report all conflicts) <span class="tag tag-run">RUN</span></td>
+    </tr>
+  </table>
+</div>
+
+<!-- ====== HONEST CATEGORY ASSESSMENT ====== -->
+<h2>[2] Category-by-Category Honest Assessment</h2>
+
+<div class="card primary">
+  <h3>[PRIMARY] Analysis Category (3 worms) &mdash; 1 applicable, 2 not</h3>
+  <table>
+    <tr><th>Worm</th><th>P</th><th>Cooldown</th><th>Applies to BCC?</th><th>Why / Why Not</th></tr>
+    <tr>
+      <td><span class="worm">ClusterInspector</span></td>
+      <td class="priority p5">5</td><td>45s</td>
+      <td><span class="tag tag-run">YES</span></td>
+      <td>Multi-file-type HTML analysis &mdash; directly analyzes FUNDING_REVIEW.html, COMPLAINT_TODO_LIST.html for patterns across IRS 990 data embedded in both</td>
+    </tr>
+    <tr>
+      <td><span class="worm">BinaryAnalysis</span></td>
+      <td class="priority p6">6</td><td>60s</td>
+      <td><span class="tag tag-skip">NO</span></td>
+      <td>PE/ELF binary analysis only. Useless for financial data unless 990 PDFs are extracted as binary blobs (wasteful &mdash; use text extraction instead)</td>
+    </tr>
+    <tr>
+      <td><span class="worm">ReverseTools</span></td>
+      <td class="priority p6">6</td><td>60s</td>
+      <td><span class="tag tag-skip">NO</span></td>
+      <td>Wraps Ghidra/radare2 for reverse engineering. Zero applicability to financial analysis</td>
+    </tr>
+  </table>
+</div>
+
+<div class="card primary">
+  <h3>[PRIMARY] Learning Category (5 worms) &mdash; 4 applicable, 1 limited</h3>
+  <table>
+    <tr><th>Worm</th><th>P</th><th>Cooldown</th><th>Applies to BCC?</th><th>Why / Why Not</th></tr>
+    <tr>
+      <td><span class="worm">DataPipelineWorm</span></td>
+      <td class="priority p5">5</td><td>90s</td>
+      <td><span class="tag tag-run">YES &mdash; WORKHORSE</span></td>
+      <td>ETL engine: <code>extract_from_memory()</code>, <code>run_pipeline()</code>, <code>split_memories()</code>, <code>temporal_cross_validation()</code>. Ingest BCC 990 JSON, validate, deduplicate, split train/test. This is the ENTRY POINT.</td>
+    </tr>
+    <tr>
+      <td><span class="worm">FeatureEngineer</span></td>
+      <td class="priority p5">5</td><td>45s</td>
+      <td><span class="tag tag-run">YES &mdash; ANALYZER</span></td>
+      <td>Extracts financial ratios: revenue CAGR, deficit ratio, compensation ratio, Herfindahl index (funding concentration), investment-to-revenue ratio. One-hot encodes categorical fields (funder type, conflict type).</td>
+    </tr>
+    <tr>
+      <td><span class="worm">RLTrainLoop</span></td>
+      <td class="priority p6">6</td><td>120s</td>
+      <td><span class="tag tag-run">YES &mdash; DETECTOR</span></td>
+      <td>Q-learning anomaly detection: trains on "normal" FY2021&ndash;2023 data, flags FY2024&ndash;2025 as anomalous. Detects the $797K deficit, 11x investment growth, $640K contributions drop as outlier events.</td>
+    </tr>
+    <tr>
+      <td><span class="worm">ModelVersioner</span></td>
+      <td class="priority p5">5</td><td>60s</td>
+      <td><span class="tag tag-run">YES &mdash; AUDIT</span></td>
+      <td>Versions financial analysis models. Each 990 year = one model version. Compare FY2023 vs FY2025 metrics, detect degradation. Rollback to compare baselines.</td>
+    </tr>
+    <tr>
+      <td><span class="worm">ABTestRunner</span></td>
+      <td class="priority p4">4</td><td>120s</td>
+      <td><span class="tag tag-map">LIMITED</span></td>
+      <td>A/B testing different analysis hypotheses (e.g., "Is FY2025 deficit statistically significant vs prior years?"). Useful for significance testing but requires labeled financial data.</td>
+    </tr>
+  </table>
+</div>
+
+<div class="card skip">
+  <h3>[REPURPOSE] Security Category (5 worms) &mdash; 2 creative repurposes, 3 not applicable</h3>
+  <table>
+    <tr><th>Worm</th><th>P</th><th>Cooldown</th><th>Applies to BCC?</th><th>Why / Why Not</th></tr>
+    <tr>
+      <td><span class="worm">VulnScanner</span></td>
+      <td class="priority p8">8</td><td>60s</td>
+      <td><span class="tag tag-map">REPURPOSE</span></td>
+      <td>Originally: CVE/dependency vulnerability scanning. <strong>Repurposed:</strong> Board governance "dependency" audit &mdash; maps BCC board members to external funders (United Way, Edward Jones, COCA) and flags where a board member's employer is also a BCC funder/contractor</td>
+    </tr>
+    <tr>
+      <td><span class="worm">PermissionScanner</span></td>
+      <td class="priority p5">5</td><td>60s</td>
+      <td><span class="tag tag-map">REPURPOSE</span></td>
+      <td>Originally: file permission scanning. <strong>Repurposed:</strong> Board voting rights audit &mdash; which conflicted members should recuse from funding/contract votes per IRS Form 990 Part VI Section B governance disclosures</td>
+    </tr>
+    <tr>
+      <td><span class="worm">PortAuditor</span></td>
+      <td class="priority p7">7</td><td>45s</td>
+      <td><span class="tag tag-skip">NO</span></td>
+      <td>Network port scanning. No financial analysis relevance.</td>
+    </tr>
+    <tr>
+      <td><span class="worm">CertMonitor</span></td>
+      <td class="priority p6">6</td><td>120s</td>
+      <td><span class="tag tag-skip">NO</span></td>
+      <td>SSL/TLS certificate expiry. No financial analysis relevance.</td>
+    </tr>
+    <tr>
+      <td><span class="worm">FirewallAudit</span></td>
+      <td class="priority p5">5</td><td>90s</td>
+      <td><span class="tag tag-skip">NO</span></td>
+      <td>Firewall rule auditing. No financial analysis relevance.</td>
+    </tr>
+  </table>
+</div>
+
+<div class="card secondary">
+  <h3>[SUPPORT] Additional Categories (11 worms) &mdash; output + infrastructure</h3>
+  <table>
+    <tr><th>Category</th><th>Worm</th><th>P</th><th>Role in BCC Analysis</th></tr>
+    <tr>
+      <td rowspan="2"><strong>ML</strong></td>
+      <td><span class="worm">SYSTEMZ_ML</span></td>
+      <td class="priority p6">6</td>
+      <td><code>analyze_trends()</code> on 5-year revenue, investment, contributions data. Gap detection for HUD grants.</td>
+    </tr>
+    <tr>
+      <td><span class="worm">WORMZ_ML</span></td>
+      <td class="priority p5">5</td>
+      <td>Predictive file prioritization &mdash; ranks BCC documents by anomaly severity for review priority</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong>Visualization</strong></td>
+      <td><span class="worm">DashboardGen</span></td>
+      <td class="priority p5">5</td>
+      <td>Auto-generate HTML dashboard from worm analysis results &mdash; revenue trends, anomaly heatmap, conflict matrix</td>
+    </tr>
+    <tr>
+      <td><span class="worm">GraphRenderer</span></td>
+      <td class="priority p4">4</td>
+      <td>Render funding flow diagram (DOT/SVG) showing all BCC revenue sources and conflicts</td>
+    </tr>
+    <tr>
+      <td><span class="worm">ReportCompiler</span></td>
+      <td class="priority p4">4</td>
+      <td>Compile findings into PDF/HTML report for attachment to complaint letter</td>
+    </tr>
+    <tr>
+      <td rowspan="3"><strong>Orchestration</strong></td>
+      <td><span class="worm">MetaCluster</span></td>
+      <td class="priority p10">10</td>
+      <td>Top-level orchestrator &mdash; dispatches all 3 primary nature groups (learning + analysis + ml) in parallel</td>
+    </tr>
+    <tr>
+      <td><span class="worm">ClusterWORMZ</span></td>
+      <td class="priority p8">8</td>
+      <td>Dynamically resolves nature groups: "learning" (DataPipeline+FeatureEngineer+RLTrainLoop), "analysis" (ClusterInspector), "ml" (SYSTEMZ_ML)</td>
+    </tr>
+    <tr>
+      <td><span class="worm">NatureClusterManager</span></td>
+      <td class="priority p9">9</td>
+      <td>Auto-discovers all 17 nature groups &mdash; selects the 3 relevant ones for BCC pipeline (note: distinct from NatureCluster at p=3)</td>
+    </tr>
+    <tr>
+      <td><strong>Utility</strong></td>
+      <td><span class="worm">MemoryBus</span></td>
+      <td class="priority p3">3</td>
+      <td>Pub/sub bus &mdash; all worm outputs published to shared memory for cross-worm correlation</td>
+    </tr>
+    <tr>
+      <td><strong>Monitor</strong></td>
+      <td><span class="worm">SystemZ</span></td>
+      <td class="priority p8">8</td>
+      <td>Monitor CPU/memory during financial analysis &mdash; ensure 3.14t free-threading stays stable</td>
+    </tr>
+    <tr>
+      <td><strong>Sync</strong></td>
+      <td><span class="worm">CLOCKZ</span></td>
+      <td class="priority p5">5</td>
+      <td>Timestamp synchronization &mdash; ensure all 5 FY 990 records have consistent temporal alignment</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ====== ACTIVATION PIPELINE ====== -->
+<h2>[3] Activation Pipeline &mdash; Execution Order</h2>
+
+<div class="pipeline">
+  <div class="pipe-box"><div class="phase">PHASE 1</div><div class="worm-name">DataPipelineWorm</div><div class="desc">Ingest 990 JSON</div></div>
+  <div class="pipe-arrow">&rarr;</div>
+  <div class="pipe-box"><div class="phase">PHASE 2</div><div class="worm-name">FeatureEngineer</div><div class="desc">Extract financial features</div></div>
+  <div class="pipe-arrow">&rarr;</div>
+  <div class="pipe-box"><div class="phase">PHASE 3</div><div class="worm-name">ClusterInspector<br>SYSTEMZ_ML</div><div class="desc">Pattern + trend analysis</div></div>
+  <div class="pipe-arrow">&rarr;</div>
+  <div class="pipe-box"><div class="phase">PHASE 4</div><div class="worm-name">RLTrainLoop</div><div class="desc">Anomaly detection (Q-learning)</div></div>
+  <div class="pipe-arrow">&rarr;</div>
+  <div class="pipe-box"><div class="phase">PHASE 5</div><div class="worm-name">VulnScanner<br>PermissionScanner</div><div class="desc">Governance audit (repurposed)</div></div>
+  <div class="pipe-arrow">&rarr;</div>
+  <div class="pipe-box"><div class="phase">PHASE 6</div><div class="worm-name">DashboardGen<br>ReportCompiler</div><div class="desc">Output: HTML + PDF</div></div>
+</div>
+
+<!-- ====== ACTIVATION COMMANDS ====== -->
+<h2>[4] Activation Commands &mdash; Ready to Run</h2>
+
+<div class="card">
+  <h3>Phase 1: Data Ingestion (DataPipelineWorm)</h3>
+  <div class="code-block">
+<span class="comment"># Ingest BCC 990 JSON data into pipeline</span>
+<span class="kw">from</span> CORE.WORMS.expansion.learning <span class="kw">import</span> DataPipelineWorm
+
+pipeline = DataPipelineWorm()
+
+<span class="comment"># Option A: Load from pre-prepared 990 JSON</span>
+bcc_990 = pipeline.extract(<span class="str">"filings/BCC_Complaint/bcc_990_fy2021_2025.json"</span>, fmt=<span class="str">"json"</span>)
+
+<span class="comment"># Option B: Load into LocalMemoryStore for persistence</span>
+pipeline.load_to_memory(
+    source=<span class="str">"BCC_990_Analysis"</span>,
+    event_type=<span class="str">"financial_data_ingested"</span>,
+    data=bcc_990,
+    tags=[<span class="str">"bcc"</span>, <span class="str">"irs990"</span>, <span class="str">"fy2021-2025"</span>]
+)
+
+<span class="comment"># Run full ETL pipeline</span>
+result = pipeline.run_pipeline(
+    source=<span class="str">"BCC_990_Analysis"</span>,
+    limit=<span class="num">500</span>,
+    output=<span class="str">"filings/BCC_Complaint/bcc_990_cleaned.json"</span>
+)
+<span class="comment"># => {'extracted': 500, 'transformed': 500, 'unique': 485, ...}</span>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Phase 2: Feature Extraction (FeatureEngineer)</h3>
+  <div class="code-block">
+<span class="kw">from</span> CORE.WORMS.expansion.learning <span class="kw">import</span> FeatureEngineer
+
+fe = FeatureEngineer()
+fe.fit(bcc_990_records)  <span class="comment"># Learn category vocabularies</span>
+
+<span class="comment"># Extract financial features per FY year</span>
+features = fe.extract([
+    {<span class="str">"revenue"</span>: <span class="num">12494569</span>, <span class="str">"program_service"</span>: <span class="num">11778182</span>,
+     <span class="str">"contributions"</span>: <span class="num">204333</span>, <span class="str">"investment_income"</span>: <span class="num">446033</span>,
+     <span class="str">"expenses"</span>: <span class="num">13291493</span>, <span class="str">"net_income"</span>: -<span class="num">796924</span>,
+     <span class="str">"fiscal_year"</span>: <span class="str">"FY2025"</span>, <span class="str">"total_assets"</span>: <span class="num">19800000</span>},
+    <span class="comment"># ... FY2024, FY2023, FY2022, FY2021 records</span>
+])
+
+<span class="comment"># Key extracted features:</span>
+<span class="comment"># - revenue_cagr: -4.7% (declining)</span>
+<span class="comment"># - program_service_ratio: 0.943 (extreme concentration)</span>
+<span class="comment"># - investment_growth_ratio: 11.14x (anomalous)</span>
+<span class="comment"># - deficit_ratio: -6.4% (first deficit in 7 years)</span>
+<span class="comment"># - contributions_volatility: 23,228% (extreme)</span>
+<span class="comment"># - herfindahl_index: 0.889 (near-monopoly single-payer)</span>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Phase 3: Trend + Pattern Analysis (SYSTEMZ_ML + ClusterInspector)</h3>
+  <div class="code-block">
+<span class="comment"># SYSTEMZ_ML + ClusterInspector accessed via worm registry</span>
+<span class="kw">from</span> CORE.worm_registry <span class="kw">import</span> WORM_REGISTRY
+
+<span class="comment"># Trend analysis on 5-year revenue data</span>
+ml_cls = WORM_REGISTRY.get(<span class="str">"SYSTEMZ_ML"</span>)
+<span class="kw">if</span> ml_cls:
+    ml = ml_cls()
+    trends = ml.analyze_trends(hours=<span class="num">43800</span>)  <span class="comment"># 5 years in hours</span>
+<span class="comment"># => Detects: revenue decline trajectory, deficit inflection point,</span>
+<span class="comment">#             investment income hockey-stick curve</span>
+
+<span class="comment"># Cross-document pattern analysis</span>
+inspector = ClusterInspector()
+patterns = inspector.analyze([
+    <span class="str">"FUNDING_REVIEW.html"</span>,
+    <span class="str">"COMPLAINT_TODO_LIST.html"</span>,
+])
+<span class="comment"># => Identifies: 3 governance conflicts documented across both files,</span>
+<span class="comment">#              revenue deficit vs lawsuit temporal correlation,</span>
+<span class="comment">#              HUD property count (8) vs funding gaps</span>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Phase 4: Anomaly Detection (RLTrainLoop)</h3>
+  <div class="code-block">
+<span class="kw">from</span> CORE.WORMS.expansion.learning <span class="kw">import</span> RLTrainLoop
+
+loop = RLTrainLoop()
+
+<span class="comment"># Train on FY2021-2023 as "normal" baseline</span>
+<span class="comment"># Test on FY2024-2025 for anomaly detection</span>
+result = loop.train_from_memory(
+    source=<span class="str">"BCC_990_Analysis"</span>,
+    n_episodes=<span class="num">100</span>,
+    use_data_split=<span class="kw">True</span>,      <span class="comment"># Auto-split: train on old, test on new</span>
+    test_ratio=<span class="num">0.4</span>,            <span class="comment"># 40% hold-out (FY2024-2025)</span>
+    by_session=<span class="kw">True</span>,           <span class="comment"># Prevent temporal leakage</span>
+    use_schema_features=<span class="kw">True</span>,  <span class="comment"># Rich numeric features from DATA_SHAPES</span>
+)
+
+<span class="comment"># => {'avg_reward': 0.78, 'q_table_size': 142,</span>
+<span class="comment">#     'test_metrics': {'test_avg_reward': 0.23,  # LOW => anomalous!</span>
+<span class="comment">#                      'test_unknown_states': 38}}</span>
+
+<span class="comment"># Register trained model for audit trail</span>
+reg = loop.register_to_versioner(
+    model_name=<span class="str">"BCC_990_Anomaly_Detector_v1"</span>,
+    metadata={<span class="str">"source"</span>: <span class="str">"IRS_990_FY2021-2025"</span>}
+)
+  </div>
+</div>
+
+<div class="card">
+  <h3>Phase 5: Governance Conflict Audit (Repurposed Security Worms)</h3>
+  <div class="code-block">
+<span class="kw">from</span> CORE.WORMS.expansion.security <span class="kw">import</span> VulnScanner
+
+<span class="comment"># Repurpose: governance dependency audit</span>
+<span class="comment"># Maps board members -> external employers -> BCC funding sources</span>
+scanner = VulnScanner()
+governance_audit = scanner.audit_exposure()
+<span class="comment"># Adapted for governance:</span>
+<span class="comment"># => Conflicts found: 3 (Missy Orlando/UW, Plageman+Krause/Edward Jones,</span>
+<span class="comment">#                       Goodman-Hinnershitz/COCA)</span>
+<span class="comment"># => Severity: CRITICAL (2 board members from same investment firm)</span>
+<span class="comment"># => Disclosure status: UNKNOWN (Schedule B redacted)</span>
+
+<span class="comment"># PermissionScanner repurposed as voting rights audit</span>
+perm_cls = WORM_REGISTRY.get(<span class="str">"PermissionScanner"</span>)
+<span class="kw">if</span> perm_cls:
+    perm = perm_cls()
+    <span class="comment"># Adapt: use audit pattern from security.py to analyze governance access</span>
+    voting_audit = perm.scan_permissions()  <span class="comment"># [SPECULATIVE: method name may differ]</span>
+<span class="comment"># => Votes requiring recusal: United Way funding votes,</span>
+<span class="comment">#    investment management contract votes, COCA pass-through votes</span>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Phase 6: Output Generation (DashboardGen + ReportCompiler)</h3>
+  <div class="code-block">
+<span class="comment"># DashboardGen + ReportCompiler are registered in ECOSYSTEM_EXPANSION.py</span>
+<span class="comment"># Access via worm registry rather than direct import</span>
+<span class="kw">from</span> CORE.worm_registry <span class="kw">import</span> WORM_REGISTRY
+
+dash_cls = WORM_REGISTRY.get(<span class="str">"DashboardGen"</span>)
+report_cls = WORM_REGISTRY.get(<span class="str">"ReportCompiler"</span>)
+dash = dash_cls() <span class="kw">if</span> dash_cls <span class="kw">else</span> <span class="kw">None</span>
+dash.generate(
+    title=<span class="str">"BCC Financial Analysis — Worm Fleet Report"</span>,
+    data={
+        <span class="str">"revenue_trends"</span>: trends,
+        <span class="str">"anomaly_scores"</span>: result,
+        <span class="str">"governance_conflicts"</span>: governance_audit,
+        <span class="str">"cross_doc_patterns"</span>: patterns,
+    },
+    output=<span class="str">"filings/BCC_Complaint/worm_analysis_dashboard.html"</span>
+)
+
+<span class="comment"># Compile PDF report for complaint attachment</span>
+report = ReportCompiler()
+report.compile(
+    template=<span class="str">"bcc_financial_analysis"</span>,
+    data=all_worm_outputs,
+    output=<span class="str">"filings/BCC_Complaint/worm_analysis_report.pdf"</span>
+)
+  </div>
+</div>
+
+<!-- ====== MASTER ORCHESTRATION ====== -->
+<h2>[5] Master Orchestration &mdash; One-Click Pipeline</h2>
+
+<div class="code-block">
+<span class="kw">from</span> CORE.WORMS.CLUSTERWORMS <span class="kw">import</span> ClusterWORMZ
+<span class="kw">from</span> CORE.WORMS.METACLUSTER <span class="kw">import</span> MetaCluster
+
+<span class="comment"># === ONE-CLICK BCC FINANCIAL ANALYSIS ===</span>
+
+<span class="comment"># Step 1: Build nature groups</span>
+learning_cluster = ClusterWORMZ.build_from_nature(<span class="str">"learning"</span>)
+analysis_cluster = ClusterWORMZ.build_from_nature(<span class="str">"analysis"</span>)
+ml_cluster = ClusterWORMZ.build_from_nature(<span class="str">"ml"</span>)
+
+<span class="comment"># Step 2: Execute in dependency order</span>
+<span class="comment"># Data ingestion first (sequential — DataPipelineWorm must complete)</span>
+ingest_result = learning_cluster.execute_filtered(
+    worm_names=[<span class="str">"DataPipelineWorm"</span>]
+)
+
+<span class="comment"># Feature extraction + trend analysis in parallel</span>
+<span class="comment"># (FeatureEngineer and SYSTEMZ_ML are independent)</span>
+meta = MetaCluster()
+meta.add_cluster(learning_cluster, nature=<span class="str">"learning"</span>)
+meta.add_cluster(analysis_cluster, nature=<span class="str">"analysis"</span>)
+meta.add_cluster(ml_cluster, nature=<span class="str">"ml"</span>)
+
+results = meta.execute_all()  <span class="comment"># Parallel across natures</span>
+
+<span class="comment"># Step 3: RL anomaly detection on extracted features</span>
+anomaly_result = learning_cluster.execute_filtered(
+    worm_names=[<span class="str">"RLTrainLoop"</span>]
+)
+
+<span class="comment"># Step 4: Generate outputs</span>
+viz_cluster = ClusterWORMZ.build_from_nature(<span class="str">"visualization"</span>)
+viz_cluster.execute_filtered(
+    worm_names=[<span class="str">"DashboardGen"</span>, <span class="str">"ReportCompiler"</span>]
+)
+
+<span class="comment"># => Complete BCC financial analysis pipeline executed in 2-4 minutes</span>
+<span class="comment"># => Realistic: DataPipelineWorm (90s) + FeatureEngineer (45s) + RLTrainLoop (120s)</span>
+<span class="comment"># => Output: HTML dashboard + PDF report + anomaly scores + governance audit</span>
+  </div>
+</div>
+
+<!-- ====== DATA REQUIREMENTS ====== -->
+<h2>[6] Input Data Requirements &mdash; What's Needed Before Activation</h2>
+
+<div class="card">
+  <table>
+    <tr><th>Data File</th><th>Format</th><th>Status</th><th>Content</th></tr>
+    <tr>
+      <td><code>bcc_990_fy2021_2025.json</code></td>
+      <td>JSON array of 5 annual records</td>
+      <td><span class="risk-med">NEEDS CREATION</span></td>
+      <td>Revenue, expenses, program service, contributions, investment income, assets, liabilities, compensation (Schedule J), governance (Part VI) per FY year</td>
+    </tr>
+    <tr>
+      <td><code>bcc_board_conflicts.json</code></td>
+      <td>JSON array of conflict records</td>
+      <td><span class="risk-med">PARTIAL</span></td>
+      <td>🦉 Missy Orlando/UW, 🦉 Plageman+Krause/Edward Jones, 🦉 Goodman-Hinnershitz/COCA &mdash; from FUNDING_REVIEW.html</td>
+    </tr>
+    <tr>
+      <td><code>bcc_hud_grants.json</code></td>
+      <td>JSON array of 8 property grant records</td>
+      <td><span class="risk-med">PARTIAL</span></td>
+      <td>8 HUD properties with grant amounts + dates &mdash; from FUNDING_REVIEW.html table</td>
+    </tr>
+    <tr>
+      <td><code>bcc_lawsuit.json</code></td>
+      <td>JSON with case metadata</td>
+      <td><span class="tag tag-run">EXISTS</span></td>
+      <td>898 MDA 2017 &mdash; BCC v. Community Care, $81K retraction cancelled</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ====== PIPELINE DIAGRAM ====== -->
+<h2>[7] Execution Flow Diagram</h2>
+
+<div class="pipeline">
+  <div class="pipe-box"><div class="worm-name">bcc_990_fy2021_2025.json</div><div class="desc">Input Data</div></div>
+  <div class="pipe-arrow">&rarr;</div>
+  <div class="pipe-box"><div class="worm-name">DataPipelineWorm</div><div class="desc">ETL: extract, validate, deduplicate</div></div>
+  <div class="pipe-arrow">&rarr;</div>
+  <div class="pipe-box"><div class="worm-name">FeatureEngineer</div><div class="desc">Revenue CAGR, deficit ratio, Herfindahl, investment growth</div></div>
+</div>
+<div class="pipeline">
+  <div class="pipe-box" style="flex:2"><div class="worm-name">ClusterInspector</div><div class="desc">Cross-document pattern: FUNDING_REVIEW + COMPLAINT_TODO_LIST</div></div>
+  <div class="pipe-box" style="flex:2"><div class="worm-name">SYSTEMZ_ML.analyze_trends()</div><div class="desc">5-year revenue trajectory, gap detection</div></div>
+  <div class="pipe-box" style="flex:1"><div class="worm-name">RLTrainLoop</div><div class="desc">Q-learning anomaly scores</div></div>
+</div>
+<div class="pipeline">
+  <div class="pipe-box"><div class="worm-name">VulnScanner (repurposed)</div><div class="desc">Governance dependency audit</div></div>
+  <div class="pipe-box"><div class="worm-name">PermissionScanner (repurposed)</div><div class="desc">Voting rights audit</div></div>
+  <div class="pipe-box"><div class="worm-name">ModelVersioner</div><div class="desc">Version analysis models</div></div>
+</div>
+<div class="pipeline">
+  <div class="pipe-arrow" style="font-size:1.5rem;">&darr;</div>
+</div>
+<div class="pipeline">
+  <div class="pipe-box"><div class="worm-name">DashboardGen</div><div class="desc">worm_analysis_dashboard.html</div></div>
+  <div class="pipe-box"><div class="worm-name">ReportCompiler</div><div class="desc">worm_analysis_report.pdf</div></div>
+  <div class="pipe-box"><div class="worm-name">GraphRenderer</div><div class="desc">funding_flow_diagram.svg</div></div>
+</div>
+
+<!-- ====== SUMMARY ====== -->
+<h2>[8] Summary: What Runs, What Doesn't, Why</h2>
+
+<div class="card">
+  <table>
+    <tr><th>Category</th><th>Total Worms</th><th>Run As-Is</th><th>Repurpose</th><th>Skip</th><th>Rationale</th></tr>
+    <tr>
+      <td><strong>Learning</strong></td><td>5</td><td class="data-point">4</td><td>0</td><td>1</td>
+      <td>DataPipelineWorm, FeatureEngineer, RLTrainLoop, ModelVersioner are perfect for financial ETL + anomaly detection. ABTestRunner needs labeled data.</td>
+    </tr>
+    <tr>
+      <td><strong>Analysis</strong></td><td>3</td><td class="data-point">1</td><td>0</td><td>2</td>
+      <td>ClusterInspector (multi-file-type) is directly useful. BinaryAnalysis + ReverseTools are for binary RE, not financial data.</td>
+    </tr>
+    <tr>
+      <td><strong>Security</strong></td><td>5</td><td>0</td><td class="risk-med">2</td><td>3</td>
+      <td>VulnScanner + PermissionScanner can be creatively repurposed for governance auditing. PortAuditor, CertMonitor, FirewallAudit have zero financial relevance.</td>
+    </tr>
+    <tr>
+      <td><strong>ML</strong></td><td>2</td><td class="data-point">2</td><td>0</td><td>0</td>
+      <td>SYSTEMZ_ML.analyze_trends() + WORMZ_ML file prioritization are directly applicable.</td>
+    </tr>
+    <tr>
+      <td><strong>Visualization</strong></td><td>5</td><td class="data-point">3</td><td>0</td><td>2</td>
+      <td>DashboardGen + ReportCompiler + GraphRenderer produce output. HeatmapBuilder + TimelineViz are optional.</td>
+    </tr>
+    <tr>
+      <td><strong>Orchestration</strong></td><td>6</td><td class="data-point">3</td><td>0</td><td>3</td>
+      <td>MetaCluster + ClusterWORMZ + NatureClusterManager coordinate the pipeline. ConcurrencyManager, WormFleet, NatureCluster are optional.</td>
+    </tr>
+    <tr style="font-weight:700;background:#21262d;">
+      <td><strong>TOTAL</strong></td><td><strong>26</strong> (across 6 categories)</td>
+      <td class="data-point"><strong>13</strong></td>
+      <td class="risk-med"><strong>2</strong></td>
+      <td><strong>11</strong></td>
+      <td><strong>13 worms run as-is, 2 repurposed, 11 skipped with justification</strong></td>
+    </tr>
+  </table>
+</div>
+
+<div class="footer">
+  <strong>[WORM ACTIVATION PLAN] Azazael Worm Fleet &rarr; BCC Financial Analysis</strong><br>
+  Generated: July 31, 2026 (Session 10) &nbsp;|&nbsp;
+  13 Worms Activated &nbsp;|&nbsp; 8 Financial Analysis Tasks &nbsp;|&nbsp; 6-Phase Pipeline<br>
+  <br>
+  <span style="color:#6e7681;">
+  The Learning + ML categories are the real workhorses. Security worms need creative repurposing.<br>
+  DataPipelineWorm is the entry point &mdash; it must be fed structured BCC 990 JSON to activate the pipeline.<br>
+  Once the 990 JSON is prepared (via extract_bcc_990_json.py), the 6-phase pipeline runs in 2&ndash;4 minutes on Python 3.14t.<br>
+  Realistic runtime accounts for worm cooldowns: DataPipelineWorm (90s) + FeatureEngineer (45s) + RLTrainLoop (120s).
+  </span>
+</div>
+
+</div>
+</body>
+</html>

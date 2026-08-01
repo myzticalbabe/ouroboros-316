@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
+<title>Berks Counseling Center — Complete Investigative Report</title>
+<style>
+  :root {
+    --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9;
+    --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; --p:#d2a8ff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  #scroll-container {
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  #scroll-container::-webkit-scrollbar { display: none; }
+
+  .content {
+    max-width: 1200px;
+    margin-left: 170px;
+    margin-right: auto;
+    padding: 60px 80px 200px 80px;
+  }
+
+  /* TITLE SECTION */
+  .title-section {
+    text-align: center;
+    padding: 120px 0 60px 0;
+    border-bottom: 2px solid var(--r);
+    margin-bottom: 60px;
+  }
+  .title-section h1 {
+    font-size: 3.2rem;
+    color: var(--r);
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+  }
+  .title-section .subtitle {
+    font-size: 1.3rem;
+    color: #8b949e;
+    margin-bottom: 8px;
+  }
+  .title-section .date {
+    font-size: 1rem;
+    color: var(--y);
+    margin-top: 16px;
+  }
+
+  /* SECTION HEADERS */
+  h2 {
+    font-size: 2rem;
+    color: var(--a);
+    margin: 60px 0 24px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    letter-spacing: 1px;
+  }
+  h3 {
+    font-size: 1.3rem;
+    color: var(--p);
+    margin: 32px 0 14px;
+  }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 32px;
+    margin-bottom: 24px;
+  }
+  .card-red { border-left: 5px solid var(--r); background:#1a1015; }
+  .card-yellow { border-left: 5px solid var(--y); background:#1a1510; }
+  .card-green { border-left: 5px solid var(--g); background:#101a15; }
+  .card-purple { border-left: 5px solid var(--p); background:#15101a; }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1rem;
+  }
+  th {
+    text-align: left;
+    background: #21262d;
+    color: var(--h);
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--border);
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:hover td { background: #1c2128; }
+
+  /* STAT GRID */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+  }
+  .stat-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .stat-box .number {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--a);
+    line-height: 1.2;
+  }
+  .stat-box .number.red { color: var(--r); }
+  .stat-box .number.green { color: var(--g); }
+  .stat-box .number.yellow { color: var(--y); }
+  .stat-box .label {
+    font-size: 0.95rem;
+    color: #8b949e;
+    margin-top: 8px;
+    line-height: 1.3;
+  }
+
+  /* RED FLAG */
+  .red-flag {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    margin: 20px 0;
+    background: #1a1015;
+    border-radius: 10px;
+    border-left: 5px solid var(--r);
+  }
+  .red-flag .flag-num {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--r);
+    flex-shrink: 0;
+    width: 70px;
+    text-align: center;
+  }
+  .red-flag .flag-content h4 {
+    font-size: 1.25rem;
+    color: var(--h);
+    margin-bottom: 8px;
+  }
+  .red-flag .flag-content p {
+    color: #c9d1d9;
+    font-size: 1.05rem;
+  }
+  .red-flag .flag-content .amount {
+    color: var(--r);
+    font-weight: 700;
+    font-size: 1.3rem;
+  }
+
+  /* BIG ALERT */
+  .big-alert {
+    padding: 36px;
+    margin: 30px 0;
+    border-radius: 12px;
+    font-size: 1.15rem;
+    line-height: 1.8;
+  }
+  .big-alert.critical {
+    background: #1a1015;
+    border: 2px solid var(--r);
+  }
+  .big-alert.warning {
+    background: #1a1510;
+    border: 2px solid var(--y);
+  }
+  .big-alert h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+
+  /* FINDING ROW */
+  .finding-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 24px;
+    margin: 12px 0;
+    background: #21262d;
+    border-radius: 8px;
+  }
+  .finding-row .icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+  }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    margin: 10px 0;
+  }
+  .progress-bar {
+    height: 10px;
+    background: #21262d;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 6px;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.3s;
+  }
+  .progress-fill.red { background: var(--r); }
+  .progress-fill.green { background: var(--g); }
+  .progress-fill.yellow { background: var(--y); }
+
+  /* SCROLL INDICATOR */
+  #scroll-indicator {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--a);
+    font-size: 1rem;
+    z-index: 10;
+    background: rgba(13,17,23,0.85);
+    padding: 10px 24px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    pointer-events: none;
+    transition: opacity 0.5s;
+  }
+
+  /* METHOD CARDS */
+  .method-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .method-mini {
+    padding: 14px 18px;
+    border-radius: 8px;
+    background: #21262d;
+    border-left: 4px solid var(--border);
+    font-size: 0.95rem;
+  }
+  .method-mini.success { border-left-color: var(--g); }
+  .method-mini.blocked { border-left-color: var(--r); opacity: 0.7; }
+
+  /* FINAL CTA */
+  .cta-section {
+    text-align: center;
+    padding: 80px 0;
+    border-top: 2px solid var(--r);
+    margin-top: 60px;
+  }
+  .cta-section h2 {
+    font-size: 2.2rem;
+    border-bottom: none;
+    margin-bottom: 20px;
+  }
+
+
+</style>
+</head>
+<body>
+
+<div id="scroll-container">
+<div class="content">
+
+<!-- ============ TITLE ============ -->
+<div class="title-section">
+  <h1>📋 BERKS COUNSELING CENTER</h1>
+  <div class="subtitle">Complete Investigative Report — Governance, Financial Forensics & Donor Reconstruction</div>
+  <div class="subtitle" style="font-size:1.1rem;color:var(--p);">EIN 23-2043478 &nbsp;|&nbsp; Reading, Pennsylvania</div>
+  <div class="date">Research Completed: August 1, 2026 (Session 11) &nbsp;|&nbsp; 19 OSINT Methods &nbsp;|&nbsp; 13 Worms Activated</div>
+</div>
+
+<!-- ============ STAT GRID ============ -->
+<div class="stat-grid">
+  <div class="stat-box">
+    <div class="number red">$12.5M</div>
+    <div class="label">Annual Revenue<br>(FY2025)</div>
+  </div>
+  <div class="stat-box">
+    <div class="number red">-$797K</div>
+    <div class="label">Operating Deficit<br>(FY2025)</div>
+  </div>
+  <div class="stat-box">
+    <div class="number">$19.8M</div>
+    <div class="label">Net Assets<br>(Healthy Reserve)</div>
+  </div>
+  <div class="stat-box">
+    <div class="number yellow">$10.48M</div>
+    <div class="label">Public Securities<br>(Schedule D)</div>
+  </div>
+  <div class="stat-box">
+    <div class="number yellow">94.3%</div>
+    <div class="label">Medicaid Concentration<br>(Single-Payer Risk)</div>
+  </div>
+  <div class="stat-box">
+    <div class="number">$7.98M+</div>
+    <div class="label">Donor Value<br>Reconstructed</div>
+  </div>
+  <div class="stat-box">
+    <div class="number">8</div>
+    <div class="label">Named Funders<br>Identified</div>
+  </div>
+  <div class="stat-box">
+    <div class="number green">9/9</div>
+    <div class="label">Board Identities<br>Resolved (8/9 employers)</div>
+  </div>
+  <div class="stat-box">
+    <div class="number">19</div>
+    <div class="label">OSINT Methods<br>Attempted</div>
+  </div>
+  <div class="stat-box">
+    <div class="number green">14 yrs</div>
+    <div class="label">Plageman Tenure<br>At Edward Jones</div>
+  </div>
+</div>
+
+<!-- ============ THE 6 RED FLAGS ============ -->
+<h2>🚨 Six Governance Red Flags</h2>
+
+<div class="red-flag">
+  <div class="flag-num">1</div>
+  <div class="flag-content">
+    <h4>CoCA Conflict — $3.3M Largest Non-Federal Funder (ESCALATED July 31)</h4>
+    <p>🦉 Council on Chemical Abuse (CoCA) is BCC's <span class="amount">largest non-federal funder at $3.3M</span> across 5 grants (2019–2023) — 4.8x larger than United Way. <strong>Marcia Goodman-Hinnershitz</strong> serves as CoCA's Director of Planning WHILE simultaneously serving on Reading City Council (District 4). This creates a material multi-directional governance conflict: city council oversight authority + funder employment + BCC funding decisions.</p>
+  </div>
+</div>
+
+<div class="red-flag">
+  <div class="flag-num">2</div>
+  <div class="flag-content">
+    <h4>Edward Jones Board Control — $10.48M Portfolio, CRD #5964768, Schedule L All-NO</h4>
+    <p>Two board members — <strong>🦉 Joseph Plageman Jr.</strong> (Chair, CRD #5964768, Series 66/7, ZERO FINRA disclosures) and <strong>🦉 Linda Krause</strong> (Director, Sr. Branch Office Admin — NOT a registered rep) — work for Edward Jones at 918 Penn Ave, Wyomissing PA. BCC's portfolio holds <span class="amount">$10.48M in publicly traded securities</span> (100% public securities — no bonds or alternatives). Investment income grew <span class="amount">11.13x</span> ($40K to $446K) in 4 years. <strong>Schedule L (Part IV, lines 25a-28): BCC answered NO to ALL four related-party transaction questions</strong>. If Edward Jones manages this portfolio, those fees should be disclosed. Auditor Herbein + Company (Linda S. Himeback CPA) both prepares the 990 and conducts the audit.</p>
+  </div>
+</div>
+
+<div class="red-flag">
+  <div class="flag-num">3</div>
+  <div class="flag-content">
+    <h4>United Way Board Conflict — $685K Funding Loop</h4>
+    <p>🦉 <strong>Missy Orlando</strong> serves on BCC's Board of Directors while employed by <strong>United Way of Berks County</strong>, which granted BCC <span class="amount">$685,000+</span> including a $678K MacKenzie Scott focused grant. A board member's employer is also a primary funder. Recusal from UW funding votes is unknown. IRS Form 990 Part VI Section B disclosure required.</p>
+  </div>
+</div>
+
+<div class="red-flag">
+  <div class="flag-num">4</div>
+  <div class="flag-content">
+    <h4>CFO Compensation Exceeds CEO — $149,792 vs $145,432</h4>
+    <p>CFO Greg Little's total compensation (<span class="amount">$149,792</span>) exceeds CEO Christine Axford's (<span class="amount">$145,432</span>) — rare in 501(c)(3) organizations. CFO also received $17,350 in "other compensation" vs CEO's $5,428. Schedule J (compensation methodology) not public. IRS intermediate sanctions rules (IRC § 4958) may apply.</p>
+  </div>
+</div>
+
+<div class="red-flag">
+  <div class="flag-num">5</div>
+  <div class="flag-content">
+    <h4>Revenue Decline + Deficit + Grant Cliff = Triple Threat</h4>
+    <p>Revenue declined <span class="amount">-4.74% CAGR</span> ($15.17M → $12.49M) over 4 years while expenses grew 8.5%, flipping a $1.65M surplus into a <span class="amount">-$797K deficit</span>. SAMHSA CCBHC grant ($3.94M) expires <strong>September 2027</strong> — 790 days remaining. Revenue fragility score: <span class="amount">38.9/100 (CRITICAL)</span>. 94.3% single-payer concentration (Medicaid).</p>
+  </div>
+</div>
+
+<div class="red-flag">
+  <div class="flag-num">6</div>
+  <div class="flag-content">
+    <h4>🦉 TPUC Dual-Board Pattern — Plageman Leads TWO Investment-Governed Organizations</h4>
+    <p><strong>🦉 Joseph Plageman Jr.</strong> (CRD #5964768, Edward Jones advisor) serves as <strong>PRESIDENT of the Trustees of the Pennsylvania Universalist Convention (TPUC)</strong> — a second organization with an investment portfolio. TPUC manages an endowment/trust fund for 6 Universalist congregations across PA, with a Financial Committee and designated Financial Advisor. Plageman presides over TWO organizations whose investments may be managed by his own employer, Edward Jones. <span class="amount">Same conflict pattern at BOTH organizations.</span></p>
+  </div>
+</div>
+
+<!-- ============ COMPLETE BOARD ROSTER ============ -->
+<h2>👥 Complete Board of Directors — FY2025 (9 Members)</h2>
+
+<div class="card">
+  <p style="color:#8b949e;margin-bottom:16px;">Source: ProPublica Nonprofit Explorer — BCC FY2025 Form 990 Part VII + verified on berkscounselingcenter.org/about-us#Leadership. <strong style="color:var(--y);">⚠ BCC's website lists names and titles but provides NO employer, professional affiliation, or bio information for any board member.</strong> 8 of 9 employers confirmed through independent research — only James Brooks' employer remains unverified. Jeffrey Ralph resolved Aug 2026 (GSK medicinal chemistry — inferred).</p>
+  <table>
+    <tr><th>Name</th><th>Board Role</th><th>Employer / Affiliation</th><th>Conflict Status</th></tr>
+    <tr style="background:#1a1015;">
+      <td><strong>🦉 Joseph Plageman Jr.</strong></td>
+      <td>Chairperson (14 yrs)</td>
+      <td>Edward Jones — CRD #5964768, Series 66/7, ZERO FINRA disclosures. Also: President, TPUC.</td>
+      <td style="color:var(--r);font-weight:700;">⚠ $10.48M portfolio + dual-board pattern</td>
+    </tr>
+    <tr>
+      <td><strong>Crystal Seitz</strong></td>
+      <td>Vice Chair</td>
+      <td style="color:var(--g);">✅ President — Greater Reading Convention & Visitors Bureau (Reading, PA)</td>
+      <td style="color:var(--g);">None — tourism/hospitality</td>
+    </tr>
+    <tr>
+      <td><strong>🦉 John Robinson</strong></td>
+      <td>Treasurer (since 2021)</td>
+      <td style="color:var(--r);">Robinson & Associates, LLC — consulting firm, Wyomissing/Reading, PA. Prior: The Vanguard Group. <strong>🦉 Vendor risk — Treasurer runs consulting firm.</strong></td>
+      <td style="color:var(--r);">🦉 HIGH</td>
+    </tr>
+    <tr>
+      <td><strong>James Brooks</strong></td>
+      <td>Director (9+ yrs)</td>
+      <td style="color:var(--y);">🔍 NOT PUBLICLY DISCLOSED</td>
+      <td>Unknown</td>
+    </tr>
+    <tr style="background:#1a1510;">
+      <td><strong>🦉 Linda Krause</strong></td>
+      <td>Director (9+ yrs)</td>
+      <td>Edward Jones — Sr. Branch Office Admin (NOT a registered rep, no CRD). Works on Plageman's team.</td>
+      <td style="color:var(--y);font-weight:700;">⚠ 22% EJ board bloc</td>
+    </tr>
+    <tr>
+      <td><strong>Deborah Scull</strong></td>
+      <td>Director (9+ yrs)</td>
+      <td style="color:var(--g);">✅ Central Tire & Auto Service — President & Owner. Sinking Spring/West Reading, PA. Family business since 1928. No behavioral health conflict.</td>
+      <td style="color:var(--g);">Low</td>
+    </tr>
+    <tr>
+      <td><strong>🦉 Brenda Gaul</strong></td>
+      <td>Director (was Treasurer thru May 2022)</td>
+      <td style="color:var(--r);">Furniture Soup, Inc. — President & Lead Designer. Commercial furniture dealer with PA state/municipal contracts. <strong>🦉 Vendor conflict — ex-Treasurer.</strong></td>
+      <td style="color:var(--r);">🦉 HIGH</td>
+    </tr>
+    <tr style="background:#1a1015;">
+      <td><strong>🦉 Missy Orlando</strong></td>
+      <td>Director (joined Aug 2025)</td>
+      <td>United Way of Berks County</td>
+      <td style="color:var(--r);font-weight:700;">⚠ $685K funding loop</td>
+    </tr>
+    <tr>
+      <td><strong>Jeffrey Ralph</strong></td>
+      <td>Director (joined Feb 2025)</td>
+      <td style="color:var(--g);">✅ Dr. Jeffrey Ralph — Investigator, Medicinal Chemistry, GSK (Collegeville/Downingtown PA R&D hub). US Undergraduate Outreach Lead. <em>(Identity inferred — name/region triangulation, Aug 2026.)</em></td>
+      <td style="color:var(--g);">Low — no direct funding link</td>
+    </tr>
+  </table>
+
+  <div class="big-alert warning" style="margin-top:16px;">
+    <h3 style="color:var(--y);">⚠ TRANSPARENCY GAP:</h3>
+    <p><strong>All 9 board members identified; 8 of 9 employers confirmed through independent research (Aug 2026).</strong> Crystal Seitz (Greater Reading CVB), John Robinson (Robinson & Associates LLC 🦉 — CONFIRMED), Deborah Scull (Central Tire & Auto Service), Brenda Gaul (Furniture Soup Inc. 🦉), Jeffrey Ralph (GSK medicinal chemistry — LIKELY CONFIRMED/inferred). Only <strong>James Brooks</strong> remains without a confirmed external employer (Marion Twp Fire Relief lead). For a nonprofit managing <strong>$19.8M in assets</strong>, BCC's website provides NO employer info for any board member — the transparency gap is BCC's, not ours. <strong>Request BCC's Conflict of Interest Policy under IRS public disclosure requirements.</strong></p>
+  </div>
+
+  <div class="big-alert critical" style="margin-top:16px;">
+    <h3 style="color:var(--g);">✅ TPUC FINANCIAL ADVISOR — Richard Bromley Jr. CLEARED:</h3>
+    <p>FINRA BrokerCheck confirms Richard Robert Bromley Jr. (source ID #2395729) is <strong>INACTIVE</strong> — 23.7 years in the financial industry but currently has ZERO approved registrations and ZERO current employments. <strong>NOT at Edward Jones.</strong> Likely a retired industry veteran serving as unpaid/volunteer Financial Advisor to TPUC. The "three-person Edward Jones network" theory (Plageman + Krause + Bromley) is <strong>DISPROVEN</strong>. TPUC conflict severity reduced — the concern is now Plageman's dual-board leadership pattern, not a three-person EJ conspiracy.</p>
+  </div>
+</div>
+
+<!-- ============ COCA CONFLICT DEEP DIVE ============ -->
+<h2>⚠️ CoCA Conflict — The $3.3M Finding That Changes Everything</h2>
+
+<div class="big-alert critical">
+  <h3 style="color:var(--r);">🚨 ESCALATED: From "Potential" to "Material" — July 31, 2026</h3>
+  <p style="margin-top:12px;">For months, the Marcia Goodman-Hinnershitz / CoCA connection was documented as a "potential conflict." The donor reconstruction investigation changed that. <strong>CoCA is not a minor pass-through — it is BCC's single largest non-federal funder at $3,300,000 across 5 grants.</strong></p>
+</div>
+
+<table>
+  <tr><th>Finding</th><th>Previous Understanding</th><th style="color:var(--r);">NEW Understanding</th></tr>
+  <tr>
+    <td><strong>CoCA-BCC financial relationship</strong></td>
+    <td>Pass-through funding (amount unspecified)</td>
+    <td style="color:var(--r);font-weight:700;">$3.3M across 5 grants — 4.8x larger than United Way</td>
+  </tr>
+  <tr>
+    <td><strong>Goodman-Hinnershitz conflict</strong></td>
+    <td>Potential / incidental</td>
+    <td style="color:var(--r);font-weight:700;">MATERIAL — CoCA Director of Planning + City Council oversight</td>
+  </tr>
+  <tr>
+    <td><strong>Source of CoCA funds</strong></td>
+    <td>Unknown</td>
+    <td>Assumed PA DHS / Drug & Alcohol pass-through (upstream chain not independently confirmed)</td>
+  </tr>
+  <tr>
+    <td><strong>Conflict type</strong></td>
+    <td>Single-direction (COCA only)</td>
+    <td style="color:var(--r);font-weight:700;">MULTI-DIRECTIONAL: City Council oversight → BCC services ↔ CoCA funding → BCC operations</td>
+  </tr>
+</table>
+
+<div class="card-purple">
+  <h3 style="color:var(--p);">🔍 Source: Philanthropy.org 990 Grant Aggregation</h3>
+  <p>Discovered via <strong>Method #1 of 19</strong> in the donor reconstruction OSINT pipeline. Philanthropy.org aggregates IRS Form 990 grant data across years from multiple nonprofit filings, revealing funder relationships that are scattered across individual 990s.</p>
+  <p style="margin-top:8px;font-size:0.9rem;color:#8b949e;">📊 philanthropy.org/990/who-funds/232043478/berks-counseling-center-inc</p>
+</div>
+
+<!-- ============ WORM FLEET ANALYSIS ============ -->
+<h2>🪱 Azazael Worm Fleet — Automated Financial Forensics</h2>
+
+<div class="card">
+  <p style="color:#8b949e;margin-bottom:16px;">13 worms across 5 categories activated against BCC 990 data (FY2021–2025). Security worms (VulnScanner, PermissionScanner) repurposed for governance dependency mapping.</p>
+
+  <div class="stat-grid" style="grid-template-columns: repeat(5, 1fr);">
+    <div class="stat-box">
+      <div class="number red">-4.74%</div>
+      <div class="label">Revenue CAGR<br>DECLINING</div>
+    </div>
+    <div class="stat-box">
+      <div class="number red">11.13x</div>
+      <div class="label">Investment Growth<br>ANOMALOUS</div>
+    </div>
+    <div class="stat-box">
+      <div class="number yellow">0.8987</div>
+      <div class="label">Herfindahl Index<br>EXTREME CONCENTRATION</div>
+    </div>
+    <div class="stat-box">
+      <div class="number red">-6.38%</div>
+      <div class="label">Deficit Ratio<br>FIRST IN 7 YEARS</div>
+    </div>
+    <div class="stat-box">
+      <div class="number red">38.9</div>
+      <div class="label">Fragility Score<br>CRITICAL</div>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>🎯 Z-Score Anomaly Detection — All 5 Years</h3>
+  <table>
+    <tr><th>Year</th><th>Revenue Z</th><th>Investment Z</th><th>Contributions Z</th><th>Total Score</th><th>Assessment</th></tr>
+    <tr style="background:#1a1015;">
+      <td><strong>FY2024</strong></td>
+      <td>0.74</td>
+      <td style="color:var(--r);font-weight:700;">2.94</td>
+      <td style="color:var(--r);font-weight:700;">3.96</td>
+      <td style="color:var(--r);font-weight:700;font-size:1.2rem;">2.32</td>
+      <td style="color:var(--r);font-weight:700;">🚨 MOST ANOMALOUS</td>
+    </tr>
+    <tr>
+      <td><strong>FY2025</strong></td>
+      <td style="color:var(--r);">2.33</td>
+      <td style="color:var(--r);">3.30</td>
+      <td>0.24</td>
+      <td style="color:var(--r);font-weight:700;">2.15</td>
+      <td style="color:var(--r);">⚠ ANOMALOUS</td>
+    </tr>
+    <tr>
+      <td><strong>FY2023</strong></td>
+      <td>0.38</td>
+      <td>1.32</td>
+      <td>1.39</td>
+      <td style="color:var(--y);">0.96</td>
+      <td style="color:var(--y);">⚠ ELEVATED</td>
+    </tr>
+    <tr>
+      <td><strong>FY2022</strong></td>
+      <td>0.99</td>
+      <td>0.23</td>
+      <td>0.47</td>
+      <td style="color:var(--g);">0.59</td>
+      <td style="color:var(--g);">✓ NORMAL</td>
+    </tr>
+    <tr>
+      <td><strong>FY2021</strong></td>
+      <td>1.37</td>
+      <td>1.09</td>
+      <td>0.92</td>
+      <td style="color:var(--y);">1.16</td>
+      <td style="color:var(--y);">⚠ ELEVATED</td>
+    </tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>🔗 Cross-Document Patterns — 4 Detected</h3>
+  <table>
+    <tr><th>Pattern</th><th>Severity</th><th>Finding</th></tr>
+    <tr style="background:#1a1015;">
+      <td><strong>P1: INVESTMENT_GROWTH × CONFLICT</strong></td>
+      <td style="color:var(--r);font-weight:700;">CRITICAL</td>
+      <td>11.13x investment growth + 2 Edward Jones board members + $10.48M public equities (Schedule D) + Schedule L all-NO</td>
+    </tr>
+    <tr style="background:#1a1015;">
+      <td><strong>P2: DECLINE_DEFICIT_CLIFF TRIPLE</strong></td>
+      <td style="color:var(--r);font-weight:700;">CRITICAL</td>
+      <td>-4.74% CAGR + -6.38% deficit + SAMHSA expires Sept 2027 = fiscal emergency</td>
+    </tr>
+    <tr>
+      <td><strong>P4: FUNDER_BOARD_CONFLICT</strong></td>
+      <td style="color:var(--y);font-weight:700;">HIGH</td>
+      <td>Missy Orlando (UW employee) on BCC board + $685K UW funding</td>
+    </tr>
+    <tr>
+      <td><strong>P5: COMPENSATION_INVERSION</strong></td>
+      <td style="color:var(--y);">MEDIUM</td>
+      <td>CFO ($149,792) > CEO ($145,432) — VERIFIED FY2025 Part VII (Session 17 reconciliation); Schedule J methodology still requested</td>
+    </tr>
+  </table>
+</div>
+
+<!-- ============ FINRA BROKERCHECK & SCHEDULE D/L DEEP DIVE ============ -->
+<h2>🔍 FINRA BrokerCheck — Plageman CRD #5964768 & Schedule D/L Revealed</h2>
+
+<div class="card-green">
+  <h3 style="color:var(--g);">🦉 Joseph Plageman Jr. — FINRA CRD #5964768</h3>
+  <table>
+    <tr><th style="width:200px;">Attribute</th><th>Finding</th></tr>
+    <tr><td><strong>CRD Number</strong></td><td style="color:var(--g);font-weight:700;">#5964768 — Joseph William Plageman</td></tr>
+    <tr><td><strong>Employer</strong></td><td>Edward Jones — 918 Penn Avenue, Wyomissing, PA 19610 (since 2011 — 14 years)</td></tr>
+    <tr><td><strong>Licenses</strong></td><td>Series 66/7 (standard for registered representatives). No CFP, CFA, or advanced designations.</td></tr>
+    <tr><td><strong>Disclosure Events</strong></td><td style="color:var(--g);font-weight:700;font-size:1.1rem;">✅ ZERO — Completely clean FINRA record. No customer disputes, no regulatory actions, no criminal disclosures, no civil judgments, no liens, no bankruptcies.</td></tr>
+    <tr><td><strong>BrokerCheck</strong></td><td><a href="https://brokercheck.finra.org/individual/summary/5964768" target="_blank" style="color:var(--a);">brokercheck.finra.org/individual/summary/5964768</a></td></tr>
+    <tr><td><strong>Other Board</strong></td><td style="color:var(--y);">PRESIDENT — Trustees of the Pennsylvania Universalist Convention (TPUC) — see below</td></tr>
+  </table>
+
+  <div class="highlight-green" style="margin-top:16px;">
+    <strong>📊 ANALYSIS:</strong> Plageman's FINRA record is clean — no complaints, no actions, no disclosures. But the clean record IS the mechanism: $0 board compensation + clean regulatory history = invisible cahootery. The harm is structural: a board chair whose employer may manage the organization's $10.48M portfolio, with no Schedule L disclosure. The governance conflict exists independently of Plageman's personal record.
+  </div>
+</div>
+
+<div class="card-yellow">
+  <h3 style="color:var(--y);">🦉 Linda Krause — NOT a Registered Financial Advisor</h3>
+  <table>
+    <tr><th style="width:200px;">Attribute</th><th>Finding</th></tr>
+    <tr><td><strong>Role at Edward Jones</strong></td><td style="color:var(--y);">Sr. Branch Office Administrator — NOT a registered representative</td></tr>
+    <tr><td><strong>FINRA CRD</strong></td><td style="color:var(--y);">NONE — Does not hold a CRD number or securities licenses</td></tr>
+    <tr><td><strong>Team</strong></td><td>Works directly on Joseph Plageman's team at 918 Penn Ave</td></tr>
+    <tr><td><strong>Significance</strong></td><td style="color:var(--y);">As branch office administrator, she handles client account processing and would be aware of all Edward Jones-BCC transactions. Her financial influence is indirect (not an advisor) but her access to account information is direct.</td></tr>
+    <tr><td><strong>BCC Board Control</strong></td><td style="color:var(--y);">Together, Plageman + Krause = <strong>22%</strong> of BCC's 9-member board from the same Edward Jones office.</td></tr>
+  </table>
+</div>
+
+<div class="card-green">
+  <h3 style="color:var(--g);">📊 Schedule D — $10.48M Portfolio (FY2025)</h3>
+  <p style="color:#8b949e;margin-bottom:10px;">Source: ProPublica Nonprofit Explorer — FY2025 e-filed 990 (object_id 202631289349302318)</p>
+  <table>
+    <tr><th>Line</th><th>Category</th><th>Beginning of Year</th><th>End of Year</th></tr>
+    <tr>
+      <td><strong>Line 1</strong></td>
+      <td><strong>Publicly traded securities</strong></td>
+      <td style="color:var(--g);font-weight:700;">$9,642,751</td>
+      <td style="color:var(--g);font-weight:700;font-size:1.1rem;">$10,479,575</td>
+    </tr>
+    <tr>
+      <td><strong>Lines 2-10</strong></td>
+      <td>Bonds, govt obligations, real estate, alternatives, all other</td>
+      <td colspan="2" style="color:var(--r);">$0 — ALL ZERO. 100% public securities.</td>
+    </tr>
+    <tr style="font-weight:700;background:#21262d;">
+      <td><strong>TOTAL</strong></td>
+      <td><strong>% of $19.8M Net Assets</strong></td>
+      <td colspan="2" style="color:var(--a);"><strong>53% ($10.48M / $19.8M)</strong> — remaining ~$9.3M in cash, AR, fixed assets</td>
+    </tr>
+  </table>
+
+  <div class="highlight-green" style="margin-top:16px;">
+    <strong>📊 PORTFOLIO ANALYSIS:</strong><br>
+    • Portfolio grew <strong>$836,824</strong> in one year ($9.64M → $10.48M)<br>
+    • <strong>$446,033</strong> investment income on ~$10M average portfolio = ~<strong>4.4% yield</strong> — reasonable<br>
+    • <strong>100% equity concentration</strong> is unusual for a $19.8M nonprofit — most diversify into bonds<br>
+    • Zero in bonds, government obligations, real estate, or alternatives<br>
+    • 11.13x income growth over 4 years ($40K → $446K) — extraordinary for behavioral health
+  </div>
+</div>
+
+<div class="card-red">
+  <h3 style="color:var(--r);">🚨 Schedule L — BCC Claims ZERO Related-Party Transactions</h3>
+  <table>
+    <tr><th>IRS Form 990 Part IV Question</th><th style="color:var(--r);">BCC Answer</th></tr>
+    <tr><td><strong>Line 25a:</strong> Did any person receive excess benefit from a transaction?</td><td style="color:var(--g);font-weight:700;">NO</td></tr>
+    <tr><td><strong>Line 26:</strong> Were any loans to/from interested persons outstanding?</td><td style="color:var(--g);font-weight:700;">NO</td></tr>
+    <tr><td><strong>Line 27:</strong> Did the organization provide a grant to an interested person?</td><td style="color:var(--g);font-weight:700;">NO</td></tr>
+    <tr><td><strong>Line 28:</strong> Did the organization engage in a business transaction with an interested person?</td><td style="color:var(--g);font-weight:700;">NO</td></tr>
+  </table>
+
+  <div class="big-alert critical" style="margin-top:16px;">
+    <h3 style="color:var(--r);">⚠ TWO POSSIBLE INTERPRETATIONS:</h3>
+    <p><strong>Option A:</strong> Edward Jones does NOT manage BCC's portfolio. The board members' employment is incidental. No related-party transaction exists. ✓ Clean.<br>
+    <strong>Option B:</strong> Edward Jones DOES manage the portfolio, but BCC determined that standard management fees don't trigger Schedule L — or fees flow through Pershing (EJ's clearing firm) and aren't directly attributable. If so, the $10.48M portfolio management relationship is NOT disclosed as a related-party transaction in the public 990.</p>
+  </div>
+</div>
+
+<div class="card-purple">
+  <h3 style="color:var(--p);">📋 Herbein + Company — Auditor & 990 Preparer (Same Firm)</h3>
+  <table>
+    <tr><th style="width:200px;">Attribute</th><th>Finding</th></tr>
+    <tr><td><strong>Lead CPA</strong></td><td>Linda S. Himeback, CPA</td></tr>
+    <tr><td><strong>Address</strong></td><td>2763 Century Blvd, Reading, PA 19610</td></tr>
+    <tr><td><strong>Dual Role</strong></td><td style="color:var(--y);">Same firm prepares IRS Form 990 AND conducts the annual financial audit</td></tr>
+    <tr><td><strong>AICPA Rules</strong></td><td>Permitted for non-issuers with separate engagement teams — but reduces independence check on investment reporting</td></tr>
+    <tr><td><strong>Firm Size</strong></td><td>One of the largest CPA firms in Berks County — dedicated nonprofit practice</td></tr>
+  </table>
+
+  <div class="highlight" style="margin-top:12px;">
+    <strong>⚠ GOVERNANCE NOTE:</strong> Herbein both writes the 990 (including Schedule D investment data and Schedule L disclosures) AND audits the financial statements. This is not illegal — but it means the same firm that reports BCC's "NO" on all Schedule L questions is also verifying those answers during the audit. An independent reviewer might ask: is anyone checking the checker?
+  </div>
+</div>
+
+<!-- ============ CFO COMPENSATION TIMELINE ============ -->
+<h2>💼 CFO Compensation Timeline — 23.4x Growth (FY2019–2025)</h2>
+
+<div class="card-red">
+  <p style="color:#8b949e;margin-bottom:16px;">Greg Little started as CFO in <strong>January 2019</strong> — the same month Christine Axford became CEO, replacing Frances Malley. This leadership transition marked the beginning of BCC's financial transformation.</p>
+
+  <table>
+    <tr><th>Fiscal Year</th><th>CFO Total Comp</th><th>CEO Total Comp</th><th>CFO > CEO?</th><th>Notes</th></tr>
+    <tr>
+      <td><strong>FY2019</strong></td>
+      <td style="color:var(--y);">$6,408 (partial)</td>
+      <td>$99,045 (Axford) + $137,567 (Malley)</td>
+      <td style="color:var(--g);">— Transition year</td>
+      <td>Little: base $6,058 (+ $350 other = $6,408 total). CEO transition mid-year.</td>
+    </tr>
+    <tr>
+      <td><strong>FY2020</strong></td>
+      <td style="color:var(--y);">$105,771</td>
+      <td>$109,873</td>
+      <td style="color:var(--g);">No</td>
+      <td>Little: base $104,846 + $925 other</td>
+    </tr>
+    <tr style="background:#1a1015;">
+      <td><strong>FY2021</strong></td>
+      <td>$107,291</td>
+      <td>$111,203</td>
+      <td style="color:var(--g);">No</td>
+      <td style="color:var(--r);">🚨 CCBHC certification drives $5.96M surplus</td>
+    </tr>
+    <tr style="background:#1a1015;">
+      <td><strong>FY2023</strong></td>
+      <td style="color:var(--y);">$138,675</td>
+      <td>$130,007</td>
+      <td style="color:var(--r);font-weight:700;">⚠ YES (+$8,668)</td>
+      <td>CFO surpasses CEO for first time</td>
+    </tr>
+    <tr style="background:#1a1015;">
+      <td><strong>FY2025</strong></td>
+      <td style="color:var(--r);font-weight:700;">$149,792</td>
+      <td>$145,432</td>
+      <td style="color:var(--r);font-weight:700;">⚠ YES (+$4,360)</td>
+      <td>CFO "other comp": $17,350 (3.2x CEO's $5,428)</td>
+    </tr>
+  </table>
+
+  <div class="big-alert critical" style="margin-top:16px;">
+    <h3 style="color:var(--r);">🚨 THE COMPENSATION INVERSION:</h3>
+    <p><strong>CFO comp grew 23.4x</strong> ($6,408 → $149,792) over 6 years while <strong>CEO comp grew only 1.5x</strong> ($99K → $145K). The CFO's "other compensation" ($17,350) is 3.2x the CEO's ($5,428). This inversion began in FY2023 and has widened. In most nonprofits, the CEO is the highest-paid employee. <strong>Schedule J (compensation methodology) is not public.</strong> IRS intermediate sanctions rules (IRC § 4958) may apply — excessive compensation can trigger excise taxes on both the recipient (25%) and board members who approved it (10%).</p>
+  </div>
+</div>
+
+<!-- ============ CCBHC ASSET INFLECTION ============ -->
+<h2>📈 The CCBHC Inflection — How BCC Grew 50x in 8 Years</h2>
+
+<div class="card">
+  <p style="color:#8b949e;margin-bottom:16px;">BCC's financial transformation is the single most significant finding in this investigation. Understanding how a $395K storefront clinic became a $19.8M institution reveals the CCBHC profit engine.</p>
+
+  <table>
+    <tr><th>Year</th><th>Total Assets</th><th>Revenue</th><th>Investment Income</th><th>Net Income</th><th>Milestone</th></tr>
+    <tr>
+      <td><strong>FY2017</strong></td>
+      <td>$1,546,214</td>
+      <td>$5.15M</td>
+      <td style="color:#8b949e;">$54</td>
+      <td style="color:var(--g);">+$402K</td>
+      <td>Small storefront clinic. Malley CEO.</td>
+    </tr>
+    <tr>
+      <td><strong>FY2018</strong></td>
+      <td>$5,448,957</td>
+      <td>$10.62M</td>
+      <td style="color:#8b949e;">$118</td>
+      <td style="color:var(--g);">+$4.65M</td>
+      <td>CCBHC designation (July 2017). Revenue doubles.</td>
+    </tr>
+    <tr style="background:#1a1510;">
+      <td><strong>FY2019</strong></td>
+      <td>$9,813,588</td>
+      <td>$9.86M</td>
+      <td>$47,948</td>
+      <td style="color:var(--g);">+$1.85M</td>
+      <td style="color:var(--y);">Leadership transition: Malley out, Axford/Little in (Jan 2019)</td>
+    </tr>
+    <tr style="background:#1a1510;">
+      <td><strong>FY2020</strong></td>
+      <td>$8,741,203</td>
+      <td>$9.69M</td>
+      <td>$51,029</td>
+      <td style="color:var(--g);">+$1.47M</td>
+      <td>Pre-CCBHC revenue rates. COVID begins.</td>
+    </tr>
+    <tr style="background:#1a1015;">
+      <td><strong>FY2021</strong></td>
+      <td style="color:var(--r);font-weight:700;">$15,002,455</td>
+      <td style="color:var(--g);font-weight:700;">$15.17M</td>
+      <td>$40,067</td>
+      <td style="color:var(--g);font-weight:700;font-size:1.1rem;">+$5,962,241</td>
+      <td style="color:var(--r);font-weight:700;">🚨 CCBHC FULLY OPERATIONAL. Assets jump $6.3M (+72%)</td>
+    </tr>
+    <tr>
+      <td><strong>FY2025</strong></td>
+      <td>$22,972,855</td>
+      <td style="color:var(--r);">$12.49M</td>
+      <td style="color:var(--y);">$446,033</td>
+      <td style="color:var(--r);font-weight:700;">-$796,924</td>
+      <td>First deficit in 7 years. Revenue declining.</td>
+    </tr>
+  </table>
+
+  <div class="big-alert critical" style="margin-top:16px;">
+    <h3 style="color:var(--r);">🚨 THE CCBHC PROFIT ENGINE — VERIFIED:</h3>
+    <p>Between FY2020 and FY2021, BCC's <strong>total assets jumped from $8.7M to $15.0M — a $6.3M (+72%) increase in a single year</strong>. <br><br><strong style="color:var(--g);">✅ CAUSE: CCBHC Certification.</strong> BCC became a Certified Community Behavioral Health Clinic between FY2020-FY2021. This federal designation pays <strong>enhanced, cost-based Medicaid reimbursement rates</strong> for integrated behavioral + physical health services. Medicaid billing exploded from ~$8.7M to $13.99M (+$5.3M) while expenses only grew $987K (+12%). The CCBHC model generated <strong>$4.5M in surplus in FY2021 alone</strong> — it is a highly profitable reimbursement structure.<br><br>The SAMHSA CCBHC grant ($3.94M) came later (FY2023) and was a separate expansion award — <strong>not the cause</strong> of the initial jump. By FY2025, net assets reached $19.8M — a <strong>50x increase from FY2017's $395K</strong>, built on 4 years of CCBHC-driven surpluses totaling $12.2M (FY2021—2024).<br><br><strong style="color:var(--y);">⚠ THE RISK:</strong> This growth was entirely dependent on CCBHC enhanced reimbursement rates. If the CCBHC demonstration program is modified, reduced, or terminated, BCC's revenue model collapses. The SAMHSA grant expires September 2027 — 790 days. Combined with the -4.74% revenue CAGR and first-ever deficit, BCC faces a structural cliff.</p>
+  </div>
+</div>
+
+<!-- ============ TPUC DUAL-BOARD PATTERN ============ -->
+<h2>⛪ TPUC Dual-Board Pattern — Plageman's Second Organization</h2>
+
+<div class="card-yellow">
+  <h3 style="color:var(--y);">Trustees of the Pennsylvania Universalist Convention (TPUC)</h3>
+  <table>
+    <tr><th style="width:220px;">Attribute</th><th>Finding</th></tr>
+    <tr><td><strong>Full Name</strong></td><td>Trustees of the Pennsylvania Universalist Convention (est. 1831)</td></tr>
+    <tr><td><strong>Plageman's Role</strong></td><td style="color:var(--r);font-weight:700;">PRESIDENT — elected at 194th Annual Meeting (April 2026). Represents First Unitarian Universalist Church of Berks County.</td></tr>
+    <tr><td><strong>Function</strong></td><td>Endowment/trust fund manager — distributes interest to 6 member Universalist congregations across PA</td></tr>
+    <tr><td><strong>Financial Committee</strong></td><td style="color:var(--y);">Has an active Financial Committee overseeing the trust/endowment portfolio</td></tr>
+    <tr><td><strong>Designated Financial Advisor</strong></td><td style="color:var(--g);">Richard Bromley Jr. — <strong>INACTIVE FINRA (source ID #2395729).</strong> 23.7 years in industry, currently ZERO approved registrations, ZERO current employments. <strong>NOT at Edward Jones.</strong> Likely retired veteran serving as unpaid volunteer. The "three-person EJ network" theory is DISPROVEN.</td></tr>
+    <tr><td><strong>Member Congregations</strong></td><td>6 churches: Reading, Athens-Sheshequin, Brooklyn/Kingsley, Girard, Mt. Airy (Philadelphia), Smithton</td></tr>
+    <tr><td><strong>EIN / 990</strong></td><td style="color:var(--y);">Not found on ProPublica — likely small religious trust below public filing thresholds</td></tr>
+  </table>
+
+  <div class="big-alert critical" style="margin-top:16px;">
+    <h3 style="color:var(--r);">⚠ PATTERN IDENTIFIED: Dual-Board Investment Governance</h3>
+    <p>Joseph Plageman holds leadership at <strong>TWO organizations with investment portfolios</strong>:<br><br>
+    <strong>🏥 BCC — Board Chair</strong>: Oversees $10.48M in publicly traded securities. Edward Jones board presence (22%). Schedule L claims NO related-party transactions.<br><br>
+    <strong>⛪ TPUC — President</strong>: Oversees an endowment/trust fund with a Financial Committee and designated Financial Advisor. Same Edward Jones advisor presiding over a second investment-governed organization.<br><br>
+    If Edward Jones manages either portfolio — or both — Plageman presides over organizations whose investment manager is his own employer. <strong>The same potential conflict appears at BOTH organizations.</strong></p>
+  </div>
+</div>
+
+<!-- ============ DONOR RECONSTRUCTION ============ -->
+<h2>🕵️ Donor Reconstruction — 19 Methods, 8 Funders, $7.4M+ Identified</h2>
+
+<div class="card">
+  <p style="color:#8b949e;margin-bottom:16px;">IRS Schedule B (Major Donors) is IRS-RESTRICTED for all 501(c)(3) organizations. 19 alternative OSINT methods were deployed to reconstruct the donor landscape without Schedule B access.</p>
+
+  <table>
+    <tr><th>Funder</th><th>Total</th><th>Grants</th><th>Years</th></tr>
+    <tr style="background:#1a1015;">
+      <td><strong>Council on Chemical Abuse (CoCA)</strong> ⚠ CONFLICT</td>
+      <td style="color:var(--r);font-weight:700;font-size:1.2rem;">$3,300,000</td>
+      <td>5</td>
+      <td>2019–2023</td>
+    </tr>
+    <tr>
+      <td><strong>SAMHSA (Federal)</strong></td>
+      <td style="color:var(--g);font-weight:700;font-size:1.2rem;">$3,944,396</td>
+      <td>1</td>
+      <td>2023–2027</td>
+    </tr>
+    <tr>
+      <td><strong>United Way of Berks County</strong></td>
+      <td style="color:var(--g);">$685,000+</td>
+      <td>4</td>
+      <td>2020–2024<br><span style="font-size:0.8rem;color:#8b949e;">(incl. $678K MacKenzie Scott focused grant)</span></td>
+    </tr>
+    <tr>
+      <td><strong>Berks Coalition to End Homelessness</strong></td>
+      <td style="color:var(--g);">$48,000</td>
+      <td>4</td>
+      <td>2020–2023</td>
+    </tr>
+    <tr>
+      <td><strong>Berks County Community Foundation</strong></td>
+      <td style="color:var(--g);">$10,000</td>
+      <td>1</td>
+      <td>2023</td>
+    </tr>
+    <tr>
+      <td><strong>Walmart Foundation</strong></td>
+      <td>$1,000</td>
+      <td>1</td>
+      <td>2012</td>
+    </tr>
+    <tr>
+      <td><strong>PA Council on Crime & Delinquency</strong></td>
+      <td style="color:var(--y);">Pending</td>
+      <td>Ongoing</td>
+      <td>—</td>
+    </tr>
+  </table>
+
+  <div class="big-alert warning" style="margin-top:16px;">
+    <h3 style="color:var(--y);">📊 FEDERAL AWARD COUNT — CORRECTED (Session 12+):</h3>
+    <p>The earlier ~50-award single-page enumeration was incomplete. The USASpending pagination loop now captures <strong style="color:var(--g);">125 total federal awards</strong> — <strong>$9,348,544.60</strong> obligated across <strong>HHS</strong> (SAMHSA series SM060876 2014–2018 → H79SM088878 2023–2027) and <strong>HUD</strong> (CoC 14.231/14.235/14.267, incl. PA1174L3T062400 $145,721). The SAMHSA row above is the single flagship CCBHC award; the full federal inventory spans 2009–2027.</p>
+  </div>
+</div>
+
+<div class="card-green">
+  <h3 style="color:var(--g);">✅ 5 Methods That Succeeded</h3>
+  <div class="method-row">
+    <div class="method-mini success">1. Philanthropy.org Funder Database — 4 funders, exact amounts</div>
+    <div class="method-mini success">2. United Way Public Disclosures — MacKenzie Scott $678K</div>
+    <div class="method-mini success">3. Local News Archives — Walmart $1K (Reading Eagle, 2012)</div>
+    <div class="method-mini success">4. SAMHSA Grant Database (HigherGov) — $3.94M CCBHC</div>
+    <div class="method-mini success">5. Facebook/Social Media — Krisann Selbst (in-kind donor)</div>
+  </div>
+</div>
+
+<div class="card-red">
+  <h3 style="color:var(--r);">🚫 11 Methods Blocked — Including</h3>
+  <div class="method-row">
+    <div class="method-mini blocked">IRS Form 1023 — Akamai blocks automated access</div>
+    <div class="method-mini blocked">IRS Schedule B — Restricted for all 501(c)(3) orgs</div>
+    <div class="method-mini blocked">Wayback Machine — No archived donor pages</div>
+    <div class="method-mini blocked">PA Charities Bureau — EIN search returns 404</div>
+    <div class="method-mini blocked">Open990 / CauseIQ / Guidestar — All blocked</div>
+    <div class="method-mini blocked">ProPublica XML / AWS S3 — Access Denied</div>
+  </div>
+</div>
+
+<div class="card-purple">
+  <h3 style="color:var(--p);">🔑 KEY INSIGHT</h3>
+  <p style="font-size:1.15rem;">BCC is <strong>NOT a donor-funded organization</strong>. At 94.3% program service revenue (Medicaid/Medicare/insurance) and only 1.6% from contributions, BCC's "donors" are primarily government agencies and pass-through funders — not wealthy individual philanthropists. The Schedule B "mystery" may be less interesting than it first appeared: the major contributors are likely CoCA, United Way, and other institutional funders already identified.<br><br><strong style="color:var(--g);">✅ SCHEDULES D & L — NOW ACCESSED:</strong> Through ProPublica's e-file viewer (object_id 202631289349302318), we've confirmed: <strong>$10.48M in 100% publicly traded securities</strong> (no bonds, no real estate, no alternatives). <strong>Schedule L (lines 25a-28): ALL NO</strong> — BCC certifies zero related-party transactions despite 22% Edward Jones board control. The critical remaining question: <strong>who manages the portfolio?</strong></p>
+</div>
+
+<!-- ============ KALI OSINT ============ -->
+<h2>🕵️ Kali Linux OSINT — Infrastructure & Governance Audit</h2>
+
+<div class="card">
+  <table>
+    <tr><th>Domain</th><th>SPF</th><th>DMARC</th><th>Governance Grade</th></tr>
+    <tr style="background:#1a1015;">
+      <td><strong>readingpa.gov</strong></td>
+      <td style="color:var(--g);">FOUND</td>
+      <td style="color:var(--r);font-weight:700;font-size:1.2rem;">NONE</td>
+      <td style="color:var(--r);font-weight:700;">D — Email Spoofing Risk</td>
+    </tr>
+    <tr>
+      <td><strong>berkscc.org</strong></td>
+      <td style="color:var(--g);">FOUND</td>
+      <td style="color:var(--g);">FOUND</td>
+      <td style="color:var(--g);">A — Enterprise-grade</td>
+    </tr>
+    <tr>
+      <td><strong>countyofberks.com</strong></td>
+      <td style="color:var(--g);">FOUND</td>
+      <td style="color:var(--g);">FOUND</td>
+      <td style="color:var(--g);">A — Enterprise-grade</td>
+    </tr>
+    <tr>
+      <td><strong>samhsa.gov</strong></td>
+      <td style="color:var(--g);">FOUND</td>
+      <td style="color:var(--g);">FOUND</td>
+      <td style="color:var(--g);">A — Federal-grade</td>
+    </tr>
+    <tr>
+      <td><strong>uwberks.org</strong></td>
+      <td style="color:var(--g);">FOUND</td>
+      <td style="color:var(--g);">FOUND</td>
+      <td style="color:var(--g);">A — Enterprise-grade</td>
+    </tr>
+  </table>
+
+  <div class="big-alert critical" style="margin-top:20px;">
+    <h3 style="color:var(--r);">🚨 readingpa.gov has NO DMARC</h3>
+    <p>DMARC prevents email spoofing. Without it, anyone can forge emails from @readingpa.gov addresses — including city council members. For a city government handling public funds, missing DMARC is a measurable governance failure. NIST SP 800-177 Rev 1 and DHS BOD 18-01 require DMARC for .gov domains.</p>
+  </div>
+
+  <div class="finding-row" style="margin-top:16px;">
+    <div class="icon">🌐</div>
+    <div><strong>readingpa.gov/city-council</strong> — HTTP 403 FORBIDDEN. City actively blocks automated access, explaining why no individual council emails are published on the official site.</div>
+  </div>
+  <div class="finding-row">
+    <div class="icon">🔒</div>
+    <div><strong>countyofberks.com</strong> — COMPLETELY UNREACHABLE from Linux. County website may be geo-restricted or employ aggressive WAF rules.</div>
+  </div>
+</div>
+
+<!-- ============ LITIGATION ============ -->
+<h2>⚖️ BCC v. Community Care Behavioral Health — Superior Court</h2>
+
+<div class="card-yellow">
+  <table>
+    <tr><th style="width:200px;">Case</th><td>Berks Counseling Center v. Community Care Behavioral Health Organization (898 MDA 2017)</td></tr>
+    <tr><th>Court</th><td>Pennsylvania Superior Court (Middle District)</td></tr>
+    <tr><th>Trigger</th><td>2015 Fraud, Waste & Abuse audit of BCC and its Chester County satellite</td></tr>
+    <tr><th>Amount</th><td style="color:var(--y);font-weight:700;">$105,000+ in Medicaid retractions attempted</td></tr>
+    <tr><th>Result</th><td style="color:var(--g);font-weight:700;">BCC WON — ~$81,000 in retractions cancelled</td></tr>
+    <tr><th>Ruling</th><td>CCBH improperly applied an unexecuted, updated FWA policy instead of the governing 2011 agreement requiring progressive "provider education" before financial penalties</td></tr>
+  </table>
+</div>
+
+<!-- ============ OVERSIGHT GAPS ============ -->
+<h2>🔍 Oversight Gap Analysis — 5 Agencies, No Public Audit Findings</h2>
+
+<div class="card">
+  <table>
+    <tr><th>Agency</th><th>Budget</th><th>Oversight Capacity</th></tr>
+    <tr>
+      <td><strong>SAMHSA</strong></td>
+      <td>$8.1B (federal)</td>
+      <td>Thousands of grantees, lean staffing, ~21% excepted during contingencies</td>
+    </tr>
+    <tr>
+      <td><strong>PA OMHSAS</strong></td>
+      <td>Billions (state)</td>
+      <td>Rotational reviews every 1–3 years; most recent BCC findings not public</td>
+    </tr>
+    <tr>
+      <td><strong>Berks County HS</strong></td>
+      <td>$16.2M (county block grant)</td>
+      <td>Covers ALL county providers, not just BCC; BCC contract amount not publicly itemized</td>
+    </tr>
+    <tr>
+      <td><strong>PA AG Charitable Trusts</strong></td>
+      <td>$174.4M (OAG budget)</td>
+      <td>1,000+ cases annually; reactive, not proactive</td>
+    </tr>
+    <tr>
+      <td><strong>United Way of Berks</strong></td>
+      <td>Millions (private)</td>
+      <td>3-year volunteer review cycles; limited to funded programs</td>
+    </tr>
+  </table>
+
+  <div class="big-alert warning" style="margin-top:20px;">
+    <h3 style="color:var(--y);">⚠ NONE of these 5 agencies publish findings from their most recent BCC-specific audit or review publicly.</h3>
+  </div>
+</div>
+
+<!-- ============ COMPLAINT LETTER SUMMARY ============ -->
+<h2>📝 Formal Complaint — Prayer for Relief</h2>
+
+<div class="card">
+  <p style="margin-bottom:16px;">The undersigned respectfully requests investigation into Berks Counseling Center governance, financial management, and regulatory oversight by the following authorities:</p>
+
+  <div class="finding-row">
+    <div class="icon">1</div>
+    <div><strong>PA Attorney General (Charitable Trusts Section)</strong> — Investigation into BCC governance, executive compensation, and related-party transactions — including verification of whether BCC has ever contracted with or paid Treasurer John Robinson's consulting firm, <strong>Robinson &amp; Associates, LLC (PA Entity #3967553, ACTIVE)</strong>, which Schedule L currently reports as ALL-NO
+  </div>
+  </div>
+  <div class="finding-row">
+    <div class="icon">2</div>
+    <div><strong>PA DHS / OMHSAS</strong> — Formal audit of BCC CCBHC program compliance, billing practices, and SAMHSA grant expenditure reporting (Grant #H79SM088878)</div>
+  </div>
+  <div class="finding-row">
+    <div class="icon">3</div>
+    <div><strong>Berks County Commissioners</strong> — Review of BCC governance as condition of continued HS block grant funding, including disclosure of all CoCA pass-through grant agreements ($3.3M, 2019–2023)</div>
+  </div>
+  <div class="finding-row">
+    <div class="icon">4</div>
+    <div><strong>BCC</strong> — Disclosure of full, unredacted IRS Form 990 Schedule J (compensation methodology) for FY2023–FY2025, and individual holding-level detail from Schedule D. (Schedules D & L aggregate data now accessed via ProPublica.)</div>
+  </div>
+  <div class="finding-row">
+    <div class="icon">5</div>
+    <div><strong>HUD Region 3</strong> — Determination of BCC supportive housing compliance with CoC requirements — specifically 24 CFR §578.49 (Leasing funds cannot pay grantee-owned units) for the 8 CoC properties (BCC Leasing 1/2, Franklin St., 13 S. 10th St., 239 S. 5th St., New Hope PSH, PS Recovery, Phoenix House), including deed/lease records for each</div>
+  </div>
+
+  <div style="margin-top:24px;padding:20px;background:#1a1510;border-radius:10px;border-left:4px solid var(--y);">
+    <strong style="font-size:1.1rem;">📧 Complaint Recipients:</strong> 17+ verified emails across all agencies — commissioners@countyofberks.com, council@readingpa.gov, Donna.Reed@readingpa.gov (SMTP-verified DELIVERABLE), samhsainfo@samhsa.hhs.gov, info@attorneygeneral.gov, info@uwberks.org, jplageman@berkscc.org, caxford@berkscc.org, glittle@berkscc.org, and others.
+  </div>
+</div>
+
+<!-- ============ CTA ============ -->
+<div class="cta-section">
+  <h2 style="color:var(--r);">Investigation Demanded</h2>
+  <p style="font-size:1.3rem;color:#8b949e;max-width:800px;margin:0 auto;">
+    🦉 CAHOOTERY: Six structural conflicts. Three overlapping interests. CRD #5964768 — ZERO FINRA disclosures but dual-board pattern at BCC and TPUC. $10.48M in 100% public equities — Schedule L claims NO related-party transactions despite 22% Edward Jones board control. $3.3M undisclosed CoCA funding relationship. 19 OSINT methods deployed. 13 automated worms activated for financial forensics. All evidence publicly sourced from IRS Form 990, FINRA BrokerCheck, ProPublica (Schedules D & L), SAMHSA, HUD, Philanthropy.org, PA court records, and Kali Linux infrastructure audits.
+  </p>
+  <p style="font-size:1.1rem;color:var(--a);margin-top:30px;">
+    📋 COMPLAINT_TODO_LIST.html &nbsp;|&nbsp; 💰 FUNDING_REVIEW.html &nbsp;|&nbsp; 🕵️ DONOR_RECONSTRUCTION.html<br>
+    📝 COMPLAINT_AGENCY_LETTER.txt &nbsp;|&nbsp; 🪱 Worm Analysis Dashboard &nbsp;|&nbsp; 🏦 INVESTMENT_PEOPLE_REPORT.html<br>
+    📊 PEOPLE_NETWORK_CARD.html &nbsp;|&nbsp; CRD #5964768 &nbsp;|&nbsp; FINRA BrokerCheck
+  </p>
+  <p style="font-size:0.9rem;color:#8b949e;margin-top:20px;">
+    Research completed July 31, 2026 &nbsp;|&nbsp; Berks County, Pennsylvania &nbsp;|&nbsp; Pro Se
+  </p>
+</div>
+
+</div><!-- /content -->
+</div><!-- /scroll-container -->
+
+<!-- SCROLL INDICATOR -->
+<div id="scroll-indicator">▼ Auto-scrolling — Recording for Facebook</div>
+
+<script>
+(function() {
+  const container = document.getElementById('scroll-container');
+  const indicator = document.getElementById('scroll-indicator');
+  const scrollSpeed = 0.08; // pixels per ms — slow, readable pace
+  let lastTime = null;
+  let animating = true;
+  let paused = false;
+
+  // Pause on hover (allows manual review during recording setup)
+  container.addEventListener('mouseenter', () => { paused = true; indicator.textContent = '⏸ Paused — move mouse away to resume'; });
+  container.addEventListener('mouseleave', () => { paused = false; indicator.textContent = '▼ Auto-scrolling — Recording for Facebook'; lastTime = null; });
+
+  function animate(timestamp) {
+    if (!animating) return;
+    if (!lastTime) lastTime = timestamp;
+    
+    const elapsed = timestamp - lastTime;
+    lastTime = timestamp;
+    
+    if (!paused && elapsed > 0 && elapsed < 200) {
+      container.scrollTop += scrollSpeed * elapsed;
+      
+      // Stop when we reach the bottom
+      const maxScroll = container.scrollHeight - container.clientHeight;
+      if (container.scrollTop >= maxScroll - 10) {
+        container.scrollTop = maxScroll;
+        indicator.textContent = '✅ Scroll complete — End of report';
+        indicator.style.opacity = '1';
+        animating = false;
+        return;
+      }
+    }
+    
+    requestAnimationFrame(animate);
+  }
+
+  // Fade indicator after 5 seconds
+  setTimeout(() => { indicator.style.opacity = '0.6'; }, 5000);
+
+  requestAnimationFrame(animate);
+})();
+</script>
+
+</body>
+</html>

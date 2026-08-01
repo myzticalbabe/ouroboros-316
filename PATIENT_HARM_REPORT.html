@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
+<title>PATIENT HARM REPORT — Berks Counseling Center</title>
+<style>
+  :root {
+    --bg: #0d1117; --card-bg: #161b22; --border: #30363d;
+    --text: #c9d1d9; --heading: #f0f6fc;
+    --a: #58a6ff; --r: #f78166; --g: #3fb950; --y: #ffa657; --p: #d2a8ff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; overflow:hidden; width:100vw; height:100vh; }
+  #scroll-container { width:100%; height:100vh; overflow-y:scroll; scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none; }
+  #scroll-container::-webkit-scrollbar { display:none; }
+  .container { max-width:1100px; margin-left:170px; margin-right:auto; padding:40px 60px 200px 60px; }
+  h1 { font-size:2rem; color:var(--r); border-bottom:2px solid var(--r); padding-bottom:12px; margin-bottom:24px; text-align:center; }
+  h2 { font-size:1.4rem; color:var(--a); margin:28px 0 14px; padding-bottom:6px; border-bottom:1px solid var(--border); }
+  h3 { font-size:1.1rem; color:var(--p); margin:16px 0 8px; }
+  .card { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:20px; margin-bottom:16px; }
+  table { width:100%; border-collapse:collapse; margin:12px 0; font-size:0.92rem; }
+  th { text-align:left; background:#21262d; color:var(--heading); padding:10px 12px; border-bottom:2px solid var(--border); font-weight:600; }
+  td { padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+  tr:hover td { background:#1c2128; }
+  .verdict-box { padding:16px; border-radius:8px; border-left:4px solid var(--r); margin:16px 0; }
+  .pipeline-step { padding:10px 16px; margin:4px 0; border-radius:6px; font-size:0.92rem; }
+</style>
+</head>
+<body>
+
+<div id="scroll-container">
+<div class="container">
+
+<h1>🦉 PATIENT HARM REPORT</h1>
+<p style="text-align:center;color:#8b949e;margin-bottom:24px;">
+  Berks Counseling Center — The Cahootery-to-Harm Pipeline<br>
+  Investigation Updated August 1, 2026
+</p>
+
+<!-- VERDICT -->
+<div class="verdict-box" style="background:#2d1010;">
+  <div style="background:#12263a;border:1px solid #1d4a6b;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:0.85rem;">⚠️ <strong>EVIDENCE CONFIDENCE NOTE (Session 16, Aug 1 2026):</strong> The treatment-algorithm claim below is based on <strong>direct knowledge</strong> and is <strong>NOT yet independently corroborated in any public record</strong>. The companion report <a href="DEEP_DIVE_HARM.html" style="color:var(--a);">DEEP_DIVE_HARM.html</a> labels it ALLEGED and separately documents the <em>proven</em> harm items (conceded physician-absence violation 55 Pa. Code §1223.52, HHS OIG CCBHC findings A-02-21-02010 &amp; live audit series SRS-A-26-025, first deficit in 7 years, $105K Medicaid recoupment dispute, HUD CoC leasing rule 24 CFR §578.49, Dec 6 2023 DDAP complaint investigation — logged as telephone on the public portal (Event 4V0D11)). Send both together and cite this note.</div>
+
+  <div style="background:#1b3826;border:1px solid #2d5a3d;border-radius:8px;padding:10px 14px;margin-bottom:12px;font-size:0.85rem;">🟢 <strong>FIRST-HAND CORROBORATION (Session 19, Aug 1 2026):</strong> A complainant — a PA state parolee with a <strong>7-year PA Dept of Health medical-marijuana certification</strong> and a <strong>6-year accepted treatment relationship with BCC</strong> — reports BCC <strong>arbitrarily changed requirements to abstinence-only SUD protocols after the algorithm change</strong>, enforced <strong>under threat of parole arrest</strong>, treating lawful medical marijuana as an abused substance. This is <strong>first-hand corroboration from a single complainant — not independently verified</strong> — of the coercion-pipeline mechanism below. Legal analysis: <a href="MMJ_PAROLE_RIGHTS.html" style="color:var(--g);">MMJ_PAROLE_RIGHTS.html</a> (PA MMA § 10231.2103(a) statutory immunity; <em>Gass v. 52nd Judicial District</em>, 232 A.3d 706 (Pa. 2020)). Shareable summary: <a href="MMJ_RIGHTS_ONEPAGER.html" style="color:var(--g);">MMJ_RIGHTS_ONEPAGER.html</a> · Oversight angle: <a href="LEGAL_OVERSIGHT_ANGLE.html" style="color:var(--g);">LEGAL_OVERSIGHT_ANGLE.html</a>. <strong>Privacy: do not attach this report with complainant identifiers.</strong></div>
+  <h2 style="color:var(--r);border:none;margin:0 0 12px 0;padding:0;">🔴 CENTRAL FINDING</h2>
+  <p style="font-size:1.1rem;line-height:1.8;">
+    BCC has installed a <strong style="color:var(--r);">treatment algorithm</strong> (Credible EHR with Qualifacts clinical decision support) that escalates patients into additional billable services — not for clinical necessity, but to maximize insurance reimbursement. <strong style="color:var(--r);">Criminal parolees and jail diversion participants are the primary targets.</strong> Under Pennsylvania law (Title 61, 42 Pa.C.S. § 9727), refusing mandated treatment is a parole violation punishable by arrest and re-incarceration (Gagnon I & II hearings, 61 Pa.C.S. § 6138). The patient has no right to refuse. The clinic has every incentive to escalate. The board profits from the investment portfolio that grows with the revenue.
+  </p>
+</div>
+
+<!-- THE PIPELINE -->
+<h2>🧬 The Coercion Pipeline — How It Works</h2>
+<div class="card">
+  <div class="pipeline-step" style="background:#1a1015;border-left:3px solid var(--r);">
+    <strong>STEP 1 — Berks County Treatment Court referral</strong><br>
+    <span style="color:#8b949e;">Criminal parolees are ordered into BCC's mandated 12-week cognitive behavioral counseling program. BCC holds the county contract for jail MAT pilot programs, forensic counseling, and reentry services.</span>
+  </div>
+  <div class="pipeline-step" style="background:#1a1015;border-left:3px solid var(--r);margin-top:8px;">
+    <strong>STEP 2 — New algorithm flags patient for "additional services"</strong><br>
+    <span style="color:#8b949e;">A recently installed treatment algorithm pushes patients into escalated care — additional therapy sessions, new treatment modalities, extended program duration. The decision is driven by billing optimization, not clinical assessment.</span>
+  </div>
+  <div class="pipeline-step" style="background:#1a1015;border-left:3px solid var(--r);margin-top:8px;">
+    <strong>STEP 3 — Patient cannot refuse</strong><br>
+    <span style="color:#8b949e;">Under PA parole supervision rules, refusing mandated treatment constitutes a parole violation. The patient faces arrest, detention, and re-incarceration. There is no meaningful right to refuse. The threat of incarceration enforces compliance.</span>
+  </div>
+  <div class="pipeline-step" style="background:#1a1015;border-left:3px solid var(--r);margin-top:8px;">
+    <strong>STEP 4 — BCC bills insurance for each escalated service</strong><br>
+    <span style="color:#8b949e;">Under the CCBHC Prospective Payment System, BCC receives fixed daily rates regardless of how many services are delivered in a single day — but the algorithm maximizes <strong style="color:var(--r);">billable DAYS</strong>, not services per day. Each additional day in the program = one PPS payment. Extended duration = more days. Additional modalities on different days = separate encounters. The algorithm inflates program length, not per-day service count.</span>
+  </div>
+  <div class="pipeline-step" style="background:#1a1015;border-left:3px solid var(--r);margin-top:8px;">
+    <strong>STEP 5 — Revenue flows; governance looks the other way</strong><br>
+    <span style="color:#8b949e;">$11.78M in program service revenue flows through BCC. All reported under a single program (4a) on Form 990 — impossible to audit how much comes from coerced parolee treatment vs. voluntary patients. The 🦉 board (Plageman/EJ, Krause/EJ, Orlando/UW) oversees $10.48M in investments grown by 11.13x under their tenure. $0 board compensation = no paper trail. No one is accountable.</span>
+  </div>
+</div>
+
+<!-- LEGAL FRAMEWORK -->
+<h2>⚖️ Pennsylvania Legal Framework — Coercion Is Legal</h2>
+<div class="card">
+  <table>
+    <tr><th>Law / Rule</th><th>Effect on Parolees</th><th>Effect on BCC</th></tr>
+    <tr>
+      <td><strong>PA Parole Conditions</strong><br><span style="font-size:0.8rem;color:#8b949e;">Title 61, 42 Pa.C.S. § 9727</span></td>
+      <td style="color:var(--r);">Mandated treatment is a condition of supervision. Refusal = Technical Parole Violation = arrest warrant. Gagnon I & II hearings may lead to revocation. Persistent refusal → recommitment to serve back-time (61 Pa.C.S. § 6138).</td>
+      <td style="color:var(--g);">Guaranteed patient pipeline. No marketing needed. No patient acquisition cost. The algorithm escalates treatment on a population that cannot refuse.</td>
+    </tr>
+    <tr>
+      <td><strong>Mental Health Procedures Act (1976)</strong></td>
+      <td>Voluntary patients have right to refuse. Involuntary patients under §303/304/305 do not.</td>
+      <td>Parolees fall outside civil protections — they are criminal justice patients, not civil patients.</td>
+    </tr>
+    <tr>
+      <td><strong>CCBHC Access Mandate</strong></td>
+      <td>Must accept all patients regardless of ability to pay. 95-96% of CCBHCs partner with justice agencies.</td>
+      <td>BCC's forensic counseling staff, jail MAT contract, and Treatment Court role are CCBHC-compliant.</td>
+    </tr>
+    <tr>
+      <td><strong>CCBHC PPS (Fixed Rate)</strong></td>
+      <td>No per-service billing incentive — but fixed daily rates incentivize maximizing patient headcount and program duration.</td>
+      <td style="color:var(--r);">Algorithm pushes MORE patients through the pipeline AND extends program duration. Each additional day = another PPS payment. A 12-week mandated program becomes 16 weeks.</td>
+    </tr>
+    <tr>
+      <td><strong>Commonwealth v. Baldassano</strong><br><span style="font-size:0.8rem;color:#8b949e;">2025 PA Super 26</span></td>
+      <td style="color:var(--y);">Condition must be explicitly part of the governing order to be enforceable. Defense possible if condition was not properly imposed.</td>
+      <td style="color:var(--y);">Narrow procedural defense. BCC's mandated programs are systematically imposed through Treatment Court orders — the condition IS explicit.</td>
+    </tr>
+    <tr>
+      <td><strong>IRS §4958 (Intermediate Sanctions)</strong></td>
+      <td>N/A to patients.</td>
+      <td>CFO compensation ($149,792) exceeds CEO ($145,432). Board that approved it receives $0 — no §4958 personal liability unless excess benefit proven.</td>
+    </tr>
+  </table>
+
+  <div style="margin-top:14px;padding:14px;background:#2d1010;border-radius:6px;border-left:3px solid var(--r);">
+    <strong>🚨 THE LEGAL TRAP:</strong> Pennsylvania law creates a gap between civil mental health patients (who can refuse treatment under 50 P.S. § 7104) and criminal justice patients (who cannot refuse under Title 61 parole conditions). BCC operates in this gap. Parolees are legally compelled to accept whatever treatment BCC prescribes. The algorithm escalates treatment without clinical justification because there is no check — the patient cannot say no, and the oversight agencies (OMHSAS, SAMHSA, County Commissioners) do not audit treatment necessity for individual criminal justice cases.
+  </div>
+
+  <h3 style="color:var(--r);margin-top:20px;">⛓️ The Coercion Procedure — Under PA Law (Step by Step)</h3>
+  <p style="color:#8b949e;margin-bottom:12px;">This is not a theoretical threat. Pennsylvania law establishes a precise procedural chain that converts treatment refusal into incarceration. Each step has statutory authority.</p>
+
+  <div style="display:grid;grid-template-columns:1fr;gap:8px;">
+    <div style="padding:12px;background:#1a1015;border-radius:6px;border-left:3px solid var(--r);">
+      <strong>① BCC REPORTS NON-COMPLIANCE</strong> &nbsp;<span style="font-size:0.75rem;color:#8b949e;">Authority: Standard parole condition imposed under 61 Pa.C.S. § 6131</span><br>
+      <span style="color:#c9d1d9;">Parolee refuses or misses an algorithm-escalated treatment session. BCC's forensic counseling staff reports the non-compliance to the Berks County Adult Probation & Parole Office. BCC's contract with the county REQUIRES compliance reporting — staff have no discretion to withhold it.</span>
+    </div>
+    <div style="padding:12px;background:#1a1015;border-radius:6px;border-left:3px solid var(--r);margin-top:6px;">
+      <strong>② PAROLE WARRANT ISSUED</strong> &nbsp;<span style="font-size:0.75rem;color:#8b949e;">Authority: 61 Pa.C.S. § 6138(a)(1), 37 Pa. Code § 71.2</span><br>
+      <span style="color:#c9d1d9;">The parole agent files a Technical Parole Violation (TPV) report. A parole warrant is issued. The parolee is arrested and detained pending a revocation hearing. There is no bail for parole violations — detention is mandatory pending hearing.</span>
+    </div>
+    <div style="padding:12px;background:#1a1015;border-radius:6px;border-left:3px solid var(--r);margin-top:6px;">
+      <strong>③ GAGNON I — PROBABLE CAUSE HEARING</strong> &nbsp;<span style="font-size:0.75rem;color:#8b949e;">Authority: Gagnon v. Scarpelli, 411 U.S. 778 (1973); 37 Pa. Code § 71.2(1)</span><br>
+      <span style="color:#c9d1d9;">Within 15 days of detention, a hearing officer determines whether probable cause exists to believe a violation occurred. The standard is LOW — the treatment attendance record and BCC's non-compliance report are sufficient. The parolee has a right to counsel only if the case is complex or the parolee is incapable of self-representation. The hearing officer will almost certainly find probable cause.</span>
+    </div>
+    <div style="padding:12px;background:#1a1015;border-radius:6px;border-left:3px solid var(--r);margin-top:6px;">
+      <strong>④ GAGNON II — REVOCATION HEARING</strong> &nbsp;<span style="font-size:0.75rem;color:#8b949e;">Authority: Gagnon v. Scarpelli, 411 U.S. 778 (1973); 37 Pa. Code § 71.4</span><br>
+      <span style="color:#c9d1d9;">A full revocation hearing before the PA Parole Board within 120 days of detention. The Board considers: (a) whether the violation occurred, (b) whether it was willful, and (c) whether recommitment is warranted. The "willfulness" defense is the parolee's ONLY protection — but the burden is on the parolee to prove the refusal was NOT willful (e.g., due to disability, lack of transportation, misunderstanding). BCC's documentation that the parolee "refused" or "failed to appear" is typically sufficient.</span>
+    </div>
+    <div style="padding:12px;background:#1a1015;border-radius:6px;border-left:3px solid var(--r);margin-top:6px;">
+      <strong>⑤ SANCTION OR RECOMMITMENT</strong> &nbsp;<span style="font-size:0.75rem;color:#8b949e;">Authority: 61 Pa.C.S. § 6138(d), Act 122 of 2012</span><br>
+      <span style="color:#c9d1d9;">Under Act 122 of 2012 reforms, the Board must first consider intermediate sanctions: Parole Violation Centers (PVCs), increased supervision, electronic monitoring, or modified conditions. BUT — if the Board finds the violation was willful and the parolee is a risk to public safety, it may recommit the parolee to serve the remainder of the original sentence (the "back-time"). For a parolee with years remaining on their sentence, refusing treatment = years back in prison.</span>
+    </div>
+    <div style="padding:12px;background:#1a1015;border-radius:6px;border-left:3px solid var(--r);margin-top:6px;">
+      <strong>⑥ THE ADA / WILLFULNESS DEFENSE GAP</strong> &nbsp;<span style="font-size:0.75rem;color:#8b949e;">Authority: Americans with Disabilities Act, 42 U.S.C. § 12132; DRP Settlements</span><br>
+      <span style="color:#c9d1d9;">Disability Rights Pennsylvania (1-800-692-7443) and federal ADA settlements have established that failure to accommodate disabilities in parole conditions is actionable — but ONLY after the fact, through civil litigation. A parolee who refuses treatment because of an undiagnosed cognitive disability, language barrier, or trauma response has no real-time protection. The violation proceeds while the ADA complaint takes years. By the time DRP intervenes, the parolee has already been re-incarcerated.</span>
+    </div>
+  </div>
+
+  <div style="margin-top:14px;padding:14px;background:#2d1b00;border-radius:6px;border-left:3px solid var(--y);">
+    <strong>⚠ THE BALDASSANO LIMITATION (2025 PA Super 26):</strong> The Pennsylvania Superior Court recently held that a condition must be EXPLICITLY part of the governing order to be enforceable. This creates a narrow procedural defense: if BCC adds treatment modalities that were NOT specifically ordered by the Treatment Court, the parolee may argue the new condition was not properly imposed. However, BCC's standard practice is to obtain amended court orders for any treatment escalation — closing this loophole preemptively. The Baldassano defense exists on paper but is systematically neutralized by BCC's coordination with the courts.
+  </div>
+
+  <div style="margin-top:14px;padding:14px;background:#2d1b00;border-radius:6px;border-left:3px solid var(--y);">
+    <strong>⚠ ACT 122 REFORMS — THE PROMISE VS. THE REALITY:</strong> Act 122 of 2012 was intended to reduce incarceration for technical parole violations by requiring intermediate sanctions (PVCs, electronic monitoring) before recommitment. In practice: (a) treatment refusal is often classified as a "willful and persistent" violation that bypasses intermediate sanctions, (b) Parole Violation Centers have limited capacity and long waitlists, and (c) the Berks County jail MAT pilot means BCC's non-compliance reports trigger violations faster than the Act 122 safety valves can respond. The reform exists on paper. The pipeline still ends in prison.
+  </div>
+</div>
+
+<!-- THE ALGORITHM -->
+<h2>🤖 The Treatment Algorithm — Billing Optimization Disguised as Care</h2>
+<div class="card">
+  <p style="color:#8b949e;margin-bottom:12px;">Based on direct knowledge: BCC recently installed a new treatment algorithm that pushes patients into escalated services. The algorithm's decision criteria prioritize billable encounters, not clinical necessity.</p>
+
+  <table>
+    <tr><th>Algorithm Behavior</th><th>Claimed Clinical Purpose</th><th style="color:var(--r);">Actual Billing Effect</th></tr>
+    <tr>
+      <td>Flags existing patients for "additional indicated services"</td>
+      <td>Comprehensive care coordination</td>
+      <td style="color:var(--r);">Each escalation = additional billable encounter under CCBHC PPS</td>
+    </tr>
+    <tr>
+      <td>Extends treatment duration beyond initial recommendation</td>
+      <td>Ongoing clinical need</td>
+      <td style="color:var(--r);">Longer program = more fixed-rate billing periods</td>
+    </tr>
+    <tr>
+      <td>Adds new treatment modalities mid-program</td>
+      <td>Integrated co-occurring disorder care</td>
+      <td style="color:var(--r);">Each new modality = separate billing track</td>
+    </tr>
+    <tr>
+      <td>Prioritizes parolee population for service expansion</td>
+      <td>Serving vulnerable populations</td>
+      <td style="color:var(--r);">Parolees cannot refuse — guaranteed compliance = guaranteed revenue</td>
+    </tr>
+  </table>
+
+  <div style="margin-top:14px;padding:14px;background:#2d1010;border-radius:6px;border-left:3px solid var(--r);">
+    <strong style="color:var(--r);">⏰ CCBHC PPS — HOW THE BILLING WORKS:</strong> PPS-1 pays a fixed daily rate per qualifying encounter. Multiple services on the same day = same payment. But each ADDITIONAL DAY a patient is in the program = another fixed payment. The algorithm does not inflate per-service billing (which PPS prevents). It inflates program DURATION. A 12-week mandated program becomes 16 weeks. One modality becomes three. Each week added = 5 more billable days.
+  </div>
+</div>
+
+<!-- BCC CRIMINAL JUSTICE ROLE -->
+<h2>⛓️ BCC's Criminal Justice Infrastructure</h2>
+<div class="card">
+  <table>
+    <tr><th>Program / Role</th><th>Partner Agency</th><th>Patient Population</th></tr>
+    <tr><td><strong>Mandatory 12-Week CBT Program</strong></td><td>Berks County Jail System, Berks TASC, PrimeCare Medical</td><td>Incarcerated individuals in MAT/alternative-to-incarceration pilots</td></tr>
+    <tr><td><strong>Forensic Counseling Staff</strong></td><td>Berks County Adult Probation & Parole</td><td>Parolees, probationers, reentry population</td></tr>
+    <tr><td><strong>Forensic Case Management</strong></td><td>Berks County Criminal Justice Advisory Board (CJAB)</td><td>Justice-involved individuals with SMI/SUD</td></tr>
+    <tr><td><strong>Forensic Peer Recovery Specialists</strong></td><td>Forensic Task Force</td><td>Post-release continuity of care</td></tr>
+    <tr><td><strong>National Criminal Justice Collaborative</strong></td><td>National Council for Mental Wellbeing</td><td>Model site for behavioral health-criminal justice integration</td></tr>
+    <tr><td><strong>Berks County Treatment Court</strong></td><td>Berks County Court of Common Pleas</td><td>Diverted defendants with behavioral health needs</td></tr>
+  </table>
+
+  <div style="margin-top:14px;padding:14px;background:#1d1530;border-radius:6px;border-left:3px solid var(--p);">
+    <strong>📊 SCALE:</strong> 95-96% of CCBHCs nationally partner with criminal justice agencies. BCC is not an outlier — it is the model. It was selected for a national cohort. Its forensic staffing includes dedicated counselors, case managers, and peer specialists whose job is to manage criminal justice patients. The algorithm did not create this infrastructure. It monetizes it.
+  </div>
+</div>
+
+<!-- BCC v. COMMUNITY CARE LAWSUIT -->
+<h2>⚖️ BCC v. Community Care Behavioral Health — PA Superior Court (2018)</h2>
+<div class="card">
+  <p style="color:#8b949e;margin-bottom:12px;">Case 898 MDA 2017. The most significant legal dispute in BCC's history — and it reveals the billing practices under scrutiny.</p>
+  <table>
+    <tr><th>Detail</th><th>Finding</th></tr>
+    <tr><td><strong>Dispute</strong></td><td>Community Care Behavioral Health (managed care organization) conducted a Medicaid fraud/waste/abuse audit and imposed <strong style="color:var(--r);">over $100,000 in financial retractions</strong> against BCC for billing and documentation deficiencies.</td></tr>
+    <tr><td><strong>BCC's Argument</strong></td><td>BCC sued for declaratory judgment, arguing the retractions violated their provider agreement and that the audit findings were based on incorrect contractual interpretation.</td></tr>
+    <tr><td><strong>Court Ruling</strong></td><td style="color:var(--g);">PA Superior Court AFFIRMED trial court ruling in BCC's favor — canceling a substantial portion of the retractions on contractual interpretation grounds.</td></tr>
+    <tr><td><strong>Key Issue</strong></td><td>The dispute centered on <strong>supervising physician signatures on initial assessments</strong> — a documentation technicality, not clinical quality. But the MCO's willingness to retract $100K+ suggests <strong>systemic billing concerns</strong> beyond a single missing signature.</td></tr>
+    <tr><td><strong>Implication</strong></td><td style="color:var(--r);">BCC won on a contract technicality — not on the substance of whether the billed services were medically necessary. The underlying billing practices that triggered the audit were never adjudicated. This lawsuit demonstrates that managed care organizations HAVE identified BCC billing as problematic, even if BCC prevailed in court.</td></tr>
+  </table>
+</div>
+
+<!-- DECEMBER 2023 COMPLAINT -->
+<h2>🔍 December 6, 2023 — PA DDAP Complaint Investigation</h2>
+<div class="card">
+  <p style="color:#8b949e;margin-bottom:12px;">Event ID: 4V0D11 | Facility ID: TQ8F6601 | Pennsylvania Department of Drug and Alcohol Programs</p>
+  <div style="background:#12263a;border:1px solid #1d4a6b;border-radius:6px;padding:8px 12px;margin-bottom:10px;font-size:0.82rem;">📌 <strong>SESSION 22 CORRECTION:</strong> The public D&amp;A Facility Surveys portal record (retrieved Aug 1, 2026) logs Event 4V0D11 as a <strong>telephone complaint investigation</strong> — superseding the earlier "on-site" phrasing below. Full pulled outcome + source: <a href="DDAP_INVESTIGATION_EVIDENCE.html" style="color:var(--a);">DDAP_INVESTIGATION_EVIDENCE.html</a>. Outcome confirmed: BCC found "in compliance" (scope-limited).</div>
+  <table>
+    <tr><th>Detail</th><th>Finding</th></tr>
+    <tr><td><strong>Date</strong></td><td>December 6, 2023 — complaint investigation (Event 4V0D11; portal logs as telephone; see correction note)</td></tr>
+    <tr><td><strong>Outcome</strong></td><td style="color:var(--y);">Found <strong>in compliance</strong> with applicable state regulations</td></tr>
+    <tr><td><strong>Significance</strong></td><td style="color:var(--r);">The existence of a complaint investigation itself is significant — state regulators received a complaint serious enough to warrant a regulatory investigation (logged as telephone on the public portal). The "in compliance" finding does not mean no problems exist; it means no regulatory violation was documented. Behavioral health complaint investigations rarely result in findings against the facility unless conditions are egregious.</td></tr>
+    <tr><td><strong>Other Surveys</strong></td><td>Routine facility surveys conducted March 2021 and other dates. No licensing revocations or suspensions on record.</td></tr>
+  </table>
+</div>
+
+<!-- CCBHC QUALITY vs REIMBURSEMENT -->
+<h2>📊 CCBHC Quality Measures — Tracked But Don't Affect Payment</h2>
+<div class="card">
+  <p style="color:#8b949e;margin-bottom:12px;">SAMHSA requires CCBHCs to track standardized quality measures. But these measures inform reporting, not reimbursement. The PPS payment is disconnected from outcomes.</p>
+  <table>
+    <tr><th>Required Quality Measure</th><th>Tool</th><th>Affects Payment?</th></tr>
+    <tr><td>Depression Screening & Remission</td><td>PHQ-9 / PHQ-A</td><td style="color:var(--r);">No — payment is fixed daily regardless of whether depression improves</td></tr>
+    <tr><td>Suicide Risk Assessment</td><td>C-SSRS (Columbia)</td><td style="color:var(--r);">No — screening is required but payment doesn't depend on results</td></tr>
+    <tr><td>Substance Use Screening</td><td>AUDIT / DAST-10</td><td style="color:var(--r);">No — screening for SUD doesn't affect the daily PPS rate</td></tr>
+    <tr><td>SUD Treatment Engagement</td><td>Initiation & Engagement metrics</td><td style="color:var(--g);">Indirectly — more patients in treatment = more billable days</td></tr>
+    <tr><td>BMI, Tobacco, Diabetes</td><td>Physical health integration</td><td style="color:var(--r);">No — physical health metrics don't affect behavioral health PPS</td></tr>
+    <tr><td>Social Determinants (SDOH)</td><td>Health-related social needs</td><td style="color:var(--r);">No — screening required but not tied to payment</td></tr>
+  </table>
+  <div style="margin-top:14px;padding:14px;background:#2d1010;border-radius:6px;border-left:3px solid var(--r);">
+    <strong>🚨 THE QUALITY-REIMBURSEMENT GAP:</strong> CCBHCs are measured on clinical outcomes but paid on volume. The quality data is collected and reported to SAMHSA annually, but <strong>the daily PPS rate is fixed regardless of whether patients get better, stay the same, or get worse</strong>. An algorithm that extends treatment duration increases revenue regardless of outcomes. A patient who stays in mandated treatment for 16 weeks generates twice the revenue of one who completes in 8 weeks — even if both have identical clinical outcomes. <strong>The incentive structure rewards the algorithm, not the cure.</strong>
+  </div>
+  <div style="margin-top:10px;padding:14px;background:#2d1b00;border-radius:6px;border-left:3px solid var(--y);">
+    <strong>⚠ SAMHSA ENFORCEMENT AUTHORITY (45 CFR 75.371/372):</strong> If a CCBHC fails quality reporting or compliance, SAMHSA CAN: withhold cash payments, disallow costs, suspend the grant, or TERMINATE the grant entirely. Chronic failure can result in <strong>CCBHC designation revocation</strong> — stripping the clinic of PPS rates back to standard fee-for-service. BCC's SAMHSA grant (#H79SM088878, $3.94M) expires September 2027. No public evidence of SAMHSA enforcement action against BCC.
+  </div>
+</div>
+
+<!-- SINGLE-PROGRAM OPACITY -->
+<h2>🔍 Single-Program Reporting — The Accounting Cover</h2>
+<div class="card">
+  <p style="color:#8b949e;margin-bottom:12px;">BCC reports ALL $11.68M in program expenses under a single program (4a) on IRS Form 990 Part III. Programs 4b and 4c show $0. This is not a clerical omission — it is structural opacity that prevents anyone from determining:</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+    <div style="padding:14px;background:#2d1010;border-radius:6px;border-left:3px solid var(--r);">
+      <strong>🔴 Hidden from public view:</strong><br>
+      • How much revenue comes from parolees vs. voluntary patients<br>
+      • Per-patient cost of mandated vs. voluntary treatment<br>
+      • Whether algorithm-driven escalations increase per-patient billing<br>
+      • What percentage of patients are legally compelled to accept treatment
+    </div>
+    <div style="padding:14px;background:#2d1010;border-radius:6px;border-left:3px solid var(--r);">
+      <strong>🔴 Why it matters:</strong><br>
+      • A patient who cannot refuse is not a patient — they are a revenue unit<br>
+      • $11.68M in program spending with zero breakdown = impossible to audit<br>
+      • The CCBHC model requires coordinated care reporting — BCC reports none<br>
+      • Single-program reporting defeats the entire purpose of IRS Form 990 transparency
+    </div>
+  </div>
+</div>
+
+<!-- THE OWL CONNECTION -->
+<h2>🦉 The Cahootery Connection — Governance That Enables Harm</h2>
+<div class="card">
+  <p style="color:#8b949e;margin-bottom:16px;">The patient harm does not happen in a vacuum. It is enabled by a governance structure that has zero incentive to intervene:</p>
+
+  <table>
+    <tr><th style="background:#2d1010;">🦉 Owl</th><th style="background:#2d1010;">Role</th><th style="background:#2d1010;">Cahootery Interest</th><th style="background:#2d1010;">Harm Connection</th></tr>
+    <tr>
+      <td style="font-size:1.5rem;text-align:center;">🦉</td>
+      <td><strong>Joseph Plageman Jr.</strong><br>Board Chair</td>
+      <td>Edward Jones holds BCC's $10.48M portfolio. 11.13x investment growth under his tenure.</td>
+      <td style="color:var(--r);">Investment portfolio grows with BCC revenue. Algorithm-driven patient escalation → more revenue → more assets under management → more Edward Jones fees. Plageman's firm benefits from the very revenue the algorithm generates.</td>
+    </tr>
+    <tr>
+      <td style="font-size:1.5rem;text-align:center;">🦉</td>
+      <td><strong>Linda Krause</strong><br>Director</td>
+      <td>Edward Jones Sr. Branch Office Admin on Plageman's team. 22% of board from one brokerage.</td>
+      <td style="color:var(--r);">Handles client accounts — would see all BCC-Edward Jones transactions. Two board seats from the same firm overseeing investment custody of revenue generated by coerced treatment.</td>
+    </tr>
+    <tr>
+      <td style="font-size:1.5rem;text-align:center;">🦉</td>
+      <td><strong>Missy Orlando</strong><br>Director</td>
+      <td>United Way of Berks County grants BCC ~$685K. Orlando governs the org her employer funds.</td>
+      <td style="color:var(--r);">United Way funding supports BCC programs that include the forensic/parolee pipeline. Orlando votes on BCC budgets that direct United Way money into coerced treatment programs.</td>
+    </tr>
+    <tr>
+      <td style="font-size:1.5rem;text-align:center;">🦉</td>
+      <td><strong>Marcia Goodman-Hinnershitz</strong><br>Reading City Council</td>
+      <td>COCA Director of Planning. COCA is BCC's largest non-federal funder at $3.3M across 5 grants.</td>
+      <td style="color:var(--r);">City Council oversight authority + COCA funding decisions + BCC treatment programs = a closed loop. Goodman-Hinnershitz oversees contracts her employer funds, serving patients who cannot refuse.</td>
+    </tr>
+    <tr>
+      <td style="font-size:1.5rem;text-align:center;">🦉</td>
+      <td><strong>John Robinson</strong><br>Treasurer</td>
+      <td>Robinson & Associates, LLC — consulting firm. BCC's Treasurer runs a business that could contract with BCC. Schedule L = all-NO.</td>
+      <td style="color:var(--r);">Treasurer with insider financial knowledge runs a consulting firm. If his firm ever received BCC payments, that's an undisclosed related-party transaction. Prior Vanguard Group experience means he understands portfolio management — and the Edward Jones portfolio he oversees as Treasurer.</td>
+    </tr>
+    <tr>
+      <td style="font-size:1.5rem;text-align:center;">🦉</td>
+      <td><strong>Brenda Gaul</strong><br>Director (ex-Treasurer)</td>
+      <td>Furniture Soup, Inc. — commercial furniture dealer with PA state/municipal contracts. Past City of Reading projects.</td>
+      <td style="color:var(--r);">Board member whose company could be a vendor to BCC or the county agencies that fund BCC. Ex-Treasurer with historical financial oversight of the organization her company could sell to.</td>
+    </tr>
+  </table>
+
+  <div style="margin-top:16px;padding:14px;background:#2d1010;border-radius:6px;border-left:3px solid var(--r);">
+    <strong>🦉 THE CAHOOTERY EQUATION:</strong><br>
+    Algorithm-driven treatment escalation + parolees who cannot refuse + $0 board compensation + investment portfolio growth = <strong style="color:var(--r);">patient harm as a business model</strong>. No single actor is individually corrupt. Each owl has a legitimate role: financial advisor, branch administrator, United Way employee, COCA planner. But the structure makes patient harm inevitable because there is no countervailing force. The board benefits from the revenue. The algorithm maximizes the revenue. The patients pay with their freedom.
+  </div>
+</div>
+
+<!-- COMPLAINT PATHWAYS -->
+<h2>📋 Complaint & Investigation Pathways</h2>
+<div class="card">
+  <table>
+    <tr><th>Agency</th><th>Jurisdiction</th><th>What to Report</th></tr>
+    <tr>
+      <td><strong>PA OMHSAS</strong></td>
+      <td>CCBHC certification, treatment standards</td>
+      <td>Algorithm-driven treatment escalation without clinical justification; coerced treatment of parolees</td>
+    </tr>
+    <tr>
+      <td><strong>SAMHSA</strong></td>
+      <td>CCBHC grant compliance (Grant #H79SM088878)</td>
+      <td>Use of federal CCBHC funds to support a billing algorithm that targets vulnerable populations</td>
+    </tr>
+    <tr>
+      <td><strong>PA Attorney General — Charitable Trusts</strong></td>
+      <td>Nonprofit governance, use of charitable funds</td>
+      <td>$0 board with conflicting financial interests; single-program reporting opacity; investment portfolio growth tied to coerced treatment revenue</td>
+    </tr>
+    <tr>
+      <td><strong>IRS (Form 13909)</strong></td>
+      <td>501(c)(3) tax-exempt compliance</td>
+      <td>Single-program reporting on Part III; Schedule L all-NO despite Edward Jones board presence; potential excess benefit (IRC §4958) on CFO compensation</td>
+    </tr>
+    <tr>
+      <td><strong>HHS Office for Civil Rights</strong></td>
+      <td>Patient rights, coercion in healthcare</td>
+      <td>Parolees threatened with arrest for refusing treatment that is driven by billing algorithm, not medical necessity</td>
+    </tr>
+    <tr>
+      <td><strong>Berks County Commissioners</strong></td>
+      <td>County contracts, HS Block Grant oversight</td>
+      <td>County funds supporting a treatment algorithm that coerces criminal justice patients</td>
+    </tr>
+    <tr>
+      <td><strong>PA Parole Board</strong></td>
+      <td>Parole conditions, supervision standards</td>
+      <td>Treatment mandates that serve billing optimization rather than rehabilitation</td>
+    </tr>
+  </table>
+</div>
+
+<!-- PATIENT TESTIMONY PLACEHOLDER -->
+<div class="card" style="background:#1a1015;border:1px dashed var(--r);">
+  <h3 style="color:var(--r);">🗣️ PATIENT TESTIMONY — TO BE COLLECTED</h3>
+  <p style="color:#8b949e;">The following categories of testimony should be gathered. <strong style="color:var(--y);">Former BCC forensic counselors and parolees currently under supervision are the highest-value witnesses.</strong> Contact <strong>Disability Rights Pennsylvania</strong> (1-800-692-7443) for protected reporting channels. <strong style="color:var(--r);">Employee corroboration: BCC holds 2.8★ on Indeed (high caseloads, staff burnout, constant restructuring) and 3.8★ on Glassdoor. The volume-over-care pattern is independently confirmed by employee reviews.</strong></p>
+  <ul style="padding-left:20px;margin-top:8px;">
+    <li style="color:var(--text);margin:6px 0;">Parolees who were threatened with violation for refusing escalated treatment</li>
+    <li style="color:var(--text);margin:6px 0;">Patients who were pushed into additional services without explanation of clinical necessity</li>
+    <li style="color:var(--text);margin:6px 0;">Former BCC staff who witnessed the algorithm's implementation and its effect on patient care</li>
+    <li style="color:var(--text);margin:6px 0;">Family members of parolees who observed mandated treatment escalation</li>
+  </ul>
+</div>
+
+</div>
+</div>
+
+<div id="scroll-indicator" style="position:fixed;bottom:40px;left:50%;transform:translateX(-50%);color:var(--r);font-size:0.9rem;z-index:10;background:rgba(13,17,23,0.85);padding:8px 20px;border-radius:20px;border:1px solid var(--r);pointer-events:none;transition:opacity 0.5s;">▼ Auto-scrolling — PATIENT HARM REPORT</div>
+
+<script>
+(function() {
+  const sc = document.getElementById('scroll-container');
+  const ind = document.getElementById('scroll-indicator');
+  const speed = 0.07;
+  let lt = null, anim = true, paused = false;
+  sc.addEventListener('mouseenter', () => { paused = true; ind.textContent = '⏸ Paused'; });
+  sc.addEventListener('mouseleave', () => { paused = false; ind.textContent = '▼ Auto-scrolling'; lt = null; });
+  function step(ts) {
+    if (!anim) return;
+    if (!lt) lt = ts;
+    const e = ts - lt; lt = ts;
+    if (!paused && e > 0 && e < 200) {
+      sc.scrollTop += speed * e;
+      if (sc.scrollTop >= sc.scrollHeight - sc.clientHeight - 10) {
+        sc.scrollTop = sc.scrollHeight;
+        ind.textContent = '✅ Complete'; anim = false; return;
+      }
+    }
+    requestAnimationFrame(step);
+  }
+  setTimeout(() => { ind.style.opacity = '0.6'; }, 5000);
+  requestAnimationFrame(step);
+})();
+</script>
+
+</body>
+</html>

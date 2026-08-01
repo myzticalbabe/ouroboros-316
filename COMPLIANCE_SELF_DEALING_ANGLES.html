@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compliance & Self-Dealing Angles — Berks Counseling Center Investigation</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; --p:#d2a8ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); padding:24px; line-height:1.65; }
+  .container { max-width:1080px; margin:0 auto; }
+  h1 { color:var(--r); text-align:center; font-size:1.9rem; margin-bottom:6px; }
+  h2 { color:var(--a); margin:32px 0 14px; font-size:1.35rem; padding-bottom:6px; border-bottom:1px solid var(--border); }
+  h3 { color:var(--h); margin:18px 0 10px; font-size:1.05rem; }
+  .subtitle { text-align:center; color:#8b949e; margin-bottom:24px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:20px; margin-bottom:18px; }
+  .summary-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:18px 0; }
+  .summary-box { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:14px; text-align:center; }
+  .summary-box .number { font-size:1.6rem; font-weight:800; color:var(--y); }
+  .summary-box .label { font-size:0.72rem; color:#8b949e; text-transform:uppercase; letter-spacing:0.4px; margin-top:4px; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:0.85rem; }
+  th { background:#1c2128; color:var(--a); text-align:left; padding:8px 10px; border:1px solid var(--border); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.4px; }
+  td { padding:8px 10px; border:1px solid var(--border); vertical-align:top; }
+  tr:nth-child(even) td { background:#1a1f26; }
+  .badge { display:inline-block; padding:1px 8px; border-radius:10px; font-size:0.7rem; font-weight:700; white-space:nowrap; }
+  .badge-g { background:#1b3826; color:var(--g); border:1px solid #2d5a3d; }
+  .badge-r { background:#3a1a1a; color:var(--r); border:1px solid #6b2d2d; }
+  .badge-y { background:#3a2e12; color:var(--y); border:1px solid #6b5520; }
+  .badge-p { background:#2a1d3a; color:var(--p); border:1px solid #4a2d6b; }
+  .badge-b { background:#12263a; color:var(--a); border:1px solid #1d4a6b; }
+  .proven { border-left:4px solid var(--g); padding:14px 16px; margin:14px 0; background:#1b3826; border-radius:0 8px 8px 0; }
+  .needs { border-left:4px solid var(--y); padding:14px 16px; margin:14px 0; background:#2d2212; border-radius:0 8px 8px 0; }
+  .alleged { border-left:4px solid var(--p); padding:14px 16px; margin:14px 0; background:#22152d; border-radius:0 8px 8px 0; }
+  .new-angle { border-left:4px solid var(--a); padding:12px 16px; margin:12px 0; background:#12263a; border-radius:0 8px 8px 0; }
+  .url { color:var(--a); font-family:monospace; font-size:0.75rem; word-break:break-all; }
+  .stat { color:var(--y); font-weight:700; }
+  .quote { background:#0d1117; border:1px solid var(--border); border-radius:6px; padding:12px 14px; margin:10px 0; font-style:italic; color:#c9d1d9; font-size:0.88rem; }
+  .footnote { font-size:0.78rem; color:#8b949e; }
+  .method-row { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid #1c2128; font-size:0.88rem; }
+  .method-row .idx { color:var(--y); font-weight:800; min-width:28px; }
+  .method-row .src { color:var(--a); font-family:monospace; font-size:0.75rem; }
+  .req-list { display:grid; gap:8px; }
+  .req-row { background:#0d1117; border:1px solid var(--border); border-radius:8px; padding:10px 12px; display:flex; gap:12px; align-items:flex-start; cursor:pointer; transition:border-color .15s, background .15s; }
+  .req-row:hover { border-color:var(--a); }
+  .req-row:has(input:checked) { border-color:var(--g); background:#12261a; }
+  .req-row input { margin-top:4px; accent-color:var(--g); flex-shrink:0; }
+  .req-label { font-weight:700; color:var(--h); font-size:0.92rem; }
+  .req-meta { font-size:0.72rem; color:#8b949e; margin-top:2px; }
+  .req-desc { font-size:0.82rem; color:var(--text); margin-top:4px; }
+  .gen-btn { background:var(--g); color:#000; border:none; padding:10px 18px; border-radius:6px; cursor:pointer; font-weight:800; font-size:0.9rem; }
+  .gen-btn:hover { opacity:0.85; }
+  .gen-btn.secondary { background:var(--a); }
+  .letter-block { background:#0d1117; border:1px solid var(--border); border-radius:8px; padding:16px; margin:12px 0; font-size:0.88rem; white-space:pre-wrap; }
+  .copy-btn { background:var(--a); color:#000; border:none; padding:4px 12px; border-radius:4px; cursor:pointer; font-weight:700; font-size:0.72rem; float:right; }
+  .copy-btn:hover { opacity:0.8; }
+  @media print { body { background:#fff; color:#000; } .card,.proven,.needs,.alleged,.new-angle { background:#fff; border:1px solid #ccc; } table { font-size:0.75rem; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>⚖️ COMPLIANCE &amp; SELF-DEALING ANGLES</h1>
+<p class="subtitle">Berks Counseling Center (EIN 23-2043478), Reading PA — Regulatory Deep-Dive + New Investigation Angles · Session 20, August 1, 2026</p>
+
+<!-- ====== SUMMARY ====== -->
+<div class="summary-grid">
+  <div class="summary-box"><div class="number">7</div><div class="label">Core Regulatory Regimes (A1)</div></div>
+  <div class="summary-box"><div class="number">10</div><div class="label">New Angles (Section C)</div></div>
+  <div class="summary-box"><div class="number">4</div><div class="label">Self-Dealing Doctrines</div></div>
+  <div class="summary-box"><div class="number">10</div><div class="label">Databases to Query</div></div>
+  <div class="summary-box"><div class="number">3</div><div class="label">Strongest Harm Paths</div></div>
+</div>
+
+<!-- ====== SECTION A: COMPLIANCE ====== -->
+<h2>🔴 SECTION A — COMPLIANCE ANGLE DEEP-DIVE</h2>
+
+<div class="card">
+  <h3>A1. The Regulatory Web Governing BCC (with exact citations)</h3>
+  <table>
+    <tr><th>Regime</th><th>Citation</th><th>What It Requires</th><th>BCC Status</th></tr>
+    <tr>
+      <td><strong>CCBHC Certification</strong></td>
+      <td>PAMA §223 / SAMHSA CCBHC Criteria (2023)</td>
+      <td>9 required service categories: (1) crisis MH incl. 24/7 mobile crisis; (2) screening/assessment/diagnosis; (3) patient-centered treatment planning; (4) outpatient MH + SUD services; (5) primary-care screening; (6) targeted case management; (7) psychiatric rehab; (8) peer/family support; (9) veterans/armed-forces community MH care.</td>
+      <td><span class="badge badge-y">UNVERIFIED</span> — did BCC directly provide or formally contract all 9? Certification file not public; request from SAMHSA.</td>
+    </tr>
+    <tr>
+      <td><strong>PA DDAP Licensing</strong></td>
+      <td>28 Pa. Code Ch. 709 (freestanding SUD facilities, Subch. I outpatient) + 28 Pa. Code Ch. 704 (staffing requirements companion chapter) <span class="badge badge-g">CHAPTER VERIFIED</span></td>
+      <td>Valid annual DDAP license before operating / receiving state funds; governance standards (Subch. C); personnel files with credential verification + background checks + annual evaluations; records confidentiality (4 Pa. Code §255.5); outpatient programming standards.</td>
+      <td><span class="badge badge-b">KNOWN</span> — DDAP complaint investigation Dec 6, 2023 (Event 4V0D11 / Facility TQ8F6601, logged as telephone on the public portal — Session 22 correction), outcome "in compliance." License status verifiable via PA DDAP facility directory.</td>
+    </tr>
+    <tr>
+      <td><strong>PA Psychiatric Outpatient Clinic Rules</strong></td>
+      <td>55 Pa. Code Ch. 5200</td>
+      <td>Operational, staffing, physical-plant, and clinical requirements for psychiatric outpatient clinics; connects to the 55 Pa. Code §1223.52 supervisory-physician sign-off issue from the 2018 Superior Court case.</td>
+      <td><span class="badge badge-r">VIOLATION CONCEDED</span> — 898 MDA 2017: BCC conceded operating without a supervising physician at Chester satellite (violation of §1223.52(a)(6)(i)); retraction cancelled only on procedural grounds.</td>
+    </tr>
+    <tr>
+      <td><strong>SUD Records Confidentiality</strong></td>
+      <td>42 CFR Part 2 (42 U.S.C. §290dd-2)</td>
+      <td>Prohibits any disclosure of records/identifying info showing a patient has/had an SUD or is in SUD treatment, unless written patient consent or court order (Subpart E). Penalties: 42 U.S.C. §1320d-5/1320d-6 (civil &amp; criminal).</td>
+      <td><span class="badge badge-y">NEW ANGLE ⭐</span> — see A2. Reporting a patient's MMJ/SUD status to parole without written consent is a potential Part 2 violation independent of the patient's own claim.</td>
+    </tr>
+    <tr>
+      <td><strong>PA Medical Marijuana Act</strong></td>
+      <td>35 P.S. §10231.2103</td>
+      <td>Registered patients protected from arrest, prosecution, penalty, denial of right/privilege, or licensing-board discipline solely for lawful MMJ use; employers may not discriminate solely on MMJ patient status (with workplace-safety carve-outs).</td>
+      <td><span class="badge badge-r">ALLEGED VIOLATION</span> — complainant reports abstinence-only mandate + threat of parole arrest for lawful MMJ use (see MMJ_PAROLE_RIGHTS.html).</td>
+    </tr>
+    <tr>
+      <td><strong>SAMHSA Grant Terms</strong></td>
+      <td>Grant H79SM088878 + Uniform Guidance 2 CFR Part 200 (via GPD terms)</td>
+      <td>Key personnel/level-of-effort verification, timely FFRs, cash-on-hand reporting, procurement standards, conflicts-of-interest disclosure.</td>
+      <td><span class="badge badge-y">OIG FLAGGED</span> — HHS OIG A-02-21-02010 found SAMHSA failed to verify these for 28/30 sampled CCBHC-E grants; BCC's grant is in the population. Live audit series SRS-A-26-025 in progress.</td>
+    </tr>
+    <tr>
+      <td><strong>HUD CoC Leasing</strong></td>
+      <td>24 CFR §578.49</td>
+      <td>No CoC Leasing funds on grantee-owned units; leasing funds only for units leased from independent third-party owners.</td>
+      <td><span class="badge badge-y">UNRESOLVED</span> — two "Leasing" components (~$396K); ownership status of 8 properties never disclosed.</td>
+    </tr>
+  </table>
+</div>
+
+<div class="new-angle">
+  <strong>⭐ NEW ANGLE A2 — 42 CFR Part 2: the SUD-confidentiality hook (strongest new compliance lever)</strong>
+  <p style="margin-top:8px;">BCC is a <strong>federally assisted SUD program</strong> (SAMHSA CCBHC grant + Medicaid) — squarely within 42 CFR Part 2. If BCC reported (or threatened to report) a registered MMJ patient's lawful medication use — or their SUD-treatment status — to parole authorities <strong>without written patient consent or court order</strong>, that is a <strong>potential Part 2 disclosure violation with civil and criminal penalties (42 U.S.C. §1320d-5/1320d-6)</strong>. This matters because: (1) it does not depend on the complainant's credibility — it is a provider-conduct question; (2) SAMHSA is the enforcement agency for Part 2 (SAMHSA, 5600 Fishers Lane, Rockville MD 20857; SAMHSAFOIA@samhsa.hhs.gov); (3) the MMJ/parole coercion allegation can be framed as a confidentiality breach, not just a clinical-policy dispute. <strong>Evidence needed:</strong> BCC's consent forms, privacy practices notice (Part 2 requires a specific Part 2 notice, not generic HIPAA), and any non-compliance reports to parole referencing SUD treatment or MMJ status.</p>
+</div>
+
+<div class="new-angle">
+  <strong>⭐ NEW ANGLE A3 — Verify actual delivery of all 9 CCBHC service categories</strong>
+  <p style="margin-top:8px;">BCC bills Medicaid ~$11.78M/yr as a CCBHC under a state demonstration, which presumes delivery of the 9 required categories. Single-program 990 reporting makes category-level delivery unverifiable. <strong>Request:</strong> SAMHSA CCBHC certification file (FOIA), the state demonstration MOU between PA DHS and BCC, and Medicaid category-level claims data (PA Right-to-Know / DHS). If any required category is billed but not delivered, that is a <strong>Medicaid overpayment / certification-compliance</strong> question.</p>
+</div>
+
+<!-- ====== SECTION B: SELF-DEALING ====== -->
+<h2>🦉 SECTION B — SELF-DEALING ANGLE DEEP-DIVE</h2>
+
+<div class="card">
+  <h3>B1. The Four Self-Dealing Doctrines + How Each Applies to BCC</h3>
+  <table>
+    <tr><th>Doctrine</th><th>Citation</th><th>Elements / Trigger</th><th>Application to BCC</th></tr>
+    <tr>
+      <td><strong>Excess Benefit Transactions</strong></td>
+      <td>IRC §4958; 26 CFR §53.4958-4/5</td>
+      <td>Economic benefit to a <strong>disqualified person</strong> (anyone with substantial influence in prior 5 yrs) exceeding consideration received. Taxes: 25% on the recipient, 10% (capped $20K) on organization managers who approved it, 200% if uncorrected.</td>
+      <td><span class="badge badge-y">DISQUALIFIED PERSONS PRESENT</span> — voting board members (Plageman, Krause, Robinson, Orlando, Gaul, etc.) are per se disqualified persons. CFO other-comp ($17,350) and comp inversion are candidates for excess-benefit analysis <em>if</em> not justified by comparability data (rebuttable presumption requires conflicted-free approval + comparability data + concurrent documentation — all three unverifiable because minutes/COI policy are withheld).</td>
+    </tr>
+    <tr>
+      <td><strong>Private Inurement</strong></td>
+      <td>IRC §501(c)(3); 26 CFR §1.501(c)(3)-1(c)(2)</td>
+      <td>Zero-tolerance: any net earnings funneling to an insider can jeopardize tax exemption entirely (unlike the §4958 excise-track).</td>
+      <td><span class="badge badge-y">MONITOR</span> — if BCC ever paid Robinson &amp; Associates, Furniture Soup, or an Edward Jones affiliate, inurement risk escalates to the entire exemption. Schedule L all-NO must be verified against AP/payables.</td>
+    </tr>
+    <tr>
+      <td><strong>Federal Grant Procurement Conflicts</strong></td>
+      <td>2 CFR §200.112; §200.318(c)(1)</td>
+      <td>§200.112: disclose potential conflicts in writing to the awarding agency. §200.318(c)(1): <strong>no employee, officer, or board member with a real or apparent conflict may participate in selection/award/administration of a federally funded contract</strong> — includes when a business partner or an organization that employs the party is the contractor.</td>
+      <td><span class="badge badge-r">STRONGEST SELF-DEALING HOOK ⭐</span> — Board Treasurer John Robinson's own firm (Robinson &amp; Associates, LLC, #3967553) contracting with BCC (a $3.94M SAMHSA grant recipient) would violate §200.318(c)(1) procurement conflict rules <em>even with recusal</em> absent a formal waiver. Same logic covers Furniture Soup (Brenda Gaul) and any Edward Jones investment contract. <strong>Evidence needed:</strong> whether any such contracts exist (PA Right-to-Know for county pass-through; IRS Form 990 Schedule L; DHS/OMHSAS grant files).</td>
+    </tr>
+    <tr>
+      <td><strong>PA Fiduciary Duty / Interested-Director Transactions</strong></td>
+      <td>15 Pa. C.S. §5712 (duty of care), §5728 (interested-director transactions)</td>
+      <td>§5712: act in good faith, in the org's best interest, with ordinary-prudence care. §5728: interested-director contracts are valid only if material facts are disclosed <em>and</em> approved by a majority of disinterested directors (or the contract is fair).</td>
+      <td><span class="badge badge-r">POTENTIAL BREACH</span> — Schedule L certifies <strong>no</strong> interested-director transactions. If any occurred without disinterested-majority approval + disclosure, that is a §5728 breach actionable by the PA AG Charitable Trusts Section (parens patriae) and Orphans' Court.</td>
+    </tr>
+  </table>
+</div>
+
+<div class="proven">
+  <strong>B2. What's Already Documented (Session 11–19)</strong>
+  <ul style="padding-left:20px;font-size:0.9rem;margin-top:8px;">
+    <li>Board Chair <strong>Joseph Plageman Jr.</strong> (FINRA CRD #5964768) + Director <strong>Linda Krause</strong> = 2 of ~10 board seats (20%+) employed by <strong>Edward Jones</strong>, while BCC holds ~$10.48M in 100% public securities (Schedule D) and investment income grew 11.13× in 4 years ($40K → $446K).</li>
+    <li>Treasurer <strong>John Robinson</strong> owns <strong>Robinson &amp; Associates, LLC</strong> (ACTIVE PA entity #3967553, inc. 2010-07-14) — Schedule L reports ALL-NO related-party transactions.</li>
+    <li>Director <strong>Missy Orlando</strong> employed by <strong>United Way of Berks County</strong>, which granted BCC ~$685K (incl. $678K MacKenzie Scott).</li>
+    <li>Director <strong>Brenda Gaul</strong> owns <strong>Furniture Soup, Inc.</strong> — commercial vendor with state/municipal contracts; monitor for BCC purchases.</li>
+    <li>Councilmember <strong>Goodman-Hinnershitz</strong> directs planning at <strong>COCA</strong>, BCC's largest non-federal funder ($3.3M pass-through).</li>
+    <li>Schedule L: BCC certified NO to all four questions (excess benefits, loans, grants, business transactions with interested persons).</li>
+    <li>Herbein + Company both prepares the 990 AND audits BCC — an independence question.</li>
+  </ul>
+</div>
+
+<div class="new-angle">
+  <strong>⭐ NEW ANGLE B3 — Frame the Edward Jones question as a §200.318(c)(1) procurement conflict, not just an "appearance"</strong>
+  <p style="margin-top:8px;">Prior materials framed the EJ relationship as "appearance of self-dealing." Under 2 CFR §200.318(c)(1), if Edward Jones (or any affiliate) holds an investment-management/advisory contract paid from BCC funds — <strong>any part of which is federal</strong> — and a BCC board member is employed by EJ, the conflict rule is triggered <em>regardless of recusal</em> unless BCC obtained a written federal waiver. The dispositive record: BCC's <strong>investment management agreement</strong> (who is the manager? Pershing/BNY is EJ's standard custodian — is there an EJ advisory wrapper?) and any fee payments. <strong>Query:</strong> ask Herbein for the auditor's management letter / Schedule D detail; ask BCC for the investment policy + custodian/advisor contracts (COI_REQUEST_LETTER already queued).</p>
+</div>
+
+<!-- ====== SECTION C: NEW ANGLES ====== -->
+<h2>🧭 SECTION C — NEW ANGLES TO INVESTIGATE (not yet run)</h2>
+
+<div class="card">
+  <div class="new-angle">
+    <strong>1. 42 CFR Part 2 confidentiality (NEW — detailed in A2 above)</strong>
+    <p style="margin-top:6px;">SUD-record disclosure to parole without consent. Enforcement: SAMHSA; penalties under 42 U.S.C. §1320d-5/6. Request BCC's Part 2 privacy notice + consent forms.</p>
+  </div>
+  <div class="new-angle">
+    <strong>2. HHS OIG LEIE exclusion check on all 16 profiled people + BCC + affiliated entities (NEW)</strong>
+    <p style="margin-top:6px;">Search <span class="url">exclusions.oig.hhs.gov</span> by name for Axford, Little, Plageman, Krause, Robinson, Orlando, Gaul, Scull, Seitz, Brooks, Ralph, Santoro, Putnam, Triebig, Goodman-Hinnershitz + "Berks Counseling Center" <strong>+ the affiliated entities the §200.318(c)(1) self-dealing angle implicates: "Robinson &amp; Associates, LLC" and "Furniture Soup, Inc."</strong> Any match = Medicare/Medicaid exclusion = immediate program-integrity finding. BCC's NPI was confirmed NOT excluded (Method #6, DEEP_DIVE_HARM) — the <em>individuals</em> and the board-affiliated <em>entities</em> were never checked.</p>
+  </div>
+  <div class="new-angle">
+    <strong>3. SAM.gov exclusions + federal award integrity (NEW)</strong>
+    <p style="margin-top:6px;"><span class="url">sam.gov</span> → Entity/Exclusions: confirm BCC is not debarred/suspended and has no active SAM.gov exclusions or integrity flags. Also pull BCC's SAM.gov entity registration data (unique entity ID, DUNS/UEI, registration status) — a lapse would itself be a federal award compliance gap.</p>
+  </div>
+  <div class="new-angle">
+    <strong>4. OCR HIPAA Breach Portal (NEW)</strong>
+    <p style="margin-top:6px;"><span class="url">ocrportal.hhs.gov</span> — search breach reports for BCC / Berks Counseling Center. Any reported breach of 500+ records = public, adds a data-governance harm dimension (note: HTTPS error on BCC website flagged in COMPLAINT_TODO_LIST).</p>
+  </div>
+  <div class="new-angle">
+    <strong>5. 340B Program Participation (NEW)</strong>
+    <p style="margin-top:6px;"><span class="url">340bopais.hrsa.gov</span> — confirm whether BCC is a 340B covered entity. Likely NOT (340B generally requires FQHC/hospital/other covered-entity status, not plain CCBHC), but verify: if BCC participates and a board member's pharmacy/firm benefits, that is another interlock. Low expected yield; 10 minutes to confirm.</p>
+  </div>
+  <div class="new-angle">
+    <strong>6. HHS Provider Relief Fund (PRF) payments + recoupment exposure (NEW)</strong>
+    <p style="margin-top:6px;"><span class="url">taggs.hhs.gov</span> (COVID-19 funding data) — check whether BCC received PRF payments and whether it met PRF reporting/return rules. HHS has recouped unspent PRF; a BCC recoupment would be a direct financial-harm data point.</p>
+  </div>
+  <div class="new-angle">
+    <strong>7. PA professional-license verification for the supervising-physician issue (NEW)</strong>
+    <p style="margin-top:6px;">PA PALS (<span class="url">pals.pa.gov</span>) — verify current active licenses for the physicians named in BCC materials (Santoro, Putnam) and check the Chester satellite's physician coverage in 2015–2018 (the period of the conceded violation). Also verify Axford's LPC and Triebig's credentials — any lapse strengthens the compliance narrative.</p>
+  </div>
+  <div class="new-angle">
+    <strong>8. CARF / NCQA / Joint Commission accreditation status (NEW)</strong>
+    <p style="margin-top:6px;">Check <span class="url">carf.org</span> accreditation search for BCC. Accredited vs. not is a quality-signal; a lapsed accreditation is a finding. (SAMHSA notes CCBHCs often use NCQA/Joint Commission/CARF for quality infrastructure.)</p>
+  </div>
+  <div class="new-angle">
+    <strong>9. False Claims Act / qui tam angle (NEW — long-term)</strong>
+    <p style="margin-top:6px;">If Medicaid claims were submitted for services not rendered, not medically necessary, or with false documentation (the 898 MDA 2017 case shows an MCO already retracted $105K over documentation deficiencies, cancelled only on procedural grounds), a <strong>False Claims Act (31 U.S.C. §3729)</strong> violation is possible. The 2018 case is public evidence of a retraction dispute — the substance was never adjudicated. This is the strongest harm-proving path but requires an insider relator or subpoena-level discovery.</p>
+  </div>
+  <div class="new-angle">
+    <strong>10. Employee-side probes (NEW)</strong>
+    <p style="margin-top:6px;">Glassdoor/Indeed/Comparably reviews of BCC (whistleblower and staffing complaints); PA unemployment/wage records not public, but former-employee interviews via LinkedIn outreach can corroborate the algorithm-escalation and compliance-pressure claims. OSHA whistleblower channel (1-800-321-6742) for retaliation claims.</p>
+  </div>
+</div>
+
+<!-- ====== SECTION D: AVENUES TO PROVE HARM ====== -->
+<h2>🛠️ SECTION D — AVENUES TO PROVE THE HARM (priority order)</h2>
+
+<div class="card">
+  <table>
+    <tr><th>#</th><th>Avenue</th><th>How / Where</th><th>What It Proves</th><th>Priority</th></tr>
+    <tr>
+      <td><strong>1</strong></td>
+      <td><strong>Part 2 / MMJ-coercion regulatory complaint</strong></td>
+      <td>SAMHSA (CCBHC@samhsa.hhs.gov + SAMHSA Part 2 compliance) + PA DDAP (717-783-8675 / RA-licensuredivision@pa.gov) + PA OMHSAS (717-783-4850)</td>
+      <td>Patient coercion + SUD-record confidentiality breach + MMJ-law violation (35 P.S. §10231.2103)</td>
+      <td><span class="badge badge-r">TOP</span></td>
+    </tr>
+    <tr>
+      <td><strong>2</strong></td>
+      <td><strong>Procurement-conflict verification</strong></td>
+      <td>COI_REQUEST_LETTER.html (investment mgmt agreement + vendor contracts + COI policy) + PA Right-to-Know with Berks County (all BCC contracts) + IRS Schedule L/AP review</td>
+      <td>2 CFR §200.318(c)(1) violation if Robinson/EJ/Gaul contracts exist; §5728 breach; Schedule L completeness</td>
+      <td><span class="badge badge-r">TOP</span></td>
+    </tr>
+    <tr>
+      <td><strong>3</strong></td>
+      <td><strong>Exclusion &amp; integrity database sweep</strong></td>
+      <td><span class="url">exclusions.oig.hhs.gov</span> · <span class="url">sam.gov</span> · <span class="url">ocrportal.hhs.gov</span> · <span class="url">taggs.hhs.gov</span></td>
+      <td>LEIE/SAM exclusions; HIPAA breaches; PRF recoupment — any hit is dispositive program-integrity harm</td>
+      <td><span class="badge badge-r">TOP</span></td>
+    </tr>
+    <tr>
+      <td><strong>4</strong></td>
+      <td><strong>CCBHC certification + grant-file disclosure</strong></td>
+      <td>SAMHSA FOIA (SAMHSAFOIA@samhsa.hhs.gov, cite FAIN H79SM088878); PA DHS demonstration MOU</td>
+      <td>Whether BCC actually delivered all 9 service categories; key-personnel/FFR compliance (OIG A-02-21-02010)</td>
+      <td><span class="badge badge-y">HIGH</span></td>
+    </tr>
+    <tr>
+      <td><strong>5</strong></td>
+      <td><strong>HUD CoC ownership/lease proof</strong></td>
+      <td>Berks County Register of Deeds (manual search, grantee "Berks Counseling Center") + HUD e-snaps + PA RTK</td>
+      <td>24 CFR §578.49 compliance; recoupment exposure on ~$396K Leasing components</td>
+      <td><span class="badge badge-y">HIGH</span></td>
+    </tr>
+    <tr>
+      <td><strong>6</strong></td>
+      <td><strong>IRS §4958 referral</strong></td>
+      <td>IRS Form 13909 (Tax-Exempt Organization Complaint) citing excess benefit / inurement</td>
+      <td>Excess-benefit excise taxes (25%/10%/200%) if comp or related-party benefit unjustified</td>
+      <td><span class="badge badge-y">HIGH</span></td>
+    </tr>
+    <tr>
+      <td><strong>7</strong></td>
+      <td><strong>PA AG Charitable Trusts complaint</strong></td>
+      <td>attorneygeneral.gov/submit-a-complaint/charitable-trusts-and-organizations · 717-783-2853</td>
+      <td>Fiduciary breach, §5728 interested-director transactions, charitable-asset mismanagement</td>
+      <td><span class="badge badge-y">HIGH</span></td>
+    </tr>
+    <tr>
+      <td><strong>8</strong></td>
+      <td><strong>Compensation comparability (rebuttable-presumption probe)</strong></td>
+      <td>Request Schedule J + board minutes + comparability data from BCC (IRC §6104(d))</td>
+      <td>Whether the CFO/CEO comp (incl. $17,350 other-comp) was approved by a conflicted-free board with comparability data — if not, §4958 exposure</td>
+      <td><span class="badge badge-b">MEDIUM</span></td>
+    </tr>
+    <tr>
+      <td><strong>9</strong></td>
+      <td><strong>State licensing verification</strong></td>
+      <td><span class="url">pals.pa.gov</span> (PA PALS) + PA DDAP facility directory (<span class="url">sais.health.pa.gov</span> — verify URL resolves before send)</td>
+      <td>Current licenses for all clinical staff; BCC facility license status; the 2015–18 supervising-physician gap</td>
+      <td><span class="badge badge-b">MEDIUM</span></td>
+    </tr>
+    <tr>
+      <td><strong>10</strong></td>
+      <td><strong>False Claims Act evaluation</strong></td>
+      <td>Counsel review of 898 MDA 2017 record + claims data (PA RTK/DHS); qui tam to US Attorney EDPA</td>
+      <td>Knowingly false Medicaid claims — the definitive harm proof if documentation shows it</td>
+      <td><span class="badge badge-b">MEDIUM (legal)</span></td>
+    </tr>
+  </table>
+</div>
+
+<div class="proven">
+  <strong>⚡ STRONGEST HARM PATHS (synthesis):</strong>
+  <ol style="padding-left:20px;font-size:0.9rem;margin-top:8px;">
+    <li><strong>The Part 2 + MMJ-law double breach</strong> — a federally assisted SUD provider threatening a registered MMJ patient with parole arrest for lawful medication use implicates 42 CFR Part 2, 35 P.S. §10231.2103, and Gass (232 A.3d 706) simultaneously. Three independent regulators (SAMHSA, DDAP, OMHSAS) have jurisdiction, and the complainant's own records are evidence.</li>
+    <li><strong>The 2 CFR §200.318(c)(1) procurement conflict</strong> — if any board-affiliated entity (Robinson &amp; Associates, Furniture Soup, Edward Jones affiliate) holds a contract paid from BCC's $3.94M federal award, it is a written-conflict violation independent of intent, with recoupment/audit exposure.</li>
+    <li><strong>The exclusion/integrity sweep</strong> — LEIE, SAM.gov, OCR breach portal, and PRF recoupment are all free, fast, and dispositive if any hit lands.</li>
+  </ol>
+</div>
+
+<!-- ====== SECTION E: FOIA / RECORDS-REQUEST GENERATOR ====== -->
+<h2>📤 SECTION E — FOIA / RECORDS-REQUEST GENERATOR</h2>
+
+<div class="card">
+  <p style="font-size:0.9rem;">Select the records to request — the generator composes a <strong>ready-to-send letter per recipient</strong> with the correct authority, citation, channel, and response deadline, pre-filled from the verified investigation record. <strong>Default selection = the three priority records: the <span style="color:var(--y);">investment management agreement</span>, the <span style="color:var(--y);">COI policy</span>, and the <span style="color:var(--y);">SAMHSA certification file</span>.</strong> Companion deliverables: <span class="url">COI_REQUEST_LETTER.html</span> (full COI letter, IRC §6104(d)) · <span class="url">SAMHSA_PART2_COMPLAINT.html</span> (Part 2 complaint + certification-file FOIA).</p>
+
+  <h3>🧾 Step 1 — Select Records</h3>
+  <div id="req-list" class="req-list"></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+    <button class="gen-btn" onclick="generateRequests()">⚡ Generate Requests</button>
+    <button class="gen-btn secondary" onclick="location.reload()">↺ Reset</button>
+  </div>
+</div>
+
+<div class="card" id="out-card" style="display:none;">
+  <h3>📄 Step 2 — Generated Letters (copy each with its 📋 button)</h3>
+  <div id="gen-out"></div>
+  <div class="proven-box" id="manifest-box" style="margin-top:14px;"></div>
+</div>
+
+<div class="card">
+  <h3>📊 Document Tracker</h3>
+  <table>
+    <tr><th>#</th><th>Document</th><th>Recipient</th><th>Requested</th><th>Due</th><th>Received</th></tr>
+    <tr><td>1</td><td>Investment Management Agreement</td><td>BCC (direct)</td><td>[Date]</td><td>+30 days</td><td>☐</td></tr>
+    <tr><td>2</td><td>COI Policy + annual disclosure forms</td><td>BCC (direct)</td><td>[Date]</td><td>+30 days</td><td>☐</td></tr>
+    <tr><td>3</td><td>Board minutes — recusals &amp; approvals</td><td>BCC (direct)</td><td>[Date]</td><td>+30 days</td><td>☐</td></tr>
+    <tr><td>4</td><td>Schedule J detail + comparability data</td><td>BCC (direct)</td><td>[Date]</td><td>+30 days</td><td>☐</td></tr>
+    <tr><td>5</td><td>Audited financials + Herbein management letter</td><td>BCC (direct)</td><td>[Date]</td><td>+30 days</td><td>☐</td></tr>
+    <tr><td>6</td><td>SAMHSA CCBHC certification file (H79SM088878)</td><td>SAMHSA FOIA</td><td>[Date]</td><td>+20 working days</td><td>☐</td></tr>
+    <tr><td>7</td><td>SAMHSA GPRA/NOMS performance reports</td><td>SAMHSA FOIA</td><td>[Date]</td><td>+20 working days</td><td>☐</td></tr>
+    <tr><td>8</td><td>PA DHS demonstration MOU + claims data</td><td>PA DHS RTK</td><td>[Date]</td><td>+5 business days</td><td>☐</td></tr>
+    <tr><td>9</td><td>Berks County contracts / payment records</td><td>Berks County RTK</td><td>[Date]</td><td>+5 business days</td><td>☐</td></tr>
+    <tr><td>10</td><td>HUD CoC e-snaps + leases/deeds (8 properties)</td><td>Berks County RTK</td><td>[Date]</td><td>+5 business days</td><td>☐</td></tr>
+  </table>
+  <p class="footnote">Send all letters on the same day so statutory clocks run in parallel. Follow up at 2 weeks; treat any overdue/refused response (and the response itself) as a documented compliance data point — 30-day IRC §6104(d) letters escalate to the IRS + PA AG; RTK denials appeal to the PA Office of Open Records; FOIA denials appeal within 90 days.</p>
+</div>
+
+<p class="footnote" style="text-align:center;margin-top:24px;">Session 20 · Section E added Session 22 · August 1, 2026 · Legal research compiled from public statute/regulation sources (IRC §4958, 26 CFR 53.4958; IRC §501(c)(3); 2 CFR Part 200; 15 Pa. C.S. §§5712/5728; PAMA §223 / SAMHSA CCBHC Criteria; 28 Pa. Code Ch. 709; 55 Pa. Code Ch. 5200; 42 CFR Part 2; 42 U.S.C. §§1320d-5/6; 35 P.S. §10231.2103; 24 CFR §578.49; 65 P.S. §67.101 et seq.; 5 U.S.C. §552) · Cross-ref: DEEP_DIVE_HARM.html · MMJ_PAROLE_RIGHTS.html · INVESTIGATION_GAPS.html · COMPLAINT_TODO_LIST.html · COI_REQUEST_LETTER.html · FUNDING_REVIEW.html · LEGAL_OVERSIGHT_ANGLE.html · SAMHSA_PART2_COMPLAINT.html · SAMHSA_PERFORMANCE_H79SM088878.html</p>
+
+</div>
+
+<script>
+const RECORDS = [
+  { id:'ima', label:'Investment Management Agreement', recipient:'bcc', authority:'IRC §6104(d); Form 990 Schedule D', deadline:'30 days (IRC §6104(d))', desc:'Name of investment manager/advisor and custodian (Pershing/BNY?), fee schedule, term, and any Edward Jones advisory wrapper on the ~$10.48M securities portfolio (FY2025 investment income $446K, 11.13× in 4 years).' },
+  { id:'coi', label:'Conflict of Interest Policy + annual disclosure forms', recipient:'bcc', authority:'IRC §6104(d)(1)(A); Treas. Reg. §301.6104(d)-1; 15 Pa.C.S. §5508(b)', deadline:'30 days (IRC §6104(d))', desc:'The written COI policy referenced in 990 Part VI Line 12a (answered Yes), annual director disclosure forms (Line 12b), and any Schedule O narrative on conflicted-director procedures.' },
+  { id:'minutes', label:'Board minutes — recusals & conflicted-director approvals', recipient:'bcc', authority:'IRC §6104(d); 15 Pa.C.S. §5728', deadline:'30 days (IRC §6104(d))', desc:'Minutes reflecting recusals/abstentions and disinterested-majority approval for transactions involving Edward Jones employees (Plageman, Krause), Robinson & Associates LLC (#3967553), Furniture Soup (Gaul), or United Way (Orlando).' },
+  { id:'schedj', label:'Schedule J detail + compensation comparability data', recipient:'bcc', authority:'IRC §6104(d); IRC §4958 rebuttable presumption', deadline:'30 days (IRC §6104(d))', desc:'CEO/CFO total compensation methodology and the CFO "other compensation" ($17,350, 3.2× CEO); comparability data supporting the §4958 rebuttable presumption.' },
+  { id:'audit', label:'Audited financial statements + Herbein management letter', recipient:'bcc', authority:'IRC §6104(d)', deadline:'30 days (IRC §6104(d))', desc:'FY2023–FY2025 audited statements, auditor management letter, investment-policy notes, and related-party footnotes (Herbein + Company prepares and audits — independence question).' },
+  { id:'samhsa_cert', label:'SAMHSA CCBHC certification file (FAIN H79SM088878)', recipient:'samhsa', authority:'FOIA, 5 U.S.C. §552', deadline:'20 working days (FOIA)', desc:'Certification application, attestation of the 9 required service categories, key-personnel/level-of-effort documentation, FFRs, cash-on-hand reporting (OIG A-02-21-02010: SAMHSA failed to verify these for 28/30 sampled CCBHC-E grants).' },
+  { id:'samhsa_perf', label:'SAMHSA grant performance reports (GPRA/NOMS outcomes)', recipient:'samhsa', authority:'FOIA, 5 U.S.C. §552', deadline:'20 working days (FOIA)', desc:'Actual client-outcome data from SAMHSA ODC for H79SM088878 ($3,944,396; 830 client target; milestones 140/185/230/275; 63.5% outlaid).' },
+  { id:'dhs_mou', label:'PA DHS demonstration MOU + Medicaid category-level claims', recipient:'dhs', authority:'PA Right-to-Know Law, 65 P.S. §67.101 et seq.', deadline:'5 business days (RTK)', desc:'CCBHC state-demonstration MOU between PA DHS and BCC; category-level claims data verifying delivery of all 9 required CCBHC service categories (~$11.78M/yr Medicaid).' },
+  { id:'county_contracts', label:'Berks County contracts, MOUs & payment records', recipient:'county', authority:'PA RTK, 65 P.S. §67.101 et seq.', deadline:'5 business days (RTK)', desc:'All BCC contracts/vendor payments — incl. any Robinson & Associates or Furniture Soup transactions; the ICWC agreement; block-grant allocation (county HS budget ~$16.2M).' },
+  { id:'hud_leases', label:'HUD CoC e-snaps detail + leases/deeds (8 properties)', recipient:'county', authority:'PA RTK; HUD records', deadline:'5 business days (RTK)', desc:'Lease agreements/deeds for the 8 CoC supportive-housing units; ownership status re: 24 CFR §578.49 Leasing prohibition on grantee-owned units (~$396K Leasing components).' }
+];
+const RECIPIENTS = {
+  bcc: { name:'Berks Counseling Center — Axford (CEO), Little (CFO), Plageman Jr. (Board Chair)', addr:'645 Penn Street, Reading, PA 19601', channel:'Direct request (email bcc@berkscc.org) under IRC §6104(d); CC PA AG Charitable Trusts (717-783-2853)' },
+  samhsa: { name:'SAMHSA FOIA Office', addr:'5600 Fishers Lane, Rockville, MD 20857', channel:'SAMHSAFOIA@samhsa.hhs.gov — cite FAIN H79SM088878' },
+  dhs: { name:'PA Dept of Human Services — Right-to-Know Officer (OMHSAS)', addr:'P.O. Box 2675, Harrisburg, PA 17105', channel:'DHS Right-to-Know portal (dhs.pa.gov); OMHSAS 717-783-4850' },
+  county: { name:'Berks County Right-to-Know Officer', addr:'Berks County Services Center, 633 Court Street, Reading, PA 19601', channel:'berkspa.gov/departments/solicitor/right-to-know' }
+};
+const DEFAULTS = ['ima','coi','samhsa_cert'];
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function renderRecords(){
+  const el = document.getElementById('req-list');
+  el.innerHTML = RECORDS.map(function(r){
+    const rc = RECIPIENTS[r.recipient];
+    return '<label class="req-row" title="' + esc(rc.name) + '">' +
+      '<input type="checkbox" value="' + r.id + '"' + (DEFAULTS.indexOf(r.id) > -1 ? ' checked' : '') + ' onchange="rowSel(this)">' +
+      '<div><div class="req-label">' + esc(r.label) + '</div>' +
+      '<div class="req-meta">→ ' + esc(rc.name.split(' — ')[0]) + ' · ' + esc(r.authority) + ' · ' + esc(r.deadline) + '</div>' +
+      '<div class="req-desc">' + esc(r.desc) + '</div></div></label>';
+  }).join('');
+}
+function rowSel(cb){
+  const row = cb.closest('.req-row');
+  if(row){ row.style.borderColor = cb.checked ? 'var(--g)' : ''; }
+}
+function buildLetter(rc, g){
+  const items = g.map(function(r,i){ return (i+1) + ') ' + r.label + '\n   Authority: ' + r.authority + ' · Deadline: ' + r.deadline + '\n   Requested detail: ' + r.desc; }).join('\n\n');
+  return 'Subject: Records Request — Berks Counseling Center (EIN 23-2043478) Investigation — ' + g.length + ' record(s)\n\n' +
+    'To: ' + rc.name + '\n' + rc.addr + '\nChannel: ' + rc.channel + '\n\nDate: [Insert Date]\n\n' +
+    'I am requesting the following records as part of a public-record review of Berks Counseling Center (EIN 23-2043478), Reading PA, under the authority cited for each:\n\n' +
+    items + '\n\n' +
+    'Please produce the records by the applicable statutory deadline and confirm receipt in writing. If any record is withheld, cite the specific exemption and provide a privilege log. An overdue or refused response will be treated as a compliance data point for the broader oversight record.\n\n' +
+    'Thank you for your prompt attention.\n\nSincerely,\n[Your Name]\n[Your Contact]\n[Date]';
+}
+function generateRequests(){
+  const sel = RECORDS.filter(function(r){ const cb = document.querySelector('#req-list input[value="' + r.id + '"]'); return cb && cb.checked; });
+  if(sel.length === 0){ alert('Select at least one record.'); return; }
+  const groups = {};
+  sel.forEach(function(r){ (groups[r.recipient] = groups[r.recipient] || []).push(r); });
+  const out = document.getElementById('gen-out');
+  out.innerHTML = Object.keys(groups).map(function(k){
+    const rc = RECIPIENTS[k]; const g = groups[k];
+    return '<div style="margin-bottom:18px;"><button class="copy-btn" onclick="copyLetter(this)">📋 Copy</button><div class="letter-block">' + esc(buildLetter(rc,g)) + '</div></div>';
+  }).join('');
+  const rows = sel.map(function(r){
+    return '<tr><td>' + esc(r.label) + '</td><td>' + esc(RECIPIENTS[r.recipient].name.split(' — ')[0]) + '</td><td>' + esc(RECIPIENTS[r.recipient].channel) + '</td><td>' + esc(r.deadline) + '</td></tr>';
+  }).join('');
+  document.getElementById('manifest-box').innerHTML = '<strong>📋 REQUEST MANIFEST — send each letter to its recipient:</strong><table><tr><th>Record</th><th>Recipient</th><th>Channel</th><th>Deadline</th></tr>' + rows + '</table>';
+  document.getElementById('out-card').style.display = '';
+  document.getElementById('out-card').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+function copyLetter(btn){
+  const block = btn.nextElementSibling;
+  if(!block) return;
+  const text = block.innerText;
+  function fallback(){
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); }
+    catch(err){ ok = false; }
+    if(ok){ alert('Copied to clipboard!'); }
+    else { alert('Copy failed — select the letter text manually (file:// blocks the clipboard API).'); }
+    document.body.removeChild(ta);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){ alert('Copied to clipboard!'); }, fallback);
+  } else { fallback(); }
+}
+renderRecords();
+</script>
+</body>
+</html>

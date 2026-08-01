@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FUNCTION MAP — Azazael Ecosystem → BCC Investigation</title>
+<style>
+  :root {
+    --bg: #0a0e14;
+    --card: #12161e;
+    --border: #252b35;
+    --text: #b0b8c4;
+    --h1: #ff6b6b;
+    --h2: #58a6ff;
+    --h3: #d2a8ff;
+    --green: #3fb950;
+    --orange: #ffa657;
+    --red: #f85149;
+    --teal: #39d4c6;
+    --cyan: #79c0ff;
+    --pink: #f778ba;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    padding: 16px;
+  }
+  .container { max-width: 1300px; margin: 0 auto; }
+
+  h1 {
+    font-size: 2.2rem;
+    color: var(--h1);
+    text-align: center;
+    border-bottom: 2px solid var(--h1);
+    padding-bottom: 14px;
+    margin-bottom: 8px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #6e7681;
+    font-size: 0.9rem;
+    margin-bottom: 28px;
+  }
+  h2 {
+    font-size: 1.35rem;
+    color: var(--h2);
+    margin: 28px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+  }
+  h3 {
+    font-size: 1.05rem;
+    color: var(--h3);
+    margin: 16px 0 8px;
+  }
+
+  /* Summary Grid */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
+    gap: 10px;
+    margin: 14px 0 24px;
+  }
+  .stat-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+  .stat-box .num { font-size: 1.8rem; font-weight: 800; }
+  .stat-box .lbl { font-size: 0.72rem; color: #6e7681; }
+  .num.red { color: var(--red); }
+  .num.grn { color: var(--green); }
+  .num.org { color: var(--orange); }
+  .num.tea { color: var(--teal); }
+  .num.cya { color: var(--cyan); }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .card.env-win  { border-left: 3px solid var(--cyan); }
+  .card.env-g    { border-left: 3px solid var(--orange); }
+  .card.env-wsl  { border-left: 3px solid var(--teal); }
+  .card.env-kali { border-left: 3px solid var(--red); }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin: 10px 0;
+  }
+  th {
+    text-align: left;
+    background: #1a1f2b;
+    padding: 8px 10px;
+    border-bottom: 2px solid var(--border);
+    font-weight: 600;
+    color: #e6edf3;
+    font-size: 0.82rem;
+  }
+  td {
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:hover td { background: #181d27; }
+
+  .tag {
+    display: inline-block;
+    padding: 1px 7px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+  .tag-grn { background: #122d1e; color: var(--green); }
+  .tag-org { background: #2d1b00; color: var(--orange); }
+  .tag-red { background: #2d1010; color: var(--red); }
+  .tag-cya { background: #0d1d2d; color: var(--cyan); }
+  .tag-pur { background: #1d1530; color: var(--h3); }
+  .tag-tea { background: #0d2d26; color: var(--teal); }
+
+  .bcc-relevance { font-size: 0.78rem; color: #6e7681; font-style: italic; }
+  .module-name { font-family: 'Cascadia Code','Fira Code',monospace; font-size: 0.85rem; color: var(--cyan); }
+
+  /* Flow Diagram */
+  .flow-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 18px 0;
+  }
+  .flow-box {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    text-align: center;
+    min-width: 100px;
+    flex: 1 1 auto;
+  }
+  .flow-arrow {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    color: var(--orange);
+    font-weight: bold;
+  }
+  .flow-box .title { font-weight: 700; color: var(--cyan); font-size: 0.85rem; }
+  .flow-box .desc  { font-size: 0.72rem; color: #6e7681; }
+
+  /* Footer */
+  .footer {
+    margin-top: 30px;
+    padding: 14px;
+    background: #1d1530;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--h3);
+  }
+
+  /* Collapsible */
+  details { margin: 8px 0; }
+  details summary {
+    cursor: pointer;
+    color: var(--h3);
+    font-weight: 600;
+    padding: 4px 0;
+    font-size: 0.95rem;
+  }
+  details summary:hover { color: var(--cyan); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  @media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>[FUNCTION MAP] Azazael Ecosystem → BCC Complaint Investigation</h1>
+<p class="subtitle">
+  Generated: July 31, 2026 (Session 10) &nbsp;|&nbsp;
+  4 Environments &nbsp;|&nbsp; 8 AOA Arms &nbsp;|&nbsp; 10+ Projects &nbsp;|&nbsp; 77+ Worms &nbsp;|&nbsp; 666 Tests Passing
+</p>
+
+<!-- ====== MASTER STATS ====== -->
+<div class="summary-grid">
+  <div class="stat-box"><div class="num red">4</div><div class="lbl">Environments</div></div>
+  <div class="stat-box"><div class="num grn">8</div><div class="lbl">AOA Arms</div></div>
+  <div class="stat-box"><div class="num org">10+</div><div class="lbl">Projects</div></div>
+  <div class="stat-box"><div class="num tea">77+</div><div class="lbl">Azazael Worms</div></div>
+  <div class="stat-box"><div class="num cya">36+</div><div class="lbl">Libra Modules</div></div>
+  <div class="stat-box"><div class="num grn">666</div><div class="lbl">Tests Passing</div></div>
+  <div class="stat-box"><div class="num org">17</div><div class="lbl">Complaint Emails</div></div>
+  <div class="stat-box"><div class="num red">5</div><div class="lbl">Red Flags Found</div></div>
+</div>
+
+<!-- ====== ENVIRONMENT MAP ====== -->
+<h2>[1] Environments — Where Everything Lives</h2>
+
+<div class="two-col">
+<div class="card env-win">
+  <h3>[WIN] Windows 11 Desktop — ACTIVE DEV</h3>
+  <table>
+    <tr><td><strong>Python</strong></td><td>3.14.6 free-threaded (GIL-free)</td></tr>
+    <tr><td><strong>Shell</strong></td><td>Git Bash + PowerShell</td></tr>
+    <tr><td><strong>Chrome</strong></td><td>Installed (Puppeteer/DevTools)</td></tr>
+    <tr><td><strong>AOA</strong></td><td>Desktop/AOA/ — 54 files, 8 arms</td></tr>
+    <tr><td><strong>Libra</strong></td><td>Desktop/Libra/ — 36+ modules, 17 test files</td></tr>
+    <tr><td><strong>EveUnleashed</strong></td><td>Desktop/EveUnleashed_Selector/ — AI model hub</td></tr>
+    <tr><td><strong>CODEX</strong></td><td>CODEX_Azazael_Complete/ — Video engine</td></tr>
+    <tr><td><strong>Azazael</strong></td><td>~/azazael/ — 5,277 files, 50GB</td></tr>
+    <tr><td><strong>Freebuff</strong></td><td>This session — AI coding assistant</td></tr>
+  </table>
+</div>
+
+<div class="card env-g">
+  <h3>[G:] Archive — SOURCE OF TRUTH</h3>
+  <table>
+    <tr><td><strong>G:/AZAZAEL/</strong></td><td>16 GB — wheels, CODEX_VIDEOS, ROOT</td></tr>
+    <tr><td><strong>G:/AZAZAEL_SOURCE_OF_TRUTH/</strong></td><td>8.9 MB — core docs, function catalogs</td></tr>
+    <tr><td><strong>G:/AZAZAEL_Standalone/</strong></td><td>2.9 GB — 39 .exe files</td></tr>
+    <tr><td><strong>G:/WORKING.HTML.AZAZAEL/</strong></td><td>7.2 GB — 200+ HTML renders</td></tr>
+    <tr><td><strong>Function Catalogs</strong></td><td>_function_catalog.json, _function_proofs.json</td></tr>
+  </table>
+</div>
+
+<div class="card env-wsl">
+  <h3>[WSL] Ubuntu — Linux Native</h3>
+  <table>
+    <tr><td><strong>Access</strong></td><td>/mnt/c/Users/clint/ (all Windows files)</td></tr>
+    <tr><td><strong>Capability</strong></td><td>Linux-native Python, FFmpeg, builds</td></tr>
+    <tr><td><strong>BCC Use</strong></td><td>Cross-platform script testing, Linux-only tools</td></tr>
+  </table>
+</div>
+
+<div class="card env-kali">
+  <h3>[WSL] Kali Linux — Security</h3>
+  <table>
+    <tr><td><strong>Access</strong></td><td>/mnt/c/Users/clint/ (all Windows files)</td></tr>
+    <tr><td><strong>Capability</strong></td><td>Security auditing, penetration testing</td></tr>
+    <tr><td><strong>BCC Use</strong></td><td>Audit codebase security, test email deliverability</td></tr>
+  </table>
+</div>
+</div>
+
+<!-- ====== AOA ORCHESTRATION ===== -->
+<h2>[2] AOA — Armory of Anubis (Orchestration Layer)</h2>
+
+<div class="card">
+  <table>
+    <thead>
+      <tr><th>Arm</th><th>Priority</th><th>Capabilities</th><th>File</th><th>BCC Investigation Role</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="module-name">azazael_arm</span></td>
+        <td>P10</td>
+        <td>4</td>
+        <td>arms/azazael_arm.py</td>
+        <td>Worm cluster validation of legal documents, pattern detection</td>
+      </tr>
+      <tr>
+        <td><span class="module-name">libra_arm</span></td>
+        <td>P9</td>
+        <td>6</td>
+        <td>arms/libra_arm.py</td>
+        <td><strong>PRIMARY:</strong> check_berks_rules, calculate_berks_fees, generate_berks_ifp, prepare_berks_filing, get_berks_calendar</td>
+      </tr>
+      <tr>
+        <td><span class="module-name">codex_arm</span></td>
+        <td>P8</td>
+        <td>3</td>
+        <td>arms/codex_arm.py</td>
+        <td>Scrolling MP4 generation from HTML (FUNDING_REVIEW, COMPLAINT_LETTER)</td>
+      </tr>
+      <tr>
+        <td><span class="module-name">eve_arm</span></td>
+        <td>P7</td>
+        <td>4</td>
+        <td>arms/eve_arm.py</td>
+        <td>AI model selection for research/deep dive tasks</td>
+      </tr>
+      <tr>
+        <td><span class="module-name">pams_arm</span></td>
+        <td>P8</td>
+        <td>3</td>
+        <td>arms/support_arms.py</td>
+        <td>Session milestone recording, evidence chain integrity</td>
+      </tr>
+      <tr>
+        <td><span class="module-name">perfmon_arm</span></td>
+        <td>P6</td>
+        <td>2</td>
+        <td>arms/support_arms.py</td>
+        <td>System resource monitoring during long-running research</td>
+      </tr>
+      <tr>
+        <td><span class="module-name">llama_arm</span></td>
+        <td>P5</td>
+        <td>2</td>
+        <td>arms/support_arms.py</td>
+        <td>Local LLM inference for document analysis</td>
+      </tr>
+      <tr>
+        <td><span class="module-name">agent_selector</span></td>
+        <td>P6</td>
+        <td>2</td>
+        <td>arms/support_arms.py</td>
+        <td>Route tasks to optimal AI agent (Go/Rust backends)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- AOA Core Modules -->
+<h3>AOA Core Infrastructure</h3>
+<div class="card">
+  <table>
+    <thead><tr><th>Module</th><th>Lines</th><th>Function</th><th>BCC Use</th></tr></thead>
+    <tbody>
+      <tr><td><span class="module-name">core/router.py</span></td><td>210</td><td>DAG-based cross-Arm workflow orchestration</td><td>Chain: Libra→Eve→Azazael→CODEX for complaint→video pipeline</td></tr>
+      <tr><td><span class="module-name">core/event_bus.py</span></td><td>120</td><td>Cross-Arm pub/sub (22 event types)</td><td>Notify all arms when complaint is generated / email verified</td></tr>
+      <tr><td><span class="module-name">core/arm_registry.py</span></td><td>220</td><td>Arm lifecycle management</td><td>Register all 8 arms for complaint workflow</td></tr>
+      <tr><td><span class="module-name">core/session_manager.py</span></td><td>230</td><td>Milestone tracking, state persistence</td><td>Track BCC investigation progress across sessions</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- AOA Workflow Pipeline -->
+<h3>Cross-Arm BCC Complaint Workflow</h3>
+<div class="flow-row">
+  <div class="flow-box"><div class="title">[1] Libra</div><div class="desc">Generate complaint, verify rules, calculate fees</div></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-box"><div class="title">[2] Eve</div><div class="desc">Select optimal AI model for deep dive</div></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-box"><div class="title">[3] Azazael</div><div class="desc">Validate via worm cluster, pattern detect</div></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-box"><div class="title">[4] CODEX</div><div class="desc">Render scrolling MP4 for TikTok evidence</div></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-box"><div class="title">[5] PAMS</div><div class="desc">Record milestone, preserve evidence chain</div></div>
+</div>
+
+<!-- ====== LIBRA ====== -->
+<h2>[3] Libra — Legal Automation Framework (Investigation Engine)</h2>
+
+<div class="summary-grid">
+  <div class="stat-box"><div class="num grn">36+</div><div class="lbl">Python Modules</div></div>
+  <div class="stat-box"><div class="num grn">17</div><div class="lbl">Test Files</div></div>
+  <div class="stat-box"><div class="num grn">666</div><div class="lbl">Tests Passing</div></div>
+  <div class="stat-box"><div class="num org">7</div><div class="lbl">BCC Output Files</div></div>
+  <div class="stat-box"><div class="num cya">17</div><div class="lbl">SMTP-Verified Emails</div></div>
+  <div class="stat-box"><div class="num red">5</div><div class="lbl">Red Flags Documented</div></div>
+</div>
+
+<!-- Libra Core Modules -->
+<details open>
+<summary>Libra Core Modules</summary>
+<div class="card">
+<table>
+  <thead><tr><th>Module</th><th>Purpose</th><th>BCC Use</th></tr></thead>
+  <tbody>
+    <tr><td><span class="module-name">template_generator.py</span></td><td>Motion, IFP, caption, verification templates</td><td><span class="tag tag-grn">PRIMARY</span> Generate court complaint + agency letter</td></tr>
+    <tr><td><span class="module-name">fee_schedule.py</span></td><td>PA county fee lookup</td><td>Calculate $225 filing fee for Berks CP</td></tr>
+    <tr><td><span class="module-name">court_rules.py</span></td><td>State-level civil rules</td><td>Base rules validation (extended by BCC rules)</td></tr>
+    <tr><td><span class="module-name">deadline_calculator.py</span></td><td>Response deadline computation</td><td>Calculate filing deadlines per Pa.R.J.A. 107</td></tr>
+    <tr><td><span class="module-name">document_generator.py</span></td><td>Generic document assembly</td><td>Cover sheet, verification, CoS generation</td></tr>
+    <tr><td><span class="module-name">concurrent_filer.py</span></td><td>Batch filing across jurisdictions</td><td>Multi-agency complaint filing (SAMHSA + PA AG + Berks Co.)</td></tr>
+    <tr><td><span class="module-name">cert_service.py</span></td><td>Certificate of Service generation</td><td>BCR 440 CoS for all 17 recipients</td></tr>
+    <tr><td><span class="module-name">filing_registry.py</span></td><td>Filing type metadata registry</td><td>Look up Berks-specific filing types</td></tr>
+    <tr><td><span class="module-name">litigation.py</span></td><td>Litigation document management</td><td>Track BCC v. Community Care (898 MDA 2017)</td></tr>
+  </tbody>
+</table>
+</div>
+</details>
+
+<!-- Libra BCC Jurisdiction -->
+<details open>
+<summary>Libra — BCC Jurisdiction (jurisdictions/pa/berks/)</summary>
+<div class="card">
+<table>
+  <thead><tr><th>Module</th><th>Purpose</th><th>BCC Use</th></tr></thead>
+  <tbody>
+    <tr><td><span class="module-name">court_rules.py</span></td><td>9 Berks County Local Rules codified</td><td><span class="tag tag-grn">VALIDATION</span> BCR 205.2/205.4/440 compliance</td></tr>
+    <tr><td><span class="module-name">bcc_parser.py</span></td><td>UJS portal docket parser (8 dataclasses)</td><td>Parse BCC court records, docket entries</td></tr>
+    <tr><td><span class="module-name">ifp_assistant.py</span></td><td>IFP automation (Pa.R.C.P. 240)</td><td>Check IFP eligibility, generate IFP petition</td></tr>
+    <tr><td><span class="module-name">prothonotary.py</span></td><td>Prothonotary integration</td><td>Fee calculation, cover sheets, SASE, docket URLs</td></tr>
+    <tr><td><span class="module-name">court_calendar.py</span></td><td>14 holidays, Civil Argument Court</td><td>Check court closures, compute deadlines</td></tr>
+    <tr><td><span class="module-name">filing_submitter.py</span></td><td>Paper + ECF filing submitters</td><td>Prepare physical filing packet for Prothonotary</td></tr>
+    <tr><td><span class="module-name">filing_types.json</span></td><td>15 Berks types, 6 MDJ districts</td><td>Look up correct filing type codes + fees</td></tr>
+  </tbody>
+</table>
+</div>
+</details>
+
+<!-- Libra Scrapers -->
+<details open>
+<summary>Libra — Scrapers Package (Session 10)</summary>
+<div class="card">
+<table>
+  <thead><tr><th>Module</th><th>Lines</th><th>Purpose</th><th>BCC Use</th></tr></thead>
+  <tbody>
+    <tr><td><span class="module-name">common/browser_base.py</span></td><td>~180</td><td>Playwright lifecycle, persistent context, thread-safe async</td><td><span class="tag tag-grn">SCRAPE</span> Automate UJS Portal docket retrieval</td></tr>
+    <tr><td><span class="module-name">common/email_verifier.py</span></td><td>~350</td><td>SMTP MX lookup + RCPT TO handshake</td><td><span class="tag tag-grn">VERIFY</span> SMTP-check all 17 complaint emails</td></tr>
+    <tr><td><span class="module-name">ujs_portal/session_manager.py</span></td><td>~190</td><td>Rate limiting, exponential backoff, async-safe</td><td>Prevent IP bans while scraping court records</td></tr>
+    <tr><td><span class="module-name">ujs_portal/captcha_handler.py</span></td><td>~280</td><td>CAPTCHA detection, manual solve prompt, phone fallback</td><td>Handle UJS Portal CAPTCHA gracefully</td></tr>
+    <tr><td><span class="module-name">ujs_portal/docket_retriever.py</span></td><td>~390</td><td>End-to-end UJS search→CAPTCHA→retrieve→parse</td><td><span class="tag tag-grn">RETRIEVE</span> Pull BCC court dockets automatically</td></tr>
+  </tbody>
+</table>
+</div>
+</details>
+
+<!-- Libra Subsystems -->
+<details>
+<summary>Libra — Subsystems (bibl, cain, codex, horus, persephone, legal_dict)</summary>
+<div class="card">
+<table>
+  <thead><tr><th>Subsystem</th><th>Module</th><th>Purpose</th><th>BCC Use</th></tr></thead>
+  <tbody>
+    <tr><td rowspan="2"><strong>bibl/</strong></td><td><span class="module-name">crawler.py</span></td><td>Legal document crawler</td><td>Crawl PA court sites for BCC-related cases</td></tr>
+    <tr><td><span class="module-name">__init__.py</span></td><td>Bibliographic indexing</td><td>Index legal citations referenced in complaint</td></tr>
+    <tr><td rowspan="3"><strong>cain/</strong></td><td><span class="module-name">capture.py</span></td><td>Puppeteer browser capture</td><td>Capture web pages as evidence screenshots</td></tr>
+    <tr><td><span class="module-name">injector.py</span></td><td>Session-specific HTML injection</td><td>Inject evidence data into report templates</td></tr>
+    <tr><td><span class="module-name">hevc.py</span></td><td>HEVC encoding settings</td><td>Encode scrolling video evidence for TikTok</td></tr>
+    <tr><td rowspan="2"><strong>codex/</strong></td><td><span class="module-name">frames.py</span></td><td>PIL frame rendering</td><td>Generate video frames from HTML</td></tr>
+    <tr><td><span class="module-name">encoder.py</span></td><td>FFmpeg encoding pipeline</td><td>Encode COMPLAINT_AGENCY_LETTER→MP4</td></tr>
+    <tr><td rowspan="3"><strong>persephone/</strong></td><td><span class="module-name">environment.py</span></td><td>Cross-environment detection</td><td>Detect Win/WSL/Kali environment</td></tr>
+    <tr><td><span class="module-name">path_manager.py</span></td><td>Cross-platform path resolution</td><td>Resolve paths across Windows/WSL/G:</td></tr>
+    <tr><td><span class="module-name">sync_manager.py</span></td><td>Bidirectional sync</td><td>Sync BCC evidence to G: archive</td></tr>
+    <tr><td><strong>horus/</strong></td><td><span class="module-name">core.py</span></td><td>AI vision/inference</td><td>Analyze CAPTCHA images, OCR court documents</td></tr>
+    <tr><td><strong>legal_dict/</strong></td><td><span class="module-name">dictionary.py</span></td><td>Legal terminology dictionary</td><td>Validate legal language in complaint</td></tr>
+  </tbody>
+</table>
+</div>
+</details>
+
+<!-- Libra Filings Output -->
+<details>
+<summary>Libra — Generated BCC Complaint Filing Packet</summary>
+<div class="card">
+<table>
+  <thead><tr><th>File</th><th>Size</th><th>Content</th></tr></thead>
+  <tbody>
+    <tr><td><span class="module-name">COMPLAINT_COURT_FILING.txt</span></td><td>2,028 B</td><td>Court-ready motion — caption, 5 red flags, funding, CoS, verification</td></tr>
+    <tr><td><span class="module-name">COMPLAINT_AGENCY_LETTER.txt</span></td><td>8,506 B</td><td>Agency letter — 17 TO/CC emails, SMTP status tags, 5 sections</td></tr>
+    <tr><td><span class="module-name">email_verification_report.json</span></td><td>—</td><td>Full SMTP verification results with MX servers + latency</td></tr>
+    <tr><td><span class="module-name">COVER_SHEET_*.txt</span></td><td>—</td><td>BCR 205.4 Civil Cover Sheet</td></tr>
+    <tr><td><span class="module-name">INSTRUCTIONS_*.txt</span></td><td>—</td><td>Paper filing instructions, delivery address</td></tr>
+    <tr><td><span class="module-name">SASE_*.txt</span></td><td>—</td><td>Self-Addressed Stamped Envelope prep</td></tr>
+    <tr><td><span class="module-name">FILING_*.txt</span></td><td>—</td><td>Complete filing packet assembly document</td></tr>
+  </tbody>
+</table>
+</div>
+</details>
+
+<!-- Libra Test Suite -->
+<details>
+<summary>Libra — Test Suite (17 files, 666 tests)</summary>
+<div class="card">
+<table>
+  <thead><tr><th>Test File</th><th>Tests</th><th>Coverage</th></tr></thead>
+  <tbody>
+    <tr><td><span class="module-name">test_bcc_rules.py</span></td><td>~40</td><td>BCR 205.2/205.4/206.1/208.2/208.3/212.1/440/1012.1/1901</td></tr>
+    <tr><td><span class="module-name">test_bcc_parser.py</span></td><td>~40</td><td>Docket parsing, 8 dataclasses, regex extraction</td></tr>
+    <tr><td><span class="module-name">test_bcc_filing_types.py</span></td><td>~55</td><td>15 Berks types, 6 MDJ districts, fee validation</td></tr>
+    <tr><td><span class="module-name">test_bcc_ifp.py</span></td><td>~55</td><td>IFP eligibility, affidavit, tracking, petition generation</td></tr>
+    <tr><td><span class="module-name">test_bcc_calendar.py</span></td><td>83</td><td>14 holidays, Gauss Easter, deadline computation</td></tr>
+    <tr><td><span class="module-name">test_bcc_integration.py</span></td><td>—</td><td>End-to-end: rules → filing → packet</td></tr>
+    <tr><td><span class="module-name">test_bcc_templates.py</span></td><td>—</td><td>10 BCC template substitution tests</td></tr>
+    <tr><td><span class="module-name">test_scrapers.py</span></td><td>37</td><td><span class="tag tag-grn">NEW</span> Browser, captcha, session, email verifier</td></tr>
+    <tr><td colspan="2" style="color:var(--green);"><strong>+ 8 additional core/infrastructure test files</strong></td><td>Templates, codex, core, new_packages, infrastructure</td></tr>
+  </tbody>
+</table>
+</div>
+</details>
+
+<!-- ====== AZAZAEL ====== -->
+<h2>[4] Azazael — Neural Worm Fleet (Validation & Pattern Detection)</h2>
+
+<div class="summary-grid">
+  <div class="stat-box"><div class="num red">77+</div><div class="lbl">Total Worms</div></div>
+  <div class="stat-box"><div class="num tea">17</div><div class="lbl">Categories</div></div>
+  <div class="stat-box"><div class="num org">5</div><div class="lbl">Expansion Modules</div></div>
+  <div class="stat-box"><div class="num cya">104</div><div class="lbl">Registered (v2)</div></div>
+  <div class="stat-box"><div class="num grn">3.14t</div><div class="lbl">GIL-Free Python</div></div>
+</div>
+
+<div class="card">
+<table>
+  <thead><tr><th>Category</th><th>Worm Count</th><th>Key Worms</th><th>BCC Investigation Use</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Orchestration</strong></td><td>6</td><td>MetaCluster, ClusterWormZ, NatureClusters</td>
+      <td>Parallel execution of multi-agency complaint research</td>
+    </tr>
+    <tr>
+      <td><strong>Diagnostic</strong></td><td>4</td><td>HealthCheck, ErrorScan, TypeChecker</td>
+      <td>Validate complaint document integrity</td>
+    </tr>
+    <tr>
+      <td><strong>Learning</strong></td><td>5</td><td>PatternLearner, InsightGenerator</td>
+      <td>Detect patterns in BCC financial data across years</td>
+    </tr>
+    <tr>
+      <td><strong>Analysis</strong></td><td>3</td><td>FinancialAnalyzer, TrendDetector</td>
+      <td><span class="tag tag-grn">KEY</span> Analyze IRS 990 trends ($1.41M revenue drop)</td>
+    </tr>
+    <tr>
+      <td><strong>Visualization</strong></td><td>5</td><td>GraphGenerator, MermaidRenderer</td>
+      <td>Generate funding flow diagrams for complaint</td>
+    </tr>
+    <tr>
+      <td><strong>Security</strong></td><td>5</td><td>VulnScanner, PortAuditor, SecretRotator</td>
+      <td>Audit BCC governance for conflict-of-interest patterns</td>
+    </tr>
+    <tr>
+      <td><strong>Config</strong></td><td>5</td><td>ConfigValidator, PolicyEnforcer</td>
+      <td>Validate BCC policies against IRS nonprofit requirements</td>
+    </tr>
+    <tr>
+      <td><strong>Backup</strong></td><td>5</td><td>DataMirror, SnapshotManager</td>
+      <td>Archive all BCC evidence to G: drive</td>
+    </tr>
+    <tr>
+      <td><strong>Monitor</strong></td><td>6</td><td>SystemZ, NETWORXZ, PROCESSZ</td>
+      <td>Monitor long-running research sessions</td>
+    </tr>
+    <tr>
+      <td><strong>Profiling</strong></td><td>5</td><td>PerformanceProfiler, MemoryTracker</td>
+      <td>Optimize complaint generation performance</td>
+    </tr>
+    <tr>
+      <td><strong>Telemetry</strong></td><td>5</td><td>MetricCollector, AlertManager</td>
+      <td>Track email verification success/failure rates</td>
+    </tr>
+    <tr>
+      <td><strong>Container</strong></td><td>5</td><td>DockerManager, PodDeployer</td>
+      <td>Containerize email verifier for clean IP sending</td>
+    </tr>
+    <tr>
+      <td><strong>Communication</strong></td><td>5</td><td>IPCBridge, RPCRouter, MessageBroker</td>
+      <td>Cross-project communication (Libra ↔ AOA ↔ Azazael)</td>
+    </tr>
+    <tr>
+      <td><strong>Migration</strong></td><td>5</td><td>CodeMigrator, SchemaVersioner</td>
+      <td>Migrate BCC data between environments</td>
+    </tr>
+    <tr>
+      <td><strong>ML</strong></td><td>2</td><td>ModelTrainer, InferenceRunner</td>
+      <td>Train models on BCC financial anomaly detection</td>
+    </tr>
+    <tr>
+      <td><strong>Sync</strong></td><td>1</td><td>TimeSync, EnvSync</td>
+      <td>Synchronize BCC evidence timestamps across environments</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<!-- Azazael Advanced Systems -->
+<details>
+<summary>Azazael — Advanced Neural Systems</summary>
+<div class="card">
+<table>
+  <thead><tr><th>System</th><th>Lines</th><th>Pipeline</th><th>BCC Use</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>DreamingModule</strong></td><td>802</td><td>RECALL→DREAM→EVALUATE→INTEGRATE</td>
+      <td>Synthesize cross-domain patterns in BCC governance data</td>
+    </tr>
+    <tr>
+      <td><strong>MetaCognitionWorm</strong></td><td>830</td><td>OBSERVE→ANALYZE→ADAPT→VALIDATE</td>
+      <td>Self-audit complaint for legal completeness</td>
+    </tr>
+    <tr>
+      <td><strong>HypnagogicSynthesizer</strong></td><td>—</td><td>Cross-domain pattern blending</td>
+      <td>Blend financial + legal + governance patterns for novel insights</td>
+    </tr>
+    <tr>
+      <td><strong>EvolutionEngine</strong></td><td>—</td><td>Population optimization</td>
+      <td>Optimize complaint language through iterative refinement</td>
+    </tr>
+    <tr>
+      <td><strong>GeneticOptimizer</strong></td><td>—</td><td>Selection/crossover/mutation</td>
+      <td>Evolve complaint arguments for maximum impact</td>
+    </tr>
+    <tr>
+      <td><strong>CAIN Framework</strong></td><td>—</td><td>Jungian archetypes, collective unconscious</td>
+      <td>Psychoanalyze BCC governance dynamics</td>
+    </tr>
+    <tr>
+      <td><strong>CurativePool</strong></td><td>—</td><td>3-pool concurrent evaluation</td>
+      <td>Parallel execution of all 77 worms on BCC data</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</details>
+
+<!-- ====== CODEX ====== -->
+<h2>[5] CODEX Studio — Video Generation Engine</h2>
+
+<div class="card">
+<table>
+  <thead><tr><th>Module</th><th>Purpose</th><th>BCC Use</th></tr></thead>
+  <tbody>
+    <tr><td><span class="module-name">CODEX_Studio.py v3.1</span></td><td>Tkinter GUI + FFmpeg encoding</td><td><span class="tag tag-grn">VIDEO</span> Generate scrolling MP4 of FUNDING_REVIEW, COMPLAINT_LETTER</td></tr>
+    <tr><td><strong>Puppeteer Pipeline</strong></td><td>Browser-based HTML→frame capture</td><td>Capture COMPLAINT_TODO_LIST.html as video frames</td></tr>
+    <tr><td><strong>FFmpeg Encoder</strong></td><td>H.264 + HEVC encoding (CRF 26-28)</td><td>Encode TikTok-ready 1080p evidence videos</td></tr>
+    <tr><td><strong>CAIN Renderer</strong></td><td>Psychoanalysis video rendering</td><td>Inject session-specific data into CAIN template</td></tr>
+    <tr><td><strong>Frame Generator</strong></td><td>PIL-based HTML frame rendering</td><td>Generate frames for scrolling complaint videos</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ====== EVE UNLEASHED ====== -->
+<h2>[6] Eve Unleashed — AI Model Selector</h2>
+
+<div class="card">
+<table>
+  <thead><tr><th>Component</th><th>Purpose</th><th>BCC Use</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Model Switcher</strong></td><td>Multi-backend AI inference (Ollama, LM Studio, Jan)</td>
+      <td>Select optimal model for research deep dives (deepseek-v4 for analysis)</td></tr>
+    <tr><td><strong>RANI VL</strong></td><td>Vision-language model integration</td>
+      <td>OCR court documents, analyze CAPTCHA images from UJS Portal</td></tr>
+    <tr><td><strong>System Monitor</strong></td><td>Live GPU/CPU/RAM metrics</td>
+      <td>Monitor resource usage during long-running research</td></tr>
+    <tr><td><strong>Benchmark Runner</strong></td><td>Multi-model performance comparison</td>
+      <td>Compare AI models for legal document analysis accuracy</td></tr>
+    <tr><td><strong>Python REPL</strong></td><td>Interactive AI exploration</td>
+      <td>Ad-hoc BCC data analysis and hypothesis testing</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ====== SUPPORT SYSTEMS ====== -->
+<h2>[7] Support Infrastructure</h2>
+
+<div class="two-col">
+<div class="card">
+  <h3>PAMS — Memory & Performance System</h3>
+  <table>
+    <tr><td><span class="module-name">health_check.py</span></td><td>System health monitoring</td><td>Ensure research pipeline stays operational</td></tr>
+    <tr><td><span class="module-name">benchmark_pams.py</span></td><td>Performance benchmarking</td><td>Benchmark email verification throughput</td></tr>
+    <tr><td><span class="module-name">src/</span></td><td>Core memory pool</td><td><span class="tag tag-grn">EVIDENCE</span> Shared memory for all AOA arms</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>PerformanceMonitor — System Telemetry</h3>
+  <table>
+    <tr><td><strong>Python Backend</strong></td><td>Live system metrics</td><td>Monitor during complaint generation</td></tr>
+    <tr><td><strong>Go Backend</strong></td><td>High-performance metric collection</td><td>Real-time scraper performance tracking</td></tr>
+    <tr><td><strong>Rust Backend</strong></td><td>Zero-overhead monitoring</td><td>Bare-metal performance for video encoding</td></tr>
+    <tr><td><strong>Frontend</strong></td><td>HTML dashboard</td><td>Visual dashboard of investigation progress</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>Ultimate Agent Selector</h3>
+  <table>
+    <tr><td><strong>Go Backend</strong></td><td>High-throughput agent routing</td><td>Route research tasks to optimal AI agent</td></tr>
+    <tr><td><strong>Rust Backend</strong></td><td>Low-latency agent dispatch</td><td>Real-time CAPTCHA solving agent selection</td></tr>
+    <tr><td><strong>Agent Registry</strong></td><td>Agent capability catalog</td><td>Match task requirements to agent capabilities</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>AZAZAEL Vault — Secure Storage</h3>
+  <table>
+    <tr><td><span class="module-name">vault_server.py</span></td><td>Local encrypted storage server</td><td><span class="tag tag-red">SECURE</span> Store sensitive complaint evidence</td></tr>
+    <tr><td><span class="module-name">index.html</span></td><td>Web-based vault interface</td><td>Browse archived BCC documents</td></tr>
+    <tr><td><span class="module-name">vault_notes.json</span></td><td>Encrypted notes store</td><td>Store investigation notes securely</td></tr>
+  </table>
+</div>
+</div>
+
+<!-- ====== DESKTOP TOOLS ====== -->
+<h2>[8] Desktop Tools & Freebuff Session</h2>
+
+<div class="two-col">
+<div class="card">
+  <h3>Recording & Video Tools</h3>
+  <table>
+    <tr><td><span class="module-name">Record_Continuous.ps1</span></td><td>5-min auto-splitting screen recorder</td><td>Record investigation sessions for TikTok</td></tr>
+    <tr><td><span class="module-name">START_RECORDING.bat</span></td><td>Recording launcher</td><td>One-click recording start</td></tr>
+    <tr><td><span class="module-name">Fix_Aspect_Ratio.ps1</span></td><td>FFmpeg aspect ratio correction</td><td>Fix TikTok 9:16 portrait rendering</td></tr>
+    <tr><td><strong>TikTok_Videos/</strong></td><td>Output directory</td><td>All recorded segments stored here</td></tr>
+  </table>
+</div>
+
+<div class="card">
+  <h3>Freebuff — AI Coding Assistant (Current Session)</h3>
+  <table>
+    <tr><td><strong>Research Agents</strong></td><td>researcher-web, researcher-docs</td><td>13 rounds of web research for BCC investigation</td></tr>
+    <tr><td><strong>Code Agents</strong></td><td>code-searcher, file-picker, basher</td><td>Built scraper package + complaint generator</td></tr>
+    <tr><td><strong>Browser Agent</strong></td><td>browser-use (Chrome DevTools)</td><td>Navigated readingpa.gov, berkspa.gov, ProPublica</td></tr>
+    <tr><td><strong>Review Agent</strong></td><td>code-reviewer-deepseek</td><td>Reviewed all Session 10 code changes</td></tr>
+    <tr><td><strong>Generated Files</strong></td><td>28 new files this session</td><td>Scrapers, complaint generator, email verifier</td></tr>
+  </table>
+</div>
+</div>
+
+<!-- ====== BCC-SPECIFIC CROSS-PROJECT WORKFLOW ====== -->
+<h2>[9] BCC Complaint Investigation — Complete Cross-Project Pipeline</h2>
+
+<div class="card">
+  <h3>Phase-by-Phase Function Assignment</h3>
+  <table>
+    <thead>
+      <tr><th>Phase</th><th>Task</th><th>Primary Project</th><th>Secondary Projects</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="tag tag-org">1</span></td>
+        <td><strong>Research</strong> — IRS 990, SAMHSA grants, court records, agency contacts</td>
+        <td>Freebuff (researcher-web × 13)</td>
+        <td>Eve (AI model selection), Libra bibl (legal crawler)</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-org">2</span></td>
+        <td><strong>Dockets</strong> — UJS Portal case retrieval, BCC v. Community Care</td>
+        <td>Libra scrapers/ujs_portal/</td>
+        <td>Libra bcc_parser, Eve RANI VL (OCR)</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-org">3</span></td>
+        <td><strong>Email Verification</strong> — SMTP check 17 complaint recipients</td>
+        <td>Libra scrapers/common/email_verifier.py</td>
+        <td>Kali (security audit), PAMS (results storage)</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-org">4</span></td>
+        <td><strong>Financial Analysis</strong> — 990 trends, deficit detection, comp anomalies</td>
+        <td>Azazael Analysis worms</td>
+        <td>Libra fee_schedule, Azazael ML worms</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-org">5</span></td>
+        <td><strong>Complaint Generation</strong> — Court filing + agency letter</td>
+        <td>Libra filings/generate_bcc_complaint.py</td>
+        <td>AOA libra_arm (6 capabilities), Azazael MetaCognition (validation)</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-org">6</span></td>
+        <td><strong>BCR Compliance</strong> — Validate filing against Berks County rules</td>
+        <td>Libra jurisdictions/pa/berks/court_rules.py</td>
+        <td>AOA router (cross-arm workflow)</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-org">7</span></td>
+        <td><strong>Filing Packet</strong> — Cover sheet, SASE, instructions, CoS</td>
+        <td>Libra prothonotary + filing_submitter</td>
+        <td>Libra template_generator, cert_service</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-org">8</span></td>
+        <td><strong>Video Evidence</strong> — Scrolling MP4 for TikTok disclosure</td>
+        <td>CODEX Studio</td>
+        <td>Libra codex (frames + encoder), Desktop recording tools</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-org">9</span></td>
+        <td><strong>Evidence Archive</strong> — Sync all outputs to G: drive</td>
+        <td>Libra persephone/sync_manager.py</td>
+        <td>Azazael Backup worms, PAMS milestone recording</td>
+      </tr>
+      <tr>
+        <td><span class="tag tag-org">10</span></td>
+        <td><strong>Cross-Arm Validation</strong> — AOA orchestrates full pipeline</td>
+        <td>AOA (router + event_bus)</td>
+        <td>All 8 AOA arms, Azazael worm cluster</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ====== INTEGRATION ARCHITECTURE ====== -->
+<h2>[10] Cross-Project Integration Architecture</h2>
+
+<div class="flow-row">
+  <div class="flow-box"><div class="title">Freebuff</div><div class="desc">Research + Code Gen</div></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-box"><div class="title">Libra</div><div class="desc">Legal + Scrapers</div></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-box"><div class="title">AOA</div><div class="desc">Orchestration</div></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-box"><div class="title">Azazael</div><div class="desc">Validation</div></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-box"><div class="title">CODEX</div><div class="desc">Video</div></div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-box"><div class="title">PAMS</div><div class="desc">Archive</div></div>
+</div>
+
+<div class="card">
+  <table>
+    <thead><tr><th>Integration Point</th><th>Projects Connected</th><th>Mechanism</th><th>BCC Data Flow</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>AOA EventBus</strong></td>
+        <td>All 8 AOA arms</td>
+        <td>Pub/sub, 22 event types</td>
+        <td>Complaint generated → all arms notified → video queued</td>
+      </tr>
+      <tr>
+        <td><strong>AOA Router</strong></td>
+        <td>Libra → Eve → Azazael → CODEX</td>
+        <td>DAG topological sort</td>
+        <td>Legal Document to Video Pipeline (4 steps)</td>
+      </tr>
+      <tr>
+        <td><strong>PAMS Shared Memory</strong></td>
+        <td>Libra + Azazael + CODEX</td>
+        <td>MemoryBus HTTP API</td>
+        <td>BCC evidence accessible to all projects</td>
+      </tr>
+      <tr>
+        <td><strong>Libra Persephone</strong></td>
+        <td>Windows Desktop ↔ G: ↔ WSL</td>
+        <td>Bidirectional sync</td>
+        <td>BCC outputs synced to all 4 environments</td>
+      </tr>
+      <tr>
+        <td><strong>Azazael IPC</strong></td>
+        <td>Libra ↔ Azazael worm fleet</td>
+        <td>RPC + Message Broker worms</td>
+        <td>Complaint text → worm cluster for pattern analysis</td>
+      </tr>
+      <tr>
+        <td><strong>Libra bibli/crawler</strong></td>
+        <td>Libra → Eve RANI VL → Azazael ML</td>
+        <td>Async pipeline</td>
+        <td>Court docs → OCR → pattern detection → insight</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<div class="footer">
+  <strong>[FUNCTION MAP] Azazael Ecosystem → BCC Complaint Investigation</strong><br>
+  Generated: July 31, 2026 (Session 10) &nbsp;|&nbsp;
+  4 Environments &nbsp;|&nbsp; 8 AOA Arms &nbsp;|&nbsp; 10+ Projects &nbsp;|&nbsp; 77+ Worms &nbsp;|&nbsp; 36+ Libra Modules &nbsp;|&nbsp; 666 Tests<br>
+  <br>
+  <span style="color:#6e7681;">
+  Every project, every module, every worm was built to enable exhaustive investigation.<br>
+  The BCC complaint is the target — the ecosystem is the weapon.<br>
+  From Freebuff research → Libra generation → Azazael validation → CODEX video → PAMS archive: the complete pipeline is operational.
+  </span>
+</div>
+
+</div>
+</body>
+</html>
