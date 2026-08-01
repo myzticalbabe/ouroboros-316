@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FINAL STATUS — BCC Investigation</title>
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --h:#f0f6fc; --a:#58a6ff; --r:#f78166; --g:#3fb950; --y:#ffa657; --p:#d2a8ff; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:system-ui,sans-serif; background:var(--bg); color:var(--text); padding:24px; line-height:1.65; }
+  .container { max-width:800px; margin:0 auto; }
+  h1 { color:var(--g); text-align:center; font-size:1.6rem; margin-bottom:4px; }
+  .subtitle { text-align:center; color:#8b949e; margin-bottom:24px; font-size:0.85rem; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:20px; margin-bottom:14px; }
+  .card-g { border-left:4px solid var(--g); }
+  .card-y { border-left:4px solid var(--y); }
+  .card-r { border-left:4px solid var(--r); }
+  h2 { color:var(--y); font-size:1rem; margin-bottom:10px; border-bottom:1px solid var(--border); padding-bottom:4px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:8px; }
+  .stat { background:#1a1f26; border-radius:8px; padding:12px; text-align:center; }
+  .stat .num { font-size:1.5rem; font-weight:800; }
+  .stat .label { font-size:0.65rem; color:#8b949e; text-transform:uppercase; letter-spacing:0.3px; margin-top:2px; }
+  .g { color:var(--g); } .r { color:var(--r); } .y { color:var(--y); } .a { color:var(--a); } .p { color:var(--p); }
+  .cc-cat { display:flex; align-items:center; gap:8px; padding:6px 0; font-size:0.82rem; border-bottom:1px solid #1c2128; }
+  .cc-cat:last-child { border-bottom:none; }
+  .cat-icon { font-size:1rem; width:24px; text-align:center; flex-shrink:0; }
+  .cat-desc { color:#8b949e; font-size:0.72rem; }
+  .verdict { background:#1b3826; border:2px solid var(--g); border-radius:10px; padding:16px; text-align:center; margin-bottom:14px; }
+  .verdict h2 { color:var(--g); border:none; margin:0; font-size:1.1rem; }
+  table { width:100%; border-collapse:collapse; font-size:0.8rem; margin-top:8px; }
+  th { background:#21262d; text-align:left; padding:6px 10px; color:var(--h); }
+  td { padding:6px 10px; border-bottom:1px solid var(--border); }
+  .footer { text-align:center; margin-top:16px; font-size:0.72rem; color:#8b949e; }
+  @media print { body { background:#fff; color:#000; } .card,.stat { background:#fff; border:1px solid #ccc; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>✅ FINAL STATUS REPORT</h1>
+<p class="subtitle">
+  Berks Counseling Center Investigation — EIN 23-2043478, Reading, PA<br>
+  <strong>v1.0-audit-consistent</strong> — August 1, 2026
+</p>
+
+<!-- VERDICT -->
+<div class="verdict">
+  <h2>All documents fully consistent. Document cleanup phase complete.</h2>
+  <p style="color:#8b949e;margin-top:6px;font-size:0.85rem;">Investigation not yet complete — nothing sent. BCC excluded from all recipient lists.</p>
+</div>
+
+<!-- KEY STATS -->
+<div class="card card-g">
+  <h2>📊 Investigation Dashboard</h2>
+  <div class="grid">
+    <div class="stat"><div class="num g">25</div><div class="label">Git Commits</div></div>
+    <div class="stat"><div class="num a">20+</div><div class="label">Documents</div></div>
+    <div class="stat"><div class="num y">42</div><div class="label">Open Gaps (of 49)</div></div>
+    <div class="stat"><div class="num g">7</div><div class="label">Resolved Gaps</div></div>
+    <div class="stat"><div class="num r">0</div><div class="label">Complaints Sent</div></div>
+    <div class="stat"><div class="num p">9</div><div class="label">CC Categories</div></div>
+    <div class="stat"><div class="num a">35+</div><div class="label">CC Recipients</div></div>
+    <div class="stat"><div class="num y">6</div><div class="label">Critical Issues</div></div>
+    <div class="stat"><div class="num a">12</div><div class="label">Medium Issues</div></div>
+    <div class="stat"><div class="num p">8</div><div class="label">Low Issues</div></div>
+    <div class="stat"><div class="num g">38/38</div><div class="label">Links Verified</div></div>
+    <div class="stat"><div class="num a">47+47</div><div class="label">Facebook Files</div></div>
+  </div>
+</div>
+
+<!-- CC BREAKDOWN -->
+<div class="card card-g">
+  <h2>📧 CC Recipients — 9 Categories, 35+ Total</h2>
+  <div class="cc-cat"><span class="cat-icon">📰</span><strong>MEDIA</strong><span class="cat-desc">Spotlight PA · Reading Eagle · WFMZ Berks · LNP/Caucus Watchdog</span></div>
+  <div class="cc-cat"><span class="cat-icon">⚖️</span><strong>LEGAL OVERSIGHT</strong><span class="cat-desc">PA Attorney General · PA DDAP · Disability Rights PA</span></div>
+  <div class="cc-cat"><span class="cat-icon">🛡️</span><strong>INVESTIGATOR RIGHTS & WHISTLEBLOWER PROTECTION</strong><span class="cat-desc">ACLU of PA · GAP · National Whistleblower Center · Reporters Committee · PA Legal Aid</span></div>
+  <div class="cc-cat"><span class="cat-icon">🏛️</span><strong>CITY OF READING</strong><span class="cat-desc">Reading City Council (7 members)</span></div>
+  <div class="cc-cat"><span class="cat-icon">🏘️</span><strong>BERKS COUNTY</strong><span class="cat-desc">County Commissioners (3) · Human Services</span></div>
+  <div class="cc-cat"><span class="cat-icon">🏛️</span><strong>PENNSYLVANIA STATE</strong><span class="cat-desc">PA Auditor General · PA OMHSAS · Sen. Schwank</span></div>
+  <div class="cc-cat"><span class="cat-icon">📜</span><strong>PA SENATE COMMITTEES</strong><span class="cat-desc">Health & Human Services · State Government · Appropriations</span></div>
+  <div class="cc-cat"><span class="cat-icon">🇺🇸</span><strong>FEDERAL</strong><span class="cat-desc">SAMHSA · HHS OIG · Sens. Casey & Fetterman</span></div>
+  <div class="cc-cat"><span class="cat-icon">🤝</span><strong>FUNDERS & COMMUNITY</strong><span class="cat-desc">United Way of Berks County · Wesley Butler alternate</span></div>
+</div>
+
+<!-- KEY FINANCIAL FIGURES -->
+<div class="card card-y">
+  <h2>💰 Key Financial Figures (Canonical)</h2>
+  <table>
+    <tr><th>Metric</th><th>Value</th><th>Source</th></tr>
+    <tr><td>Revenue (FY2025)</td><td>$12,494,569</td><td>990 Part I</td></tr>
+    <tr><td>Deficit (FY2025)</td><td class="r">−$796,924</td><td>990 Part I — first in 7 years</td></tr>
+    <tr><td>Securities Portfolio</td><td>$10,479,575</td><td>Schedule D</td></tr>
+    <tr><td>Net Assets</td><td>$19,830,000</td><td>990 Balance Sheet</td></tr>
+    <tr><td>Investment Income (FY2025)</td><td>$446,033</td><td>11.13× from $40,067 (FY2021)</td></tr>
+    <tr><td>Federal Awards</td><td>125 awards / $9.35M</td><td>USASpending.gov</td></tr>
+    <tr><td>SAMHSA Grant</td><td>$3,944,396</td><td>H79SM088878, expires Sept 2027</td></tr>
+    <tr><td>CFO Total Comp</td><td>$149,792</td><td>$4,360 more than CEO</td></tr>
+    <tr><td>CEO Total Comp</td><td>$145,432</td><td>FY2025 Part VII</td></tr>
+    <tr><td>Medicaid Concentration</td><td>94.3%</td><td>Program service revenue</td></tr>
+  </table>
+</div>
+
+<!-- GAPS SUMMARY -->
+<div class="card card-r">
+  <h2>🔴 Gap Status — 42 Open / 7 Resolved / 1 Advanced</h2>
+  <table>
+    <tr><th>Priority</th><th>Total</th><th>Open</th><th>Resolved</th></tr>
+    <tr><td>Critical</td><td>5</td><td class="r">5</td><td>0</td></tr>
+    <tr><td>High</td><td>14</td><td class="y">11</td><td>3</td></tr>
+    <tr><td>Medium</td><td>18</td><td class="y">15</td><td>3</td></tr>
+    <tr><td>Low</td><td>12</td><td class="y">11</td><td>1</td></tr>
+    <tr style="font-weight:700;"><td>TOTAL</td><td>49</td><td>42</td><td>7</td></tr>
+  </table>
+  <p style="font-size:0.78rem;color:#8b949e;margin-top:8px;">
+    Critical gaps: COI policy (never obtained), Edward Jones portfolio management (unconfirmed), no complaint filed, FY2026 990 unavailable, Schedule B structurally redacted.
+  </p>
+</div>
+
+<!-- DOCUMENT INVENTORY -->
+<div class="card">
+  <h2>📋 Document Inventory</h2>
+  <table>
+    <tr><th>Category</th><th>Count</th><th>Key Files</th></tr>
+    <tr><td>Evidence & Analysis</td><td>7</td><td>INVESTIGATION_GAPS, FUNDING_REVIEW, INVESTMENT_PEOPLE_REPORT, DEEP_DIVE_HARM, PATIENT_HARM_REPORT, CONSOLIDATED_SCROLL, DONOR_RECONSTRUCTION</td></tr>
+    <tr><td>Letters & Complaints</td><td>5</td><td>COMPLAINT_LETTER_REDACTED, COMPLAINT_LETTER (full), COI_REQUEST_LETTER, DDAP_COMPLAINT, COMPLAINT_AGENCY_LETTER.txt</td></tr>
+    <tr><td>Strategy & Justification</td><td>3</td><td>STRATEGY_OVERVIEW, SYSTEMIC_CORRUPTION_JUSTIFICATION, INVESTIGATOR RIGHTS & WHISTLEBLOWER PROTECTION</td></tr>
+    <tr><td>Audit & Reference</td><td>3</td><td>AUDIT_REPORT, DATA_REFERENCE, README.md</td></tr>
+    <tr><td>Action Items</td><td>1</td><td>COMPLAINT_TODO_LIST</td></tr>
+    <tr><td>Regulatory & Legal</td><td>4</td><td>COMPLIANCE_SELF_DEALING_ANGLES, LEGAL_OVERSIGHT_ANGLE, MMJ_PAROLE_RIGHTS, MMJ_RIGHTS_ONEPAGER</td></tr>
+    <tr><td>Supporting</td><td>7</td><td>SAMHSA_PERFORMANCE, BCC_PROPERTY_OWNERSHIP, DDAP_INVESTIGATION_EVIDENCE, FORENSIC_EXTRACTION_BLUEPRINT, BCC_GRIEVANCE_LETTER, EXCLUSION_INTEGRITY_SWEEP, BCC_FINANCIAL_WORM_MAP</td></tr>
+    <tr><td>Outreach & Media</td><td>8</td><td>COMMITTEE_LETTERS, LEGAL_AGENCY_ADVOCACY_LETTERS, LEGISLATIVE_COMMITTEES, MEDIA_EMAILS, MEDIA_OUTREACH, PHASE_2_4_OUTREACH, SAMHSA_PART2_COMPLAINT, TIKTOK_VIDEO_SCRIPT</td></tr>
+    <tr style="font-weight:700;"><td>TOTAL</td><td>38</td><td>Core investigation files (20+ in primary inventory)</td></tr>
+  </table>
+</div>
+
+<!-- KEY MILESTONES -->
+<div class="card">
+  <h2>🏷️ Audit Milestones Completed</h2>
+  <table>
+    <tr><th>Milestone</th><th>Status</th></tr>
+    <tr><td>Phase 1: Critical fixes (gap counts, portfolio title, metadata, paths, agency letter)</td><td class="g">✅ DONE</td></tr>
+    <tr><td>Phase 2: Structural fixes (session numbering, board roster, compensation, DATA_REFERENCE, git init)</td><td class="g">✅ DONE</td></tr>
+    <tr><td>BCC exclusion strategy (SYSTEMIC_CORRUPTION_JUSTIFICATION, all CC lists updated)</td><td class="g">✅ DONE</td></tr>
+    <tr><td>Redacted complaint created (CONCERN 8 removed, default shareable)</td><td class="g">✅ DONE</td></tr>
+    <tr><td>COI_REQUEST body rewritten for oversight audience (second-person "you" voice)</td><td class="g">✅ DONE</td></tr>
+    <tr><td>WHISTLEBLOWER PROTECTION orgs added to all CC lists (5 orgs)</td><td class="g">✅ DONE</td></tr>
+    <tr><td>All CC counts synchronized (35+, 9 categories)</td><td class="g">✅ DONE</td></tr>
+    <tr><td>All portfolio value claims corrected ($19.8M → $10.48M securities)</td><td class="g">✅ DONE</td></tr>
+    <tr><td>All BCC-as-recipient references removed from investigation documents</td><td class="g">✅ DONE</td></tr>
+    <tr><td>Patient-guidance disclaimers added to HOW TO PROCEED blocks (4 files)</td><td class="g">✅ DONE</td></tr>
+    <tr><td>Facebook folder: 47 HTML + 47 TXT files synced</td><td class="g">✅ DONE</td></tr>
+    <tr><td>Git milestone tag: v1.0-audit-consistent</td><td class="g">✅ DONE</td></tr>
+    <tr><td>Phase 3: Delivery (COI routing, complaint sending, RTK filing, DDAP complaint)</td><td class="r">NOT STARTED</td></tr>
+  </table>
+</div>
+
+<div class="footer">
+  <strong>FINAL_STATUS_REPORT.html</strong> — August 1, 2026 — Tag: v1.0-audit-consistent<br>
+  BCC excluded from all recipient lists · Nothing sent · Investigation not yet complete
+</div>
+
+</div>
+</body>
+</html>
