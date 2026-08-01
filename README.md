@@ -2,7 +2,7 @@
 
 **Subject:** Berks Counseling Center (BCC), EIN 23-2043478  
 **Location:** 645 Penn Street, Reading, PA 19601  
-**Status:** Evidence collection complete. Delivery (complaints, COI request, RTK) pending.  
+**Status:** Investigation in progress. 42 of 49 gaps open. 7 resolved (1 advanced). <strong>Nothing to be sent until investigation complete.</strong> All complaint letters and COI requests are drafted but on hold.  
 **Last updated:** August 1, 2026  
 **Git:** 4 commits (`c48461a` Phase 1 → `6067b20` Phase 2 → `f227ec4` README → `7208b8a` redacted letter)
 
