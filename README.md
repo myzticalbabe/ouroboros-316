@@ -27,7 +27,7 @@ If you're new to this investigation, read in this order:
 | 3 | **[FUNDING_REVIEW.html](FUNDING_REVIEW.html)** | Complete funding breakdown, worm fleet anomaly analysis, oversight agency mapping | 10 min |
 | 4 | **[INVESTMENT_PEOPLE_REPORT.html](INVESTMENT_PEOPLE_REPORT.html)** | Canonical board roster with detailed profiles, FINRA verification, conflict assessments | 10 min |
 | 5 | **[DEEP_DIVE_HARM.html](DEEP_DIVE_HARM.html)** | 6 proven harm items, 3 documented risks, alleged claims, all 16 people profiled | 10 min |
-| 6 | **[COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html)** | Formal complaint — <strong>redacted version (default shareable)</strong>, CONCERN 8 removed, 9 concerns, <strong>10 oversight-body recipients (BCC excluded)</strong>, 30+ CC | 10 min |
+| 6 | **[COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html)** | Formal complaint — <strong>redacted version (default shareable)</strong>, CONCERN 8 removed, 9 concerns, <strong>10 oversight-body recipients (BCC excluded)</strong>, 35+ CC across 9 categories | 10 min |
 | 7 | **[COI_REQUEST_LETTER.html](COI_REQUEST_LETTER.html)** | Legally-grounded COI policy request under IRC §6104(d) — route through oversight body, not BCC directly | 5 min |
 | 8 | **[AUDIT_REPORT.html](AUDIT_REPORT.html)** | Cross-document audit — 7 critical, 11 medium, 8 low issues found and tracked | 10 min |
 
@@ -55,8 +55,8 @@ If you're new to this investigation, read in this order:
 
 | File | Description | Recipients | Status |
 |------|-------------|-----------|--------|
-| **[COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html)** | <strong>REDACTED — default shareable version.</strong> Formal complaint with 9 concerns. CONCERN 8 (MMJ patient allegation) removed for privacy. BCC leadership excluded — oversight bodies only. | 10 primary, 30+ CC | <strong>Ready. Not sent.</strong> |
-| **[COMPLAINT_LETTER.html](COMPLAINT_LETTER.html)** | <strong>FULL VERSION — access-controlled.</strong> All 10 concerns including CONCERN 8 (single-source, uncorroborated patient allegation). BCC leadership excluded — oversight bodies only. See redacted version for external sharing. | 10 primary, 30+ CC | Ready. Not sent. |
+| **[COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html)** | <strong>REDACTED — default shareable version.</strong> Formal complaint with 9 concerns. CONCERN 8 (MMJ patient allegation) removed for privacy. BCC leadership excluded — oversight bodies only. | 10 primary, 35+ CC across 9 categories | <strong>Ready. Not sent.</strong> |
+| **[COMPLAINT_LETTER.html](COMPLAINT_LETTER.html)** | <strong>FULL VERSION — access-controlled.</strong> All 10 concerns including CONCERN 8 (single-source, uncorroborated patient allegation). BCC leadership excluded — oversight bodies only. See redacted version for external sharing. | 10 primary, 35+ CC across 9 categories | Ready. Not sent. |
 | **[COI_REQUEST_LETTER.html](COI_REQUEST_LETTER.html)** | Conflict of Interest policy request under IRC §6104(d). <strong>Do NOT send directly to BCC.</strong> Route through PA AG Charitable Trusts or SAMHSA for enforcement-backed request. | PA AG, SAMHSA (not BCC directly) | **Ready. Route through oversight body.** |
 | **[DDAP_COMPLAINT.html](DDAP_COMPLAINT.html)** | PA DDAP licensing complaint — MMJ patient rights | PA DDAP Bureau of Program Licensure | **Ready. Hold for corroboration.** |
 | **[COMPLAINT_AGENCY_LETTER.txt](COMPLAINT_AGENCY_LETTER.txt)** | Plain-text agency version of complaint letter — BCC excluded, oversight bodies only | Same as COMPLAINT_LETTER_REDACTED.html | **Ready.** |
