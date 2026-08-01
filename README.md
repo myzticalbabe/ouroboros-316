@@ -67,7 +67,7 @@ If you're new to this investigation, read in this order:
 |------|-------------|-------------|
 | **[STRATEGY_OVERVIEW.html](STRATEGY_OVERVIEW.html)** | <strong>Executive summary — one-page strategy for journalists and legislators.</strong> | Why BCC isn't contacted, who IS contacted (9 categories, 35+ recipients), 5 evidence categories, 5 critical gaps, next steps, reading order. |
 | **[SYSTEMIC_CORRUPTION_JUSTIFICATION.html](SYSTEMIC_CORRUPTION_JUSTIFICATION.html)** | <strong>Why BCC leadership is NOT contacted.</strong> Standalone justification document. | 7 reasons: board-funder interlocks, CFO>CEO pay, Treasurer's undisclosed consulting firm, litigation against oversight (898 MDA 2017), HUD compliance risk, complainant safety (CONCERN 8), self-protecting governance structure. Evidence cross-reference table. |
-| **[INVESTIGATOR RIGHTS & WHISTLEBLOWER PROTECTION](COMPLAINT_LETTER_REDACTED.html)** | <strong>Investigator legal defense orgs in CC list.</strong> 5 organizations defending citizen investigator rights — ACLU of PA, Government Accountability Project (GAP), National Whistleblower Center, Reporters Committee for Freedom of the Press, PA Legal Aid Network. Included in all complaint CC lists (see COMPLAINT_LETTER_REDACTED.html CC section). |
+| **[INVESTIGATOR RIGHTS & WHISTLEBLOWER PROTECTION](COMPLAINT_LETTER_REDACTED.html)** | <strong>Investigator legal defense orgs in complaint CC list.</strong> See CC section in COMPLAINT_LETTER_REDACTED.html. | 5 organizations: ACLU of PA, Government Accountability Project (GAP), National Whistleblower Center, Reporters Committee for Freedom of the Press, PA Legal Aid Network. Included in all complaint CC lists. |
 
 ### Action Items & Contacts
 
