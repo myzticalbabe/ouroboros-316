@@ -1,11 +1,80 @@
 ================================================================================
-FORMAL COMPLAINT — BERKS COUNSELING CENTER (EIN 23-2043478)
+COMPLAINT FOR INVESTIGATION AND PRAYER FOR RELIEF
+BERKS COUNSELING CENTER (EIN 23-2043478)
+Broadcast to All Oversight Parties — Media, Legal, City, County, State,
+Legislative, and Federal
 Plain-Text Version for Agency Submission
 Prepared August 1, 2026
 ================================================================================
 
-To the Berks County Commissioners, Reading City Council, and Berks Counseling
-Center Leadership:
+TO: The Berks County Commissioners, Reading City Council, Berks Counseling
+Center Leadership, and ALL CC'ed Oversight Parties Listed Below —
+Media, Legal, City, County, State, Legislative, and Federal
+
+This is a Complaint for Investigation and Prayer for Relief regarding Berks
+Counseling Center (BCC, EIN 23-2043478, 645 Penn Street, Reading, PA 19601).
+This complaint is being sent simultaneously to all oversight parties so that
+each may investigate within its respective jurisdiction. No single recipient
+bears the full burden of investigation; each is asked to act on the concerns
+within its authority.
+
+PRIMARY RECIPIENTS (TO):
+Christian Y. Leinbach, Chairman, Berks County Commissioners — commissioners@countyofberks.com
+Michael S. Rivera, Commissioner, Berks County Commissioners — commissioners@countyofberks.com
+Dante Santoni Jr., Commissioner, Berks County Commissioners — commissioners@countyofberks.com
+Donna Reed, Council President, Reading City Council — Donna.Reed@readingpa.gov
+Vanessa Campos, Vice President, Reading City Council — Vanessa.Campos@readingpa.gov
+Jaime Baez Jr., Council Member, Reading City Council — Jaime.Baez@readingpa.gov
+O. Christopher Miller, Council Member, Reading City Council — Christopher.Miller@readingpa.gov
+Marcia Goodman-Hinnershitz, Council Member, Reading City Council — Marcia.Goodman-Hinnershitz@readingpa.gov
+Rafael Nunez, Council Member, Reading City Council — Rafael.Nunez@readingpa.gov
+Wesley Butler, Council Member, Reading City Council — Wesley.Butler@readingpa.gov
+Christine Axford, CEO, Berks Counseling Center — christine.axford@berkscc.org
+Greg Little, CFO, Berks Counseling Center — greg.little@berkscc.org
+Joseph Plageman Jr., Board Chair, Berks Counseling Center — bcc@berkscc.org
+
+CC: ALL OVERSIGHT PARTIES (30+ recipients across 8 categories)
+
+===== MEDIA =====
+Spotlight PA — tips@spotlightpa.org (secure: spotlightpa@protonmail.com)
+Reading Eagle — news@readingeagle.com (610-371-5011)
+WFMZ Berks Bureau — news@wfmz.com (610-372-6969)
+LNP/Caucus Watchdog — rwalker@lnpnews.com; cc news@LNPnews.com
+
+===== LEGAL OVERSIGHT =====
+PA Attorney General — Charitable Trusts & Organizations Section (717-783-2853; info@attorneygeneral.gov)
+PA DDAP Bureau of Program Licensure — RA-licensuredivision@pa.gov (717-783-8675)
+Disability Rights Pennsylvania — 1-800-692-7443
+
+===== CITY OF READING =====
+Reading City Council — council@readingpa.gov
+
+===== BERKS COUNTY =====
+Berks County Human Services Department (610-478-6150);
+
+===== PENNSYLVANIA STATE =====
+PA Auditor General — https://www.paauditor.gov
+PA OMHSAS — Office of Mental Health & Substance Abuse Services (717-783-4850)
+PA State Sen. Judith Schwank (D-11, Berks County) — senatorschwank.com
+
+===== PA SENATE COMMITTEES =====
+Sen. Michele Brooks — Chair, Senate Health & Human Services (senatorbrooks.com)
+Sen. Art Haywood — Minority Chair, Senate Health & Human Services (senatorarthaywood.com)
+Sen. Cris Dush — Chair, Senate State Government (senatordush.com)
+Sen. Steven J. Santarsiero — Minority Chair, Senate State Government (senatorsantarsiero.com)
+Sen. Scott Martin — Chair, Senate Appropriations (senatormartin.com)
+
+===== FEDERAL =====
+SAMHSA CCBHC Program — CCBHC@samhsa.hhs.gov (Grant #H79SM088878)
+SAMHSA FOIA — SAMHSAFOIA@samhsa.hhs.gov
+HHS Office of Inspector General — Hotline: 1-800-HHS-TIPS
+U.S. Sen. Robert P. Casey Jr. (D-PA) — casey.senate.gov
+U.S. Sen. John Fetterman (D-PA) — fetterman.senate.gov
+
+===== FUNDERS & COMMUNITY =====
+United Way of Berks County — info@uwberks.org
+BCC General — bcc@berkscc.org
+Wesley Butler alternate — wesleysavonbutler@gmail.com
 
 I am writing to formally request review and investigation of Berks Counseling
 Center (BCC), a 501(c)(3) nonprofit organization (EIN 23-2043478) located at
@@ -101,8 +170,6 @@ REQUESTED ACTIONS
 8. Lease agreements or ownership documentation for all 8 HUD CoC-funded
    properties, with confirmation of 24 CFR §578.49 compliance.
 9. HUD e-snaps / CoC project component detail for the 8 properties.
-10. BCC's documented clinical justification for any abstinence-only treatment
-    mandate imposed on registered medical-marijuana patients.
 
 I look forward to your response within 30 days.
 
@@ -113,7 +180,10 @@ Sincerely,
 [Date]
 
 ================================================================================
-NOTE: This is the plain-text agency version of COMPLAINT_LETTER.html.
-For the full HTML letter with email fields, copy buttons, and cross-references,
-see COMPLAINT_LETTER.html.
+NOTE: This is the plain-text broadcast version. For the redacted HTML
+letter (default shareable, CONCERN 8 removed), see COMPLAINT_LETTER_REDACTED.html.
+For the full HTML with CONCERN 8 (access-controlled), see COMPLAINT_LETTER.html.
+
+INVESTIGATION NOT YET COMPLETE: 42 of 49 gaps remain open. This complaint
+informs all parties of known facts. Send only when investigation is complete.
 ================================================================================
