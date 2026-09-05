@@ -8,7 +8,7 @@ that file instead of aborting the whole sweep.
 Scope selection:
   - argv files: python verify_aoa_cdp.py f1.html f2.html ...
   - azazael/.cdp_filelist.txt if present (newline-separated paths)
-  - else all root C:\\Users\\clint\\*.html
+  - else all root *.html in the current working directory
 
 Origin-aware error classification (2026-09-05): an exception/error is LOCAL
 (defects the file) when its stack or source location references the local
@@ -22,6 +22,7 @@ corpus's own HTML. Proven incident: both capture pages threw only remote-origin
 errors (ProPublica hydrate-svelte fetch, archive.org sendBeacon-over-file://)
 while every corpus doc stayed clean.
 """
+import glob as _glob
 import json
 import os
 import shutil
@@ -32,15 +33,30 @@ import time
 import urllib.request
 import websocket  # websocket-client
 
+# Portable scope resolution: argv files win, then a .cdp_filelist.txt beside
+# the script or in the cwd, then a root *.html glob in the cwd. No hardcoded
+# drive paths (the azazael repo's anti-pattern scanner rejects them and this
+# tool runs from C: root, the azazael repo, G: mirrors, and Kali alike).
+_script_dir = os.path.dirname(os.path.abspath(__file__))
+_cwd = os.getcwd()
+
+
+def _load_list(path):
+    with open(path, encoding="utf-8") as fh:
+        return [os.path.abspath(f) for f in fh.read().splitlines() if f.strip()]
+
+
 if len(sys.argv) > 1:
     FILES = [os.path.abspath(f) for f in sys.argv[1:]]
-elif os.path.exists(r"C:\Users\clint\azazael\.cdp_filelist.txt"):
-    FILES = [os.path.abspath(f) for f in
-             open(r"C:\Users\clint\azazael\.cdp_filelist.txt", encoding="utf-8")
-             .read().splitlines() if f.strip()]
 else:
-    import glob
-    FILES = sorted(glob.glob(r"C:\Users\clint\*.html"))
+    FILES = []
+    for cand in (os.path.join(_script_dir, ".cdp_filelist.txt"),
+                 os.path.join(_cwd, ".cdp_filelist.txt")):
+        if os.path.exists(cand):
+            FILES = _load_list(cand)
+            break
+    if not FILES:
+        FILES = sorted(_glob.glob(os.path.join(_cwd, "*.html")))
 if not FILES:
     raise SystemExit("no HTML files found")
 
@@ -49,13 +65,28 @@ BASE = f"http://127.0.0.1:{PORT}"
 
 
 def find_chrome():
-    for cand in (
-        r"C:\Program Files\Google\Chrome\Application\chrome.exe",
-        r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
-    ):
+    # CHROME_BIN wins, then standard Windows program dirs built from env vars
+    # (no hardcoded drive letter — the azazael anti-pattern scanner rejects
+    # those and this tool must run from C: root, the azazael repo, G: mirrors,
+    # and Kali alike), then a PATH lookup for linux chrome/chromium.
+    env_chrome = os.environ.get("CHROME_BIN")
+    if env_chrome and os.path.exists(env_chrome):
+        return env_chrome
+    prog_dirs = [d for d in (os.environ.get("ProgramFiles"),
+                             os.environ.get("ProgramFiles(x86)")) if d]
+    for base in prog_dirs:
+        cand = os.path.join(base, "Google", "Chrome", "Application", "chrome.exe")
         if os.path.exists(cand):
             return cand
-    raise SystemExit("chrome.exe not found")
+    for base in prog_dirs:
+        for cand in _glob.glob(os.path.join(base, "Google", "Chrome", "Application", "chrome.exe")):
+            if os.path.exists(cand):
+                return cand
+    if shutil.which("google-chrome"):
+        return shutil.which("google-chrome")
+    if shutil.which("chromium"):
+        return shutil.which("chromium")
+    raise SystemExit("chrome.exe not found (set CHROME_BIN or install Chrome)")
 
 
 def main():
