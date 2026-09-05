@@ -170,6 +170,33 @@
     "tiktok_mp4": 39,
     "board_confirmed": "7/9",
     "board_owls": 5,
-    "board_undisclosed": 2
-  }
+    "board_undisclosed": 2,
+    "last_commit": "53ed938",
+    "last_commit_time": "2026-09-05T06:08:38-04:00",
+    "total_commits": 1
+  },
+  "commits": [
+    {
+      "hash": "53ed938",
+      "full_hash": "53ed938ab77c91f90d5e0cc5d8dc8e84ec2260ff",
+      "branch": "master",
+      "time": "2026-09-05T06:08:38-04:00",
+      "timestamp": "2026-09-05T10:08:45Z",
+      "message": "Add audit_links_refined.py dead-link checker",
+      "verification": {
+        "status": "PASS",
+        "passed": 26,
+        "failed": 0
+      },
+      "files_changed": 1,
+      "files": [
+        "audit_links_refined.py"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    }
+  ]
 }
