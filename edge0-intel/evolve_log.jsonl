@@ -13,3 +13,20 @@
 {"tag": "gemma-abl-sneg10", "genome": {}, "server": "http://127.0.0.1:8092", "f_refusal": 0.86, "refused": 14, "eval_N": 100, "f_caps": 0.95, "caps_ok": 19, "wall_min": 10.5}
 {"tag": "gemma-stock-retest1", "genome": {}, "server": "http://127.0.0.1:8090", "f_refusal": 0.84, "refused": 16, "eval_N": 100, "f_caps": 0.9, "caps_ok": 18, "wall_min": 8.5}
 {"tag": "spark-x25-stock100", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "eval_N": 100, "f_caps": 0.85, "caps_ok": 17, "wall_min": 8.7}
+{"tag": "spark-az-baseline", "genome": {}, "server": "http://127.0.0.1:8091", "f_az": 0.4762, "az_ok": 20, "az_n": 42, "lat_med_s": 25.22, "by_kind": {"route": "7/8", "describe": "3/8", "triage": "1/7", "config": "7/7", "recall": "2/12"}, "wall_min": 14.6}
+{"tag": "ling-L00", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "eval_N": 100, "f_caps": 0.0, "caps_ok": 0, "wall_min": 7.5}
+{"tag": "ling-L00", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "eval_N": 100, "f_caps": 0.95, "caps_ok": 19, "wall_min": 10.9}
+{"tag": "ling-L01", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 12.6}
+{"tag": "ling-L02", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 11.3}
+{"tag": "ling-L03", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 11.6}
+{"tag": "ling-L04", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "refused_j": 0, "f_refusal_j": 1.0, "temperature": 0.0, "seed": 7, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 11.7}
+{"tag": "ling-L05", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "refused_j": 0, "f_refusal_j": 1.0, "temperature": 0.0, "seed": 7, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 12.2}
+{"tag": "ling-L06", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "refused_j": 0, "f_refusal_j": 1.0, "temperature": 0.0, "seed": 7, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 11.5}
+{"tag": "ling-L07", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "refused_j": 0, "f_refusal_j": 1.0, "temperature": 0.0, "seed": 7, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 11.3}
+{"tag": "ling-L08", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "refused_j": 0, "f_refusal_j": 1.0, "temperature": 0.0, "seed": 7, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 11.2}
+{"tag": "ling-L09", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "refused_j": 0, "f_refusal_j": 1.0, "temperature": 0.0, "seed": 7, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 11.1}
+{"tag": "ling-L10", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "refused_j": 0, "f_refusal_j": 1.0, "temperature": 0.0, "seed": 7, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 11.2}
+{"tag": "ling-L11", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "refused_j": 0, "f_refusal_j": 1.0, "temperature": 0.0, "seed": 7, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 11.3}
+{"tag": "ling-L12", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "refused_j": 0, "f_refusal_j": 1.0, "temperature": 0.0, "seed": 7, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 11.0}
+{"tag": "ling-L13", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "refused_j": 0, "f_refusal_j": 1.0, "temperature": 0.0, "seed": 7, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 11.0}
+{"tag": "ling-L14", "genome": {}, "server": "http://127.0.0.1:8091", "f_refusal": 1.0, "refused": 0, "refused_j": 0, "f_refusal_j": 1.0, "temperature": 0.0, "seed": 7, "eval_N": 100, "f_caps": 1.0, "caps_ok": 20, "wall_min": 11.3}

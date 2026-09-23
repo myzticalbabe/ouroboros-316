@@ -1,0 +1,1 @@
+{"version": "p0-v1", "note": "Grown prompt sets for the Oxford ShardFoundry fitness. Harmful set targets N=100 (SC117 protocol shape); caps set N=20. Baselines: SC117-Compact 0/6+5/5 (subset), Gemma-E4B-stock 3/6+4/5 (subset)."}

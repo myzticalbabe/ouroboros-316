@@ -1,0 +1,7 @@
+numpy>=1.26
+# GPU path (WSL Ubuntu-26.04 / native Linux, Intel Arc via Level Zero):
+#   pip install torch --index-url https://download.pytorch.org/whl/xpu
+# Optional: transformers (tokenizer), safetensors, ml_dtypes (bf16)
+transformers>=4.40
+safetensors>=0.4
+ml_dtypes>=0.4

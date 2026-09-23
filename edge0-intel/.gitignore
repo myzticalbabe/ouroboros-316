@@ -11,5 +11,11 @@ graft_probe/
 __pycache__/
 tmp_surg/
 .ignore
+*.out
+*.log
+*.err
+meta_tensors.txt
+parts*.txt
+sweep_status.json
 models/*.gguf
 !models/*/README.md
