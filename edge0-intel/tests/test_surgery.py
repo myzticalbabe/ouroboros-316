@@ -111,4 +111,36 @@ try:
 except ValueError:
     pass
 print("6 GGUF dim-mismatch skip OK")
+
+# 7. svi gates: ADMIT a well-formed build, REJECT a transpose-corrupted one.
+# Mini-GGUFs built from scratch (no model needed): good = dims match src,
+# bad = one tensor transposed (the 2026-09-22 failure class).
+import subprocess
+from gguf import GGUFReader, GGUFWriter, GGMLQuantizationType
+_src = os.path.join(TMP, "mini_src.gguf")
+_w = GGUFWriter(_src, "llama")
+_w.add_string("general.architecture", "llama")
+_w.add_uint32("general.dummy", 1)
+_w.add_tensor("blk.0.attn_output.weight",
+              rng.standard_normal((64, 32)).astype(np.float16),
+              raw_shape=None, raw_dtype=GGMLQuantizationType.F16)
+_w.write_header_to_file(); _w.write_kv_data_to_file()
+_w.write_tensors_to_file(); _w.close()
+_ok = os.path.join(TMP, "mini_ok.gguf")
+shutil.copy(_src, _ok)
+_bad = os.path.join(TMP, "mini_bad.gguf")
+_wb = GGUFWriter(_bad, "llama")
+_wb.add_string("general.architecture", "llama")
+_wb.add_uint32("general.dummy", 1)
+_wb.add_tensor("blk.0.attn_output.weight",
+               rng.standard_normal((32, 64)).astype(np.float16),
+               raw_shape=None, raw_dtype=GGMLQuantizationType.F16)
+_wb.write_header_to_file(); _wb.write_kv_data_to_file()
+_wb.write_tensors_to_file(); _wb.close()
+import svi as SVI
+assert SVI.cmd_gate(type("A", (), {"gguf": _ok, "src": _src,
+    "targets": "attn_output.weight"})()) == 0, "gate must ADMIT good build"
+assert SVI.cmd_gate(type("A", (), {"gguf": _bad, "src": _src,
+    "targets": "attn_output.weight"})()) == 1, "gate must REJECT transposed build"
+print("7 svi gates ADMIT/REJECT OK")
 print("ALL SURGERY VALIDATIONS PASS")

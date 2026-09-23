@@ -99,7 +99,8 @@ def main():
     rotary = Gemma4TextRotaryEmbedding(tc).to(DT)
     say("embeddings pinned")
 
-    def hs_one(prompt):
+    def prefix(prompt):
+        """Embed + merge prefix, no layers. Returns per-prompt state dict."""
         ids = tok(prompt)["input_ids"]
         assert max(ids) < 258880, "placeholder token; merge not identity"
         input_ids = torch.tensor([ids])
@@ -118,47 +119,59 @@ def main():
                   "position_ids": position_ids}
             masks = {"full_attention": create_causal_mask(**mk),
                      "sliding_attention": create_sliding_window_causal_mask(**mk)}
-            kv = UserDict()
-            hidden = inputs_embeds
-            for i in range(N_LAYERS):
-                layer = Gemma4TextDecoderLayer(tc, i).to(DT)
-                lp = f"layers.{i}."
-                sd = {k[len(pre + lp):]: f.get_tensor(k).to(DT) for k in f.keys()
-                      if k.startswith(pre + lp)}
-                want = set(layer.state_dict())
-                # Vestigial checkpoint weights: the file carries k/v proj+norms
-                # for kv-shared layers, but the architecture ignores them
-                # (mirrors _keys_to_ignore_on_load_unexpected in modeling).
-                # Drop ONLY those; anything else mismatched is a real error.
-                VESTIGIAL = {f"self_attn.{n}.weight" for n in
-                             ("k_proj", "v_proj", "k_norm", "v_norm")}
-                assert want - set(sd) == set(), f"layer {i} missing={want - set(sd)}"
-                dropped = set(sd) - want
-                assert dropped <= VESTIGIAL, f"layer {i} unexpected extra={dropped}"
-                if dropped:
-                    say(f"layer {i}: dropped vestigial {sorted(dropped)}")
-                sd = {k: v for k, v in sd.items() if k in want}
-                layer.load_state_dict(sd, strict=True)
-                del sd
-                lt = tc.layer_types[i]
-                hidden = layer(hidden_states=hidden,
-                               per_layer_input=pli[:, :, i, :],
-                               shared_kv_states=kv,
-                               position_embeddings=pos_emb[lt],
-                               attention_mask=masks[lt],
-                               position_ids=position_ids,
-                               past_key_values=None)
-                del layer
-            return hidden[0, -1].float()
+        return {"hidden": inputs_embeds, "pli": pli, "pos_emb": pos_emb,
+                "masks": masks, "position_ids": position_ids,
+                "kv": UserDict(), "n": len(ids)}
 
+    def load_layer(i):
+        layer = Gemma4TextDecoderLayer(tc, i).to(DT)
+        lp = f"layers.{i}."
+        sd = {k[len(pre + lp):]: f.get_tensor(k).to(DT) for k in f.keys()
+              if k.startswith(pre + lp)}
+        want = set(layer.state_dict())
+        # Vestigial checkpoint weights: the file carries k/v proj+norms
+        # for kv-shared layers, but the architecture ignores them
+        # (mirrors _keys_to_ignore_on_load_unexpected in modeling).
+        # Drop ONLY those; anything else mismatched is a real error.
+        VESTIGIAL = {f"self_attn.{n}.weight" for n in
+                     ("k_proj", "v_proj", "k_norm", "v_norm")}
+        assert want - set(sd) == set(), f"layer {i} missing={want - set(sd)}"
+        dropped = set(sd) - want
+        assert dropped <= VESTIGIAL, f"layer {i} unexpected extra={dropped}"
+        if dropped:
+            say(f"layer {i}: dropped vestigial {sorted(dropped)}")
+        sd = {k: v for k, v in sd.items() if k in want}
+        layer.load_state_dict(sd, strict=True)
+        del sd
+        return layer
+
+    # Batched collection: prefix all prompts once, then stream each layer
+    # ONCE across all prompts (31 loads total, not 31 x prompts).
+    jobs = [("harm", p) for p in HARM] + [("benign", p) for p in BENIGN]
+    say(f"prefix {len(jobs)} prompts...")
+    states = [prefix(p) for _, p in jobs]
     vecs = {}
-    for tag, prompts in (("harm", HARM), ("benign", BENIGN)):
-        for j, p in enumerate(prompts):
-            say(f"{tag}[{j}] forward 31 layers...")
-            v = hs_one(p)
-            assert torch.isfinite(v).all()
-            vecs.setdefault(tag, []).append(v)
-            say(f"{tag}[{j}] done norm={float(v.norm()):.3f} wall={(time.time()-t0)/60:.1f}min")
+    with torch.no_grad():
+        for i in range(N_LAYERS):
+            layer = load_layer(i)
+            lt = tc.layer_types[i]
+            for s in states:
+                s["hidden"] = layer(
+                    hidden_states=s["hidden"],
+                    per_layer_input=s["pli"][:, :, i, :],
+                    shared_kv_states=s["kv"],
+                    position_embeddings=s["pos_emb"][lt],
+                    attention_mask=s["masks"][lt],
+                    position_ids=s["position_ids"],
+                    past_key_values=None)
+            del layer
+            if (i + 1) % 10 == 0:
+                say(f"layer {i+1}/{N_LAYERS} streamed wall={(time.time()-t0)/60:.1f}min")
+    for (tag, p), s in zip(jobs, states):
+        v = s["hidden"][0, -1].float()
+        assert torch.isfinite(v).all()
+        vecs.setdefault(tag, []).append(v)
+        say(f"{tag} done norm={float(v.norm()):.3f} len={s['n']}")
 
     import numpy as np
     H = torch.stack(vecs["harm"]); B = torch.stack(vecs["benign"])

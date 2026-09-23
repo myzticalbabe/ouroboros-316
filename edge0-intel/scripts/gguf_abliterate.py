@@ -12,6 +12,7 @@ Usage:
     --strength 1.0 [--dry]   (dry = s=0 roundtrip validation)
 """
 import os
+import json
 import numpy as np
 
 TYPE_MAP = {0: "u8", 1: "i8", 2: "u16", 3: "i16", 4: "u32", 5: "i32",
@@ -273,7 +274,23 @@ def main():
     w.write_kv_data_to_file()
     w.write_tensors_to_file(progress=True)
     w.close()
-    print(f"done {a.dst}: edited={edited}" + (" DRY-ROUNDTRIP" if a.strength == 0.0 else ""))
+    # Provenance sidecar: the ledger row says WHAT happened; this says HOW
+    # the bytes were made (closes "which build is this" mysteries + feeds
+    # the genome schema). Filenames are not metadata.
+    import hashlib as _hl, time as _tm
+    _side = {
+        "src": a.src, "dst": a.dst,
+        "refusal_dir": a.dir or None,
+        "refusal_sha256": (_hl.sha256(open(a.dir, "rb").read()).hexdigest()
+                           if a.dir else None),
+        "strength": a.strength, "targets": sorted(tgts), "layers": a.layers,
+        "edited": edited,
+        "out_bytes": os.path.getsize(a.dst),
+        "time": _tm.strftime("%Y-%m-%dT%H:%M:%S"),
+    }
+    json.dump(_side, open(a.dst + ".build.json", "w"), indent=1)
+    print(f"done {a.dst}: edited={edited}" + (" DRY-ROUNDTRIP" if a.strength == 0.0 else "")
+          + " +sidecar")
 
 
 if __name__ == "__main__":

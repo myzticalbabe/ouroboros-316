@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "cc16190",
-    "last_commit_time": "2026-09-23T15:05:00-04:00",
-    "total_commits": 20
+    "last_commit": "8316426",
+    "last_commit_time": "2026-09-23T15:12:47-04:00",
+    "total_commits": 21
   },
   "commits": [
     {
@@ -691,6 +691,31 @@
         "SESSION_MILESTONE_2026-08-01.json",
         "SESSION_MILESTONE_2026-08-01.md",
         "edge0-intel/EMERGENT_GAP_AUDIT.md"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "8316426",
+      "full_hash": "831642639d0f087cf6542a8f6624dcd7902f3bf1",
+      "branch": "master",
+      "time": "2026-09-23T15:12:47-04:00",
+      "timestamp": "2026-09-23T19:12:50Z",
+      "message": "ShardFoundry: tool gap audit + scoped gitignore (models/logs/weights)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 4,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/.gitignore",
+        "edge0-intel/TOOL_GAP_AUDIT.md"
       ],
       "gap_counts": {
         "total": "62",
