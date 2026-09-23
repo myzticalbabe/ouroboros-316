@@ -84,7 +84,7 @@ def cmd_table():
               f"{','.join(flags)}")
     elig = [(s, r) for s, out, r, _ in scored if not out]
     if elig:
-        s, r = max(elig)
+        s, r = max(elig, key=lambda x: x[0])
         print(f"\nchampion SVI={s:.3f} ({r['tag']}) over {len(elig)} eligible rows")
     else:
         print("\nno eligible champion (all N<50 or SUSPECT)")

@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "c1ec676",
-    "last_commit_time": "2026-09-23T15:50:21-04:00",
-    "total_commits": 23
+    "last_commit": "160c7cb",
+    "last_commit_time": "2026-09-23T16:35:48-04:00",
+    "total_commits": 24
   },
   "commits": [
     {
@@ -766,6 +766,35 @@
         "SESSION_MILESTONE_2026-08-01.json",
         "SESSION_MILESTONE_2026-08-01.md",
         "edge0-intel/PEBBLES_BAMBAM.md"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "160c7cb",
+      "full_hash": "160c7cb3ab5ac882130ca0d4c59ec1f2e09d0b49",
+      "branch": "master",
+      "time": "2026-09-23T16:35:48-04:00",
+      "timestamp": "2026-09-23T20:35:52Z",
+      "message": "ShardFoundry: integrity baseline, ledger locking, LEGACY flags, G backup",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 8,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/SOURCES.sha256",
+        "edge0-intel/integrity.json",
+        "edge0-intel/scripts/az_eval.py",
+        "edge0-intel/scripts/eval_full.py",
+        "edge0-intel/scripts/integrity.py",
+        "edge0-intel/scripts/svi.py"
       ],
       "gap_counts": {
         "total": "62",
