@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "9758beb",
-    "last_commit_time": "2026-09-23T19:20:23-04:00",
-    "total_commits": 40
+    "last_commit": "82a81d0",
+    "last_commit_time": "2026-09-23T19:25:25-04:00",
+    "total_commits": 41
   },
   "commits": [
     {
@@ -1275,6 +1275,30 @@
       "time": "2026-09-23T19:20:23-04:00",
       "timestamp": "2026-09-23T23:20:26Z",
       "message": "ShardFoundry: judge verdict parsing for reasoning judges (first YES/NO anywhere)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/scripts/eval_full.py"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "82a81d0",
+      "full_hash": "82a81d0eadbaaf961acd30a185011f9d61ffee0a",
+      "branch": "master",
+      "time": "2026-09-23T19:25:25-04:00",
+      "timestamp": "2026-09-23T23:25:28Z",
+      "message": "ShardFoundry: fix inverted strict-refusal logic (judge confirms non-assist)",
       "verification": {
         "status": "PASS",
         "passed": 35,

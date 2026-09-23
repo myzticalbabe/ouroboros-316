@@ -208,3 +208,73 @@ What we're missing to claim the mapping (honest delta):
      map with revision history, not just rows.
 Adopt their evaluation moral: judge the program by intervention-aware
 reasoning and continual accumulation, not by any single champion's scores.
+
+### J. Improvability audit (2026-09-23) — every open gap, verdict + cost
+Scale: DONE (closed) / NOW (code-only, no serving) / WINDOW (needs serve
+slot) / APPROVAL (needs operator yes) / BLOCKED (external dependency).
+
+Capability gaps:
+- G1 elicitation battery: NOW (wrappers only) + WINDOW to run.
+- G2 standard benchmarks: NOW (adapter code) + WINDOW to run.
+- G3 concept-vector library: WINDOW (needs direction audit first).
+- G4 runtime steering harness: NOW (code) + WINDOW (serve to test).
+- G5 train-time dev: BLOCKED on working direction; ReFT-micro viable after.
+- G6 agentic evals: NOW (extend AZ set; fix triage/recall ground truth).
+- G7 long-context: WINDOW (needle-haystack set + 32K serves on :8091).
+- G8 multimodal: WINDOW (mmproj serve + one vision/audio eval design).
+- G9 statistics: NOW (CI computation in svi.py from retest rows).
+- G10 deception/SA evals: NOW (item design) + WINDOW.
+- G11 efficiency profiling: NOW (t/s + TTFT logging in eval harness).
+- G12 transfer test: WINDOW (needs two archs served; cheap once up).
+- G13 model diffing: NOW (weight-diff script over local variants).
+- G14 adaptive red-teaming: APPROVAL-adjacent (generating harm; policy:
+  operator-owned sets only, no external sourcing).
+- G15 train-side meta loop: BLOCKED on working direction (see G5).
+
+Measurement gaps (M-series): M1/M6 DONE (built, validation runs WINDOW);
+M2/M3/M4/M7/M9 NOW (code + protocol text); M5 genome schema NOW;
+M8 kill rules NOW (text); M10 field coverage ongoing.
+
+Tool gaps: sidecar/batching/gate-7/gitignore/integrity/backup DONE.
+Remaining: negative-gate live-fire (WINDOW, post-sweep), response_format
+test (WINDOW, one call), supervisor process (NOW, code), ports file (NOW),
+imatrix quants (WINDOW), Ollama update (APPROVAL, installer), Graft MCP/init
+(APPROVAL, writes agent configs), cactus-needle + omniparse installs
+(APPROVAL, third-party code), Armada net10 SDK (APPROVAL, system install),
+OLMoE/MobileMoE weights (BLOCKED, network), Needle-3/qwen probes (WINDOW),
+sprawl archive (APPROVAL given? — executed on yes), cohabit field (NOW).
+
+Recommended execution order: NOW-batch (single commit) -> WINDOW-batch
+queued behind sweep -> APPROVALs asked once, together.
+
+### K. Multi-agent coordination synthesis (SSVP/CDS + DeLM + PatchBoard + DCTP)
+Field results with direct force on our designs:
+- **SSVP/CDS (June 2026): divergence-gated sync.** CDS = 1 - cosine(context
+  embeddings), sync only above τ=0.25. Headline: full-broadcast sync
+  INCREASES hallucination 34% (contamination); gated sync avoids it at 58%
+  lower cost. OURS: (1) judge escalation becomes divergence-gated (invoke
+  cross-judge only on split/high-divergence — saves calls AND avoids
+  contaminating good verdicts with bad ones); (2) no-broadcast rule for any
+  mesh fan-out: targeted sync only; (3) CDS between router and worker
+  contexts as a cheap disagreement signal for the surprise router.
+- **DeLM (shared context + task queue, admission-verified).** Removing
+  admission verification caused the largest accuracy drop (60.1 -> 55.2):
+  independent validation of our gate-first design. Borrow: gist hierarchy
+  (raw -> summary -> gist) for ledger rows — full reasoning traces stay in
+  backing store, rows carry verified gists.
+- **PatchBoard (schema-grounded JSON Patch, deterministic kernel).** 84.6%
+  vs 30.8% LangGraph; gains from patch/schema interface + bounded views +
+  transactional validation. OURS: genome recipes restated as JSON Patch ops
+  over base weights; gates restated as the kernel (validate-before-commit,
+  view hashes per eval, rejection log). Adopt view-hash-per-eval.
+- **DCTP (confidence-gated CTO lifecycle, arbitration, replay).** Adopt:
+  rows link build-sidecar hash + model version (replay lesson — currently
+  tags float free of bytes); arbitration by source-reliability for judge
+  disagreements; retained losing candidates (our ledger already keeps all
+  rows — now named as policy).
+- **Stimulus-meaning certification (Wilson-bound vocab).** Certify judge
+  verdict terms by cross-model disagreement rate with Wilson bounds — WE
+  ALREADY OWN the Wilson code (svi.py). Apply it to YES/NO verdict
+  agreement before trusting cross-model judging.
+Concrete adoptions queued: divergence-gated escalation, row->sidecar links,
+recipe-as-patch, view hashes, verdict-term certification.

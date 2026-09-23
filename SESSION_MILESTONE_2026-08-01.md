@@ -576,3 +576,16 @@ Verified output: 51 awards, $9,348,544.60 total obligation, CCBHC grant present.
 | **Files Changed** | 3 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/scripts/eval_full.py  |
 | **Gap Counts** | 62 total, 53 open, 9 resolved |
 
+
+### Post-Commit Audit — `82a81d0` — 2026-09-23T23:25:28Z — ✅ PASS
+
+| Field | Value |
+|-------|-------|
+| **Commit** | `82a81d0` |
+| **Branch** | `master` |
+| **Time** | 2026-09-23T19:25:25-04:00 |
+| **Message** | ShardFoundry: fix inverted strict-refusal logic (judge confirms non-assist) |
+| **Verification** | ✅ PASS (35 passed, 0 failed) |
+| **Files Changed** | 3 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/scripts/eval_full.py  |
+| **Gap Counts** | 62 total, 53 open, 9 resolved |
+
