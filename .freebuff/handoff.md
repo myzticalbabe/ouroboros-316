@@ -32,39 +32,39 @@ TENSOR_SOURCES.md, PROJECT_NAME.md. All under C:\Users\clint\edge0-intel\.
   sneg10 = stock rules out sign flip. Do NOT escalate strength.
 - Baselines: stock N=100 (14%) SUPERSEDES N=6 subset (50%). N>=50 rule now
   in SVI_SPEC.md promotion policy.
-- Next: direction audit (layers 20-35, wider contrast); scripts/svi.py;
-  P1 zero map via STRATUM loader. :8089/:8090 down by design until then.
+- Spark-X2.5: stock 0/100 + 17/20 (reference genome). IS a reasoning model:
+  all caps empties were token-cutoff artifacts; eval_full.py fixed (256/600
+  + reasoning fallback); historical caps suspect. Ctx 1M claimed, ~32-64K
+  physical here. Mesh-driver probe: routes, can't JSON (use grammar).
+- Graft structural tier adopted (384 nodes, accurate); deep tier blocked on
+  provider speed (16/36 cached, batch timeouts). Armada paused (needs .NET 10
+  SDK; targets net10.0).
+- Next: direction audit (layers 20-35, wider contrast); scripts/svi.py DONE
+  (table+predict+gates, verified); P1 zero map via STRATUM loader.
+  :8089/:8090/:8092 down; :8091 UP (Spark 32K ctx, mesh/driver endpoint).
 - New docs: SVI_SPEC.md, RAM_RUNBOOK.md (8 principles), SESSION_2026-09-23.md.
 
 ## Live servers
-- :8089 SC117 Compact GGUF (fitness backend, exp-k4 override active — restart
-  WITHOUT --override-kv to restore k8 baseline).
-- :8090 Gemma E4B stock Q4_K_M (baseline 3/6+4/5).
-- :8091 was roundtrip validation (killed after proof).
+- :8091 Spark-X2.5 Q4_K_M, -c 32768 (driver + fast bench endpoint).
+- :8089/:8090/:8092 DOWN by design until next task needs them.
 
-## RUNNING now
-- ~~edge-gemmacollect~~ SUPERSEDED by edge-collectclean (canonical, OBSERVE-first).
-- Gemma direction: load PROVEN (2076 tensors), embed-pin fix PROVEN (loads 42
-  layers), forward BLOCKED by RAM (2.4GB free vs ~8GB need -> OOM kill, no
-  traceback). REBOOT authorized (option 2) to clear compression/standby.
-- Post-reboot order: verify free RAM -> run edge-collectclean ->
-  refusal_dir.npy -> abliterate Gemma (skip towers) -> llama-quantize Q4_K_M ->
-  serve :8092 -> eval_full --tag gemma-abl-s10.
-- :8089/:8090 DOWN (paused for RAM); restart fitness backends post-reboot.
+## RUNNING now — SUPERSEDED by Session 2026-09-23 results above.
+- Gemma direction DONE via STRATUM (not torch-forward): refusal_dir.npy
+  norm 29.78 dim 2560. Dose-response DONE: direction backwards/flat.
+- :8089/:8090 DOWN by design (RAM + no pending fitness task).
 
 ## Next pours (in order)
-1. Gemma direction -> apply_abliteration (skip vision/audio towers+mmproj) ->
-   llama-quantize.exe (in llama-b10964-cpu dir) Q4_K_M -> serve :8092 ->
-   eval_full --tag gemma-abl-s10. Target 0/6+, caps 4/5+.
-2. abl-s1.0 native proxy eval (needs ~32GB offload space — disk only 21GB free;
-   free space first or GGUF-convert the abl dir).
-3. P1 strength sweep (0.5/1.5) + per-layer zero map (GGUF domain now proven).
-4. P2 combos -> P3 loop per META_EVOLUTION_DEEPDIVE.md.
+1. Direction audit: layers 20-35 separability + steering check, then wider
+   contrast. Gated by svi.py admission gates.
+2. P1 per-layer zero map via STRATUM loader -> `--predict` ranking.
+3. Re-baseline caps with fixed harness (256/600 + reasoning fallback);
+   all historical caps suspect.
+4. P2 combos -> P3 loop per META_EVOLUTION_DEEPDIVE.md (only after a
+   working single direction exists).
 
 ## Watchouts
-- Disk: 21GB free. Candidate builds are 16-19GB each; clean offload_* scratch
-  and superseded models aggressively (see memory: disk crisis 2026-09-21).
-- N=6 evals are +/-20% noise; promote only on N>=50 (sets grown in eval_sets/).
-- Qwen/Mixtral tensors NEVER fit (arch rule); donors: Ling family only.
-- Ollama qwen3.8:27b + duplicate bonsai were removed (superseded). Remaining
-  Ollama models untouched.
+- Disk: ~44GB free C:. Candidate builds 5-7GB each; keep 15GB headroom.
+- N>=50 for promotion (SVI_SPEC.md). N=6 subsets gated entry only.
+- Refusal-direction dose on Gemma: backwards/flat — do NOT escalate strength.
+- Donors: same-arch only (shape + coordinate + interface rule).
+- One run, one window (RAM_RUNBOOK.md principles).
