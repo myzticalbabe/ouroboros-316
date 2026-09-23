@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "928e9d9",
-    "last_commit_time": "2026-09-23T19:29:16-04:00",
-    "total_commits": 42
+    "last_commit": "9cd464e",
+    "last_commit_time": "2026-09-23T19:32:32-04:00",
+    "total_commits": 43
   },
   "commits": [
     {
@@ -1333,6 +1333,30 @@
         "SESSION_MILESTONE_2026-08-01.json",
         "SESSION_MILESTONE_2026-08-01.md",
         "edge0-intel/EMERGENT_GAP_AUDIT.md"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "9cd464e",
+      "full_hash": "9cd464e115ace5fb8221c4b3bd62c9491820f66a",
+      "branch": "master",
+      "time": "2026-09-23T19:32:32-04:00",
+      "timestamp": "2026-09-23T23:32:34Z",
+      "message": "ShardFoundry: sweep complete 24/24 flat map + Ling rebaseline",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/evolve_log.jsonl"
       ],
       "gap_counts": {
         "total": "62",
