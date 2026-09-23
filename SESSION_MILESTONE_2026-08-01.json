@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "811c434",
-    "last_commit_time": "2026-09-23T15:04:05-04:00",
-    "total_commits": 19
+    "last_commit": "cc16190",
+    "last_commit_time": "2026-09-23T15:05:00-04:00",
+    "total_commits": 20
   },
   "commits": [
     {
@@ -657,6 +657,30 @@
       "time": "2026-09-23T15:04:05-04:00",
       "timestamp": "2026-09-23T19:04:07Z",
       "message": "ShardFoundry: audit Form 1-4 exotic synthesis (STRATUM-ReFT, coevolution, TTMM, split-crossover)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/EMERGENT_GAP_AUDIT.md"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "cc16190",
+      "full_hash": "cc16190261501d796bfdcb9082c9330ca7c57403",
+      "branch": "master",
+      "time": "2026-09-23T15:05:00-04:00",
+      "timestamp": "2026-09-23T19:05:02Z",
+      "message": "ShardFoundry: audit truthfulness pass (M6 fixed, safety adopted)",
       "verification": {
         "status": "PASS",
         "passed": 35,
