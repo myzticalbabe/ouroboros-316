@@ -80,3 +80,40 @@
    the mmproj path. Ends the dark modality.
 6. **ReFT micro-runs** (weeks): only after a working direction exists.
 7. **Surrogate + P2** (weeks): needs the Δ table a working direction fills.
+
+### E. What this audit missed (second pass)
+- **M1. Refusal metric unvalidated.** REFUSAL_MARKS string matching has no
+  judge, no coherence gate — exactly the single-judge inflation the MCG
+  paper demolishes (2B "jailbreaks" vanishing under a second judge).
+  Our refused counts may include incoherent/false positives. Fix: second
+  judge + coherence requirement before any ledger number is trusted.
+- **M2. Caps instrument uncalibrated.** 20 hand items, no item analysis;
+  Ling hitting 20/20 = ceiling, the test can't see improvement. Fix: harder
+  items, difficulty/discrimination stats, retire saturated items.
+- **M3. Fallback validity assumed.** Reasoning-tail reads stand in for
+  answers, but tail-vs-content correlation was never measured. Fix: on a
+  non-reasoning model, score both and require agreement.
+- **M4. Multiple comparisons uncorrected.** 24-layer sweep guarantees a
+  chance outlier. No FDR/Bonferroni, no pre-registered confirmation run.
+  Fix: sweep hits MUST confirm on a held-out run before entering the Δ table.
+- **M5. Genome unrepresented.** Ledger genome = {} everywhere. The Atlas
+  needs features (strength, layers, targets, direction hash) per row.
+  Fix: genome schema (Procedura typed-mates idea) before P2.
+- **M6. Sampling uncontrolled.** eval_full sends no temperature/seed; server
+  defaults rule. Binomial σ assumed, sampling σ unmeasured. Fix: pin
+  temperature 0 for fitness evals, record seed, measure test-retest (n=3).
+- **M7. Audit metric undefined.** "Layers 20-35 scan" names no quantity:
+  probe accuracy vs steering effect vs ablation effect are three different
+  numbers. Fix: define the separability metric before scanning.
+- **M8. No falsification criteria.** The audit says what to do, never what
+  would kill a track. Fix: kill rules (e.g., direction dead if 3 layers ×
+  2 contrasts show zero steering effect; P2 dead if |epsilon| < noise).
+- **M9. Resource contention uncontrolled.** Servers cohabit RAM/CPU across
+  runs (t=8 each, oversubscribed). Fix: one server at a time during fitness
+  evals, logged in the row (add `cohabit` field or enforce solo).
+- **M10. Field gaps in the map.** Missing: WMDP (the dual-use benchmark for
+  refusal work), unlearning-eval literature (ablation's dual), sleeper-agent
+  / model-organism evals, multi-agent benchmarks (mesh-native!), emergence
+  forecasting. And no safety/ethics section: full-ablation tooling has no
+  stated threat model, publication policy, or containment rule (current
+  practice — localhost-only serving — is good but unstated).
