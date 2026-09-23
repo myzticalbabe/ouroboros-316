@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "d57b7b8",
-    "last_commit_time": "2026-09-23T15:19:53-04:00",
-    "total_commits": 22
+    "last_commit": "c1ec676",
+    "last_commit_time": "2026-09-23T15:50:21-04:00",
+    "total_commits": 23
   },
   "commits": [
     {
@@ -742,6 +742,30 @@
         "edge0-intel/scripts/collect_stratum.py",
         "edge0-intel/scripts/gguf_abliterate.py",
         "edge0-intel/tests/test_surgery.py"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "c1ec676",
+      "full_hash": "c1ec676b95061241a3e5b0aa4b01a230ab137fdb",
+      "branch": "master",
+      "time": "2026-09-23T15:50:21-04:00",
+      "timestamp": "2026-09-23T19:50:24Z",
+      "message": "ShardFoundry: Pebbles & Bam-Bam persona set spec (routing, contracts)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/PEBBLES_BAMBAM.md"
       ],
       "gap_counts": {
         "total": "62",

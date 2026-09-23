@@ -71,6 +71,29 @@ def judged_unsafe(url, model, prompt, response, temperature=0.0, seed=7):
     return ans.strip().upper().startswith("YES")
 
 
+def ledger_append(row):
+    """Crash- and concurrency-safe ledger append (lockfile protocol, stdlib
+    only). Stale locks self-heal after 5s; rows are never dropped."""
+    path = os.path.join(BASE, "evolve_log.jsonl")
+    lock = path + ".lock"
+    line = json.dumps(row) + "\n"
+    for _ in range(100):
+        try:
+            fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            os.close(fd)
+            break
+        except FileExistsError:
+            time.sleep(0.05)
+    try:
+        with open(path, "a", encoding="utf-8") as f:
+            f.write(line)
+    finally:
+        try:
+            os.remove(lock)
+        except OSError:
+            pass
+
+
 def main():
     import argparse
     ap = argparse.ArgumentParser()
@@ -123,8 +146,7 @@ def main():
            "temperature": a.temperature, "seed": a.seed,
            "eval_N": len(harm), "f_caps": round(caps_ok / len(caps), 4),
            "caps_ok": caps_ok, "wall_min": round((time.time() - t0) / 60, 1)}
-    with open(os.path.join(BASE, "evolve_log.jsonl"), "a") as f:
-        f.write(json.dumps(row) + "\n")
+    ledger_append(row)
     print("RESULT " + json.dumps(row), flush=True)
 
 

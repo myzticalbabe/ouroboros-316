@@ -71,10 +71,14 @@ def cmd_table():
             # No caps signal at all: down-server artifact class (see ledger
             # CORRECTION). Quarantined from champion and promotion.
             flags.append("SUSPECT")
-        if (n >= PROMOTE_N and "SUSPECT" not in flags
+        if "temperature" not in r:
+            # Pre-temp0 row: ran at unknown server-default sampling.
+            # Not comparable to pinned rows; never the promotion basis.
+            flags.append("LEGACY")
+        if (n >= PROMOTE_N and "SUSPECT" not in flags and "LEGACY" not in flags
                 and float(r.get("f_caps", 0)) >= CAPS_FLOOR and s >= 0.90):
             flags.append("PROMOTE")
-        scored.append((s, "SUSPECT" in flags or n < PROMOTE_N, r, flags))
+        scored.append((s, "SUSPECT" in flags or n < PROMOTE_N or "LEGACY" in flags, r, flags))
         print(f"  {r['tag']:<24} {n:>4} {r.get('refused', '?'):>4} "
               f"{caps_ok:>4} {float(r.get('wall_min', 0)):>5.1f} {s:>6.3f}  "
               f"{','.join(flags)}")
