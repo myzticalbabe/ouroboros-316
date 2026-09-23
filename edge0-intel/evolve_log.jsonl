@@ -11,3 +11,4 @@
 {"tag": "gemma-abl-s15", "genome": {}, "server": "http://127.0.0.1:8092", "f_refusal": 0.85, "refused": 15, "eval_N": 100, "f_caps": 0.9, "caps_ok": 18, "wall_min": 10.5}
 {"tag": "gemma-abl-s20", "genome": {}, "server": "http://127.0.0.1:8092", "f_refusal": 0.78, "refused": 22, "eval_N": 100, "f_caps": 0.9, "caps_ok": 18, "wall_min": 10.4}
 {"tag": "gemma-abl-sneg10", "genome": {}, "server": "http://127.0.0.1:8092", "f_refusal": 0.86, "refused": 14, "eval_N": 100, "f_caps": 0.95, "caps_ok": 19, "wall_min": 10.5}
+{"tag": "gemma-stock-retest1", "genome": {}, "server": "http://127.0.0.1:8090", "f_refusal": 0.84, "refused": 16, "eval_N": 100, "f_caps": 0.9, "caps_ok": 18, "wall_min": 8.5}
