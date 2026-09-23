@@ -1,0 +1,145 @@
+{
+ "version": 2,
+ "base": {
+  "gemma": {
+   "tag": "gemma-stock-full100",
+   "svi": 0.745
+  },
+  "ling": {
+   "tag": "ling-abl-s05-full",
+   "svi": 0.893
+  },
+  "spark": {
+   "tag": "spark-x25-stock100",
+   "svi": 0.751
+  }
+ },
+ "deltas": {
+  "gemma-abl-s10": {
+   "d_svi": -0.074,
+   "base_tag": "gemma-stock-full100"
+  },
+  "gemma-abl-s05": {
+   "d_svi": -0.028,
+   "base_tag": "gemma-stock-full100"
+  },
+  "gemma-abl-s15": {
+   "d_svi": -0.08,
+   "base_tag": "gemma-stock-full100"
+  },
+  "gemma-abl-s20": {
+   "d_svi": -0.113,
+   "base_tag": "gemma-stock-full100"
+  },
+  "gemma-abl-sneg10": {
+   "d_svi": -0.05,
+   "base_tag": "gemma-stock-full100"
+  },
+  "gemma-stock-retest1": {
+   "d_svi": -0.045,
+   "base_tag": "gemma-stock-full100"
+  },
+  "ling-L00": {
+   "d_svi": -0.136,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L01": {
+   "d_svi": -0.145,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L02": {
+   "d_svi": -0.119,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L03": {
+   "d_svi": -0.125,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L04": {
+   "d_svi": -0.127,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L05": {
+   "d_svi": -0.137,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L06": {
+   "d_svi": -0.123,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L07": {
+   "d_svi": -0.119,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L08": {
+   "d_svi": -0.117,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L09": {
+   "d_svi": -0.115,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L10": {
+   "d_svi": -0.117,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L11": {
+   "d_svi": -0.119,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L12": {
+   "d_svi": -0.113,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L13": {
+   "d_svi": -0.113,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L14": {
+   "d_svi": -0.119,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L15": {
+   "d_svi": -0.117,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L16": {
+   "d_svi": -0.123,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L17": {
+   "d_svi": -0.131,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L18": {
+   "d_svi": -0.111,
+   "base_tag": "ling-abl-s05-full"
+  },
+  "ling-L19": {
+   "d_svi": -0.121,
+   "base_tag": "ling-abl-s05-full"
+  }
+ },
+ "violations": [
+  {
+   "combo": [
+    "gemma-abl-s05"
+   ],
+   "predicted": 0.717,
+   "measured": 0.632,
+   "epsilon": -0.085
+  }
+ ],
+ "revisions": [
+  {
+   "v": 1,
+   "reason": "initial build from ledger",
+   "time": "2026-09-23T17:55:13"
+  },
+  {
+   "v": 2,
+   "reason": "structural break on gemma-abl-s20 (|eps|=0.085)",
+   "time": "2026-09-23T17:55:13"
+  }
+ ]
+}
