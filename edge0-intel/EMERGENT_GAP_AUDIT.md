@@ -117,3 +117,20 @@
   forecasting. And no safety/ethics section: full-ablation tooling has no
   stated threat model, publication policy, or containment rule (current
   practice — localhost-only serving — is good but unstated).
+
+### F. Safety posture (adopted 2026-09-23)
+- **Threat model.** This program builds refusal-removal tooling (dose curves,
+  gates, methods) that lowers the barrier to unrestricted models. The
+  artifact of concern is ablated WEIGHTS, not methods or numbers: techniques
+  are published field-wide (Arditi 2024 et al.); our marginal contribution
+  is weights tuned on our ledger.
+- **Containment rule.** Localhost-only serving is permitted containment, at
+  the operator's discretion ("if I so chose"). Default posture: all serves
+  bind 127.0.0.1, no tunnels, no LAN exposure, no weight uploads. Any step
+  beyond localhost (share weights, expose ports, publish builds) requires an
+  explicit, separate authorization — never implied by prior approvals.
+- **Publication policy.** Methods, ledger rows, eval sets, and negative
+  results: publishable. Ablated weight files: local only unless explicitly
+  authorized. Model names in publications refer to ledger tags, not files.
+- **Kill-switch.** Any operator (human) halts any run for any safety reason,
+  no justification required; halted runs log the halt (see Principles).

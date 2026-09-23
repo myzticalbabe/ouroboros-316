@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "1319c28",
-    "last_commit_time": "2026-09-23T14:25:35-04:00",
-    "total_commits": 15
+    "last_commit": "63fd157",
+    "last_commit_time": "2026-09-23T14:32:00-04:00",
+    "total_commits": 16
   },
   "commits": [
     {
@@ -557,6 +557,30 @@
       "time": "2026-09-23T14:25:35-04:00",
       "timestamp": "2026-09-23T18:25:38Z",
       "message": "ShardFoundry: emergent-capability gap audit G1-G15 + MCG same-layer prescription",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/EMERGENT_GAP_AUDIT.md"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "63fd157",
+      "full_hash": "63fd157dec439be9d3e3e71953c3b51792c156d9",
+      "branch": "master",
+      "time": "2026-09-23T14:32:00-04:00",
+      "timestamp": "2026-09-23T18:32:04Z",
+      "message": "ShardFoundry: audit second pass M1-M10 (judges, stats, falsification, safety)",
       "verification": {
         "status": "PASS",
         "passed": 35,
