@@ -183,3 +183,28 @@ as doctrine, not just inspiration.
   audit — worm-by-worm safety says nothing about worm∧worm;
   (3) exhaustiveness is formally impossible, so combo sampling must be
   strategic (attraction mating!), never claimed complete.
+
+### I. Self-evolving correspondence (Yu & Inamura, June 2026)
+Their framework — causal world model (time-indexed SCM) + structural
+evolution operator PHI + intervention-driven reasoning + continual
+refinement, looped as observation → abduction → intervention → counterfactual
+evaluation → outcome → revision — describes OUR foundry loop with only
+renaming required:
+- Surgery IS causal intervention (do-operator on weights).
+- Serve+eval IS interventional evidence gathering.
+- The ledger IS the interaction history H.
+- Epistasis epsilon IS the structural-revision signal: where the additive
+  causal map breaks is exactly where the model must be revised (their
+  PHI-step).
+- `--predict` surrogate IS counterfactual rollout (evaluate hypothetical
+  genomes before executing serves).
+- Their critique (task-completion benchmarks don't measure causal
+  knowledge) restates our M1/M2 from the causal direction.
+What we're missing to claim the mapping (honest delta):
+  1. Counterfactual stage never executed (`--predict` built, zero P2 runs).
+  2. No abduction step: we never infer WHY a hit worked (post-hoc causal
+     attribution of promoted genomes). Direction audit is the start.
+  3. Atlas implicit (additivity assumed); make it explicit: versioned causal
+     map with revision history, not just rows.
+Adopt their evaluation moral: judge the program by intervention-aware
+reasoning and continual accumulation, not by any single champion's scores.
