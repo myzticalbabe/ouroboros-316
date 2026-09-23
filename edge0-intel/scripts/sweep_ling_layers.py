@@ -102,6 +102,7 @@ def parse_spec(spec, all_layers):
 
 
 def main():
+    global LOGF, STATF, PORT, _logfh
     args = sys.argv[1:]
     spec = "all"
     force = False
@@ -145,7 +146,6 @@ def main():
             statf = args[i + 1]
             i += 1
         i += 1
-    global LOGF, STATF, PORT, _logfh
     LOGF, STATF, PORT = logf, statf, port
     try:
         _logfh.close()

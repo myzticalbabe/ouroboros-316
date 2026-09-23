@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "5f26eb1",
-    "last_commit_time": "2026-09-23T17:21:06-04:00",
-    "total_commits": 28
+    "last_commit": "24e2baf",
+    "last_commit_time": "2026-09-23T17:27:07-04:00",
+    "total_commits": 29
   },
   "commits": [
     {
@@ -995,6 +995,30 @@
         "SESSION_MILESTONE_2026-08-01.json",
         "SESSION_MILESTONE_2026-08-01.md",
         "edge0-intel/EMERGENT_GAP_AUDIT.md"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "24e2baf",
+      "full_hash": "24e2baf0e70887ab9abc21fb9da84baba6e94592",
+      "branch": "master",
+      "time": "2026-09-23T17:27:07-04:00",
+      "timestamp": "2026-09-23T21:27:10Z",
+      "message": "ShardFoundry: generalize sweep driver (src/dir/targets/tagpre/port/log/status)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/scripts/sweep_ling_layers.py"
       ],
       "gap_counts": {
         "total": "62",
