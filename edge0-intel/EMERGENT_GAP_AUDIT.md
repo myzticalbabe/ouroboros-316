@@ -157,3 +157,29 @@ CPU-reachability on this box.
 - **Out of reach (noted, not pursued):** full TTT/gradient training at
   scale, SAE-suite training, multi-day GPU runs. LaCT/TTT-Discover inform
   the paradigm (one champion, not average) without their compute.
+
+### H. Structural certification map (2026-09-23 search synthesis)
+Three 2026 results formalize practices we reached by instinct — adopted
+as doctrine, not just inspiration.
+- **Structural certification (Li, ICML 2026).** Transition-local
+  certification via probe goals; O(1/n) bounds; "safety envelope" around
+  certified pieces; general agents are provably non-universal.
+  OURS: the per-layer ΔSVI map IS a capability-boundary map; SVI promotion
+  IS certification; SUSPECT quarantine IS the uncertified set. Adopt the
+  vocabulary: every promoted genome ships with its certified envelope
+  (which layers/tasks certified, nothing claimed outside it).
+- **Containment verification (Varshney, Dafny-verified framework).**
+  Guarantees located in the cage, not the model (havoc-oracle semantics).
+  OURS: gates + localhost containment + temperament contracts already are
+  a containment layer — now named as such. Borrow the information-barrier
+  trick (specs written blind to implementation) for future gate design.
+- **Capability hypergraphs / non-compositionality (Thm 9.2).** Two safe
+  agents can jointly reach a forbidden goal via conjunctive emergence
+  invisible to pairwise audits; emergent detection is P-complete.
+  OURS, with teeth: (1) P2 combos aren't just epistasis sampling — they
+  probe a failure class PROVEN invisible to single-edit audits, so our
+  Atlas-additivity assumption can break structurally, not just noisily;
+  (2) the 226-worm mesh is itself a coalition requiring a joint-capability
+  audit — worm-by-worm safety says nothing about worm∧worm;
+  (3) exhaustiveness is formally impossible, so combo sampling must be
+  strategic (attraction mating!), never claimed complete.
