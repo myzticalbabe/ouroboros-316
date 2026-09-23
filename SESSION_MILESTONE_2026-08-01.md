@@ -212,3 +212,16 @@ Verified output: 51 awards, $9,348,544.60 total obligation, CCBHC grant present.
 | **Files Changed** | 5 file(s): .freebuff/handoff.md edge0-intel/HANDOFF.md edge0-intel/SESSION_2026-09-23.md edge0-intel/scripts/eval_full.py edge0-intel/scripts/probe_thinkflag.py  |
 | **Gap Counts** | 62 total, 53 open, 9 resolved |
 
+
+### Post-Commit Audit — `aa8781f` — 2026-09-23T17:23:05Z — ✅ PASS
+
+| Field | Value |
+|-------|-------|
+| **Commit** | `aa8781f` |
+| **Branch** | `master` |
+| **Time** | 2026-09-23T13:23:03-04:00 |
+| **Message** | ShardFoundry: per-layer sweep driver + layers filter + visible bat |
+| **Verification** | ✅ PASS (35 passed, 0 failed) |
+| **Files Changed** | 5 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/RUN_LING_SWEEP.bat edge0-intel/scripts/gguf_abliterate.py edge0-intel/scripts/sweep_ling_layers.py  |
+| **Gap Counts** | 62 total, 53 open, 9 resolved |
+

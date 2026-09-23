@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "d6952b7",
-    "last_commit_time": "2026-09-23T11:16:41-04:00",
-    "total_commits": 12
+    "last_commit": "aa8781f",
+    "last_commit_time": "2026-09-23T13:23:03-04:00",
+    "total_commits": 13
   },
   "commits": [
     {
@@ -491,6 +491,32 @@
         "edge0-intel/SESSION_2026-09-23.md",
         "edge0-intel/scripts/eval_full.py",
         "edge0-intel/scripts/probe_thinkflag.py"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "aa8781f",
+      "full_hash": "aa8781f498bc6b190ea09605d2f8b5881efd142d",
+      "branch": "master",
+      "time": "2026-09-23T13:23:03-04:00",
+      "timestamp": "2026-09-23T17:23:05Z",
+      "message": "ShardFoundry: per-layer sweep driver + layers filter + visible bat",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 5,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/RUN_LING_SWEEP.bat",
+        "edge0-intel/scripts/gguf_abliterate.py",
+        "edge0-intel/scripts/sweep_ling_layers.py"
       ],
       "gap_counts": {
         "total": "62",

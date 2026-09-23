@@ -8,6 +8,16 @@ OOM for 6 of those runs. Windows Event Log then showed the truth:
 don't theorize (see Principles).
 
 ## RAM runbook (this machine: 15.4 GB total, ~10-11 GB attainable free)
+
+## Disk rules (added 2026-09-23 after 0-byte full)
+- Builds are transient: the ledger row + build command IS the artifact.
+  Sweeps delete per-build GGUFs after ledgering (`--keep` to override).
+- Dose builds (reproducible in ~1 min) are deleted after eval, not archived.
+  Keep: sources, refusal dirs, current champion, validation roundtrips.
+- G: is a slow external (~11 MB/s measured): cold archive only, NEVER serve
+  from it (6-min loads). C: holds active serve files; keep 15 GB headroom.
+- Watch for: *.incomplete HF fragments, 0-byte partials after crashes,
+  duplicate-named builds (gemma-4-e4b-abl-s10 vs gemma-abl-s10).
 1. Identify holders: `Get-Process | Sort WorkingSet64 -Desc`. Usual suspect
    is our own llama-server (9.4 GB for 7.6 GB F16 GGUF; 6 GB for 5 GB Q4).
 2. Free RAM by REVERSIBLE means first: stop fitness backends (`:8089`/`:8090`)
