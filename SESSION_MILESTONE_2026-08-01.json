@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "e4c3373",
-    "last_commit_time": "2026-09-05T06:32:10-04:00",
-    "total_commits": 2
+    "last_commit": "48e1004",
+    "last_commit_time": "2026-09-23T00:24:02-04:00",
+    "total_commits": 4
   },
   "commits": [
     {
@@ -215,6 +215,62 @@
         "SESSION_MILESTONE_2026-08-01.json",
         "SESSION_MILESTONE_2026-08-01.md",
         "verify_aoa_cdp.py"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "9745bc5",
+      "full_hash": "9745bc510794705f86f5a4840d8663c5e504810c",
+      "branch": "master",
+      "time": "2026-09-05T06:38:01-04:00",
+      "timestamp": "2026-09-05T10:38:02Z",
+      "message": "Make CDP harness portable (cwd-relative scope, env chrome discovery)",
+      "verification": {
+        "status": "PASS",
+        "passed": 27,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "verify_aoa_cdp.py"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "48e1004",
+      "full_hash": "48e1004bf91898a8c4ba7a06109681c1aa5c8638",
+      "branch": "master",
+      "time": "2026-09-23T00:24:02-04:00",
+      "timestamp": "2026-09-23T04:24:04Z",
+      "message": "ShardFoundry 2026-09-23: STRATUM Gemma pipeline, dose-response, SVI spec, runbook principles",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 11,
+      "files": [
+        ".freebuff/handoff.md",
+        "edge0-intel/HANDOFF.md",
+        "edge0-intel/RAM_RUNBOOK.md",
+        "edge0-intel/RUN_GEMMA_SURGERY.bat",
+        "edge0-intel/SESSION_2026-09-23.md",
+        "edge0-intel/STRATUM_THESIS.md",
+        "edge0-intel/SVI_SPEC.md",
+        "edge0-intel/scripts/collect_gemma_trunc.py",
+        "edge0-intel/scripts/collect_stratum.py",
+        "edge0-intel/scripts/gguf_abliterate.py",
+        "edge0-intel/scripts/probe_stratum.py"
       ],
       "gap_counts": {
         "total": "62",
