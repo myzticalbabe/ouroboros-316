@@ -34,6 +34,19 @@ upward into judgment, never default judgment downward into bulk).
 Mesh mapping: analysis/judgment worms are Pebbles-natured (back with smart
 tier); IO/execution worms are Bam-natured (back with fast tier).
 
+### Surprise-gated routing (active-inference doctrine, 2026-09-23)
+Bam-Bam is the habitual policy; Pebbles is the deliberative override, engaged
+in proportion to surprise — not by static class alone. Surprise proxies,
+cheapest first: Atlas disagreement (predicted vs observed fitness), judge
+disagreement (split votes), novelty (no ledger precedent). Routine +
+predicted-well => Bam-Bam (habit). Surprising => Pebbles (deliberate).
+Resolved surprises CONSOLIDATE downward: every resolution hardens into a
+gate, assert, or check, becoming habit — tonight's transpose test, dim
+skip, coherence gate, and OBSERVE rule are all consolidations. The router
+thus learns: today's Pebbles deliberations are tomorrow's Bam-Bam reflexes.
+Uniform deliberation (every task to the smart tier) is the anti-pattern;
+so is uniform habit (cf. AZ 25 s/task median).
+
 ### Integration points
 - **Armada:** first two custom personas (Architect/Judge <= PEBBLES,
   Worker <= BAM-BAM) with mandate-carrying templates if the trial proceeds.
