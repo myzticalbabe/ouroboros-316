@@ -1,0 +1,502 @@
+[
+ {
+  "name": "route-0",
+  "kind": "route",
+  "prompt": "A mesh task arrives: 'Binary analysis & reverse engineering (PE/ELF, symbols, entropy, disasm, sed, awk)'. Which category owns it? Options: analysis, monitor, diagnostic, security. Reply with the category name.",
+  "check": {
+   "type": "contains",
+   "want": "analysis"
+  }
+ },
+ {
+  "name": "describe-1",
+  "kind": "describe",
+  "prompt": "In one sentence, what does the mesh worm 'LatencyCompensatorWorm' do?",
+  "check": {
+   "type": "any",
+   "want": [
+    "delay",
+    "compensation",
+    "pair"
+   ]
+  }
+ },
+ {
+  "name": "triage-2",
+  "kind": "triage",
+  "prompt": "Alert: 'Checkpoint worm \u2014 save worm execution state for resume-after-failure'. Rate severity as a single integer 1-5.",
+  "check": {
+   "type": "band",
+   "want": 5,
+   "tol": 1
+  }
+ },
+ {
+  "name": "config-3",
+  "kind": "config",
+  "prompt": "Emit ONLY this JSON object, no other text: {\"worm\": \"CLAWBOT\", \"category\": \"communication\", \"priority\": 6}.",
+  "check": {
+   "type": "jsonkeys",
+   "want": [
+    "worm",
+    "category",
+    "priority"
+   ]
+  }
+ },
+ {
+  "name": "route-4",
+  "kind": "route",
+  "prompt": "A mesh task arrives: 'Config linter \u2014 JSON/YAML/TOML schema validation and consistency checking'. Which category owns it? Options: config, communication, consensus, container. Reply with the category name.",
+  "check": {
+   "type": "contains",
+   "want": "config"
+  }
+ },
+ {
+  "name": "describe-5",
+  "kind": "describe",
+  "prompt": "In one sentence, what does the mesh worm 'LeaderElectorWorm' do?",
+  "check": {
+   "type": "any",
+   "want": [
+    "elects",
+    "trainer",
+    "bare",
+    "server"
+   ]
+  }
+ },
+ {
+  "name": "triage-6",
+  "kind": "triage",
+  "prompt": "Alert: 'Scores DreamingModule outputs; keeps only coherent dreams'. Rate severity as a single integer 1-5.",
+  "check": {
+   "type": "band",
+   "want": 5,
+   "tol": 1
+  }
+ },
+ {
+  "name": "config-7",
+  "kind": "config",
+  "prompt": "Emit ONLY this JSON object, no other text: {\"worm\": \"ComposeValidator\", \"category\": \"container\", \"priority\": 5}.",
+  "check": {
+   "type": "jsonkeys",
+   "want": [
+    "worm",
+    "category",
+    "priority"
+   ]
+  }
+ },
+ {
+  "name": "route-8",
+  "kind": "route",
+  "prompt": "A mesh task arrives: 'WSL health & recovery \u2014 auto-restart Kali, e2fsck VHDX, KaliHealth integration'. Which category owns it? Options: defense, plasticity, communication, visualization. Reply with the category name.",
+  "check": {
+   "type": "contains",
+   "want": "defense"
+  }
+ },
+ {
+  "name": "describe-9",
+  "kind": "describe",
+  "prompt": "In one sentence, what does the mesh worm 'AttentionGateWorm' do?",
+  "check": {
+   "type": "any",
+   "want": [
+    "attention",
+    "gate",
+    "over",
+    "dendritic"
+   ]
+  }
+ },
+ {
+  "name": "triage-10",
+  "kind": "triage",
+  "prompt": "Alert: 'Safe chaos drills: prune/partition/controlled-fail with truthful outcomes'. Rate severity as a single integer 1-5.",
+  "check": {
+   "type": "band",
+   "want": 5,
+   "tol": 1
+  }
+ },
+ {
+  "name": "config-11",
+  "kind": "config",
+  "prompt": "Emit ONLY this JSON object, no other text: {\"worm\": \"CoherenceValidatorWorm\", \"category\": \"engram\", \"priority\": 6}.",
+  "check": {
+   "type": "jsonkeys",
+   "want": [
+    "worm",
+    "category",
+    "priority"
+   ]
+  }
+ },
+ {
+  "name": "route-12",
+  "kind": "route",
+  "prompt": "A mesh task arrives: 'Bare-metal passthrough: local kernel unreachable from WSL2/Win, use SSH/vsock/mount chain'. Which category owns it? Options: envmesh, glia, backup, consensus. Reply with the category name.",
+  "check": {
+   "type": "contains",
+   "want": "envmesh"
+  }
+ },
+ {
+  "name": "describe-13",
+  "kind": "describe",
+  "prompt": "In one sentence, what does the mesh worm 'FederatedAggregatorWorm' do?",
+  "check": {
+   "type": "any",
+   "want": [
+    "fedavg",
+    "over",
+    "policies",
+    "backend"
+   ]
+  }
+ },
+ {
+  "name": "triage-14",
+  "kind": "triage",
+  "prompt": "Alert: 'Metabolic cleanup: __pycache__, tmp, stale locks per env'. Rate severity as a single integer 1-5.",
+  "check": {
+   "type": "band",
+   "want": 5,
+   "tol": 1
+  }
+ },
+ {
+  "name": "config-15",
+  "kind": "config",
+  "prompt": "Emit ONLY this JSON object, no other text: {\"worm\": \"AttestationWorm\", \"category\": \"immune\", \"priority\": 6}.",
+  "check": {
+   "type": "jsonkeys",
+   "want": [
+    "worm",
+    "category",
+    "priority"
+   ]
+  }
+ },
+ {
+  "name": "route-16",
+  "kind": "route",
+  "prompt": "A mesh task arrives: 'A/B test runner \u2014 split-test framework with DPO preference learning'. Which category owns it? Options: learning, synapse, servemesh, config. Reply with the category name.",
+  "check": {
+   "type": "contains",
+   "want": "learning"
+  }
+ },
+ {
+  "name": "describe-17",
+  "kind": "describe",
+  "prompt": "In one sentence, what does the mesh worm 'EnvBeaconWorm' do?",
+  "check": {
+   "type": "any",
+   "want": [
+    "heartbeat",
+    "capability",
+    "advertisement",
+    "router"
+   ]
+  }
+ },
+ {
+  "name": "triage-18",
+  "kind": "triage",
+  "prompt": "Alert: 'Per-env watt/job budget; sheds load when over budget'. Rate severity as a single integer 1-5.",
+  "check": {
+   "type": "band",
+   "want": 5,
+   "tol": 1
+  }
+ },
+ {
+  "name": "config-19",
+  "kind": "config",
+  "prompt": "Emit ONLY this JSON object, no other text: {\"worm\": \"CodeMigrator\", \"category\": \"migration\", \"priority\": 6}.",
+  "check": {
+   "type": "jsonkeys",
+   "want": [
+    "worm",
+    "category",
+    "priority"
+   ]
+  }
+ },
+ {
+  "name": "route-20",
+  "kind": "route",
+  "prompt": "A mesh task arrives: 'ML-enhanced system monitoring with anomaly detection'. Which category owns it? Options: ml, immune, consensus, synapse. Reply with the category name.",
+  "check": {
+   "type": "contains",
+   "want": "ml"
+  }
+ },
+ {
+  "name": "describe-21",
+  "kind": "describe",
+  "prompt": "In one sentence, what does the mesh worm 'BerksMonitorWorm' do?",
+  "check": {
+   "type": "any",
+   "want": [
+    "watchdog",
+    "public",
+    "sites",
+    "only"
+   ]
+  }
+ },
+ {
+  "name": "triage-22",
+  "kind": "triage",
+  "prompt": "Alert: 'White Hat Attack-surface mapping via amass'. Rate severity as a single integer 1-5.",
+  "check": {
+   "type": "band",
+   "want": 5,
+   "tol": 1
+  }
+ },
+ {
+  "name": "config-23",
+  "kind": "config",
+  "prompt": "Emit ONLY this JSON object, no other text: {\"worm\": \"AutoDownloaderWorm\", \"category\": \"orchestration\", \"priority\": 4}.",
+  "check": {
+   "type": "jsonkeys",
+   "want": [
+    "worm",
+    "category",
+    "priority"
+   ]
+  }
+ },
+ {
+  "name": "route-24",
+  "kind": "route",
+  "prompt": "A mesh task arrives: 'EWC-lite: Fisher-weighted penalty anchors old tasks'. Which category owns it? Options: plasticity, communication, container, glia. Reply with the category name.",
+  "check": {
+   "type": "contains",
+   "want": "plasticity"
+  }
+ },
+ {
+  "name": "describe-25",
+  "kind": "describe",
+  "prompt": "In one sentence, what does the mesh worm 'CPUFlameProfiler' do?",
+  "check": {
+   "type": "any",
+   "want": [
+    "flame",
+    "profiler",
+    "sampling",
+    "graph"
+   ]
+  }
+ },
+ {
+  "name": "triage-26",
+  "kind": "triage",
+  "prompt": "Alert: 'White Hat MITM framework via bettercap'. Rate severity as a single integer 1-5.",
+  "check": {
+   "type": "band",
+   "want": 5,
+   "tol": 1
+  }
+ },
+ {
+  "name": "config-27",
+  "kind": "config",
+  "prompt": "Emit ONLY this JSON object, no other text: {\"worm\": \"InferenceLoadBalancerWorm\", \"category\": \"servemesh\", \"priority\": 8}.",
+  "check": {
+   "type": "jsonkeys",
+   "want": [
+    "worm",
+    "category",
+    "priority"
+   ]
+  }
+ },
+ {
+  "name": "route-28",
+  "kind": "route",
+  "prompt": "A mesh task arrives: 'Threshold gating \u2014 only fires downstream cluster if confidence above threshold'. Which category owns it? Options: synapse, communication, profiling, glia. Reply with the category name.",
+  "check": {
+   "type": "contains",
+   "want": "synapse"
+  }
+ },
+ {
+  "name": "describe-29",
+  "kind": "describe",
+  "prompt": "In one sentence, what does the mesh worm 'CLOCKZ' do?",
+  "check": {
+   "type": "any",
+   "want": [
+    "time",
+    "synchronization",
+    "scheduling",
+    "worm"
+   ]
+  }
+ },
+ {
+  "name": "recall-0",
+  "kind": "recall",
+  "prompt": "Mesh audit episode [TR-21]: A 21-probe pre-flight battery generated a census, but 4 of the 21 probes were false-positive generators on first run, so the census could not be acted on directly. Evidence: [\"PF13 reported 13 'constant-true while with no break' \u2014 reading each showed `while flag:` / `while True` bodies all bounded by a `return`\", 'PF20 reported every `for` loop; a for-loop over a collection is bounded by construction', 'PF15 as written would flag an `except: pass` handler that sets a flag first', 'PF21 reported 4 candidates, all cleared on reading \u2014 but surfacing them is the point'] What was decided? One paragraph.",
+  "check": {
+   "type": "any",
+   "want": [
+    "rewrote",
+    "only",
+    "added"
+   ]
+  }
+ },
+ {
+  "name": "recall-1",
+  "kind": "recall",
+  "prompt": "Mesh audit episode [TR-22]: EvolutionEngine.evolve could discard an entire generation of offspring under concurrent calls, with no error, no log and no monitor indication. Evidence: ['evolve snapshots self._population under self._lock', 'the entire crossover/mutation generation runs OUTSIDE the lock', 'the write-back re-acquires the lock but never re-checks whether another caller already committed', 'self._generation is incremented inside the write-back'] What was decided? One paragraph.",
+  "check": {
+   "type": "any",
+   "want": [
+    "minted",
+    "fencing",
+    "token"
+   ]
+  }
+ },
+ {
+  "name": "recall-2",
+  "kind": "recall",
+  "prompt": "Mesh audit episode [TR-23]: Having fixed one lost-update race at its call site, is a call-site fix the right level of response? Evidence: ['probe PF18 found 15 mesh functions writing module-level state', 'the read-modify-write shape recurs across the fabric, the spine and the monitors', 'a check-then-act fix only works if every future author remembers to write the check'] What was decided? One paragraph.",
+  "check": {
+   "type": "any",
+   "want": [
+    "created",
+    "fencing",
+    "tokens"
+   ]
+  }
+ },
+ {
+  "name": "recall-3",
+  "kind": "recall",
+  "prompt": "Mesh audit episode [TR-24]: 118 mesh handlers absorb an exception with a bare `pass`. Individually each is defensible; the question is whether the aggregate is a defect. Evidence: ['load_spine_state (c=61, PF14+PF15+PF18) swallows; so do heartbeat and cache-write paths', 'earlier in the same session a stale spine store silently served synthetic fixtures and was found by a human reading a file, not by the system', \"'the fabric healed' and 'the fabric has failed to load its learning on every start for a week' produce BYTE-IDENTICAL behaviour\"] What was decided? One paragraph.",
+  "check": {
+   "type": "any",
+   "want": [
+    "created",
+    "ledger",
+    "design"
+   ]
+  }
+ },
+ {
+  "name": "recall-4",
+  "kind": "recall",
+  "prompt": "Mesh audit episode [TR-25]: moead_weights' Das-Dennis fallback produced weight vectors used by Tchebycheff scalarisation, and they could fail to sum to 1. Evidence: ['fallback was `[(random.random(), 1.0 - random.random())[:n_obj] if n_obj == 2 else ...]`', 'two INDEPENDENT draws, so the pair sums to an arbitrary value in (0,2)', 'Tchebycheff scalarisation assumes weights a and 1-a', 'the `[:n_obj]` slice applies to a 2-tuple on a path only reachable when n_obj == 2, so the branch structure concealed the mismatch from review'] What was decided? One paragraph.",
+  "check": {
+   "type": "any",
+   "want": [
+    "draw",
+    "pair",
+    "invariant"
+   ]
+  }
+ },
+ {
+  "name": "recall-5",
+  "kind": "recall",
+  "prompt": "Mesh audit episode [TR-26]: optimize_multi_objective could raise IndexError out of the entire optimisation when objectives exceeded survivors. Evidence: ['elite slots are allocated backwards from the end: slot = -(obj_idx + 1)', 'no check that the list is long enough for that negative index', 'survivor count is driven by population size, objective count by the problem definition \u2014 two independent knobs'] What was decided? One paragraph.",
+  "check": {
+   "type": "any",
+   "want": [
+    "guarded",
+    "write",
+    "skipped"
+   ]
+  }
+ },
+ {
+  "name": "recall-6",
+  "kind": "recall",
+  "prompt": "Mesh audit episode [TR-27]: EvolutionEngine.save_checkpoint returned a success-shaped dict while persisting nothing, so a restore drill silently kept stale state. Evidence: ['`except Exception: pass` around store.record_event', 'a single transient SQLite lock converted into a permanently missing checkpoint', 'restore_checkpoint used search_memories, which ranks by full-text relevance \u2014 on a store holding 59 stale test_checkpoint rows the just-written checkpoint could fall outside the window and a STALE one would win', 'the return dict had no field distinguishing persisted from not-persisted'] What was decided? One paragraph.",
+  "check": {
+   "type": "any",
+   "want": [
+    "three",
+    "changes",
+    "retries"
+   ]
+  }
+ },
+ {
+  "name": "recall-7",
+  "kind": "recall",
+  "prompt": "Mesh audit episode [TR-28]: The pre-flight census produced 1411 functions with 21 probe results each; the backlog had to be ordered. Evidence: ['PF02 (no docstring) 692 and PF04 (unannotated params) 1106 dominate the raw counts', 'PF17 (unreached by any test) 532, PF15 (silent swallow) 118, PF16 (unreferenced) 115', 'none of the annotation findings had produced an observed defect; the coverage findings had produced all three bugs found in P0'] What was decided? One paragraph.",
+  "check": {
+   "type": "any",
+   "want": [
+    "plus",
+    "manual",
+    "reachability"
+   ]
+  }
+ },
+ {
+  "name": "recall-8",
+  "kind": "recall",
+  "prompt": "Mesh audit episode [TR-29]: Two helper functions written to support the scanner precision fix were themselves wrong, and only the verification step caught it. Evidence: ['_in_string_body returned False on the first same-line string span instead of checking the remaining spans', 'a source line containing several string literals therefore leaked through the new suppression logic', 'the leak was invisible to the tests written FOR the fix'] What was decided? One paragraph.",
+  "check": {
+   "type": "any",
+   "want": [
+    "rewrote",
+    "both",
+    "helpers"
+   ]
+  }
+ },
+ {
+  "name": "recall-9",
+  "kind": "recall",
+  "prompt": "Mesh audit episode [TR-30]: All three P0 bugs were invisible to the existing monitors. Why, and what would have caught them? Evidence: ['the three bugs produced PLAUSIBLE OUTPUT: a generation silently discarded, an objective never evaluated, a weight vector that was simply wrong', 'every existing monitor is occurrence-driven \u2014 it renders what HAPPENED', 'none of the three was an event; each was an event that failed to occur', 'fencing.rejections and silence.tripped() are the only two places in the mesh that record a negative'] What was decided? One paragraph.",
+  "check": {
+   "type": "any",
+   "want": [
+    "proposed",
+    "documented",
+    "built"
+   ]
+  }
+ },
+ {
+  "name": "recall-10",
+  "kind": "recall",
+  "prompt": "Mesh audit episode [TR-31]: 38% of mesh functions (532/1411) are reached by no test, and 114 are referenced by nothing at all. What is the correct architectural response? Evidence: ['PF17 = 532 (no test reaches it)', 'PF16 = 114 (nothing in the repo references it)', 'the fabric grew by accretion: 226 worms, 35 categories, 70 routes \u2014 each session verified the NEW path only', 'evolution.py already encodes a wire-or-cut verdict as DATA (SERVED_ENGINES / UNSERVED_ENGINES) and tests assert that no UNSERVED name is referenced by the production driver'] What was decided? One paragraph.",
+  "check": {
+   "type": "any",
+   "want": [
+    "proposed",
+    "generalise",
+    "data"
+   ]
+  }
+ },
+ {
+  "name": "recall-11",
+  "kind": "recall",
+  "prompt": "Mesh audit episode [TR-32]: The probe battery is itself a static analyser with a non-zero false-positive rate, measured this session at 4 of 21 probes miscalibrated. Evidence: ['PF13, PF15, PF20, PF21 each required a reading pass to clear their output', \"every cleared finding was a case where a human decided 'this is a false positive'\", 'that judgement is currently discarded \u2014 it is not recorded anywhere', 'the probe battery is deterministic and cheap enough to rerun every session'] What was decided? One paragraph.",
+  "check": {
+   "type": "any",
+   "want": [
+    "proposed",
+    "documented",
+    "persist"
+   ]
+  }
+ }
+]

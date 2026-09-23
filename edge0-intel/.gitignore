@@ -10,5 +10,6 @@ graft/
 graft_probe/
 __pycache__/
 tmp_surg/
+.ignore
 models/*.gguf
 !models/*/README.md

@@ -1,0 +1,16 @@
+{
+ "src": "C:\\Users\\clint\\edge0-intel\\models\\Ling-3.0-tiny-abliterated-APEX-I-Compact.gguf",
+ "dst": "C:\\Users\\clint\\edge0-intel\\models\\ling-layer-13.gguf",
+ "refusal_dir": "C:\\Users\\clint\\edge0-intel\\models\\edge0-8b-fp16\\refusal_dir.npy",
+ "refusal_sha256": "350b69b3559001ba1423c1a4e55ea04b99a0c29d15373c9856926e6affdc2b99",
+ "strength": 1.0,
+ "targets": [
+  "attn_output.weight",
+  "ffn_down_exps.weight",
+  "ffn_down_shexp.weight"
+ ],
+ "layers": "13",
+ "edited": 3,
+ "out_bytes": 4148540512,
+ "time": "2026-09-23T16:30:21"
+}
