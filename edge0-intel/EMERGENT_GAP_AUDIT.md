@@ -99,9 +99,9 @@
 - **M5. Genome unrepresented.** Ledger genome = {} everywhere. The Atlas
   needs features (strength, layers, targets, direction hash) per row.
   Fix: genome schema (Procedura typed-mates idea) before P2.
-- **M6. Sampling uncontrolled.** eval_full sends no temperature/seed; server
-  defaults rule. Binomial σ assumed, sampling σ unmeasured. Fix: pin
-  temperature 0 for fitness evals, record seed, measure test-retest (n=3).
+- **M6. Sampling uncontrolled.** eval_full sent no temperature/seed; server
+  defaults ruled. FIXED 2026-09-23 (temp 0, seed 7, logged per row).
+  Remaining: test-retest n=3 to measure sampling σ.
 - **M7. Audit metric undefined.** "Layers 20-35 scan" names no quantity:
   probe accuracy vs steering effect vs ablation effect are three different
   numbers. Fix: define the separability metric before scanning.
@@ -114,9 +114,8 @@
 - **M10. Field gaps in the map.** Missing: WMDP (the dual-use benchmark for
   refusal work), unlearning-eval literature (ablation's dual), sleeper-agent
   / model-organism evals, multi-agent benchmarks (mesh-native!), emergence
-  forecasting. And no safety/ethics section: full-ablation tooling has no
-  stated threat model, publication policy, or containment rule (current
-  practice — localhost-only serving — is good but unstated).
+  forecasting. Safety section ADOPTED (§F: threat model, localhost
+  containment at operator discretion, publication policy, kill-switch).
 
 ### F. Safety posture (adopted 2026-09-23)
 - **Threat model.** This program builds refusal-removal tooling (dose curves,
