@@ -128,7 +128,8 @@ def ablaterate_gguf(W2d_or_3d, r, strength):
     if W.ndim == 2:
         a0 = W.shape[0] == rh.shape[0]
         a1 = W.shape[1] == rh.shape[0]
-        assert a0 ^ a1, f"ambiguous square-ish {W.shape}"
+        if not (a0 ^ a1):
+            raise ValueError(f"no refusal axis in {W.shape} for dim {rh.shape[0]}")
         if a1:
             return (W - strength * np.outer(W @ rh, rh))
         return (W - strength * np.outer(rh, W.T @ rh))
@@ -222,8 +223,15 @@ def main():
         name = t.name
         hit = any(s in name for s in tgts)
         if hit and r is not None and a.strength != 0.0:
-            dq = Q.dequantize(t.data, t.tensor_type).astype(np.float32)
-            new = ablaterate_gguf(dq, r, a.strength).astype(np.float16)
+            try:
+                dq = Q.dequantize(t.data, t.tensor_type).astype(np.float32)
+                new = ablaterate_gguf(dq, r, a.strength).astype(np.float16)
+            except ValueError as e:
+                # Dim-mismatch skip (torch-path pattern): wrong-arch or
+                # non-residual tensors pass through byte-identical.
+                say(f"skip {name}: {e}")
+                arr = np.asarray(t.data)
+                return (name, arr, tuple(arr.shape), t.tensor_type)
             _done[0] += 1
             if _done[0] % 10 == 0 or _done[0] == _nhit:
                 say(f"surgery {_done[0]}/{_nhit} ({name})")

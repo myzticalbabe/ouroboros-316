@@ -100,4 +100,15 @@ assert W3out.shape == W3.shape, (W3out.shape, W3.shape)
 for e in range(W3out.shape[0]):
     assert float(np.abs(rh @ W3out[e]).max()) < 1e-4, f"expert {e} not orthogonal"
 print("5 GGUF orientation + orthogonality (2D and fused-expert 3D) OK")
+
+# 6. GGUF dim-mismatch skip: wrong-arch tensors raise ValueError (caller
+# passes them through byte-identical) instead of aborting the run.
+# Measured case: 1536-dim refusal vector vs Spark ffn_down (2560, 4096).
+from gguf_abliterate import ablaterate_gguf as _gguf_abl
+try:
+    _gguf_abl(rng.standard_normal((2560, 4096)).astype(np.float32), r1536, 1.0)
+    raise SystemExit("expected ValueError for dim mismatch")
+except ValueError:
+    pass
+print("6 GGUF dim-mismatch skip OK")
 print("ALL SURGERY VALIDATIONS PASS")

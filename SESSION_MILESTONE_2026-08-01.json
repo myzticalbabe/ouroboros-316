@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "278705b",
-    "last_commit_time": "2026-09-23T01:32:02-04:00",
-    "total_commits": 8
+    "last_commit": "fc864a8",
+    "last_commit_time": "2026-09-23T01:47:26-04:00",
+    "total_commits": 9
   },
   "commits": [
     {
@@ -381,6 +381,30 @@
       "time": "2026-09-23T01:32:02-04:00",
       "timestamp": "2026-09-23T05:32:06Z",
       "message": "ShardFoundry: stock retest variance row (16/100), readback verification noted",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/evolve_log.jsonl"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "fc864a8",
+      "full_hash": "fc864a827180aeb0f8a7108581cbfdb18cc2e6a0",
+      "branch": "master",
+      "time": "2026-09-23T01:47:26-04:00",
+      "timestamp": "2026-09-23T05:47:30Z",
+      "message": "ShardFoundry: spark-x25 stock baseline (0/100, caps 17/20)",
       "verification": {
         "status": "PASS",
         "passed": 35,
