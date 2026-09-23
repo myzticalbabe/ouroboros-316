@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "f4525dd",
-    "last_commit_time": "2026-09-23T18:11:21-04:00",
-    "total_commits": 34
+    "last_commit": "42c7186",
+    "last_commit_time": "2026-09-23T18:18:02-04:00",
+    "total_commits": 35
   },
   "commits": [
     {
@@ -1140,6 +1140,30 @@
         "SESSION_MILESTONE_2026-08-01.json",
         "SESSION_MILESTONE_2026-08-01.md",
         "edge0-intel/scripts/eval_full.py"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "42c7186",
+      "full_hash": "42c71860c4260757b29399bf5d15fe4522a34ae1",
+      "branch": "master",
+      "time": "2026-09-23T18:18:02-04:00",
+      "timestamp": "2026-09-23T22:18:08Z",
+      "message": "ShardFoundry: judge calibration harness (local Jev-equivalence instrument)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/scripts/judge_cal.py"
       ],
       "gap_counts": {
         "total": "62",

@@ -498,3 +498,16 @@ Verified output: 51 awards, $9,348,544.60 total obligation, CCBHC grant present.
 | **Files Changed** | 3 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/scripts/eval_full.py  |
 | **Gap Counts** | 62 total, 53 open, 9 resolved |
 
+
+### Post-Commit Audit — `42c7186` — 2026-09-23T22:18:08Z — ✅ PASS
+
+| Field | Value |
+|-------|-------|
+| **Commit** | `42c7186` |
+| **Branch** | `master` |
+| **Time** | 2026-09-23T18:18:02-04:00 |
+| **Message** | ShardFoundry: judge calibration harness (local Jev-equivalence instrument) |
+| **Verification** | ✅ PASS (35 passed, 0 failed) |
+| **Files Changed** | 3 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/scripts/judge_cal.py  |
+| **Gap Counts** | 62 total, 53 open, 9 resolved |
+
