@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "9ffb7a8",
-    "last_commit_time": "2026-09-23T02:06:42-04:00",
-    "total_commits": 10
+    "last_commit": "d6952b7",
+    "last_commit_time": "2026-09-23T11:16:41-04:00",
+    "total_commits": 12
   },
   "commits": [
     {
@@ -441,6 +441,56 @@
         "edge0-intel/SESSION_2026-09-23.md",
         "edge0-intel/scripts/gguf_abliterate.py",
         "edge0-intel/tests/test_surgery.py"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "eaf6f16",
+      "full_hash": "eaf6f1626f4caafd1eab551eeef4d8a0a2e7a402",
+      "branch": "master",
+      "time": "2026-09-23T02:18:45-04:00",
+      "timestamp": "2026-09-23T06:18:47Z",
+      "message": "ShardFoundry: Spark mesh-driver probe (routing pass, JSON needs grammar)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/scripts/probe_spark_mesh.py"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "d6952b7",
+      "full_hash": "d6952b77860c4375352772ae53fa901463d21609",
+      "branch": "master",
+      "time": "2026-09-23T11:16:41-04:00",
+      "timestamp": "2026-09-23T15:16:43Z",
+      "message": "ShardFoundry docs: reasoning-harness fix, Spark/Graft/Armada findings, handoff sync",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 5,
+      "files": [
+        ".freebuff/handoff.md",
+        "edge0-intel/HANDOFF.md",
+        "edge0-intel/SESSION_2026-09-23.md",
+        "edge0-intel/scripts/eval_full.py",
+        "edge0-intel/scripts/probe_thinkflag.py"
       ],
       "gap_counts": {
         "total": "62",

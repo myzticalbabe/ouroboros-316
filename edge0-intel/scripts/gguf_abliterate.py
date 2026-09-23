@@ -155,6 +155,9 @@ def main():
     ap.add_argument("--dir", default="")
     ap.add_argument("--strength", type=float, default=0.0)
     ap.add_argument("--targets", default="attn_output.weight,ffn_down_exps.weight,ffn_down_shexp.weight")
+    ap.add_argument("--layers", default="all",
+                    help="'all' or comma list / range (e.g. '5' or '0-7,22'). "
+                         "Limits surgery to blk.N tensors (per-layer map).")
     a = ap.parse_args()
     from gguf import GGUFReader, GGUFWriter, GGMLQuantizationType
     import gguf.quants as Q
@@ -219,9 +222,26 @@ def main():
     say(f"surgery: {_nhit} targets / {len(_tlist)} tensors, {_workers} workers")
     _done = [0]
 
+    import re as _re
+    _layspec = set()
+    if a.layers != "all":
+        for _part in a.layers.split(","):
+            _part = _part.strip()
+            if "-" in _part:
+                _lo, _hi = _part.split("-", 1)
+                _layspec.update(range(int(_lo), int(_hi) + 1))
+            elif _part != "":
+                _layspec.add(int(_part))
+
+    def _layer_ok(name):
+        if not _layspec:
+            return True
+        m = _re.search(r"blk\.(\d+)\.", name)
+        return bool(m and int(m.group(1)) in _layspec)
+
     def _work(t):
         name = t.name
-        hit = any(s in name for s in tgts)
+        hit = any(s in name for s in tgts) and _layer_ok(name)
         if hit and r is not None and a.strength != 0.0:
             try:
                 dq = Q.dequantize(t.data, t.tensor_type).astype(np.float32)
