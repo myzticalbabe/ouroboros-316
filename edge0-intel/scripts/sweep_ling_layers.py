@@ -5,8 +5,9 @@ serve :8091, eval_full N=100+20, kill server. Result: per-layer ΔSVI =
 the importance map that directs expert-level hyper-mutation.
 ~12 min/layer. Logs everything to stdout (run under RUN_*.bat).
 
-Usage: python scripts/sweep_ling_layers.py [--layers 0-5] [--force]
+Usage: python scripts/sweep_ling_layers.py [--layers 0-5] [--force] [--keep]
   --force rebuilds even if the layer GGUF already exists.
+  --keep retains per-layer GGUFs (default: deleted after ledgering).
 """
 import json
 import os
