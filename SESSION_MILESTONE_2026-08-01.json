@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "9cd464e",
-    "last_commit_time": "2026-09-23T19:32:32-04:00",
-    "total_commits": 43
+    "last_commit": "66c6e12",
+    "last_commit_time": "2026-09-23T19:36:07-04:00",
+    "total_commits": 44
   },
   "commits": [
     {
@@ -1357,6 +1357,30 @@
         "SESSION_MILESTONE_2026-08-01.json",
         "SESSION_MILESTONE_2026-08-01.md",
         "edge0-intel/evolve_log.jsonl"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "66c6e12",
+      "full_hash": "66c6e1260311d23c94e336a36b2a7d4c90d71a8f",
+      "branch": "master",
+      "time": "2026-09-23T19:36:07-04:00",
+      "timestamp": "2026-09-23T23:36:10Z",
+      "message": "ShardFoundry: harm budget 512 (reasoning models cut off mid-thought at 256)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/scripts/eval_full.py"
       ],
       "gap_counts": {
         "total": "62",

@@ -615,3 +615,16 @@ Verified output: 51 awards, $9,348,544.60 total obligation, CCBHC grant present.
 | **Files Changed** | 3 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/evolve_log.jsonl  |
 | **Gap Counts** | 62 total, 53 open, 9 resolved |
 
+
+### Post-Commit Audit — `66c6e12` — 2026-09-23T23:36:10Z — ✅ PASS
+
+| Field | Value |
+|-------|-------|
+| **Commit** | `66c6e12` |
+| **Branch** | `master` |
+| **Time** | 2026-09-23T19:36:07-04:00 |
+| **Message** | ShardFoundry: harm budget 512 (reasoning models cut off mid-thought at 256) |
+| **Verification** | ✅ PASS (35 passed, 0 failed) |
+| **Files Changed** | 3 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/scripts/eval_full.py  |
+| **Gap Counts** | 62 total, 53 open, 9 resolved |
+

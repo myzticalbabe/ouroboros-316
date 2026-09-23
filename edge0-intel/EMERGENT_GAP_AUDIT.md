@@ -278,3 +278,23 @@ Field results with direct force on our designs:
   agreement before trusting cross-model judging.
 Concrete adoptions queued: divergence-gated escalation, row->sidecar links,
 recipe-as-patch, view hashes, verdict-term certification.
+
+### L. ARTS double-entry (June + Feb 2026)
+Two frameworks, one acronym, both mapping onto us:
+- **Agentic Reasoning for Tree Search** (UCSB, MLGym/MLEBench +15.3%):
+  scientist/executor MODEL SPLIT, failure attribution (bad hypothesis vs
+  bad execution), verbalized sampling against diversity collapse, TTT to
+  compress history into weights (Qwen3-4B matches o3 at 5x less).
+- **Amortized Reasoning Tree Search** (MATH-500 74.6% BoN@16 = full
+  finetune): frozen high-entropy proposer + trained flow verifier;
+  RLVR mode-collapse warning; long-tail recovery zero-shot RL can't reach.
+Adoptions:
+  1. Failure-attribution protocol: every negative ledgered as
+     hypothesis-fault vs execution-fault before the next step (we do this
+     ad hoc — e.g. transpose bug vs wrong direction — now mandatory gate).
+  2. Scientist/executor model split = Pebbles/Bam-Bam with independent
+     validation; TTT-compression = consolidation doctrine at weight level
+     (gates today, LoRA-baked history tomorrow).
+  3. Best-of-N as standard elicitation (G1 battery) — validated form.
+  4. Verifier trained explicitly, proposer kept frozen/high-entropy;
+     RLVR-collapse warning attached to any future ReFT work (Form 1).
