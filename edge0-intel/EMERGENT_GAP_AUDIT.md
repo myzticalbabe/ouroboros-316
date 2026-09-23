@@ -298,3 +298,21 @@ Adoptions:
   3. Best-of-N as standard elicitation (G1 battery) — validated form.
   4. Verifier trained explicitly, proposer kept frozen/high-entropy;
      RLVR-collapse warning attached to any future ReFT work (Form 1).
+
+### M. DISC verification discipline (June 2026: verify-judge-correct + gate)
+DISC's numbers land directly on our M1 judge pipeline:
+- Judgment gate as precision mechanism with EARLY TERMINATION (79% exit
+  before budget). We already skip judging unflagged items — same shape,
+  now named. Keep it: never judge what marks cleared.
+- Cross-model roles beat same-model (judge precision 71.3% on others'
+  outputs vs 62.0% on own — self-confirmation bias quantified). This is
+  the numeric case for our --judge-url cross-model runs over same-model.
+- K=3 captures 97% of gain; plateau after. Cap any future iterative
+  judging at K=3. Judge quality beats iteration count (cross-model K=1
+  beats same-model K=3).
+- I:D (improvement-to-degradation) as THE metric for gate changes: every
+  gate edit must report what it fixed vs what it broke. Adopt for M1
+  revisions (strict-vs-marks outcome comparison, currently unmeasured).
+- Capability floor (Blindness vs Inability-to-act): test any candidate
+  judge model for contradiction-to-action before adoption. New gate for
+  judge onboarding (Gemma-as-judge, Ling-as-judge must pass it).

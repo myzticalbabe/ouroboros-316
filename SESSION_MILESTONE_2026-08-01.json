@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "386cece",
-    "last_commit_time": "2026-09-23T19:41:31-04:00",
-    "total_commits": 45
+    "last_commit": "0a2c8d4",
+    "last_commit_time": "2026-09-23T19:45:11-04:00",
+    "total_commits": 46
   },
   "commits": [
     {
@@ -1405,6 +1405,31 @@
         "SESSION_MILESTONE_2026-08-01.json",
         "SESSION_MILESTONE_2026-08-01.md",
         "edge0-intel/EMERGENT_GAP_AUDIT.md"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "0a2c8d4",
+      "full_hash": "0a2c8d47d5cbcf02dcba4541a36352d2d892c5e0",
+      "branch": "master",
+      "time": "2026-09-23T19:45:11-04:00",
+      "timestamp": "2026-09-23T23:45:14Z",
+      "message": "ShardFoundry: judge the conclusion, not deliberation (tail-window verdicts)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 4,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/scripts/eval_full.py",
+        "edge0-intel/scripts/judge_cal.py"
       ],
       "gap_counts": {
         "total": "62",
