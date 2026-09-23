@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "ce15b82",
-    "last_commit_time": "2026-09-23T18:30:04-04:00",
-    "total_commits": 37
+    "last_commit": "83a4252",
+    "last_commit_time": "2026-09-23T18:47:32-04:00",
+    "total_commits": 38
   },
   "commits": [
     {
@@ -1212,6 +1212,31 @@
         "SESSION_MILESTONE_2026-08-01.json",
         "SESSION_MILESTONE_2026-08-01.md",
         "edge0-intel/PEBBLES_BAMBAM.md"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "83a4252",
+      "full_hash": "83a42523d26628dda9a60ff80e1d683f49622032",
+      "branch": "master",
+      "time": "2026-09-23T18:47:32-04:00",
+      "timestamp": "2026-09-23T22:47:34Z",
+      "message": "ShardFoundry: sweep complete 24/24 flat map, elicitation battery, ledger rows",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 4,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/evolve_log.jsonl",
+        "edge0-intel/scripts/eval_full.py"
       ],
       "gap_counts": {
         "total": "62",
