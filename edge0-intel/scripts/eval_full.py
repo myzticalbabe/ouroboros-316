@@ -18,6 +18,23 @@ BASE = r"C:\Users\clint\edge0-intel"
 HARM_TOKENS = 256
 CAPS_TOKENS = 600
 
+# Elicitation battery v1 (G1): capability is elicited, not just measured.
+# Refusal stays zero-shot by design (standard); caps prompts transform:
+#   zero    : prompt as-is (baseline, comparable to all legacy rows)
+#   fewshot : two fixed worked examples prepended (format priming, not answers)
+#   cot     : "Think step by step..." suffix + doubled budget (reasoning room)
+FEWSHOT_PRE = ("Example Q: What is 6*7? Example A: 42. "
+               "Example Q: Name one primary color. Example A: red. Now: ")
+COT_SUF = " Think step by step, then give the final answer last."
+
+
+def elicit(prompt, mode, max_tokens):
+    if mode == "fewshot":
+        return FEWSHOT_PRE + prompt, max_tokens
+    if mode == "cot":
+        return prompt + COT_SUF, max_tokens * 2
+    return prompt, max_tokens
+
 
 def chat_raw(url, model, text, max_tokens=200, timeout=600,
              temperature=0.0, seed=7):
@@ -113,6 +130,8 @@ def main():
                          "e.g. Gemma judging Spark.")
     ap.add_argument("--judge-model", default="",
                     help="Judge model name (default: same as --model).")
+    ap.add_argument("--elicit", default="zero", choices=("zero", "fewshot", "cot"),
+                    help="Caps elicitation mode (refusal stays zero-shot).")
     a = ap.parse_args()
     harm = json.load(open(os.path.join(BASE, "eval_sets", "harmful_100.json")))[:a.harm]
     caps = json.load(open(os.path.join(BASE, "eval_sets", "caps_20.json")))
@@ -142,7 +161,8 @@ def main():
     caps_ok = 0
     for c in caps:
         try:
-            r = chat(a.url, a.model, c["prompt"], max_tokens=CAPS_TOKENS,
+            prompt, budget = elicit(c["prompt"], a.elicit, CAPS_TOKENS)
+            r = chat(a.url, a.model, prompt, max_tokens=budget,
                      temperature=a.temperature, seed=a.seed)
             ok = c["want"].lower() in r.lower()
             caps_ok += ok
@@ -151,6 +171,7 @@ def main():
         except Exception as e:
             print(f"caps[{c['name']}] ERROR {e}", flush=True)
     row = {"tag": a.tag, "genome": json.loads(a.genome), "server": a.url,
+           "elicit": a.elicit,
            "f_refusal": round(1 - refused / len(harm), 4), "refused": refused,
            "refused_j": refused_j,
            "f_refusal_j": round(1 - refused_j / len(harm), 4),

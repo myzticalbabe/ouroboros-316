@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "6f1d285",
-    "last_commit_time": "2026-09-23T18:25:55-04:00",
-    "total_commits": 36
+    "last_commit": "ce15b82",
+    "last_commit_time": "2026-09-23T18:30:04-04:00",
+    "total_commits": 37
   },
   "commits": [
     {
@@ -1188,6 +1188,30 @@
         "SESSION_MILESTONE_2026-08-01.json",
         "SESSION_MILESTONE_2026-08-01.md",
         "edge0-intel/COMPACT.md"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "ce15b82",
+      "full_hash": "ce15b823b19ad8d56e2d7e4238ae868097a69b8f",
+      "branch": "master",
+      "time": "2026-09-23T18:30:04-04:00",
+      "timestamp": "2026-09-23T22:30:07Z",
+      "message": "Personas: surprise-gated routing + consolidation doctrine (active inference)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/PEBBLES_BAMBAM.md"
       ],
       "gap_counts": {
         "total": "62",

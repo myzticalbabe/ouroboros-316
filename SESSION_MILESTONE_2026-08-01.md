@@ -524,3 +524,16 @@ Verified output: 51 awards, $9,348,544.60 total obligation, CCBHC grant present.
 | **Files Changed** | 3 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/COMPACT.md  |
 | **Gap Counts** | 62 total, 53 open, 9 resolved |
 
+
+### Post-Commit Audit — `ce15b82` — 2026-09-23T22:30:07Z — ✅ PASS
+
+| Field | Value |
+|-------|-------|
+| **Commit** | `ce15b82` |
+| **Branch** | `master` |
+| **Time** | 2026-09-23T18:30:04-04:00 |
+| **Message** | Personas: surprise-gated routing + consolidation doctrine (active inference) |
+| **Verification** | ✅ PASS (35 passed, 0 failed) |
+| **Files Changed** | 3 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/PEBBLES_BAMBAM.md  |
+| **Gap Counts** | 62 total, 53 open, 9 resolved |
+
