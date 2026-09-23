@@ -134,3 +134,27 @@
   authorized. Model names in publications refer to ledger tags, not files.
 - **Kill-switch.** Any operator (human) halts any run for any safety reason,
   no justification required; halted runs log the halt (see Principles).
+
+### G. Coalesced forms (exotic synthesis, 2026-09-23)
+New operators fused from field techniques with our machinery. Ranked by
+CPU-reachability on this box.
+- **Form 1: STRATUM-ReFT.** Train LoReFT-style rank-8 interventions on the
+  frozen backbone using AZ tasks as supervision, executed through the
+  STRATUM layer loader. Param count ~100KB (rank 8 x 1536 x few layers):
+  the only train-time technique in this audit that fits CPU. Closes G5.
+  Status: specified, not built.
+- **Form 2: AC/DC-foundry coevolution.** Adopt task-vector crossover +
+  attraction mating (mate genomes with complementary per-task profiles) +
+  minimal-criterion filters into P3; our AZ generator is the "scientist",
+  SVI+epistasis the skill vectors, SUSPECT quarantine already the MC
+  filter. Formalizes P3 as coevolution (AC/DC, Apr 2026).
+- **Form 3: Query-conditioned TTMM monster.** Bank pruned expert-variants;
+  per prompt, merge top-k by embedding similarity (RBF weights), serve the
+  merged weights through the GGUF pipeline. Merge is weight arithmetic —
+  no training, no GPU. Fits our 3072-slot Ling substrate exactly.
+- **Form 4: Split-point layer crossover (M2N2).** Crossover at layer-block
+  boundaries instead of whole-model SLERP; attraction-selected parents.
+  Implementable in gguf domain (block-granular tensor splice).
+- **Out of reach (noted, not pursued):** full TTT/gradient training at
+  scale, SAE-suite training, multi-day GPU runs. LaCT/TTT-Discover inform
+  the paradigm (one champion, not average) without their compute.
