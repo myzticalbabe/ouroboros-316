@@ -24,6 +24,8 @@ PY_STD = r"C:\Users\clint\AppData\Local\Programs\Python\Python314\python.exe"
 SERVER = r"C:\Users\clint\llama-server\bin\llama-b10964-cpu\llama-server.exe"
 SRC = os.path.join(BASE, "models", "Ling-3.0-tiny-abliterated-APEX-I-Compact.gguf")
 RDIR = os.path.join(BASE, "models", "edge0-8b-fp16", "refusal_dir.npy")
+TARGETS = "attn_output.weight,ffn_down_exps.weight,ffn_down_shexp.weight"
+TAGPRE = "ling-L"
 PORT = 8091
 
 _logfh = open(LOGF, "a", encoding="utf-8")
@@ -73,10 +75,10 @@ def kill_servers():
     time.sleep(4)
 
 
-def layers_of_src():
+def layers_of_src(src=None):
     from gguf import GGUFReader
     import re
-    r = GGUFReader(SRC)
+    r = GGUFReader(src or SRC)
     idx = set()
     for t in r.tensors:
         m = re.search(r"blk\.(\d+)\.", t.name)
@@ -104,30 +106,70 @@ def main():
     spec = "all"
     force = False
     keep = False
-    for i, x in enumerate(args):
+    src = SRC
+    rdir = RDIR
+    targets = TARGETS
+    tagpre = TAGPRE
+    port = PORT
+    logf = LOGF
+    statf = STATF
+    i = 0
+    while i < len(args):
+        x = args[i]
         if x == "--layers" and i + 1 < len(args):
             spec = args[i + 1]
-        if x == "--force":
+            i += 1
+        elif x == "--force":
             force = True
-        if x == "--keep":
+        elif x == "--keep":
             keep = True
-    say(f"OBSERVE script=sweep_ling_layers spec={spec} force={force}")
-    layers = parse_spec(spec, layers_of_src())
+        elif x == "--src" and i + 1 < len(args):
+            src = args[i + 1]
+            i += 1
+        elif x == "--dir" and i + 1 < len(args):
+            rdir = args[i + 1]
+            i += 1
+        elif x == "--targets" and i + 1 < len(args):
+            targets = args[i + 1]
+            i += 1
+        elif x == "--tagpre" and i + 1 < len(args):
+            tagpre = args[i + 1]
+            i += 1
+        elif x == "--port" and i + 1 < len(args):
+            port = int(args[i + 1])
+            i += 1
+        elif x == "--log" and i + 1 < len(args):
+            logf = args[i + 1]
+            i += 1
+        elif x == "--status" and i + 1 < len(args):
+            statf = args[i + 1]
+            i += 1
+        i += 1
+    global LOGF, STATF, PORT, _logfh
+    LOGF, STATF, PORT = logf, statf, port
+    try:
+        _logfh.close()
+    except Exception:
+        pass
+    _logfh = open(LOGF, "a", encoding="utf-8")
+    say(f"OBSERVE script=sweep_ling_layers spec={spec} force={force} "
+        f"src={os.path.basename(src)} tagpre={tagpre} port={port}")
+    layers = parse_spec(spec, layers_of_src(src))
     say(f"layers to sweep: {layers}")
     status(state="started", total=len(layers), done=0, spec=spec)
     t0 = time.time()
     per_layer_times = []
     for n, i in enumerate(layers):
-        dst = os.path.join(BASE, "models", f"ling-layer-{i:02d}.gguf")
-        tag = f"ling-L{i:02d}"
+        dst = os.path.join(BASE, "models", f"{tagpre}{i:02d}.gguf")
+        tag = f"{tagpre}{i:02d}"
         lt0 = time.time()
         say(f"\n=== [{n+1}/{len(layers)}] layer {i} -> {os.path.basename(dst)} ===")
         status(state="running", layer=i, done=n, total=len(layers), tag=tag)
         if not (os.path.exists(dst) and not force):
             rc = run([PY, os.path.join(BASE, "scripts", "gguf_abliterate.py"),
-                      "--src", SRC, "--dst", dst, "--dir", RDIR,
+                      "--src", src, "--dst", dst, "--dir", rdir,
                       "--strength", "1.0",
-                      "--targets", "attn_output.weight,ffn_down_exps.weight,ffn_down_shexp.weight",
+                      "--targets", targets,
                       "--layers", str(i)])
             if rc != 0:
                 say(f"BUILD FAILED layer {i} rc={rc}; continuing")
