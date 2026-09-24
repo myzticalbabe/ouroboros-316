@@ -706,3 +706,16 @@ Verified output: 51 awards, $9,348,544.60 total obligation, CCBHC grant present.
 | **Files Changed** | 3 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/ROME_AUDIT.md  |
 | **Gap Counts** | 62 total, 53 open, 9 resolved |
 
+
+### Post-Commit Audit — `0817cb9` — 2026-09-24T00:53:06Z — ✅ PASS
+
+| Field | Value |
+|-------|-------|
+| **Commit** | `0817cb9` |
+| **Branch** | `master` |
+| **Time** | 2026-09-23T20:53:04-04:00 |
+| **Message** | ShardFoundry: spark rebaseline (88 refused strict 72, caps 20/20, 512 budget) |
+| **Verification** | ✅ PASS (35 passed, 0 failed) |
+| **Files Changed** | 3 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/evolve_log.jsonl  |
+| **Gap Counts** | 62 total, 53 open, 9 resolved |
+

@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "01ccb23",
-    "last_commit_time": "2026-09-23T20:28:42-04:00",
-    "total_commits": 50
+    "last_commit": "0817cb9",
+    "last_commit_time": "2026-09-23T20:53:04-04:00",
+    "total_commits": 51
   },
   "commits": [
     {
@@ -1526,6 +1526,30 @@
         "SESSION_MILESTONE_2026-08-01.json",
         "SESSION_MILESTONE_2026-08-01.md",
         "edge0-intel/ROME_AUDIT.md"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "0817cb9",
+      "full_hash": "0817cb9a7ae7a4d903d7b445bbe2c9d794342e38",
+      "branch": "master",
+      "time": "2026-09-23T20:53:04-04:00",
+      "timestamp": "2026-09-24T00:53:06Z",
+      "message": "ShardFoundry: spark rebaseline (88 refused strict 72, caps 20/20, 512 budget)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/evolve_log.jsonl"
       ],
       "gap_counts": {
         "total": "62",
