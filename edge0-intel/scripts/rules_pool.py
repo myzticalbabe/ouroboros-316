@@ -5,7 +5,9 @@ half of JERP stays parked — this is the rule half, and it runs on ledger
 outcomes that already exist.
 
 Schema per rule: {id, text, source, scope, utility, status, created,
-expires, history:[{t, op, evidence}]}. Status: active|merged|retired.
+expires, triggers, history:[{t, op, evidence}]}. Status: active|merged|retired.
+Triggers (T-Mem adoption): write-time anticipations of WHEN this rule will
+matter ("situations, not keywords") — retrieval by situation, not similarity.
 Capacity: warn above 64 active (merge pressure, JERP capacity limit).
 
 Usage:
@@ -77,6 +79,8 @@ def cmd_add(a):
     d["rules"].append({"id": rid, "text": a.text, "source": a.source,
                        "scope": a.scope, "utility": 0, "status": "active",
                        "created": _now(), "expires": "",
+                       "triggers": [t.strip() for t in a.triggers.split(",")
+                                    if t.strip()],
                        "history": [{"t": _now(), "op": "add",
                                     "evidence": a.source}]})
     save(d)
@@ -132,6 +136,33 @@ def cmd_merge(a):
     return 0
 
 
+def cmd_recall(a):
+    """Retrieve by situation (T-Mem): match query against triggers first
+    (associative), fall back to text match (descriptive)."""
+    d = load()
+    stop = {"with", "from", "that", "this", "have", "will", "what", "when",
+            "which", "there", "their", "then", "than", "them", "been"}
+    q = [w.strip(".,;:!?()[]{}\"'").lower() for w in a.query.split()]
+    q = [w for w in q if len(w) > 3 and w not in stop and w.isalpha()]
+    scored = []
+    for r in d["rules"]:
+        if r.get("status") != "active":
+            continue
+        trig = " ".join(r.get("triggers", [])).lower()
+        t_hit = sum(1 for w in q if len(w) > 3 and w in trig)
+        x_hit = sum(1 for w in q if len(w) > 3 and w in r["text"].lower())
+        if t_hit or x_hit:
+            scored.append((2 * t_hit + x_hit, r))
+    scored.sort(key=lambda x: -x[0])
+    for s, r in scored[:a.top]:
+        print(f"{r['id']} (s={s}) {r['text'][:100]}")
+        if r.get("triggers"):
+            print(f"   triggers: {', '.join(r['triggers'])}")
+    if not scored:
+        print("MISS: no rule matches (consider adding one)")
+    return 0
+
+
 def cmd_prune(a):
     d = load()
     today = time.strftime("%Y-%m-%d")
@@ -145,6 +176,20 @@ def cmd_prune(a):
             reasons.append(f"expired {r['expires'][:10]}")
         if reasons:
             print(f"{r['id']} PRUNE-CANDIDATE ({'; '.join(reasons)}): {r['text'][:70]}")
+    return 0
+
+
+def cmd_retrigger(a):
+    d = load()
+    r = find(d, a.id)
+    if not r:
+        print(f"unknown {a.id}")
+        return 2
+    r["triggers"] = [t.strip() for t in a.triggers.split(",") if t.strip()]
+    r.setdefault("history", []).append(
+        {"t": _now(), "op": "retrigger", "evidence": "manual anticipation"})
+    save(d)
+    print(f"{a.id} triggers={r['triggers']}")
     return 0
 
 
@@ -172,6 +217,10 @@ def main():
     p.add_argument("--text", required=True)
     p.add_argument("--source", default="")
     p.add_argument("--scope", default="general")
+    p.add_argument("--triggers", default="",
+                   help="Comma-separated situations where this rule matters "
+                        "(T-Mem write-time anticipation, e.g. "
+                        "'eval-numbers-look-wrong,choosing-next-build')")
     p = sub.add_parser("vote")
     p.add_argument("--id", required=True)
     p.add_argument("direction", choices=("up", "down"))
@@ -180,10 +229,16 @@ def main():
     p.add_argument("--ids", required=True)
     p.add_argument("--into", required=True)
     p.add_argument("--evidence", default="")
+    p = sub.add_parser("recall")
+    p.add_argument("query", nargs="+")
+    p.add_argument("--top", type=int, default=3)
     sub.add_parser("prune")
     p = sub.add_parser("retire")
     p.add_argument("--id", required=True)
     p.add_argument("--reason", default="")
+    p = sub.add_parser("retrigger")
+    p.add_argument("--id", required=True)
+    p.add_argument("--triggers", required=True)
     a = ap.parse_args()
     if a.cmd == "list":
         return cmd_list(a)
@@ -195,8 +250,13 @@ def main():
         return cmd_merge(a)
     if a.cmd == "prune":
         return cmd_prune(a)
+    if a.cmd == "recall":
+        a.query = " ".join(a.query)
+        return cmd_recall(a)
     if a.cmd == "retire":
         return cmd_retire(a)
+    if a.cmd == "retrigger":
+        return cmd_retrigger(a)
     ap.print_help()
     return 2
 

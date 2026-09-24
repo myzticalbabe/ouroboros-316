@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "54f2b18",
-    "last_commit_time": "2026-09-23T23:02:37-04:00",
-    "total_commits": 60
+    "last_commit": "afe64d9",
+    "last_commit_time": "2026-09-23T23:19:12-04:00",
+    "total_commits": 61
   },
   "commits": [
     {
@@ -1779,6 +1779,40 @@
         "SESSION_MILESTONE_2026-08-01.md",
         "edge0-intel/scripts/softskill_train.py",
         "edge0-intel/scripts/test_softskill_loop.py"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "afe64d9",
+      "full_hash": "afe64d9c9a78c68425e950ef9ee7ea1d8c999ed9",
+      "branch": "master",
+      "time": "2026-09-23T23:19:12-04:00",
+      "timestamp": "2026-09-24T03:19:14Z",
+      "message": "ShardFoundry: full audit closeout (svi wilson, judge-cal data, sidecars, rebaselined integrity)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 13,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/integrity.json",
+        "edge0-intel/judge_cal.json",
+        "edge0-intel/models/ling-layer-16.gguf.build.json",
+        "edge0-intel/models/ling-layer-17.gguf.build.json",
+        "edge0-intel/models/ling-layer-18.gguf.build.json",
+        "edge0-intel/models/ling-layer-19.gguf.build.json",
+        "edge0-intel/models/ling-layer-20.gguf.build.json",
+        "edge0-intel/models/ling-layer-21.gguf.build.json",
+        "edge0-intel/models/ling-layer-22.gguf.build.json",
+        "edge0-intel/models/ling-layer-23.gguf.build.json",
+        "edge0-intel/scripts/svi.py"
       ],
       "gap_counts": {
         "total": "62",

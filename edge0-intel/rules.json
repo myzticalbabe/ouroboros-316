@@ -18,6 +18,11 @@
      "t": "2026-09-23T22:55:50",
      "op": "vote-down",
      "evidence": "revert-smoke-test"
+    },
+    {
+     "t": "2026-09-23T23:31:20",
+     "op": "retrigger",
+     "evidence": "manual anticipation"
     }
    ],
    "id": "R001",
@@ -25,7 +30,12 @@
    "source": "RAM_RUNBOOK P1",
    "status": "active",
    "text": "No silent runs: unbuffered output, staged prints from second zero, per-unit progress.",
-   "utility": 3
+   "utility": 3,
+   "triggers": [
+    "silent-hang",
+    "no-output-logs",
+    "debugging-stuck-run"
+   ]
   },
   {
    "created": "2026-09-23T19:00:00",
@@ -35,6 +45,11 @@
      "evidence": "SESSION_2026-09-23",
      "op": "seed",
      "t": "2026-09-23T19:00:00"
+    },
+    {
+     "t": "2026-09-23T23:31:20",
+     "op": "retrigger",
+     "evidence": "manual anticipation"
     }
    ],
    "id": "R002",
@@ -42,7 +57,12 @@
    "source": "RAM_RUNBOOK P2",
    "status": "active",
    "text": "One run, one window: detached visible console for long jobs; no second launch until first resolves.",
-   "utility": 3
+   "utility": 3,
+   "triggers": [
+    "launching-long-job",
+    "duplicate-processes",
+    "ram-cleanup"
+   ]
   },
   {
    "created": "2026-09-23T19:00:00",
@@ -69,6 +89,11 @@
      "evidence": "SESSION_2026-09-23",
      "op": "seed",
      "t": "2026-09-23T19:00:00"
+    },
+    {
+     "t": "2026-09-23T23:31:20",
+     "op": "retrigger",
+     "evidence": "manual anticipation"
     }
    ],
    "id": "R004",
@@ -76,7 +101,12 @@
    "source": "RAM_RUNBOOK P4/SVI_SPEC",
    "status": "active",
    "text": "Controls for every claim: N>=50 fitness, stock baseline before declaring effects; subsets gate entry only.",
-   "utility": 3
+   "utility": 3,
+   "triggers": [
+    "claiming-results",
+    "eval-numbers-look-good",
+    "promotion-decision"
+   ]
   },
   {
    "created": "2026-09-23T19:00:00",
@@ -120,6 +150,11 @@
      "evidence": "SESSION_2026-09-23",
      "op": "seed",
      "t": "2026-09-23T19:00:00"
+    },
+    {
+     "t": "2026-09-23T23:31:20",
+     "op": "retrigger",
+     "evidence": "manual anticipation"
     }
    ],
    "id": "R007",
@@ -127,7 +162,12 @@
    "source": "RAM_RUNBOOK P7",
    "status": "active",
    "text": "Fix classes with regression tests, not instances; each fix must make its bug unreproducible.",
-   "utility": 3
+   "utility": 3,
+   "triggers": [
+    "same-bug-again",
+    "recurring-failure",
+    "parser-crash"
+   ]
   },
   {
    "created": "2026-09-23T19:00:00",
@@ -154,6 +194,11 @@
      "evidence": "PEBBLES_BAMBAM.md",
      "op": "seed",
      "t": "2026-09-23T19:00:00"
+    },
+    {
+     "t": "2026-09-23T23:31:21",
+     "op": "retrigger",
+     "evidence": "manual anticipation"
     }
    ],
    "id": "R009",
@@ -161,7 +206,12 @@
    "source": "persona contracts",
    "status": "active",
    "text": "Pebbles never executes destructive ops; Bam-Bam never judges, skips gates, or improvises scope.",
-   "utility": 2
+   "utility": 2,
+   "triggers": [
+    "destructive-command",
+    "delete-or-kill-request",
+    "agent-escalation"
+   ]
   },
   {
    "created": "2026-09-23T19:00:00",
@@ -222,6 +272,11 @@
      "evidence": "safety posture",
      "op": "seed",
      "t": "2026-09-23T19:00:00"
+    },
+    {
+     "t": "2026-09-23T23:31:21",
+     "op": "retrigger",
+     "evidence": "manual anticipation"
     }
    ],
    "id": "R013",
@@ -229,7 +284,12 @@
    "source": "audit section F",
    "status": "active",
    "text": "Localhost-only serving is permitted containment at operator discretion; beyond localhost needs separate authorization.",
-   "utility": 3
+   "utility": 3,
+   "triggers": [
+    "exposing-server",
+    "sharing-weights",
+    "publish-decision"
+   ]
   },
   {
    "created": "2026-09-23T19:00:00",
