@@ -316,3 +316,22 @@ DISC's numbers land directly on our M1 judge pipeline:
 - Capability floor (Blindness vs Inability-to-act): test any candidate
   judge model for contradiction-to-action before adoption. New gate for
   judge onboarding (Gemma-as-judge, Ling-as-judge must pass it).
+
+### N. AutoRAS workflow-level evolution (June 2026, ICML poster)
+AutoRAS designs multi-agent WORKFLOWS (not weights) as symbolic primitive
+sequences encoding structure+behavior, optimized by execution-derived safety
+signals + flow objectives: best vanilla AND adversarial scores, smallest
+attack degradation (2.13%), transferable primitives, discovered safeguards.
+Unopened track for us — everything to date mutates weights; nothing mutates
+the pipeline itself. Concretely adoptable:
+  1. Primitive vocabulary = our existing ops (route, judge, gate, serve,
+     elicit-mode, temperature/seed, tier assignment). Recipes already exist
+     (genome schema, RUN bats); restate as AutoRAS primitive sequences.
+  2. Fitness = SVI on caps (vanilla) + harm (adversarial) — eval_full
+     ALREADY runs both suites; the dual evaluation AutoRAS needs is our
+     status quo. Optimize the workflow, not just the weights.
+  3. Search by execution feedback: which router/judge/gate/budget configs
+     maximize SVI and minimize adversarial degradation. Textual gradients =
+     session notes + sidecars (already written; now training signal).
+  4. Robustness-first selection: prefer configs with smallest vanilla-vs-
+     adversarial gap, not just highest vanilla (new tiebreak rule).
