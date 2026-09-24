@@ -343,3 +343,18 @@ the pipeline itself. Concretely adoptable:
      session notes + sidecars (already written; now training signal).
   4. Robustness-first selection: prefer configs with smallest vanilla-vs-
      adversarial gap, not just highest vanilla (new tiebreak rule).
+
+### O. MODE-RAG energy-gated routing (June 2026)
+VFE + attention-driven FE-Router: low-risk queries bypass the pipeline
+(prevents over-correction), high-risk trigger five stage agents (MCTS causal
+DAGs, logit anti-sycophancy, Overseer verification), abstention for
+unanswerable. Fourth independent line converging on surprise-gated routing
+(active inference, SSVP/CDS, Pebbles/Bam-Bam doctrine). New specifics:
+  1. Intervention paradox named: static rules disrupt good generations,
+     unguided mismatches cascade. Our coherence gate + selective judging
+     is the same tradeoff — validate by measuring both failure directions.
+  2. Abstention gap: our evals force answers on everything; no abstain
+     option exists. Add ABSTAIN to caps/AZ check types.
+  3. MixRAGRec side-note: MoE routing over RETRIEVAL granularities
+     (triple/subgraph/none) — experts-as-retrieval-policies, directly
+     relevant if the monster ever grows a retrieval tier.
