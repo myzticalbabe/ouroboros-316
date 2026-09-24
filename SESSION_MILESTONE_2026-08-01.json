@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "1857542",
-    "last_commit_time": "2026-09-23T22:35:54-04:00",
-    "total_commits": 57
+    "last_commit": "86b8bdf",
+    "last_commit_time": "2026-09-23T22:44:37-04:00",
+    "total_commits": 58
   },
   "commits": [
     {
@@ -1705,6 +1705,30 @@
         "SESSION_MILESTONE_2026-08-01.json",
         "SESSION_MILESTONE_2026-08-01.md",
         "edge0-intel/EMERGENT_GAP_AUDIT.md"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "86b8bdf",
+      "full_hash": "86b8bdf0df2b0b4124d7939ea29c8d32959a68d0",
+      "branch": "master",
+      "time": "2026-09-23T22:44:37-04:00",
+      "timestamp": "2026-09-24T02:44:39Z",
+      "message": "ShardFoundry: repaird closed self-repair loop (allowlist remedies + escalation)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/scripts/repaird.py"
       ],
       "gap_counts": {
         "total": "62",
