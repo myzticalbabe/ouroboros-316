@@ -771,3 +771,16 @@ Verified output: 51 awards, $9,348,544.60 total obligation, CCBHC grant present.
 | **Files Changed** | 8 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/PORTS.md edge0-intel/eval_sets/az_tasks.json edge0-intel/scripts/az_eval.py edge0-intel/scripts/build_az_eval.py edge0-intel/scripts/eval_full.py edge0-intel/scripts/probe_grammar.py  |
 | **Gap Counts** | 62 total, 53 open, 9 resolved |
 
+
+### Post-Commit Audit — `af131ca` — 2026-09-24T02:27:43Z — ✅ PASS
+
+| Field | Value |
+|-------|-------|
+| **Commit** | `af131ca` |
+| **Branch** | `master` |
+| **Time** | 2026-09-23T22:27:41-04:00 |
+| **Message** | ShardFoundry: wiring cluster (attribution, escalation, links, cert, obligations) |
+| **Verification** | ✅ PASS (35 passed, 0 failed) |
+| **Files Changed** | 9 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/models/ling-abl-s05.gguf.build.json edge0-intel/obligations.jsonl edge0-intel/scripts/attribute.py edge0-intel/scripts/backfill_sidecars.py edge0-intel/scripts/eval_full.py edge0-intel/scripts/judge_cal.py edge0-intel/scripts/obligations.py  |
+| **Gap Counts** | 62 total, 53 open, 9 resolved |
+

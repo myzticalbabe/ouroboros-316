@@ -358,3 +358,28 @@ unanswerable. Fourth independent line converging on surprise-gated routing
   3. MixRAGRec side-note: MoE routing over RETRIEVAL granularities
      (triple/subgraph/none) — experts-as-retrieval-policies, directly
      relevant if the monster ever grows a retrieval tier.
+
+### P. VeriGraph evidence DAGs (June 2026) + recursion verdict
+VeriGraph: agent reasoning as explicit heterogeneous evidence DAG (data
+nodes with executable provenance + claim nodes with derivations);
+traceability = graph reachability; 87.61% grounding rate (Qwen3-8B matches
+Claude-4.5-Opus ReAct). Adoptable mapping: sidecars ARE data nodes
+(rebuild-executable provenance), ledger rows SHOULD BE claim nodes with
+derivation edges — currently rows lack edges (which prior rows justify
+this one?). Add `because: [tags]` to rows (abduction made structural):
+every promoted genome cites its evidence ancestors. Reachability audit
+becomes possible: any claim unreachable from raw inputs is flagged.
+Graph-aware RL training itself: out of reach; the DAG discipline is not.
+
+Recursion verdict (asked directly): NO, this is not a recursive
+self-adapting architecture — and partly by design. What recurses:
+measurement -> record -> retrieval informs next runs (ledger, Atlas,
+sidecars). What does NOT: no component rewrites its own mechanisms
+(gates don't rewrite gates, router doesn't retune, Atlas revise needs
+invocation); promotion is human-gated; self-modification is explicitly
+forbidden by the safety posture (kill-switch, human merge, no
+unattended rewrites). Full recursion would VIOLATE our own rules.
+Honest classification: supervised-adaptive system with automated
+measurement — recursion passes through the operator (you, me), never
+around. Remove the human and the loop stalls: that sentence is both the
+safety case and the capability ceiling, stated plainly.
