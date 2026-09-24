@@ -95,7 +95,7 @@ def train(base, pairs_path, out_path, plen=32, steps=200, val_every=50,
                 continue
             loss = torch.nn.functional.cross_entropy(logits[:n], tgt[:n])
             (loss / batch).backward()
-            tot += float(loss)
+            tot += float(loss.detach())
             nb += 1
         if nb:
             torch.nn.utils.clip_grad_norm_([prefix], 1.0)
