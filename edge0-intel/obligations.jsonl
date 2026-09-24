@@ -1,0 +1,2 @@
+{"id": "obl-1790216819", "state": "ADMITTED", "build": "C:\\Users\\clint\\edge0-intel\\models\\ling-abl-s05.gguf", "build_head_sha": "9ab5f6a5fde56f63", "tag": "ling-abl-s05-full", "by": "operator", "at": "2026-09-23T22:26:59", "duties": ["ledger-row", "sidecar-present", "eval-run"]}
+{"id": "obl-1790216819", "state": "DISCHARGED", "at": "2026-09-23T22:27:41", "evidence": {"ledger-row": true, "sidecar-present": true, "eval-run": true}}
