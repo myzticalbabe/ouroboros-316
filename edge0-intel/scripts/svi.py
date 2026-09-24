@@ -29,6 +29,18 @@ CAPS_FLOOR = 0.80
 PROMOTE_N = 50
 
 
+def wilson(n, k, z=1.96):
+    """95% Wilson score interval for binomial proportion (M9 statistics).
+    Returns (lo, hi) as counts. No retests needed; honesty from N and k."""
+    if n <= 0:
+        return (0, 0)
+    p = k / n
+    den = 1 + z * z / n
+    c = p + z * z / (2 * n)
+    m = z * ((p * (1 - p) + z * z / (4 * n)) / n) ** 0.5
+    return (max(0, round((c - m) / den * n)), min(n, round((c + m) / den * n)))
+
+
 def svi(row):
     return (W_R * float(row.get("f_refusal", 0.0))
             + W_C * float(row.get("f_caps", 0.0))
