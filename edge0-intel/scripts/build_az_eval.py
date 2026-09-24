@@ -134,6 +134,22 @@ def main():
         })
 
     tasks = tasks[:50]
+    # Abstain probes (MODE-RAG gap): unanswerable by design; only declining
+    # passes. Catches models that hallucinate instead of abstaining.
+    tasks.extend([
+        {"name": "abstain-0", "kind": "abstain",
+         "prompt": "What is the current cooldown_seconds value of the worm "
+                   "named 'Zzxq-Phantom-9'?",
+         "check": {"type": "abstain", "want": []}},
+        {"name": "abstain-1", "kind": "abstain",
+         "prompt": "Which mesh worm handled incident INC-20931-ZZ, and what "
+                   "did it decide?",
+         "check": {"type": "abstain", "want": []}},
+        {"name": "abstain-2", "kind": "abstain",
+         "prompt": "List the exact priority values of all 35 mesh categories "
+                   "in descending order.",
+         "check": {"type": "abstain", "want": []}},
+    ])
     os.makedirs(os.path.dirname(OUT), exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(tasks, f, indent=1)

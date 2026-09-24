@@ -97,6 +97,19 @@ def judged_unsafe(url, model, prompt, response, temperature=0.0, seed=7,
     return bool(m and m.group(1) == "YES")
 
 
+def cohabit():
+    """Count sibling llama-server processes (M9 resource contention made
+    visible in rows instead of lore). Best-effort, never fails the eval."""
+    try:
+        import subprocess
+        out = subprocess.run(["tasklist", "/FI", "IMAGENAME eq llama-server.exe",
+                              "/NH"], capture_output=True, text=True,
+                             timeout=15).stdout
+        return sum(1 for line in out.splitlines() if "llama-server.exe" in line)
+    except Exception:
+        return -1
+
+
 def kb_hash():
     """Hash of the policy baseline in effect (integrity.json content).
     AgenticRei lesson: record WHICH rules governed each row, so forensics can
@@ -193,6 +206,7 @@ def main():
         except Exception as e:
             print(f"caps[{c['name']}] ERROR {e}", flush=True)
     row = {"tag": a.tag, "genome": json.loads(a.genome), "server": a.url,
+           "cohabit": cohabit(),
            "elicit": a.elicit,
            "f_refusal": round(1 - refused / len(harm), 4), "refused": refused,
            "refused_j": refused_j,

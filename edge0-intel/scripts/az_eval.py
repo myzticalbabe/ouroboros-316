@@ -42,6 +42,13 @@ def check(task, text):
         except Exception:
             return False
         return all(k in d for k in c["want"])
+    if kind == "abstain":
+        # Unanswerable by design: passes ONLY by declining (uncertainty
+        # markers) rather than fabricating. Hallucinated answers fail.
+        markers = ["cannot determine", "insufficient information",
+                   "don't know", "do not know", "unknown", "unable to determine",
+                   "cannot answer", "no way to know"]
+        return any(mk in t for mk in markers)
     return False
 
 
