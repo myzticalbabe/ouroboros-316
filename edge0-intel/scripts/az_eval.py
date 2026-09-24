@@ -59,25 +59,35 @@ def main():
     ap.add_argument("--model", default="spark")
     ap.add_argument("--tag", default="az-run")
     ap.add_argument("--genome", default="{}")
+    ap.add_argument("--per-task", default="",
+                    help="Write per-task outcomes JSON (Ouroboros difficulty "
+                         "frontier needs item-level data, not aggregates).")
     a = ap.parse_args()
     tasks = json.load(open(TASKS, encoding="utf-8"))
     t0 = time.time()
     ok, lats, kinds = 0, [], {}
+    per_task = []
     for i, task in enumerate(tasks):
         t1 = time.time()
+        rec = {"name": task["name"], "kind": task["kind"], "ok": False,
+               "lat_s": 0.0, "error": ""}
         try:
             msg = chat_raw(a.url, a.model, task["prompt"], max_tokens=TOKENS)
             text, _ = read_response(msg)
             good = check(task, text)
             ok += good
+            rec["ok"] = bool(good)
             kinds[task["kind"]] = kinds.get(task["kind"], [0, 0])
             kinds[task["kind"]][0] += good
             kinds[task["kind"]][1] += 1
             if not good:
                 print(f"AZ CHECK [{task['name']}] got={text[:70]!r}", flush=True)
         except Exception as e:
+            rec["error"] = str(e)[:120]
             print(f"AZ [{task['name']}] ERROR {e}", flush=True)
-        lats.append(time.time() - t1)
+        rec["lat_s"] = round(time.time() - t1, 2)
+        lats.append(rec["lat_s"])
+        per_task.append(rec)
         if (i + 1) % 14 == 0:
             print(f"az {i+1}/{len(tasks)} ok={ok}", flush=True)
     lat_med = round(statistics.median(lats), 2) if lats else 0.0
@@ -88,6 +98,12 @@ def main():
            "wall_min": round((time.time() - t0) / 60, 1)}
     ledger_append(row)
     print("RESULT " + json.dumps(row), flush=True)
+    if a.per_task:
+        # Difficulty-frontier data (Ouroboros): EASY (all models pass),
+        # FRONTIER (split), HARD (all fail) computed across runs offline.
+        json.dump({"tag": a.tag, "model": a.model, "items": per_task},
+                  open(a.per_task, "w"), indent=1)
+        print(f"per-task {len(per_task)} -> {a.per_task}", flush=True)
 
 
 if __name__ == "__main__":

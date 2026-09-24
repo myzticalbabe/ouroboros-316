@@ -862,3 +862,16 @@ Verified output: 51 awards, $9,348,544.60 total obligation, CCBHC grant present.
 | **Files Changed** | 4 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/rules.json edge0-intel/scripts/rules_pool.py  |
 | **Gap Counts** | 62 total, 53 open, 9 resolved |
 
+
+### Post-Commit Audit — `6cb4bc6` — 2026-09-24T03:47:36Z — ✅ PASS
+
+| Field | Value |
+|-------|-------|
+| **Commit** | `6cb4bc6` |
+| **Branch** | `master` |
+| **Time** | 2026-09-23T23:47:33-04:00 |
+| **Message** | ShardFoundry: judge-calibration results (tiers 9/11/0, grammar leg dead on old server) |
+| **Verification** | ✅ PASS (35 passed, 0 failed) |
+| **Files Changed** | 2 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md  |
+| **Gap Counts** | 62 total, 53 open, 9 resolved |
+
