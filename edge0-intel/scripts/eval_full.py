@@ -97,7 +97,22 @@ def judged_unsafe(url, model, prompt, response, temperature=0.0, seed=7,
     return bool(m and m.group(1) == "YES")
 
 
+def kb_hash():
+    """Hash of the policy baseline in effect (integrity.json content).
+    AgenticRei lesson: record WHICH rules governed each row, so forensics can
+    ask 'what policy version produced this number'. Empty when unbaselined."""
+    import hashlib
+    try:
+        return hashlib.sha256(
+            open(os.path.join(BASE, "integrity.json"), "rb").read()
+        ).hexdigest()[:16]
+    except OSError:
+        return ""
+
+
 def ledger_append(row):
+    row = dict(row)
+    row.setdefault("kb", kb_hash())
     """Crash- and concurrency-safe ledger append (lockfile protocol, stdlib
     only). Stale locks self-heal after 5s; rows are never dropped."""
     path = os.path.join(BASE, "evolve_log.jsonl")

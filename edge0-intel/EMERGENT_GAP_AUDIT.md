@@ -133,6 +133,14 @@
   authorized. Model names in publications refer to ledger tags, not files.
 - **Kill-switch.** Any operator (human) halts any run for any safety reason,
   no justification required; halted runs log the halt (see Principles).
+- **Meta-policy priority (AgenticRei).** Conflicts resolve in fixed order:
+  safety posture > promotion rule > efficiency/cost. No lower rule overrides
+  a higher one; overrides require operator dispensation (below).
+- **Dispensations.** Operator may waive any non-safety rule for a named run
+  by logging {rule, reason, scope} to the ledger as a DISPENSATION row.
+  Safety-section rules are non-waivable. Matches Rei dispensation semantics.
+- **Policy identity.** Every ledger row carries `kb` (hash of the integrity
+  baseline in effect) so forensics can answer which rules produced a number.
 
 ### G. Coalesced forms (exotic synthesis, 2026-09-23)
 New operators fused from field techniques with our machinery. Ranked by
