@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "6cb4bc6",
-    "last_commit_time": "2026-09-23T23:47:33-04:00",
-    "total_commits": 63
+    "last_commit": "b44c080",
+    "last_commit_time": "2026-09-24T20:30:52-04:00",
+    "total_commits": 65
   },
   "commits": [
     {
@@ -1861,6 +1861,91 @@
       "files": [
         "SESSION_MILESTONE_2026-08-01.json",
         "SESSION_MILESTONE_2026-08-01.md"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "3a4d0c3",
+      "full_hash": "3a4d0c37c3c23bfaadedda72cc5dab59cc2fe848",
+      "branch": "master",
+      "time": "2026-09-23T23:55:14-04:00",
+      "timestamp": "2026-09-24T03:55:16Z",
+      "message": "ShardFoundry: per-task outcomes capture (Ouroboros difficulty frontier data)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 3,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/scripts/az_eval.py"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "b44c080",
+      "full_hash": "b44c0807e679c04276579cce3dc06eb19de9a9fc",
+      "branch": "master",
+      "time": "2026-09-24T20:30:52-04:00",
+      "timestamp": "2026-09-25T00:30:54Z",
+      "message": "ShardFoundry: Oxford Compact scroll-video closeout (leopard personas, CAIN flows, color-correct HEVC, provenance hardening)",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 40,
+      "files": [
+        "edge0-intel/SESSION_2026-09-24.md",
+        "edge0-intel/integrity.json",
+        "edge0-intel/scripts/integrity.py",
+        "edge0-intel/scripts/make_oxford_compact.py",
+        "edge0-intel/scripts/scroll_video.js",
+        "edge0-intel/scripts/validate_page.js",
+        "edge0-intel/variants/README.md",
+        "edge0-intel/variants/oxford_compact__aurora.html",
+        "edge0-intel/variants/oxford_compact__carbon.html",
+        "edge0-intel/variants/oxford_compact__oxford.html",
+        "edge0-intel/variants/oxford_compact__parchment.html",
+        "edge0-intel/variants/oxford_compact__prism.html",
+        "edge0-intel/variants/sheets/sheet_aurora.png",
+        "edge0-intel/variants/sheets/sheet_carbon.png",
+        "edge0-intel/variants/sheets/sheet_oxford.png",
+        "edge0-intel/variants/sheets/sheet_parchment.png",
+        "edge0-intel/variants/sheets/sheet_prism.png",
+        "edge0-intel/variants/sheets/sheet_prism__video.png",
+        "edge0-intel/variants/stills/oxford_compact__aurora/1.png",
+        "edge0-intel/variants/stills/oxford_compact__aurora/2.png",
+        "edge0-intel/variants/stills/oxford_compact__aurora/3.png",
+        "edge0-intel/variants/stills/oxford_compact__aurora/4.png",
+        "edge0-intel/variants/stills/oxford_compact__carbon/1.png",
+        "edge0-intel/variants/stills/oxford_compact__carbon/2.png",
+        "edge0-intel/variants/stills/oxford_compact__carbon/3.png",
+        "edge0-intel/variants/stills/oxford_compact__carbon/4.png",
+        "edge0-intel/variants/stills/oxford_compact__oxford/1.png",
+        "edge0-intel/variants/stills/oxford_compact__oxford/2.png",
+        "edge0-intel/variants/stills/oxford_compact__oxford/3.png",
+        "edge0-intel/variants/stills/oxford_compact__oxford/4.png",
+        "edge0-intel/variants/stills/oxford_compact__parchment/1.png",
+        "edge0-intel/variants/stills/oxford_compact__parchment/2.png",
+        "edge0-intel/variants/stills/oxford_compact__parchment/3.png",
+        "edge0-intel/variants/stills/oxford_compact__parchment/4.png",
+        "edge0-intel/variants/stills/oxford_compact__prism/1.png",
+        "edge0-intel/variants/stills/oxford_compact__prism/2.png",
+        "edge0-intel/variants/stills/oxford_compact__prism/3.png",
+        "edge0-intel/variants/stills/oxford_compact__prism/4.png",
+        "edge0-intel/video/oxford_compact__oxford.mp4",
+        "edge0-intel/video/oxford_compact__prism.mp4"
       ],
       "gap_counts": {
         "total": "62",

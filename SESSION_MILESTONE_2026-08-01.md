@@ -875,3 +875,29 @@ Verified output: 51 awards, $9,348,544.60 total obligation, CCBHC grant present.
 | **Files Changed** | 2 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md  |
 | **Gap Counts** | 62 total, 53 open, 9 resolved |
 
+
+### Post-Commit Audit — `3a4d0c3` — 2026-09-24T03:55:16Z — ✅ PASS
+
+| Field | Value |
+|-------|-------|
+| **Commit** | `3a4d0c3` |
+| **Branch** | `master` |
+| **Time** | 2026-09-23T23:55:14-04:00 |
+| **Message** | ShardFoundry: per-task outcomes capture (Ouroboros difficulty frontier data) |
+| **Verification** | ✅ PASS (35 passed, 0 failed) |
+| **Files Changed** | 3 file(s): SESSION_MILESTONE_2026-08-01.json SESSION_MILESTONE_2026-08-01.md edge0-intel/scripts/az_eval.py  |
+| **Gap Counts** | 62 total, 53 open, 9 resolved |
+
+
+### Post-Commit Audit — `b44c080` — 2026-09-25T00:30:54Z — ✅ PASS
+
+| Field | Value |
+|-------|-------|
+| **Commit** | `b44c080` |
+| **Branch** | `master` |
+| **Time** | 2026-09-24T20:30:52-04:00 |
+| **Message** | ShardFoundry: Oxford Compact scroll-video closeout (leopard personas, CAIN flows, color-correct HEVC, provenance hardening) |
+| **Verification** | ✅ PASS (35 passed, 0 failed) |
+| **Files Changed** | 40 file(s): edge0-intel/SESSION_2026-09-24.md edge0-intel/integrity.json edge0-intel/scripts/integrity.py edge0-intel/scripts/make_oxford_compact.py edge0-intel/scripts/scroll_video.js edge0-intel/scripts/validate_page.js edge0-intel/variants/README.md edge0-intel/variants/oxford_compact__aurora.html edge0-intel/variants/oxford_compact__carbon.html edge0-intel/variants/oxford_compact__oxford.html edge0-intel/variants/oxford_compact__parchment.html edge0-intel/variants/oxford_compact__prism.html edge0-intel/variants/sheets/sheet_aurora.png edge0-intel/variants/sheets/sheet_carbon.png edge0-intel/variants/sheets/sheet_oxford.png edge0-intel/variants/sheets/sheet_parchment.png edge0-intel/variants/sheets/sheet_prism.png edge0-intel/variants/sheets/sheet_prism__video.png edge0-intel/variants/stills/oxford_compact__aurora/1.png edge0-intel/variants/stills/oxford_compact__aurora/2.png edge0-intel/variants/stills/oxford_compact__aurora/3.png edge0-intel/variants/stills/oxford_compact__aurora/4.png edge0-intel/variants/stills/oxford_compact__carbon/1.png edge0-intel/variants/stills/oxford_compact__carbon/2.png edge0-intel/variants/stills/oxford_compact__carbon/3.png edge0-intel/variants/stills/oxford_compact__carbon/4.png edge0-intel/variants/stills/oxford_compact__oxford/1.png edge0-intel/variants/stills/oxford_compact__oxford/2.png edge0-intel/variants/stills/oxford_compact__oxford/3.png edge0-intel/variants/stills/oxford_compact__oxford/4.png edge0-intel/variants/stills/oxford_compact__parchment/1.png edge0-intel/variants/stills/oxford_compact__parchment/2.png edge0-intel/variants/stills/oxford_compact__parchment/3.png edge0-intel/variants/stills/oxford_compact__parchment/4.png edge0-intel/variants/stills/oxford_compact__prism/1.png edge0-intel/variants/stills/oxford_compact__prism/2.png edge0-intel/variants/stills/oxford_compact__prism/3.png edge0-intel/variants/stills/oxford_compact__prism/4.png edge0-intel/video/oxford_compact__oxford.mp4 edge0-intel/video/oxford_compact__prism.mp4  |
+| **Gap Counts** | 62 total, 53 open, 9 resolved |
+

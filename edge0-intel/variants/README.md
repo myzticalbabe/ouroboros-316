@@ -39,6 +39,8 @@ caption ever sits on a dash.
 ```
 variants/oxford_compact__<theme>.html   the 5 pages (self-contained, 57 KB)
 variants/sheets/sheet_<theme>.png       2x2 contact sheet, 4 scroll positions
+variants/sheets/sheet_<theme>__video.png same 4 positions sampled FROM the shipped
+                                        mp4 (drift check: structural diff <=0.92%)
 variants/stills/<page>/1..4.png         the individual 1920x1080 stills
 video/oxford_compact__oxford.mp4        heritage theme, HEVC 1080p, 44.0 s
 video/oxford_compact__prism.mp4         glass theme,    HEVC 1080p, 44.0 s
