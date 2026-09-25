@@ -7,7 +7,7 @@ reviewed commit; run `check` before consequential runs (sweeps, serves).
 
 Usage:
   python scripts/integrity.py record   # (re)baseline tracked files
-  python scripts/integrity.py check    # exit 0 clean, 1 drift (lists files)
+  python scripts/integrity.py check    # exit 0 clean, 1 drift/missing/new (lists files)
   python scripts/integrity.py sources  # hash large source artifacts once
                                        # (models, refusal dirs) for provenance
 """
@@ -20,13 +20,23 @@ BASE = r"C:\Users\clint\edge0-intel"
 STATE = os.path.join(BASE, "integrity.json")
 SOURCES = os.path.join(BASE, "SOURCES.sha256")
 
-TRACKED_EXTS = (".py", ".bat", ".md", ".json")
-TRACKED_DIRS = ("scripts", "tests")
+# .js: scroll_video.js / validate_page.js are the capture + gate scripts —
+# the 2026-09-24 audit found they were never hashed at all.
+TRACKED_EXTS = (".py", ".js", ".bat", ".md", ".json", ".html", ".mp4", ".png")
+# variants/ (generated pages + README) and video/ (published captures) were
+# added 2026-09-24: they shipped with ZERO baseline entries, so drift in the
+# actual deliverables was undetectable.
+TRACKED_DIRS = ("scripts", "tests", "variants", "video")
+# integrity.json is deliberately NOT tracked (FU8, 2026-09-24). It used to
+# be, and its self-hash could never match: `record` hashes the old bytes and
+# then the write changes them -> permanent self-drift that masked real drift.
+# (Also de-duplicated the twice-listed SVI_SPEC.md.)
 TRACKED_FILES = ("HANDOFF.md", "TECHNIQUES.md", "SVI_SPEC.md", "RAM_RUNBOOK.md",
-                 "STRATUM_THESIS.md", "SESSION_2026-09-23.md", "SVI_SPEC.md",
+                 "STRATUM_THESIS.md", "SESSION_2026-09-23.md",
+                 "SESSION_2026-09-24.md",
                  "EMERGENT_GAP_AUDIT.md", "TOOL_GAP_AUDIT.md",
                  "PEBBLES_BAMBAM.md", "RUN_GEMMA_SURGERY.bat",
-                 "RUN_LING_SWEEP.bat", "integrity.json")
+                 "RUN_LING_SWEEP.bat")
 SKIP_DIRS = {"__pycache__", "graft", ".graph", ".cache"}
 
 SOURCE_ARTIFACTS = [
@@ -51,7 +61,9 @@ def collect():
     for d in TRACKED_DIRS:
         root = os.path.join(BASE, d)
         for dirpath, dirs, files in os.walk(root):
-            dirs[:] = [x for x in dirs if x not in SKIP_DIRS]
+            # frames_* = scroll_video.js capture scratch (auto-cleaned; only
+            # exists mid-capture and can hold 1300+ jpgs)
+            dirs[:] = [x for x in dirs if x not in SKIP_DIRS and not x.startswith("frames_")]
             for fn in sorted(files):
                 if fn.endswith(TRACKED_EXTS):
                     p = os.path.join(dirpath, fn)
@@ -81,12 +93,17 @@ def main():
         drift = [k for k in base if base[k] != now.get(k, None)]
         new = [k for k in now if k not in base]
         gone = [k for k in base if k not in now]
-        if drift or gone:
-            print(f"DRIFT: {len(drift)} modified, {len(gone)} missing")
-            for k in drift[:20] + gone[:10]:
+        # `new` FAILS as of 2026-09-24: it used to exit 0 as an FYI, which is
+        # how scripts/make_oxford_compact.py went unnoticed — created after the
+        # last `record`, so its edits could never drift against a hash that did
+        # not exist. An unrecorded file under a tracked path is unreviewed;
+        # `record` after reviewing it is what makes it visible from then on.
+        if drift or gone or new:
+            print(f"DRIFT: {len(drift)} modified, {len(gone)} missing, {len(new)} new")
+            for k in drift[:20] + gone[:10] + new[:10]:
                 print(f"  {k}")
             return 1
-        print(f"clean: {len(now)} files match ({len(new)} new untracked)")
+        print(f"clean: {len(now)} files match")
         return 0
     lines = []
     for p in SOURCE_ARTIFACTS:
