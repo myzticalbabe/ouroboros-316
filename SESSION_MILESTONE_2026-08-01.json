@@ -171,9 +171,9 @@
     "board_confirmed": "7/9",
     "board_owls": 5,
     "board_undisclosed": 2,
-    "last_commit": "b44c080",
-    "last_commit_time": "2026-09-24T20:30:52-04:00",
-    "total_commits": 65
+    "last_commit": "0e53e70",
+    "last_commit_time": "2026-09-24T20:42:30-04:00",
+    "total_commits": 66
   },
   "commits": [
     {
@@ -1946,6 +1946,35 @@
         "edge0-intel/variants/stills/oxford_compact__prism/4.png",
         "edge0-intel/video/oxford_compact__oxford.mp4",
         "edge0-intel/video/oxford_compact__prism.mp4"
+      ],
+      "gap_counts": {
+        "total": "62",
+        "open": "53",
+        "resolved": "9"
+      }
+    },
+    {
+      "hash": "0e53e70",
+      "full_hash": "0e53e70f42246151a53c4196abb6ed5037d8bf45",
+      "branch": "master",
+      "time": "2026-09-24T20:42:30-04:00",
+      "timestamp": "2026-09-25T00:42:31Z",
+      "message": "ShardFoundry: Oxford video parity recapture + sheet drift diff + Desktop MP4 forensic audit",
+      "verification": {
+        "status": "PASS",
+        "passed": 35,
+        "failed": 0
+      },
+      "files_changed": 8,
+      "files": [
+        "SESSION_MILESTONE_2026-08-01.json",
+        "SESSION_MILESTONE_2026-08-01.md",
+        "edge0-intel/DESKTOP_MP4_AUDIT_evidence.json",
+        "edge0-intel/SESSION_2026-09-24.md",
+        "edge0-intel/integrity.json",
+        "edge0-intel/variants/README.md",
+        "edge0-intel/variants/sheets/sheet_oxford__video.png",
+        "edge0-intel/video/oxford_compact__oxford.mp4"
       ],
       "gap_counts": {
         "total": "62",

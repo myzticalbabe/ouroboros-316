@@ -24,10 +24,15 @@ two-way gates), the 5 covenant articles, a ledger strip, and the non-goals
 pull-quote. Each theme emits every animation name it references — 15 names,
 all with real `@keyframes`.
 
-The figures are original shaded vector illustrations drawn inside the
-generator — red topknot + white bone + leopard-print tunic for PEBBLES;
-white tuft, leopard-print loincloth, bone chest strap and club for BAM-BAM —
-not WB artwork, and self-contained (no network, no image files). The flow
+The figures are original **photoreal-rendered** vector illustrations drawn
+inside the generator — form-shading + terminator gradients, ambient occlusion
+at every joint, two-light speculars (soft key + sharp fill), lidded eyes with
+radial iris, limbal ring and double catchlight; red topknot + white bone +
+leopard-print tunic for PEBBLES; white tuft, leopard-print loincloth, bone
+chest strap and grain-shaded club for BAM-BAM — not WB artwork, and
+self-contained (no network, no image files). All filters are static, so a
+capture frame costs one rasterization, and the tonal count inside the figures
+measures 253 quantized levels vs ~6–10 for the earlier flat version. The flow
 charts borrow CAIN's node language: `nodeGlow` on every node, one
 role-coloured `<marker>` per edge (a marker resolves `currentColor` from its
 own `<defs>`, never from the path referencing it — the old single shared
@@ -37,7 +42,7 @@ caption ever sits on a dash.
 ## Artifacts
 
 ```
-variants/oxford_compact__<theme>.html   the 5 pages (self-contained, 57 KB)
+variants/oxford_compact__<theme>.html   the 5 pages (self-contained, 94 KB)
 variants/sheets/sheet_<theme>.png       2x2 contact sheet, 4 scroll positions
 variants/sheets/sheet_<theme>__video.png same 4 positions sampled FROM the shipped
                                         mp4 (drift check: structural diff <=0.92%)
