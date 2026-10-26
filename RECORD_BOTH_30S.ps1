@@ -1,4 +1,4 @@
-# RECORD_BOTH_30S.ps1 — working screen-recorder protocol (verified 2026-10-26).
+﻿# RECORD_BOTH_30S.ps1 - working screen-recorder protocol (verified 2026-10-26).
 #
 # Problem it solves: gdigrab captures only what is on screen. Kilo's window
 # kept missing from clips because it was minimized/behind. This script finds
@@ -28,18 +28,8 @@ public class WR {
 '@
 
 function Find-Window($substr) {
-  $found = @()
-  [WR]::EnumWindows({
-    param($h, $l)
-    if ([WR]::IsWindowVisible($h)) {
-      $sb = New-Object Text.StringBuilder 256
-      [void][WR]::GetWindowText($h, $sb, 256)
-      $t = $sb.ToString()
-      if ($t -ne '' -and $t -like "*$substr*") { $script:found += @{ H = $h; T = $t } }
-    }
-    return $true
-  }, [IntPtr]::Zero) | Out-Null
-  return $found
+  Get-Process | Where-Object { $_.MainWindowHandle -ne 0 -and $_.MainWindowTitle -like "*$substr*" } |
+    Select-Object @{N='H';E={$_.MainWindowHandle}}, @{N='T';E={$_.MainWindowTitle}}
 }
 
 $free = Find-Window 'Freebuff' | Select-Object -First 1
@@ -68,7 +58,7 @@ New-Item -ItemType Directory -Force -Path $outDir | Out-Null
 $check = Join-Path $outDir 'arrange_check.png'
 & ffmpeg -y -v error -f gdigrab -framerate 1 -i desktop -frames:v 1 `
   -vf 'scale=1440:900' $check
-Write-Host "Arrangement check: $check — inspect before clips run."
+Write-Host "Arrangement check: $check - inspect before clips run."
 
 for ($i = 1; $i -le 2; $i++) {
   $ts = Get-Date -Format 'yyyyMMdd_HHmmss'
@@ -80,4 +70,4 @@ for ($i = 1; $i -le 2; $i++) {
   & ffprobe -v error -show_entries format=duration `
     -of default=noprint_wrappers=1 $out
 }
-Write-Host 'Done — 2 clips in HTML_MP4.'
+Write-Host 'Done - 2 clips in HTML_MP4.'
