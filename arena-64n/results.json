@@ -1,0 +1,14 @@
+{
+ "candidate": "synthesis-C-base-plus-early-stopping-graft",
+ "hidden": 64,
+ "base": "C-numpy-tanh-adam",
+ "grafts": [
+  "early-stopping-on-train-plateau (from B)"
+ ],
+ "train_accuracy": 1.0,
+ "test_accuracy": 0.9833,
+ "seconds": 0.1,
+ "seed": 7,
+ "epochs_run": 30,
+ "best_epoch": 22
+}

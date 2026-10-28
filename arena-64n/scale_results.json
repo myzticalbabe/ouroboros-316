@@ -1,0 +1,83 @@
+[
+ {
+  "hidden": 16,
+  "params": 1210,
+  "train_accuracy": 1.0,
+  "test_accuracy": 0.9778,
+  "seconds": 0.1,
+  "epochs_run": 45,
+  "best_epoch": 37
+ },
+ {
+  "hidden": 32,
+  "params": 2410,
+  "train_accuracy": 1.0,
+  "test_accuracy": 0.9861,
+  "seconds": 0.1,
+  "epochs_run": 35,
+  "best_epoch": 27
+ },
+ {
+  "hidden": 64,
+  "params": 4810,
+  "train_accuracy": 1.0,
+  "test_accuracy": 0.9833,
+  "seconds": 0.1,
+  "epochs_run": 30,
+  "best_epoch": 22
+ },
+ {
+  "hidden": 128,
+  "params": 9610,
+  "train_accuracy": 1.0,
+  "test_accuracy": 0.9889,
+  "seconds": 0.3,
+  "epochs_run": 29,
+  "best_epoch": 21
+ },
+ {
+  "hidden": 256,
+  "params": 19210,
+  "train_accuracy": 0.9972,
+  "test_accuracy": 0.9778,
+  "seconds": 0.4,
+  "epochs_run": 21,
+  "best_epoch": 13
+ },
+ {
+  "hidden": 512,
+  "params": 38410,
+  "train_accuracy": 0.9965,
+  "test_accuracy": 0.9806,
+  "seconds": 1.3,
+  "epochs_run": 21,
+  "best_epoch": 13
+ },
+ {
+  "hidden": 1024,
+  "params": 76810,
+  "train_accuracy": 0.9854,
+  "test_accuracy": 0.9556,
+  "seconds": 2.2,
+  "epochs_run": 18,
+  "best_epoch": 10
+ },
+ {
+  "hidden": 2048,
+  "params": 153610,
+  "train_accuracy": 0.9819,
+  "test_accuracy": 0.9556,
+  "seconds": 6.9,
+  "epochs_run": 24,
+  "best_epoch": 16
+ },
+ {
+  "hidden": 4096,
+  "params": 307210,
+  "train_accuracy": 0.977,
+  "test_accuracy": 0.95,
+  "seconds": 11.6,
+  "epochs_run": 22,
+  "best_epoch": 14
+ }
+]

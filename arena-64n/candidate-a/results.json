@@ -1,0 +1,8 @@
+{
+ "candidate": "A-numpy-relu-sgd",
+ "hidden": 64,
+ "train_accuracy": 0.9944,
+ "test_accuracy": 0.9806,
+ "seconds": 0.5,
+ "seed": 7
+}

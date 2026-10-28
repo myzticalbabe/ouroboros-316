@@ -1,0 +1,13 @@
+{
+ "shard": "synthesis",
+ "hidden": 32,
+ "seed": 7,
+ "source": "solution.py (C base + B early-stopping graft)",
+ "train_accuracy": 1.0,
+ "test_accuracy": 0.9861,
+ "seconds": 0.2,
+ "epochs_run": 35,
+ "best_epoch": 27,
+ "params": 2410,
+ "budget": "fast"
+}

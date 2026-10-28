@@ -1,0 +1,8 @@
+{
+ "candidate": "C-numpy-tanh-adam",
+ "hidden": 64,
+ "train_accuracy": 1.0,
+ "test_accuracy": 0.9861,
+ "seconds": 0.2,
+ "seed": 7
+}

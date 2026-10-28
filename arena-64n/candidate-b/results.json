@@ -1,0 +1,9 @@
+{
+ "candidate": "B-sklearn-mlp-adam",
+ "hidden": 64,
+ "train_accuracy": 0.9736,
+ "test_accuracy": 0.9639,
+ "seconds": 0.2,
+ "seed": 7,
+ "n_iter": 46
+}
