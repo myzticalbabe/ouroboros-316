@@ -1,0 +1,83 @@
+#!/bin/bash
+# pre-commit — Block commits with gap-count drift
+# Runs verify_gaps.sh from the repo root (clint/).
+
+set -e
+
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT" || exit 1
+
+# ---------------------------------------------------------------------------
+# Standing-order drift (generated instruction blocks)
+#
+# The blocks in AGENTS.md, .claude/CLAUDE.md and .config/{kilo,opencode}/AGENTS.md
+# are GENERATED from C:/Azazael/azazael/docs/agent_orders/*.md by
+# tools/agent_orders_sync.py. Hand-editing one of them produces a lane that reads
+# instructions describing a check that no longer exists -- the exact failure this
+# generation exists to prevent.
+#
+# It runs on EVERY commit in this repo, not only when a governed file is staged,
+# because it has to: none of the four governed files is committable here —
+# `AGENTS.md` is untracked, `.claude/` is untracked, and `.config/` is gitignored
+# (`.gitignore:89`). A staged-files trigger would therefore never fire, which is
+# a gate that is present and dead. `--hook` compares the targets that exist,
+# PRINTS the ones it skipped, and fails when none exist, so a green result always
+# means at least one block was actually compared.
+# ---------------------------------------------------------------------------
+ORDERS_TOOL="C:/Azazael/azazael/tools/agent_orders_sync.py"
+
+if true; then
+  echo ""
+  echo "=========================================="
+  echo "  PRE-COMMIT: Standing-Order Drift"
+  echo "=========================================="
+  echo ""
+  ORDERS_EXIT=0
+  if [ ! -f "$ORDERS_TOOL" ]; then
+    echo "  BLOCKED: $ORDERS_TOOL not found."
+    echo "  Those blocks are generated from that checkout's docs/agent_orders/."
+    echo "  Restore the checkout, then retry."
+    exit 1
+  fi
+  if ! command -v python >/dev/null 2>&1; then
+    echo "  BLOCKED: no 'python' on PATH, so the drift check cannot run."
+    exit 1
+  fi
+  ORDERS_OUT="$(python "$ORDERS_TOOL" --hook 2>&1)" || ORDERS_EXIT=$?
+  echo "$ORDERS_OUT" | sed 's/^/  /'
+  if [ "$ORDERS_EXIT" -ne 0 ]; then
+    echo ""
+    echo "  COMMIT BLOCKED: a generated instruction block is stale."
+    echo "  Fix:  python \"$ORDERS_TOOL\" --apply"
+    echo "        then review the diff and re-stage."
+    echo "  Override (declared, not silent): ALLOW_AGENT_ORDERS_DRIFT=1 git commit ..."
+    if [ "${ALLOW_AGENT_ORDERS_DRIFT:-0}" = "1" ]; then
+      echo "  (override set -- continuing with KNOWN-STALE blocks)"
+    else
+      exit 1
+    fi
+  else
+    echo "  OK: generated blocks match their sources."
+  fi
+fi
+
+echo ""
+echo "=========================================="
+echo "  PRE-COMMIT: Gap Count Verification"
+echo "=========================================="
+echo ""
+
+if bash scripts/verify_gaps.sh; then
+  echo ""
+  echo "=========================================="
+  echo "  ✅ Gap counts consistent — commit allowed"
+  echo "=========================================="
+  exit 0
+else
+  echo ""
+  echo "=========================================="
+  echo "  ❌ COMMIT BLOCKED: Gap count drift detected"
+  echo "  Fix the inconsistencies above, then retry."
+  echo "=========================================="
+  exit 1
+fi
