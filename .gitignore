@@ -78,6 +78,23 @@ kali_monitor.log
 ollama_server.log
 AUTO_DOWNLOADER.log
 
+# Housekeeping 2026-11-11: runtime state / caches (machine-local, may hold tokens)
+.pams/
+.pmb/
+.engram/
+.cargo/
+.grantforge/
+.mindwalk/
+.azazael_snapshots/
+OneDrive/
+yggdrasil_forest/
+temp_llama_cpp_build/
+azazael.archived-20261021/
+_chrome_profile_*/
+*.bak
+*.bak.*
+.env.*
+
 # Non-investigation directories (full Azazael ecosystem)
 azazael/
 azazael-dev/
