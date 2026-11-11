@@ -186,6 +186,6 @@ NOTE: This is the plain-text broadcast version. For the redacted HTML
 letter (default shareable, CONCERN 8 removed), see COMPLAINT_LETTER_REDACTED.html.
 For the full HTML with CONCERN 8 (access-controlled), see COMPLAINT_LETTER.html.
 
-INVESTIGATION NOT YET COMPLETE: 42 of 49 gaps remain open. This complaint
+INVESTIGATION NOT YET COMPLETE: 40 of 49 gaps remain open. This complaint
 informs all parties of known facts. Send only when investigation is complete.
 ================================================================================

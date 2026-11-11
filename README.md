@@ -2,7 +2,7 @@
 
 **Subject:** Berks Counseling Center (BCC), EIN 23-2043478  
 **Location:** 645 Penn Street, Reading, PA 19601  
-**Status:** Investigation in progress. 42 of 49 gaps open. 7 resolved (1 advanced). <strong>Nothing to be sent until investigation complete.</strong> All complaint letters and COI requests are drafted but on hold. <strong>BCC leadership is excluded from all complaint recipient lists — complaints go to oversight bodies only.</strong>  
+**Status:** Investigation in progress. 40 of 49 gaps open. 9 resolved (1 advanced). <strong>Nothing to be sent until investigation complete.</strong> All complaint letters and COI requests are drafted but on hold. <strong>BCC leadership is excluded from all complaint recipient lists — complaints go to oversight bodies only.</strong>  
 **Last updated:** August 1, 2026  
 **Git:** 22 commits (`c48461a` initial → `68006be` final portfolio fix)
 
@@ -43,7 +43,7 @@ If you're new to this investigation, read in this order:
 
 | File | Description | Key Contents |
 |------|-------------|-------------|
-| **[INVESTIGATION_GAPS.html](INVESTIGATION_GAPS.html)** | Complete gap inventory — the investigation's organizing document | 49 gaps (5 critical, 14 high, 18 medium, 12 low), 7 resolved, blocked methods, completed-vs-incomplete summary |
+| **[INVESTIGATION_GAPS.html](INVESTIGATION_GAPS.html)** | Complete gap inventory — the investigation's organizing document | 49 gaps (5 critical, 14 high, 18 medium, 12 low), 9 resolved, blocked methods, completed-vs-incomplete summary |
 | **[FUNDING_REVIEW.html](FUNDING_REVIEW.html)** | Funding sources, financial trends, supervisory agency analysis | Revenue breakdown ($12.49M FY2025), federal/state/private funding mapped, worm fleet z-score anomaly detection, cross-document pattern detection |
 | **[INVESTMENT_PEOPLE_REPORT.html](INVESTMENT_PEOPLE_REPORT.html)** | **Canonical board roster** — detailed profiles of all key people | 9 board members with verified employers, FINRA CRD #5964768 (Plageman), Edward Jones/TPUC network map, investment governance triangle, complete compensation timeline |
 | **[DEEP_DIVE_HARM.html](DEEP_DIVE_HARM.html)** | Proven harm evidence, documented risks, alleged claims | 6 proven harm items (court records, OIG reports), 3 documented risks, 2 alleged claims, 16 people profiled, 3 data corrections |
