@@ -1,8 +1,8 @@
 # Live-view cursor swarm v0 — mint brief (freebuff lane, sole execution authority)
 
-> Brief status: NUMBERLESS until record id is minted (rule 1). Executor: read
-> ONLY this file. All inputs are embedded; any chase read is a defect in this
-> brief, report it before executing.
+> Brief status: BOUND to record #2209, landed as c45b83d, improved here.
+> Executor: read ONLY this file. All inputs are embedded; any chase read
+> is a defect in this brief, report it before executing.
 
 ## 0. Authority, turf, pin, expiry
 
@@ -18,8 +18,9 @@
 - **Forbidden:** editing any atlas/manifest, `git add -A`, bulk commits,
   touching model dirs, network pulls, background daemons.
 - **HEAD pin (advisory — executor re-derives first):**
-  `288ba27cca5ba6e3556b99c226eac53c0120f4f9`, 2026-11-12 11:00 -0500,
+  `c45b83d6c65d9ba7cc2066ede21ab498b7caf098`, 2026-11-12 11:20 -0500,
   tree clean (`git status --porcelain` empty, verified same session).
+  Prior pin `288ba27` superseded by the brief's own landing commit.
   Valid only after executor's own `git log --oneline -5` +
   `git status --porcelain`. Orders survive the pin going stale.
 - **Expiry:** numbers trusted until **2026-11-19**. After that, re-measure
@@ -58,9 +59,13 @@ wiring is v1, explicitly out of scope):
 
 - Each glyph: position = tree + node, color = verdict
   (green landed / amber held / red rolled back), label = claim text.
-- Frame index with per-frame SHA-256 chain over
-  `{frame, cursor_id, tree, node, verdict, claim, prev_hash}` appended to the
-  JSONL log — replayable cursor-by-cursor.
+- Frame index with per-frame SHA-256 chain appended to the JSONL log —
+  replayable cursor-by-cursor. Row schema (exact, no extra fields without
+  bumping this spec):
+  `{frame, cursor_id, tree, node, verdict, claim, prev_hash, hash}` where
+  `hash` = sha256 of canonical JSON (`sort_keys=True`, no whitespace) of
+  the other seven fields, and `prev_hash` = previous row's `hash`
+  (`"GENESIS"` for row 1).
 - Unrendered cursor = not-happened: the page refuses glyph-less ledger rows
   (renders them in a quarantine strip, never on the tree).
 - Scope is TWO atlases only (sentinel + hives). The other nine are v1.
@@ -75,19 +80,45 @@ wiring is v1, explicitly out of scope):
    quarantine strip for glyph-less rows.
 3. Write `LIVEVIEW_CURSOR_SWARM_V0.jsonl` (new file): ≥20 ledger rows with
    valid hash chain (`prev_hash` of row N = sha256 of row N−1 canonical JSON).
-4. In-place proof: open the page (double-click; no server), screenshot the
-   verdict colors, run the chain verifier (step 5) — paste outputs into DONE.
-5. Chain verifier (one command, no new files — run inline):
-   `C:/Azazael/.venvs/py316t/Scripts/python.exe -c
-   "import json,hashlib;[verify each line's prev_hash]"` — must print
-   `CHAIN OK N=20+` (adapt N to rows written).
+4. In-place proof: open the page (double-click; no server), capture the
+   embedded self-test line (step 6) + screenshot, run the chain verifier
+   (step 5) — paste all three outputs into DONE.
+5. Chain verifier (readable heredoc script, no new files, 316t — run
+   exactly; readability is a proof-bar requirement, one-liners forbidden):
+   ```
+   C:/Azazael/.venvs/py316t/Scripts/python.exe <<'PYEOF'
+   import json, hashlib
+   rows = [json.loads(l) for l in
+           open('LIVEVIEW_CURSOR_SWARM_V0.jsonl') if l.strip()]
+   prev = 'GENESIS'
+   for r in rows:
+       assert r['prev_hash'] == prev, ('prev mismatch', r.get('frame'))
+       body = {k: v for k, v in r.items() if k != 'hash'}
+       expect = hashlib.sha256(
+           json.dumps(body, sort_keys=True).encode()).hexdigest()
+       assert r['hash'] == expect, ('hash mismatch', r.get('frame'))
+       prev = r['hash']
+   print(f'CHAIN OK N={len(rows)}')
+   PYEOF
+   ```
+   Must print `CHAIN OK N=20+` (N = rows written, minimum 20).
+6. Page self-test (greppable, screenshot is secondary): the HTML must render
+   `<pre id="selftest">SELFTEST: glyphs=5 green=G amber=A red=R
+   quarantine=Q CHAIN=OK</pre>` computed by its own script after render
+   (counts from the live DOM, never hard-coded). Acceptance greps this
+   line; a missing or hard-coded line FAILS the step.
 
 ## 4. Acceptance (commands, not assertions)
 
 - DONE = `LIVEVIEW_CURSOR_SWARM_V0.html` + `.jsonl` landed in ONE commit
-  (explicit pathspec, ≤2 files) with: screenshot showing green/amber/red
-  glyphs + quarantine strip, `CHAIN OK` line, `git show --stat HEAD` read
-  back, tree clean after, DONE recorded in PMB + Engram.
+  (explicit pathspec, ≤2 files) with: SELFTEST line grepped from the page,
+  screenshot showing green/amber/red glyphs + quarantine strip, `CHAIN OK`
+  line, `git show --stat HEAD` read back, tree clean after, DONE recorded
+  in PMB + Engram.
+- **Timebox: 45 minutes executor time.** On expiry, land whatever is
+  proven (partial ledger + passing rows only), report the remainder as the
+  named next step with its own proof bar. An unlanded remainder is not a
+  failure; an unreported one is.
 - Remainder (v1 live wiring to the worm swarm) is NOT done here — reported
   as the named next step, not attempted.
 
@@ -98,9 +129,10 @@ Record every error, near-miss and falsification at ENCOUNTER TIME into
 `{source, item_id, title, body, kind}`; body >= 40 chars; kinds: error_fix |
 lesson | mandate | sop_rule | violation | anti_pattern. Do not defer to
 session end — reconstruction loses detail and over-weights what is still
-salient. Validate: `tools/merge_bake_lane.py --lane <file> --apply`
-(substitute the repo's merge tool if the path differs; record the
-substitution as the first harvest row — never silently swap tooling).
+salient. Validate: `C:/Azazael/.venvs/py316t/Scripts/python.exe
+C:/Azazael/azazael/tools/merge_bake_lane.py --lane <file> --apply`
+(absolute path — the minter verified it exists; the relative `tools/`
+form does NOT exist in this repo and must not be used).
 
 ## 6. Evidence-via-tools (no harvest row or proof without invocation)
 
