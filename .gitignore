@@ -168,3 +168,12 @@ C/
 Created
 For
 Updated
+
+# Housekeeping 2026-11-12: secrets + nested checkouts + upgrade blobs (never land)
+.ssh/
+armada/
+mindwalk/
+openplanter/
+jev-ultrafast/
+engram_upgrade_3.7.1/
+*.zip
