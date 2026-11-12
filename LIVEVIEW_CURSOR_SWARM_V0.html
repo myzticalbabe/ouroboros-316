@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cursor Swarm v0 — sentinel + hives (brief #2209)</title>
+<style>
+  body { font-family: monospace; background: #0b0e14; color: #d8dee9; margin: 2em; }
+  h1, h2 { color: #88c0d0; }
+  .tree { margin-left: 1em; }
+  .cursor { display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%;
+            text-align: center; line-height: 1.2em; margin-right: .4em; }
+  .landed { background: #2ea043; } .held { background: #d29922; } .rolledback { background: #f85149; }
+  .claim { color: #8b949e; }
+  #quarantine { border: 1px dashed #f85149; padding: .5em; margin-top: 1em; }
+  #selftest { background: #161b22; padding: .5em; margin-top: 1em; color: #7ee787; }
+  .src { color: #6e7681; font-size: .85em; }
+</style>
+</head>
+<body>
+<h1>Cursor Swarm v0 — onscreen verdicts</h1>
+<p class="src">Source (read-only, never edited): ~/yggdrasil_forest/domain_atlas_sentinel.json (12 trees, 16 414 B) +
+~/yggdrasil_forest/domain_atlas_hives.json (36 trees, 153 711 B). Scripted cursors; live wiring is v1.</p>
+
+<h2>sentinel — RULES DEV</h2>
+<div class="tree" id="t-sentinel">
+  <div>SCRIPTS <span class="cursor landed" data-v="landed" title="c1">●</span> <span class="claim">c1: gate_str_replace guard scan — landed</span></div>
+  <div>compliance <span class="cursor landed" data-v="landed" title="c2">●</span> <span class="claim">c2: scanner.py except-pass audit — landed</span></div>
+  <div>sentinel_enforcer · audit_trail · evidence_gate · terence_invariants · mesh_function_preflight · canon_drift_check</div>
+  <div>MANDATES · SOP · SYSTEM_INSTRUCTIONS · ERROR_LOG</div>
+</div>
+
+<h2>hives — SWARM HIVES</h2>
+<div class="tree" id="t-hives">
+  <div>diagnostic (22 worms) <span class="cursor held" data-v="held" title="c3">●</span> <span class="claim">c3: worm health re-probe — held, awaiting clean run</span></div>
+  <div>swarm-core <span class="cursor rolledback" data-v="rolledback" title="c4">●</span> <span class="claim">c4: fan-out batch edit — rolled back, parity mismatch</span></div>
+  <div>telemetry <span class="cursor rolledback" data-v="rolledback" title="c5">●</span> <span class="claim">c5: ledger rewrite — rolled back, denominator missing</span></div>
+</div>
+
+<div id="quarantine"><b>Quarantine (glyph-less rows — never on the tree):</b>
+  <div data-q="1">q1: claim without position — needs tree+node</div>
+  <div data-q="1">q2: verdict without evidence — needs command+output</div>
+</div>
+
+<pre id="selftest">SELFTEST: pending</pre>
+
+<script>
+(function () {
+  var g = document.querySelectorAll('.cursor.landed').length;
+  var a = document.querySelectorAll('.cursor.held').length;
+  var r = document.querySelectorAll('.cursor.rolledback').length;
+  var q = document.querySelectorAll('#quarantine [data-q]').length;
+  var glyphs = g + a + r;
+  var chain = (glyphs === 5 && q === 2) ? 'OK' : 'MISMATCH';
+  document.getElementById('selftest').textContent =
+    'SELFTEST: glyphs=' + glyphs + ' green=' + g + ' amber=' + a +
+    ' red=' + r + ' quarantine=' + q + ' CHAIN=' + chain;
+})();
+</script>
+</body>
+</html>
