@@ -1,0 +1,117 @@
+# BM recovery stub template - rendered to the ESP by zz-p8-esp-stub
+# @P8UUID@ is replaced with the live root filesystem UUID at render time.
+# Rule: no path may fail silently. Every failure prints a named ERROR/WARN,
+# and the last entry always reaches Windows, so a broken root can never
+# leave a menu that boots nothing.
+set p8uuid=@P8UUID@
+set timeout=20
+set default=0
+
+echo "BM stub (p8 hook) - root $p8uuid"
+
+insmod part_gpt
+insmod ext2
+insmod linux
+insmod chain
+insmod fat
+if ! insmod search_fs_uuid; then echo "WARN: module search_fs_uuid unavailable"; fi
+if ! insmod search_fs_file; then echo "WARN: module search_fs_file unavailable"; fi
+
+function p8_find {
+  set root=''
+  if search --no-floppy --fs-uuid --set=root $p8uuid; then
+    return 0
+  fi
+  if search --no-floppy --file /boot/grub/grub.cfg --set=root; then
+    echo "WARN: root located by file search, not by UUID"
+    return 0
+  fi
+  echo "ERROR: root filesystem $p8uuid not found on any device"
+  return 1
+}
+
+function p8_boot_kernel {
+  if [ ! -f $1 ]; then
+    echo "ERROR: missing kernel $1"
+    return 1
+  fi
+  if [ ! -f $2 ]; then
+    echo "ERROR: missing initrd $2 for kernel $1"
+    return 1
+  fi
+  linux $1 root=UUID=$p8uuid ro quiet splash
+  initrd $2
+}
+
+if p8_find; then
+  if [ -f /boot/grub/grub.cfg ]; then
+    set prefix=($root)/boot/grub
+    configfile ($root)/boot/grub/grub.cfg
+    echo "ERROR: root grub.cfg loaded then returned - falling back to menu"
+  else
+    echo "WARN: no /boot/grub/grub.cfg - use the direct entries"
+  fi
+else
+  echo "ERROR: root unreachable - only Windows can boot from here"
+fi
+
+menuentry 'Ubuntu (auto - newest kernel)' {
+  if p8_find; then
+    set k=''
+    for f in /boot/vmlinuz-*; do set k=$f; done
+    set i=''
+    for f in /boot/initrd.img-*; do set i=$f; done
+    if [ -z "$k" ]; then
+      echo "ERROR: no /boot/vmlinuz-* present"
+    else
+      if [ -z "$i" ]; then
+        echo "ERROR: no /boot/initrd.img-* present"
+      else
+        echo "booting $k with $i"
+        p8_boot_kernel $k $i
+      fi
+    fi
+  fi
+}
+
+menuentry 'Ubuntu (recovery console)' {
+  if p8_find; then
+    if [ ! -f /boot/grub/grub.cfg ]; then
+      echo "ERROR: no /boot/grub/grub.cfg - dropping to plain GRUB shell"
+    fi
+    set prefix=($root)/boot/grub
+    normal
+  fi
+}
+
+menuentry 'GRUB diagnostics (read this if a boot fails)' {
+  echo "p8uuid = $p8uuid"
+  echo "root   = $root"
+  echo "prefix = $prefix"
+  echo "--- devices ---"
+  ls
+  if p8_find; then
+    echo "root resolved to: $root"
+    echo "--- /boot ---"
+    ls ($root)/boot
+    echo "--- /boot/grub ---"
+    ls ($root)/boot/grub
+  else
+    echo "root NOT resolvable - filesystem unreadable by this GRUB"
+  fi
+  echo "--- ESP /EFI/ubuntu ---"
+  ls (hd0,gpt1)/EFI/ubuntu
+  echo "--- end diagnostics, returning to menu in 30s ---"
+  sleep 30
+}
+
+menuentry 'Windows 11 (chainload)' {
+  insmod part_gpt
+  insmod fat
+  insmod chain
+  if search --no-floppy --file /EFI/Microsoft/Boot/bootmgfw.efi --set=root; then
+    chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+  else
+    echo "ERROR: bootmgfw.efi not found on any ESP - use the firmware menu"
+  fi
+}
