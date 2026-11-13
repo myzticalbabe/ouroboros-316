@@ -257,7 +257,10 @@ expected — the hook re-rendered it through the template, which carries a comme
 header that differs from the hand-installed v4. Confirm by content instead:
 
 ```bash
-grep -c '^menuentry' /boot/efi/EFI/ubuntu/grub.cfg   # expect 4
+grep -c '^menuentry' /boot/efi/EFI/ubuntu/grub.cfg   # expect 6
+grep -n '^configfile' /boot/efi/EFI/ubuntu/grub.cfg  # expect NO output: a top-level
+                                                     # configfile replaces the menu and
+                                                     # hides every entry below it (v4's bug)
 grep -c "58e46179-d777-4203-a807-8794a3fb2351" /boot/efi/EFI/ubuntu/grub.cfg  # expect >= 2
 ```
 

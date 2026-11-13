@@ -120,7 +120,9 @@ def main() -> int:
         body = stub.read_text(encoding="utf-8") if stub.is_file() else ""
         check(UUID in body, "stub carries the live UUID")
         check("@P8UUID@" not in body, "no @P8UUID@ placeholder left behind")
-        check(body.count("menuentry") == 4, f"stub has 4 menuentries (got {body.count('menuentry')})")
+        check(body.count("menuentry") == 6, f"stub has 6 menuentries (got {body.count('menuentry')})")
+        check(not any(ln.startswith("configfile") for ln in body.splitlines()),
+              "no top-level configfile: the statement that hid every entry below it")
         check("bootmgfw.efi" in body, "stub keeps the Windows chainload")
         logtxt = log.read_text(encoding="utf-8") if log.is_file() else ""
         check("OK: stub re-rendered" in logtxt, f"success logged (log={logtxt.strip()[:80]!r})")

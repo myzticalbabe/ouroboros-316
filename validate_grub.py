@@ -22,7 +22,7 @@ BUILTIN = {
     "set", "echo", "if", "then", "else", "fi", "for", "do", "done", "function",
     "return", "menuentry", "linux", "initrd", "chainloader", "configfile",
     "normal", "search", "ls", "sleep", "insmod", "true", "false", "clear",
-    "reboot", "halt", "exit", "cat", "test", "[",
+    "reboot", "halt", "exit", "cat", "test", "[", "regexp", "fwsetup",
 }
 
 MODULE_FOR = {"linux": "linux", "initrd": "linux", "chainloader": "chain",
