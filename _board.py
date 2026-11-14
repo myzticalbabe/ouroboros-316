@@ -71,12 +71,18 @@ def cmd_claim(args):
 def cmd_done(args):
     bid = int(args.board_id)
     note = args.note or ""
-    b = get_board()
+    # The lane is part of the predicate: a lane may retire only work on its
+    # own queue. Without it, one lane's `done` could retire another lane's
+    # claimed row and that work would vanish -- never finished, only marked
+    # finished. Pass the lane to act for another one.
+    lane = getattr(args, "lane", None) or "opencode"
+    b = get_board(lane)
     ok = b.complete_task(bid, state="done", note=note)
     if ok:
         print(f"retired Board-{bid} as done")
     else:
-        print(f"FAILED to retire Board-{bid} (not claimed?)")
+        print(f"FAILED to retire Board-{bid} (never claimed, not claimed by "
+              f"{lane}, or already retired)")
         return 1
     return 0
 
@@ -84,12 +90,14 @@ def cmd_done(args):
 def cmd_block(args):
     bid = int(args.board_id)
     note = args.note or ""
-    b = get_board()
+    lane = getattr(args, "lane", None) or "opencode"
+    b = get_board(lane)
     ok = b.complete_task(bid, state="blocked", note=note)
     if ok:
         print(f"retired Board-{bid} as blocked")
     else:
-        print(f"FAILED to retire Board-{bid} (not claimed?)")
+        print(f"FAILED to retire Board-{bid} (never claimed, not claimed by "
+              f"{lane}, or already retired)")
         return 1
     return 0
 
@@ -223,11 +231,17 @@ def main():
     p_done = sub.add_parser("done")
     p_done.add_argument("board_id")
     p_done.add_argument("note", nargs="?")
+    p_done.add_argument("lane", nargs="?",
+                        help="the lane the row belongs to (default opencode); "
+                             "a lane may retire only its own work")
     p_done.set_defaults(func=cmd_done)
 
     p_block = sub.add_parser("block")
     p_block.add_argument("board_id")
     p_block.add_argument("note", nargs="?")
+    p_block.add_argument("lane", nargs="?",
+                         help="the lane the row belongs to (default opencode); "
+                              "a lane may retire only its own work")
     p_block.set_defaults(func=cmd_block)
 
     p_stats = sub.add_parser("stats")
