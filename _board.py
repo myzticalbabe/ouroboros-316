@@ -6,7 +6,7 @@ Usage:
     python C:/Users/clint/_board.py done <board_id> "<evidence>"
     python C:/Users/clint/_board.py block <board_id> "<blocker>"
     python C:/Users/clint/_board.py stats [lane]
-    python C:/Users/clint/_board.py tasks [lane] [since_id]
+    python C:/Users/clint/_board.py tasks [lane] [since_id] [--all] [--claimed] [--limit N]
     python C:/Users/clint/_board.py announce <text>
     python C:/Users/clint/_board.py max
     python C:/Users/clint/_board.py store
@@ -38,6 +38,24 @@ def cmd_claim(args):
     agent = args.agent or lane
     b = get_board(lane)
     tasks = b.claim_tasks(lane, limit=limit, agent=agent)
+    # A claim also retires stale COPIES of work already done. That was
+    # invisible, so a claim that retired 10 copies and found no work printed
+    # exactly what a claim that found nothing at all printed -- and the
+    # copies could sit in front of the real work indefinitely.
+    stats = getattr(b, "last_claim_stats", None) or {}
+    dups = stats.get("duplicates_retired")
+    if dups is None:
+        # The attribute exists but carries no claim stats: the backing
+        # LaneMessageBoard does not publish them. That is DIFFERENT from "this
+        # claim retired nothing", and a reader that cannot tell the two apart
+        # is exactly the failure this line was written to prevent. An empty
+        # dict default cannot express it; a missing key can.
+        print("NOTE: this LaneMessageBoard publishes no claim stats "
+              "(no 'duplicates_retired' key) -- a claim that retired copies "
+              "is indistinguishable from one that found nothing")
+    elif dups:
+        print(f"retired {dups} stale duplicate row(s) during this claim; "
+              f"scanned {stats.get('scanned')} of {stats.get('scan_limit')}")
     if not tasks:
         print("NO OPEN TASKS")
         return 0
@@ -88,16 +106,79 @@ def cmd_stats(args):
 
 
 def cmd_tasks(args):
-    lane = args.lane
-    since = int(args.since) if args.since else None
-    b = get_board(lane or "opencode")
-    if lane:
-        tasks = b.poll_tasks(lane, since_id=since)
+    # A lane typo used to reach LaneMessageBoard's constructor and surface as a
+    # raw ValueError traceback, which reads as a broken tool rather than a bad
+    # argument. Name the valid lanes and leave with 2, the same code argparse
+    # uses for a usage error, so scripts can tell "you typed it wrong" apart
+    # from "the board is broken" (1) and "this ran clean" (0).
+    lane = args.lane or "opencode"
+    valid = tuple(getattr(LaneMessageBoard, "VALID_LANES", ()))
+    if valid and lane not in valid:
+        print(f"unknown lane {lane!r}; valid lanes: {', '.join(valid)}")
+        return 2
+    since = None
+    if args.since:
+        try:
+            since = int(args.since)
+        except ValueError:
+            print(f"since_id must be an integer row id, got {args.since!r}")
+            return 2
+    b = get_board(lane)
+    # `--all` is the audit view (retired rows and live leases included);
+    # `--claimed` widens the default view to rows another lane holds.
+    want_all = bool(getattr(args, "all", False))
+    want_claimed = bool(getattr(args, "claimed", False))
+    # poll_tasks caps at 50 by default and the CLI never passed a limit, so the
+    # documented audit view could only ever show the newest 50 rows: measured
+    # against a lane holding 50 open + 475 retired, `tasks --all` printed 50 and
+    # said "total: 50". An audit view that cannot reach the history is the same
+    # defect class as the AttributeError that used to crash this function.
+    # `--all` therefore means "no cap"; `--limit 0` is the explicit spelling and
+    # a positive N is always honoured. poll_tasks slices `tasks[:limit]`, so 0
+    # would return nothing -- the uncapped form has to be a large bound, not 0.
+    uncapped = 10 ** 9
+    explicit = getattr(args, "limit", None)
+    if explicit is None:
+        limit = uncapped if want_all else 50
     else:
-        tasks = b.poll_tasks("opencode", since_id=since)
+        limit = uncapped if int(explicit) == 0 else int(explicit)
+    tasks = b.poll_tasks(lane, since_id=since, limit=limit,
+                         include_retired=want_all,
+                         include_claimed=want_all or want_claimed)
     for t in tasks:
-        print(f"Board-{t.get('board_id')} | {t.get('task_id')} | {t.get('action')} | {str(t.get('detail',''))[:120]}")
-    print(f"total: {len(tasks)}")
+        # poll_tasks returns LaneTask dataclasses, NOT dicts. Calling .get()
+        # on one raised AttributeError, so the documented reader for the
+        # queue crashed on every call and the only way to see work was to
+        # claim it blind. metadata is a dict by default but a legacy row
+        # can carry `"metadata": null`, so it is guarded rather than assumed.
+        meta = t.metadata if isinstance(t.metadata, dict) else {}
+        row_id = meta.get("_row_id")
+        board = f"Board-{row_id}" if row_id is not None else "Board-?"
+        # detail is a string on modern rows and a dict on legacy ones.
+        print(f"{board} | {t.task_id} | {t.action} | {str(t.detail or '')[:120]}")
+    # HED-9: a count without its denominator cannot be audited, and the rows a
+    # cap drops are always the oldest -- the ones an audit view exists for.
+    # The denominator is proved by the poll itself (ask for one row past the
+    # cap) rather than borrowed from `task_stats`: on 2026-11-14 a foreign
+    # lane's in-flight edit to CORE/LaneMessageBoard.py left `_state_conn()`
+    # returning None, so `task_stats` raised AttributeError and a reader that
+    # depended on it reported the queue as unreadable while `poll_tasks` was
+    # still handing out rows. A reader must not lose its own reading to a
+    # counter it does not need.
+    shown = len(tasks)
+    if limit >= uncapped:
+        print(f"total: {shown}")
+    elif since is not None:
+        print(f"total: {shown} (since {since})")
+    else:
+        probe = b.poll_tasks(lane, since_id=since, limit=limit + 1,
+                             include_retired=want_all,
+                             include_claimed=want_all or want_claimed)
+        if len(probe) > limit:
+            print(f"total: {shown} (capped at {limit}; more rows exist -- "
+                  f"pass --limit 0 or --all for the rest)")
+        else:
+            print(f"total: {shown}")
     return 0
 
 
@@ -156,6 +237,12 @@ def main():
     p_tasks = sub.add_parser("tasks")
     p_tasks.add_argument("lane", nargs="?")
     p_tasks.add_argument("since", nargs="?")
+    p_tasks.add_argument("--all", action="store_true",
+                         help="audit view: retired rows and live leases included")
+    p_tasks.add_argument("--claimed", action="store_true",
+                         help="also show rows another lane holds under a live lease")
+    p_tasks.add_argument("--limit", type=int, default=None, metavar="N",
+                         help="max rows (default 50; 0 = no cap; --all implies no cap)")
     p_tasks.set_defaults(func=cmd_tasks)
 
     p_ann = sub.add_parser("announce")
