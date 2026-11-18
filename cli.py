@@ -52,6 +52,32 @@ def cmd_make_owh(args):
     pkg.save(args.output)
     print(f"wrote {args.output}")
 
+def cmd_assemble(args):
+    pkg = OwhPackage.assemble(args.source, args.output)
+    print(f"assembled {args.output} ({pkg.name} {pkg.version})")
+
+def cmd_run(args):
+    path = args.plan
+    if path.endswith(".owh"):
+        pkg = OwhPackage.load(path)
+        plan = pkg.to_plan()
+    else:
+        with open(path) as f:
+            plan = SequentialPlan.from_dict(json.load(f))
+    engine = SequentialEngine(checkpoint_dir=args.checkpoint_dir)
+    res = engine.execute(plan)
+    print("SUCCESS" if res.success else "FAILED")
+    for cp in res.checkpoints:
+        print(" ", cp)
+    if res.state:
+        print("STATE:")
+        for k, v in res.state.items():
+            print(f"  {k}: {v!r}")
+    if res.errors:
+        for e in res.errors:
+            print("ERROR:", e)
+    sys.exit(0 if res.success else 1)
+
 
 def main(argv=None):
     p = argparse.ArgumentParser(prog="ouroboros")
@@ -63,12 +89,18 @@ def main(argv=None):
 
     s = sub.add_parser("run", help="run a sequential plan (.json or .owh)")
     s.add_argument("plan")
+    s.add_argument("--checkpoint-dir", default=None)
     s.set_defaults(func=cmd_run)
 
     s = sub.add_parser("make-owh", help="build a .owh from metadata json")
     s.add_argument("metadata")
     s.add_argument("-o", "--output", required=True)
     s.set_defaults(func=cmd_make_owh)
+
+    s = sub.add_parser("assemble", help="assemble a .owh from a directory")
+    s.add_argument("source")
+    s.add_argument("-o", "--output", required=True)
+    s.set_defaults(func=cmd_assemble)
 
     args = p.parse_args(argv)
     args.func(args)
