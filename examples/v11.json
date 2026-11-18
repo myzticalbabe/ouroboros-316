@@ -1,0 +1,6 @@
+{
+  "steps": [
+    {"name": "a", "version": "3.11", "code": "import sys; result = {'v': sys.version.split()[0]}"},
+    {"name": "b", "version": "3.16t", "code": "import sys; result = {'prev': input_data, 'now': sys.version.split()[0]}", "depends_on": ["a"]}
+  ]
+}

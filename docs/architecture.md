@@ -18,7 +18,12 @@
 - `validate.py` — schema validation
 - `cli.py` — CLI
 
+## Available versions
+Discovered at runtime via `py -0p` plus fallbacks: 3.8, 3.9, 3.10, 3.11, 3.12,
+3.13, 3.14, 3.14t, 3.15, 3.15t, 3.16t. Python 3.6/3.7 are not available
+(EOL, not offered by uv) and are documented as unsupported.
+
 ## Limitations
-C/Rust components (base VM, shared-lib adapters, .so loading) are not built:
-no C/C++/Rust toolchain is available in this environment. The Python-level
-scaffold proves the concept end-to-end via subprocess interpreters.
+The C host embeds CPython 3.14 specifically. True in-process multi-version
+embedding (loading libpython for multiple versions in one process) is not
+implemented due to ABI symbol conflicts; adapters run as subprocesses.
