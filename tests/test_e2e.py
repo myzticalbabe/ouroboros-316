@@ -1,5 +1,7 @@
 import json, os, subprocess, sys
 
+from require_interpreter import require_for_file
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RUST = os.path.join(ROOT, "native", "rust", "target", "release", "ouroboros-rs.exe")
 C_HOST = os.path.join(ROOT, "native", "host", "ouroboros_host.exe")
@@ -15,6 +17,7 @@ def test_rust_e2e_plan():
 
 def test_python_cli_e2e():
     plan = os.path.join(ROOT, "examples", "plan.json")
+    require_for_file(plan)
     r = subprocess.run([sys.executable, "-m", "ouroboros", "run", plan],
                        capture_output=True, text=True, timeout=120, cwd=os.path.dirname(ROOT))
     assert r.returncode == 0, r.stderr
@@ -33,6 +36,7 @@ def test_c_host_e2e():
 
 def test_owh_e2e():
     owh = os.path.join(ROOT, "examples", "cross.owh")
+    require_for_file(owh)
     r = subprocess.run([sys.executable, "-m", "ouroboros", "run", owh],
                        capture_output=True, text=True, timeout=120, cwd=os.path.dirname(ROOT))
     assert r.returncode == 0, r.stderr
