@@ -20,8 +20,9 @@ class ExecutionResult:
 
 
 class SequentialEngine:
-    def __init__(self, adapters: Dict[str, VersionAdapter] = None):
+    def __init__(self, adapters: Dict[str, VersionAdapter] = None, checkpoint_dir: str = None):
         self.adapters = adapters or {}
+        self.checkpoint_dir = checkpoint_dir
 
     def _adapter(self, version: str) -> VersionAdapter:
         if version not in self.adapters:
@@ -33,7 +34,6 @@ class SequentialEngine:
         ordered = plan.topological_sort()
         for step in ordered:
             adapter = self._adapter(step.version)
-            # build input from dependencies
             input_data = None
             if step.depends_on:
                 if len(step.depends_on) == 1:
@@ -45,6 +45,9 @@ class SequentialEngine:
                 res.state[step.name] = result
                 res.checkpoints.append({"step": step.name, "version": step.version,
                                        "ok": True})
+                if self.checkpoint_dir:
+                    from .checkpoint import save_checkpoint
+                    save_checkpoint(self.checkpoint_dir, step.name, step.version, result)
             except Exception as e:
                 res.errors.append(f"{step.name} ({step.version}): {e}")
                 res.checkpoints.append({"step": step.name, "version": step.version,

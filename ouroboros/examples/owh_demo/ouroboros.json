@@ -1,0 +1,17 @@
+{
+  "name": "demo",
+  "version": "1.0",
+  "ouroboros": "1.0",
+  "layers": {
+    "3.14": {
+      "wheel": "demo.whl"
+    }
+  },
+  "sequential_plan": [
+    {
+      "name": "compute",
+      "version": "3.14",
+      "code": "result = 6 * 7"
+    }
+  ]
+}

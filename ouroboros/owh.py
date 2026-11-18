@@ -57,3 +57,22 @@ class OwhPackage:
     @classmethod
     def from_metadata(cls, metadata: Dict[str, Any]) -> "OwhPackage":
         return cls(metadata)
+
+    @staticmethod
+    def assemble(source_dir: str, output: str) -> "OwhPackage":
+        """Assemble a .owh from a directory containing ouroboros.json + layers/."""
+        meta_path = os.path.join(source_dir, "ouroboros.json")
+        with open(meta_path) as f:
+            metadata = json.load(f)
+        pkg = OwhPackage(metadata)
+        # include layer files in zip
+        with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED) as zf:
+            zf.writestr("ouroboros.json", json.dumps(metadata, indent=2))
+            for root, _, files in os.walk(source_dir):
+                for fn in files:
+                    if fn == "ouroboros.json":
+                        continue
+                    full = os.path.join(root, fn)
+                    arc = os.path.relpath(full, source_dir)
+                    zf.write(full, arc)
+        return pkg
