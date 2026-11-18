@@ -19,9 +19,8 @@
 - `cli.py` — CLI
 
 ## Available versions
-Discovered at runtime via `py -0p` plus fallbacks: 3.8, 3.9, 3.10, 3.11, 3.12,
-3.13, 3.14, 3.14t, 3.15, 3.15t, 3.16t. Python 3.6/3.7 are not available
-(EOL, not offered by uv) and are documented as unsupported.
+All of 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13, 3.14, 3.14t, 3.15, 3.15t,
+3.16t. Python 3.6.8 and 3.7.9 were installed from python.org installers.
 
 ## Limitations
 The C host embeds CPython 3.14 specifically. True in-process multi-version

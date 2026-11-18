@@ -71,6 +71,8 @@ def discover() -> Dict[str, Interpreter]:
 
     # 2. direct well-known paths
     direct = [
+        r"C:\Program Files\Python36\python.exe",
+        r"C:\Program Files\Python37\python.exe",
         r"C:\Users\clint\AppData\Local\Programs\Python\Python314\python.exe",
         r"C:\Users\clint\AppData\Local\Programs\Python\Python315\python.exe",
         r"C:\Azazael\.venvs\py316t\Scripts\python.exe",
