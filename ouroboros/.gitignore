@@ -1,0 +1,10 @@
+# Build artifacts
+native/host/*.exe
+native/host/*.obj
+native/rust/target/
+*.pyc
+__pycache__/
+.pytest_cache/
+installed_owh/
+dist/
+build/
