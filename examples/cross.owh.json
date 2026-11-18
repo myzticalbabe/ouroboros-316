@@ -1,0 +1,10 @@
+{
+  "name": "cross-version-demo",
+  "version": "1.0",
+  "ouroboros": "1.0",
+  "sequential_plan": [
+    {"name": "step_a", "version": "3.8", "code": "result = 2 + 3"},
+    {"name": "step_b", "version": "3.14", "code": "result = input_data * 10", "depends_on": ["step_a"]},
+    {"name": "step_c", "version": "3.16t", "code": "import sys; result = {'ver': sys.version.split()[0], 'val': input_data}", "depends_on": ["step_b"]}
+  ]
+}
