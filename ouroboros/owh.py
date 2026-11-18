@@ -39,6 +39,8 @@ class OwhPackage:
 
     def save(self, path: str):
         """Save as a .owh zip archive with ouroboros.json metadata."""
+        parent = os.path.dirname(os.path.abspath(path))
+        os.makedirs(parent, exist_ok=True)
         with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as zf:
             zf.writestr("ouroboros.json", json.dumps(self.metadata, indent=2))
 
@@ -66,6 +68,8 @@ class OwhPackage:
             metadata = json.load(f)
         pkg = OwhPackage(metadata)
         # include layer files in zip
+        parent = os.path.dirname(os.path.abspath(output))
+        os.makedirs(parent, exist_ok=True)
         with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED) as zf:
             zf.writestr("ouroboros.json", json.dumps(metadata, indent=2))
             for root, _, files in os.walk(source_dir):
