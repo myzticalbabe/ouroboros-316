@@ -1,0 +1,10 @@
+{
+  "name": "numpy-cross-version",
+  "version": "1.0",
+  "ouroboros": "1.0",
+  "sequential_plan": [
+    {"name": "compile", "version": "3.13", "code": "import numpy as np; a = np.arange(12).reshape(3,4); result = {'shape': list(a.shape), 'sum': int(a.sum()), 'mean': float(a.mean())}"},
+    {"name": "validate", "version": "3.14", "code": "assert input_data['shape'] == [3,4]; assert input_data['sum'] == 66; result = {'validated': True}", "depends_on": ["compile"]},
+    {"name": "bench", "version": "3.16t", "code": "import sys, numpy as np; b = np.arange(12).reshape(3,4); result = {'version': sys.version.split()[0], 'numpy': np.__version__, 'sum': int(b.sum())}", "depends_on": ["validate"]}
+  ]
+}
