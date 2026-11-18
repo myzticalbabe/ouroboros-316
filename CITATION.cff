@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "Azazael"
+    given-names: "Contributors"
+    orcid: "https://orcid.org/0000-0000-0000-0000"
+title: "Ouroboros 316: Self-Healing System"
+version: 0.1.0
+doi: "10.5281/zenodo.XXXXXXX"
+date-released: 2026-11-18
+url: "https://github.com/myzticalbabe/ouroboros-316"
+preferred-citation:
+  type: "software"
+  authors:
+    - family-names: "Azazael"
+      given-names: "Contributors"
+  title: "Ouroboros 316: Self-Healing System"
+  year: 2026
+  version: "0.1.0"
+  doi: "10.5281/zenodo.XXXXXXX"
+  url: "https://github.com/myzticalbabe/ouroboros-316"
+keywords:
+  - "self-healing"
+  - "automated"
+  - "recovery"
+  - "monitoring"
+  - "resilience"
+license: "CDDL-1.1"
+repository: "https://github.com/myzticalbabe/ouroboros-316"
+repository-code: "https://github.com/myzticalbabe/ouroboros-316"
+repository-artifact: "https://pypi.org/project/ouroboros-316/"
