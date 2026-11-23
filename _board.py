@@ -5,9 +5,10 @@ Usage:
     python C:/Users/clint/_board.py claim <lane> [limit] [agent]
     python C:/Users/clint/_board.py done <board_id> "<evidence>"
     python C:/Users/clint/_board.py block <board_id> "<blocker>"
+    python C:/Users/clint/_board.py release <board_id> [lane]
     python C:/Users/clint/_board.py stats [lane]
     python C:/Users/clint/_board.py tasks [lane] [since_id] [--all] [--claimed] [--limit N]
-    python C:/Users/clint/_board.py announce <text>
+    python C:/Users/clint/_board.py announce [--lane L] <text>
     python C:/Users/clint/_board.py max
     python C:/Users/clint/_board.py store
 """
@@ -102,13 +103,58 @@ def cmd_block(args):
     return 0
 
 
+def cmd_release(args):
+    bid = int(args.board_id)
+    # A release is the third outcome of a claim, between `done` and `block`:
+    # the row was never this lane's work to finish, so retiring it would lie
+    # and waiting out the 30-minute lease wastes a batch slot. Lane is part of
+    # the predicate for the same reason it is in done/block -- a lane may hand
+    # back only what it holds.
+    lane = args.lane or "opencode"
+    b = get_board(lane)
+    ok = b.release_task(bid, lane=lane)
+    if not ok:
+        print(f"FAILED to release Board-{bid} (not claimed by {lane}, or "
+              f"already retired)")
+        return 1
+    print(f"released Board-{bid} back to the {lane} queue")
+    # "released" is a return value, not a reading. What a reader can see is the
+    # state row: it must be 'available' with no claimant, and `attempts` must
+    # have survived so a row bounced N times does not read as brand new (the
+    # old implementation deleted the row and erased it).
+    import sqlite3
+    with sqlite3.connect(STORE, timeout=5) as con:
+        row = con.execute(
+            "SELECT state, claimed_by, attempts FROM lane_task_state "
+            "WHERE board_id=? AND lane=?", (bid, lane)
+        ).fetchone()
+    if row is None:
+        print(f"READ-BACK FAILED: no lane_task_state row board_id={bid} "
+              f"lane={lane}")
+        return 1
+    state, claimed_by, attempts = row
+    print(f"read back: Board-{bid} state={state} claimed_by={claimed_by} "
+          f"attempts={attempts}")
+    if state != "available" or claimed_by is not None:
+        print("READ-BACK MISMATCH: the row is not available to the queue")
+        return 1
+    return 0
+
+
 def cmd_stats(args):
     lane = args.lane
     b = get_board(lane or "opencode")
     if lane:
         print(lane, b.task_stats(lane))
     else:
-        for ln in ("opencode", "kilo", "freebuff", "crush", "agy"):
+        # The list of lanes is LaneMessageBoard's, not this file's. The tuple
+        # here still named crush and agy after VALID_LANES was narrowed to
+        # three (azazael 29008f12), so bare `stats` offered two lanes that no
+        # longer exist and a reader had no way to tell the list was stale.
+        # The fallback is the narrowed three, not the old five: if the import
+        # ever stops exporting VALID_LANES, stats must still name real lanes.
+        for ln in (getattr(LaneMessageBoard, "VALID_LANES", None)
+                   or ("opencode", "kilo", "freebuff")):
             print(ln, b.task_stats(ln))
     return 0
 
@@ -192,10 +238,26 @@ def cmd_tasks(args):
 
 def cmd_announce(args):
     text = " ".join(args.text)
-    b = get_board()
+    # The lane IS the row's attribution. get_board() defaults to "opencode",
+    # so an announcement made from the freebuff lane landed with source=opencode
+    # (telemetry_store.db id 51567) -- a lane reading its own announcements off
+    # the board could not tell who posted one.
+    lane = getattr(args, "lane", None) or "opencode"
+    b = get_board(lane)
     rid = b.post_announcement(text)
     print(f"announced Board-{rid}")
-    # read back
+    # Read the row back. "announced" is the bus counter's opinion; the source
+    # column is what a reader actually sees, and a post that did not land is
+    # indistinguishable from one that did until you look.
+    import sqlite3
+    with sqlite3.connect(STORE, timeout=5) as con:
+        row = con.execute(
+            "SELECT source, topic FROM memorybus_queue WHERE id = ?", (rid,)
+        ).fetchone()
+    if not row:
+        print(f"READ-BACK FAILED: no memorybus_queue row id={rid}")
+        return 1
+    print(f"read back: Board-{rid} source={row[0]} topic={row[1]}")
     return 0
 
 
@@ -244,6 +306,13 @@ def main():
                               "a lane may retire only its own work")
     p_block.set_defaults(func=cmd_block)
 
+    p_release = sub.add_parser("release")
+    p_release.add_argument("board_id")
+    p_release.add_argument("lane", nargs="?",
+                           help="the lane the row belongs to (default opencode); "
+                                "a lane may release only what it holds")
+    p_release.set_defaults(func=cmd_release)
+
     p_stats = sub.add_parser("stats")
     p_stats.add_argument("lane", nargs="?")
     p_stats.set_defaults(func=cmd_stats)
@@ -260,6 +329,9 @@ def main():
     p_tasks.set_defaults(func=cmd_tasks)
 
     p_ann = sub.add_parser("announce")
+    p_ann.add_argument("--lane", default=None,
+                       help="lane the announcement is attributed to "
+                            "(default opencode)")
     p_ann.add_argument("text", nargs="+")
     p_ann.set_defaults(func=cmd_announce)
 

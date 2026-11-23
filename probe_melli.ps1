@@ -73,8 +73,8 @@ try {
             $fail = 1
         }
     }
-    if ((Test-Path -LiteralPath $vmlinuz) -and ((Get-Item -LiteralPath $vmlinuz).Length -ne 14840832)) {
-        Log 'FAIL: vmlinuz.efi size drifted from 14840832 (VMD kernel 2026-11-13)'; $fail = 1
+    if ((Test-Path -LiteralPath $vmlinuz) -and ((Get-Item -LiteralPath $vmlinuz).Length -ne 14935040)) {
+        Log 'FAIL: vmlinuz.efi size drifted from 14935040 (VMD+FB2 screen-console kernel 2026-11-13, sha 86e5e3c7)'; $fail = 1
     }
 
     if ($fail -eq 0) { Log 'PROBE-PASS: P4 + BCD + ESP all present, sizes match install-time record' }

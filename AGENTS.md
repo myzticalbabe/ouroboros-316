@@ -31,7 +31,7 @@ python C:/Users/clint/_board.py claim freebuff 10            # PASS: rows, or "N
   stop. Do not proceed silently on the assumption that it would have said GO.
 - `NO-GO` from the supervisor is not advice. It blocks non-memory work.
 
-### 0.2 The turn contract — a turn is not finished until all seven are done
+### 0.2 The turn contract — a turn is not finished until all six are done
 
 1. **Claim** the work by id (`_board.py claim <lane>`), never by memory of what
    was pending.
@@ -43,9 +43,6 @@ python C:/Users/clint/_board.py claim freebuff 10            # PASS: rows, or "N
 5. **Retire** the row: `done <id> "<command + result>"` or `block <id> "<blocker>"`.
    A claim you cannot retire did not happen.
 6. **Status row**: `_board.py report <lane> <status> <detail>` then read it back.
-   The detail MUST include the command, exit code, and output line.
-7. **Record** — `pmb_record_batch(items=[...])` with all turn outcomes (activity/decision/lesson/fact/goal).
-   One atomic batch per turn; use absolute dates. Encounter-time errors written immediately; outcomes batched at turn end.
 
 Prose is not a deliverable. `done`, `fixed`, `passes`, `verified`, `landed` are
 claims; each one carries the command behind it.
@@ -114,19 +111,6 @@ A handoff (`docs/HANDOFF_<date>.md`) carries, in this order and nothing else:
   untracked work, killing a process you did not start).
 - A gate fails for a reason you cannot explain **after one diagnostic pass**. Report
   the failure, the exact command and its output; do not paper over it with a retry.
-
-### 0.7 Automatic ratchet — first error tightens the session (2026-11-09)
-
-- A falsified claim HALTS that line of work until tool-investigated. No
-  continuation on the thread, no new claims off it.
-- Never present a guess as a conclusion. Unverified, or tool-ran — nothing
-  between.
-- Never ask the principal to do the investigation. Investigate first; ask
-  only when the evidence genuinely forks.
-- Never enshrine what one surface showed. Absence claims name their
-  surface; one negative never closes the question.
-- After one falsification, every further claim that session carries its
-  command. The ratchet moves one direction only.
 <!-- AO:start-here END -->
 
 <!-- AO:session-order START -->
@@ -141,10 +125,10 @@ gate fails when a copy drifts.**
 
 ### The chain (this is the precedence — nothing else claims to go "first")
 
-0. **GATE** — `C:/Azazael/.venvs/py316t/Scripts/python.exe C:/Azazael/azazael/tools/mcp_startup_gate.py --fix`
-1. **MEMORY LOAD** — `C:/Azazael/.venvs/py316t/Scripts/python.exe C:/Azazael/azazael/tools/session_start.py "<task>"`
+0. **GATE** — `python C:/Azazael/azazael/tools/mcp_startup_gate.py --fix`
+1. **MEMORY LOAD** — `python C:/Azazael/azazael/tools/session_start.py "<task>"`
    (runs the gate as its own step 0, prints both PMB and Engram context)
-2. **VERDICT** — `supervisor__verdict` MCP tool (or `C:/Azazael/.venvs/py316t/Scripts/python.exe tools/supervisor_mcp.py --verdict`).
+2. **VERDICT** — `supervisor__verdict` MCP tool (or `engram_supervise.py`).
    `NO-GO` blocks non-memory work; `GO` proceeds.
 3. **SKILLS + CANON** — loaded **on trigger**, not up front: a skill when its
    description matches the task, a canon document when the task touches what it
@@ -246,24 +230,15 @@ They only make answers wrong.
   paragraph is the resolution of a direct contradiction between the PMB block's
   "batch them together at turn end" and the ERROR CAPTURE rules.)
 
-### Tooling facts — measured 2026-11-08, verify before contradicting
+### Tooling facts — measured 2026-10-30, verify before contradicting
 
-- **The production interpreter is 3.16t free-threaded:**
-  `C:/Azazael/.venvs/py316t/Scripts/python.exe` (3.16.0a1, `sys._is_gil_enabled()`
+- **The production interpreter is 3.15t free-threaded:**
+  `C:/Azazael/.venvs/py315t/Scripts/python.exe` (3.15.0rc3, `sys._is_gil_enabled()`
   is False). `python` on PATH is 3.14.7 **with** the GIL. Run the suite with the
-  3.16t interpreter; a "hang" measured under 3.14 is not evidence about production.
-- **3.15t is now the GIL sidecar** for packages without `cp316t` wheels:
-  `C:/Azazael/.venvs/py315t/Scripts/python.exe` (3.15.0rc3, free-threaded).
-  Use only when a dependency refuses to install under 3.16t.
-- **Session startup, test suite, commit hooks, and all gates use 3.16t:**
-  Measured 2026-11-09: gate, session_start, supervisor --verdict, and 7398 tests
-  (type_check, pmb, mcp, agent_orders, anti_pattern, compliance) all pass under 3.16t.
-  The "suite not proven" blocker is resolved.
-- **6,975 tests exist and nothing gates them.** (Collected 2026-11-05 by
-  `python tools/head_state.py --write`, which runs `pytest --collect-only -q` under
-  the 3.15t interpreter and writes `state/head.json`. This line said 5,380 for
-  three days, then 6,277 for three more, because no gate read this file — which is
-  why `tools/prompt_check.py` now does, and it is what caught the 6,277.) No stanza of
+  3.15t interpreter; a "hang" measured under 3.14 is not evidence about production.
+- **6,277 tests exist and nothing gates them.** (Collected 2026-11-02 with the
+  3.15t interpreter; the figure in this line said 5,380 for three days because no
+  gate read this file, which is why `tools/prompt_check.py` now does.) No stanza of
   the commit hook runs pytest. Before concluding "the suite is slow", check that it is not *stuck*:
   metering helpers need a bound, and a test with no timeout can wedge a whole run
   (two did, for months — the compliance gate under test read a 5.4 GB store on
@@ -577,15 +552,17 @@ instruction files and existed in no source, so its figures had no owner and no
 check: the shard counts below were three days stale and nothing could notice. One
 source now, generated into every lane, verified by `orders-in-sync`.
 
-- **Any moving picture, clip or multi-frame render:** read
-  C:\Users\clint\YGGDRASIL_RENDER_PLAYBOOK_2026-10-30.md (historical — archived, path dead) before writing a
-  renderer. Frame index from the URL (never the clock), one Chrome profile per
+- **Any moving picture, clip or multi-frame render:** the 2026-10-30 playbook
+  (historical — YGGDRASIL_RENDER_PLAYBOOK_2026-10-30.md is not in this tree, so
+  the file reference is removed rather than left pointing at nothing) established
+  the method: frame index from the URL (never the clock), one Chrome profile per
   frame, absolute output paths, never edit a running bash script, verify frame
   count + 3 distinct hashes + read the decoded frames. Chrome/Puppeteer capture,
   never PIL.
-- **Forest clips (built, on disk):** `C:\Users\clint\yggdrasil_forest\YGGDRASIL_FOREST_{WINDOWS,UBUNTU,KALI}.mp4`;
-  per-environment measurements in `atlas_<env>.json` (1395 shards / 894 public — measured 2026-10-30). Ubuntu has no browser, so its clip was rendered by Kali's
-  chromium against Ubuntu's own data — the clip states this.
+- **Forest clips (historical 2026-10-30):** three environment renders were built
+  then (1395 shards / 894 public — measured 2026-10-30); per-environment
+  measurements live in the forest atlases (`atlas_<env>.json`). No mp4 renders
+  are on disk in this tree now — re-render before quoting clips as current.
 - **Kilo session history is archived and cleared.** Archive:
   `G:\KILO_SESSION_ARCHIVE_2026-10-30\` (`MANIFEST.json`, per-table
   `.jsonl.gz`, `schema.sql`, `dirs/*.tar.gz`; 561 282 rows, all hashes verified,
@@ -777,7 +754,7 @@ lane without the tool just adds a row and a hop.
 drifts. Edit this file, never a copy.
 
 A best practice that depends on someone remembering it is not a practice, it is
-a hope. These twelve are the ones this tree has actually paid for, each with the
+a hope. These eight are the ones this tree has actually paid for, each with the
 command that proves it and the failure that bought it.
 
 ### HED-1 — Verify by running, never by importing
@@ -910,97 +887,6 @@ A practice that exists in one tool and not in the canon is a practice the next
 session will re-derive — which is the whole cost these eight rules exist to stop
 paying.
 
-### HED-9 — A denominator is part of the reading
-
-```
-python tools/reading_audit.py            # every artifact: pass, or why it cannot
-python tools/reading_audit.py --strict    # findings fail
-```
-
-`4/5` and `1/1` are the same number only to someone who has never asked what the
-five were. An artifact that prints a passing count without the population it was
-drawn from cannot be audited, and the failure is silent in the direction that
-matters: the missing rows are always the ones that would have failed.
-`reading_audit.py` reads the JSON reports under `logs/` and `state/`, and for each
-one either proves a denominator exists or names the artifact as
-`denominator_free`. Measured on the first run, 2026-11-05: 65 files, 5 with a
-verifiable verdict, **4 denominator-free** — `esquire_capture.json` (CLEAN),
-`hook_evidence.json` (PASS), `one_click.json` (PASS), `pin_audit.json` (CLEAN).
-Blindness index 4/5 (80%): four fifths of the verdicts in this tree could not say
-what they were a share of.
-
-**Advisory by default, `--strict` to fail.** A gate red on day one is a gate
-someone switches off, and the point is to make the debt visible every run.
-
-### HED-10 — The settings surface must be able to see itself
-
-```
-python tools/settings_shadow.py          # who reads each knob, and who does not
-python tools/defaults_profile.py --show   # walks the file: every leaf, off ones too
-```
-
-HED-5 said settings live in one file. It did not say anything checked that the
-file was *in force*. Measured 2026-11-05: `--show` printed five hard-coded lines,
-so `preflight.disk_floor_gb`, `retention.composite_eviction` and every knob added
-later were invisible from the only surface that is supposed to show them; five
-knobs (`ast_audit`, `fallback.on_error`, `fallback.record`, `golden_arrow.enabled`,
-`golden_arrow.strict`) are declared and read by no module at all; and
-`src/CORE/data_retention.py:425` hand-parses `defaults.json` instead of going
-through `read_default`, so `retention.composite_eviction` could not be verified
-from the surface by construction. `--show` now **walks** the profile (19 leaves
-today) and `settings_shadow.py` names every orphan knob and every bypassing
-reader, with the line number.
-
-Two false findings were earned building it, and both are recorded because they
-are the same mistake: a detector that trusts a shape instead of behaviour. A
-module was exempted for *naming* a reader (so `deep_dive.py` and
-`PYTHON_MANAGER.py` were skipped for defining a wrapper called `setting`), and a
-key was counted as read when its string merely appeared in the file. A read is a
-reader **called with a literal key**; nothing weaker counts.
-
-### HED-11 — A leg's state is recorded, or the verdict is a guess
-
-```
-python tools/leg_ledger.py               # audits the last logs/deep_dive.json
-python tools/leg_ledger.py --strict      # violations fail
-```
-
-HED-6 named four states — `ok`, `empty`, `skipped`, `error` — and the point was
-that they must never collapse. A report that records only `detail` collapses all
-four into prose: a leg that returned nothing, a leg that never ran and a leg that
-succeeded all read as a line of English. `leg_ledger.py` re-reads the report and
-fails the classes that lose information — `missing_field`, `unknown_state`,
-`state_mismatch` (a leg whose status contradicts its own detail) and
-`verdict_mismatch` (a PASS over a failed leg). Exit 2 when there is no report:
-*nothing audited, which is not a pass*.
-
-### HED-12 — Every head carries a gap
-
-```
-python tools/head_audit.py               # refs, worktrees, lane heads, and the gaps
-python tools/head_audit.py --strict       # exit 1 while any gap is open
-```
-
-A head is where work is *thought* to be. Four kinds drift independently, and none
-of them raises an exception: a local branch can be behind its upstream; a branch
-can hold commits no other ref names (so `git branch -D` is a deletion); a
-worktree can sit detached on a commit no ref contains, surviving only in the
-reflog until `git gc`; and a lane instruction file can stop matching the digest
-`state/head.json` recorded, at which point the lane is obeying bytes nobody
-re-read. Measured on the first run, 2026-11-05: 10 refs, 6 worktrees, 7 lane heads
-(all matching), **16 gaps** — including 4 detached worktree heads that were in
-**no ref at all**, 3 prunable registrations, 4 branches with no upstream
-configured, and the lane branch **+6/−8** against its own published head, which
-means every "verified" claim in that tree was a claim about a tree that is not the
-published one.
-
-Two readings had to be fixed before the numbers were true, and both are the same
-class of defect this rule exists to catch: two refs at one commit were counted as
-each holding commits exclusively (30 reported three times), and `str.strip()` on
-git's stdout ate the leading space of the first porcelain line, so the first path
-in the dirty list came back missing its first character — a wrong name that read
-as a real one.
-
 ### ONE CLICK — the defaults have a single front door
 
 ```
@@ -1022,14 +908,8 @@ so when the index is empty rather than narrowing silently.
 
 **Verify this block:**
 `python tools/agent_orders_sync.py --check && python tools/defaults_profile.py --check`
-`python tools/reading_audit.py && python tools/settings_shadow.py && python tools/head_audit.py`
-`python tools/deep_dive.py --forensics` — the `hyper_edge` leg must report `ok`
-
-**The four auditors run as one leg** (`tools/deep_dive.py`, `leg_hyper_edge`) and
-their knobs are `hyper_edge.reading_audit`, `.settings_shadow`, `.leg_ledger`,
-`.head_audit` and `.strict` in `config/defaults.json`. Advisory by default; HED-2's
-debt model, not four more switches to leave off.
 <!-- AO:hyper-edge END -->
+
 <!-- AO:evolve-to-resolve START -->
 <!-- generated by azazael/tools/agent_orders_sync.py from azazael/docs/agent_orders/08_evolve_to_resolve.md -- edit the source, not this copy -->
 
@@ -1189,6 +1069,24 @@ python C:/Azazael/azazael/tools/mcp_startup_gate.py --fix
   needs an explicit GO, and `TREE_REPAIR` must satisfy its six conditions before
   any `D:` clone.
 - **Freebuff owns Eve** (`eve_unleashed/`); other lanes hands off.
+
+## Expose the screen before any work starts (2026-11-13)
+
+**Order: a session's first act after the gate is to say the machine is visible.**
+A human cannot check an agent's claim about pixels they cannot take. So before
+queue work, print the capability and its landing folder — not a promise to take
+a screenshot later:
+
+**Historical (2026-11-13, not in this tree):** the capture tools this section
+named — sys_screenshot.py and gui_act.py — were developed on another branch and
+are absent here, so the commands are removed rather than left pointing at files
+that do not exist. The Win+PrtScr naming notes and the gated-automation protocol
+described those tools and go with them. Until they merge, do not claim screen
+visibility from a tool run; the standing part is the order at the top: say what
+the session can actually show, and if there is no capture capability in this
+tree, say so instead of printing a tool path.
+- Human-side check: an agent that says it clicked something must be able to show
+  the before and after frames. A claim about the UI without a frame is a claim.
 
 ## Critique loop — every restart carries one expiry
 

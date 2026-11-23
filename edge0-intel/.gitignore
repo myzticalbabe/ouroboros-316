@@ -19,3 +19,4 @@ parts*.txt
 sweep_status.json
 models/*.gguf
 !models/*/README.md
+_upstream/
