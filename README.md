@@ -1,9 +1,9 @@
 # Berks Counseling Center Investigation — Index
 
-**Subject:** Berks Counseling Center (BCC), EIN 23-2043478  
-**Location:** 645 Penn Street, Reading, PA 19601  
-**Status:** Investigation in progress. 40 of 49 gaps open. 9 resolved (1 advanced). <strong>Nothing to be sent until investigation complete.</strong> All complaint letters and COI requests are drafted but on hold. <strong>BCC leadership is excluded from all complaint recipient lists — complaints go to oversight bodies only.</strong>  
-**Last updated:** August 1, 2026  
+**Subject:** Berks Counseling Center (BCC), EIN 23-2043478
+**Location:** 645 Penn Street, Reading, PA 19601
+**Status:** Investigation in progress. 40 of 49 gaps open. 9 resolved (1 advanced). **Nothing to be sent until investigation complete.** All complaint letters and COI requests are drafted but on hold. **BCC leadership is excluded from all complaint recipient lists — complaints go to oversight bodies only.**
+**Last updated:** August 1, 2026
 **Git:** 22 commits (`c48461a` initial → `68006be` final portfolio fix)
 
 ---
@@ -27,7 +27,7 @@ If you're new to this investigation, read in this order:
 | 3 | **[FUNDING_REVIEW.html](FUNDING_REVIEW.html)** | Complete funding breakdown, worm fleet anomaly analysis, oversight agency mapping | 10 min |
 | 4 | **[INVESTMENT_PEOPLE_REPORT.html](INVESTMENT_PEOPLE_REPORT.html)** | Canonical board roster with detailed profiles, FINRA verification, conflict assessments | 10 min |
 | 5 | **[DEEP_DIVE_HARM.html](DEEP_DIVE_HARM.html)** | 6 proven harm items, 3 documented risks, alleged claims, all 16 people profiled | 10 min |
-| 6 | **[COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html)** | Formal complaint — <strong>redacted version (default shareable)</strong>, CONCERN 8 removed, 9 concerns, <strong>10 oversight-body recipients (BCC excluded)</strong>, 35+ CC across 9 categories | 10 min |
+| 6 | **[COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html)** | Formal complaint — **redacted version (default shareable)**, CONCERN 8 removed, 9 concerns, **10 oversight-body recipients (BCC excluded)**, 35+ CC across 9 categories | 10 min |
 | 7 | **[COI_REQUEST_LETTER.html](COI_REQUEST_LETTER.html)** | Legally-grounded COI policy request under IRC §6104(d) — route through oversight body, not BCC directly | 5 min |
 | 8 | **[AUDIT_REPORT.html](AUDIT_REPORT.html)** | Cross-document audit — 6 critical, 12 medium, 8 low issues found and tracked | 10 min |
 
@@ -55,9 +55,9 @@ If you're new to this investigation, read in this order:
 
 | File | Description | Recipients | Status |
 |------|-------------|-----------|--------|
-| **[COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html)** | <strong>REDACTED — default shareable version.</strong> Formal complaint with 9 concerns. CONCERN 8 (MMJ patient allegation) removed for privacy. BCC leadership excluded — oversight bodies only. | 10 primary, 35+ CC across 9 categories | <strong>Ready. Not sent.</strong> |
-| **[COMPLAINT_LETTER.html](COMPLAINT_LETTER.html)** | <strong>FULL VERSION — access-controlled.</strong> All 10 concerns including CONCERN 8 (single-source, uncorroborated patient allegation). BCC leadership excluded — oversight bodies only. See redacted version for external sharing. | 10 primary, 35+ CC across 9 categories | Ready. Not sent. |
-| **[COI_REQUEST_LETTER.html](COI_REQUEST_LETTER.html)** | Conflict of Interest policy request under IRC §6104(d). <strong>Do NOT send directly to BCC.</strong> Route through PA AG Charitable Trusts or SAMHSA for enforcement-backed request. | PA AG, SAMHSA (not BCC directly) | **Ready. Route through oversight body.** |
+| **[COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html)** | **REDACTED — default shareable version.** Formal complaint with 9 concerns. CONCERN 8 (MMJ patient allegation) removed for privacy. BCC leadership excluded — oversight bodies only. | 10 primary, 35+ CC across 9 categories | **Ready. Not sent.** |
+| **[COMPLAINT_LETTER.html](COMPLAINT_LETTER.html)** | **FULL VERSION — access-controlled.** All 10 concerns including CONCERN 8 (single-source, uncorroborated patient allegation). BCC leadership excluded — oversight bodies only. See redacted version for external sharing. | 10 primary, 35+ CC across 9 categories | Ready. Not sent. |
+| **[COI_REQUEST_LETTER.html](COI_REQUEST_LETTER.html)** | Conflict of Interest policy request under IRC §6104(d). **Do NOT send directly to BCC.** Route through PA AG Charitable Trusts or SAMHSA for enforcement-backed request. | PA AG, SAMHSA (not BCC directly) | **Ready. Route through oversight body.** |
 | **[DDAP_COMPLAINT.html](DDAP_COMPLAINT.html)** | PA DDAP licensing complaint — MMJ patient rights | PA DDAP Bureau of Program Licensure | **Ready. Hold for corroboration.** |
 | **[COMPLAINT_AGENCY_LETTER.txt](COMPLAINT_AGENCY_LETTER.txt)** | Plain-text agency version of complaint letter — BCC excluded, oversight bodies only | Same as COMPLAINT_LETTER_REDACTED.html | **Ready.** |
 
@@ -65,15 +65,15 @@ If you're new to this investigation, read in this order:
 
 | File | Description | Key Contents |
 |------|-------------|-------------|
-| **[STRATEGY_OVERVIEW.html](STRATEGY_OVERVIEW.html)** | <strong>Executive summary — one-page strategy for journalists and legislators.</strong> | Why BCC isn't contacted, who IS contacted (9 categories, 35+ recipients), 5 evidence categories, 5 critical gaps, next steps, reading order. |
-| **[SYSTEMIC_CORRUPTION_JUSTIFICATION.html](SYSTEMIC_CORRUPTION_JUSTIFICATION.html)** | <strong>Why BCC leadership is NOT contacted.</strong> Standalone justification document. | 7 reasons: board-funder interlocks, CFO>CEO pay, Treasurer's undisclosed consulting firm, litigation against oversight (898 MDA 2017), HUD compliance risk, complainant safety (CONCERN 8), self-protecting governance structure. Evidence cross-reference table. |
-| **[INVESTIGATOR RIGHTS & WHISTLEBLOWER PROTECTION](COMPLAINT_LETTER_REDACTED.html)** | <strong>Investigator legal defense orgs in complaint CC list.</strong> See CC section in COMPLAINT_LETTER_REDACTED.html. | 5 organizations: ACLU of PA, Government Accountability Project (GAP), National Whistleblower Center, Reporters Committee for Freedom of the Press, PA Legal Aid Network. Included in all complaint CC lists. |
+| **[STRATEGY_OVERVIEW.html](STRATEGY_OVERVIEW.html)** | **Executive summary — one-page strategy for journalists and legislators.** | Why BCC isn't contacted, who IS contacted (9 categories, 35+ recipients), 5 evidence categories, 5 critical gaps, next steps, reading order. |
+| **[SYSTEMIC_CORRUPTION_JUSTIFICATION.html](SYSTEMIC_CORRUPTION_JUSTIFICATION.html)** | **Why BCC leadership is NOT contacted.** Standalone justification document. | 7 reasons: board-funder interlocks, CFO>CEO pay, Treasurer's undisclosed consulting firm, litigation against oversight (898 MDA 2017), HUD compliance risk, complainant safety (CONCERN 8), self-protecting governance structure. Evidence cross-reference table. |
+| **[INVESTIGATOR RIGHTS & WHISTLEBLOWER PROTECTION](COMPLAINT_LETTER_REDACTED.html)** | **Investigator legal defense orgs in complaint CC list.** See CC section in COMPLAINT_LETTER_REDACTED.html. | 5 organizations: ACLU of PA, Government Accountability Project (GAP), National Whistleblower Center, Reporters Committee for Freedom of the Press, PA Legal Aid Network. Included in all complaint CC lists. |
 
 ### Witness & Testimony
 
 | File | Description | Key Contents |
 |------|-------------|-------------|
-| **[WITNESS_OUTREACH_STRATEGY.html](WITNESS_OUTREACH_STRATEGY.html)** | <strong>Corroborating MMJ testimony — Gap #43 & #49.</strong> Strategy document for finding witnesses to corroborate CONCERN 8 (single-source, uncorroborated patient allegation). | <strong>8 action items:</strong> (1) Reddit r/PaMedicalMarijuana post, (2) PA MMJ Bureau call (888-733-5595), (3) Facebook PA Advocates for MMJ, (4) Disability Rights PA, (5) Reading dispensary visits, (6) Berks Reentry Coalition, (7) ACLU of PA, (8) NAMI Berks support groups. 3 target populations, 12 outreach venues, privacy protocol, ready-to-post drafts with phone scripts. |
+| **[WITNESS_OUTREACH_STRATEGY.html](WITNESS_OUTREACH_STRATEGY.html)** | **Corroborating MMJ testimony — Gap #43 & #49.** Strategy document for finding witnesses to corroborate CONCERN 8 (single-source, uncorroborated patient allegation). | **8 action items:** (1) Reddit r/PaMedicalMarijuana post, (2) PA MMJ Bureau call (888-733-5595), (3) Facebook PA Advocates for MMJ, (4) Disability Rights PA, (5) Reading dispensary visits, (6) Berks Reentry Coalition, (7) ACLU of PA, (8) NAMI Berks support groups. 3 target populations, 12 outreach venues, privacy protocol, ready-to-post drafts with phone scripts. |
 
 ### Action Items & Contacts
 
@@ -182,7 +182,7 @@ This investigation was audited on August 1, 2026. See [AUDIT_REPORT.html](AUDIT_
 
 **Privacy:** The MMJ/patient-rights content (CONCERN 8 in COMPLAINT_LETTER.html, gap #43 in INVESTIGATION_GAPS.html) contains a single-complainant account — not independently verified. A redacted version without CONCERN 8 — [COMPLAINT_LETTER_REDACTED.html](COMPLAINT_LETTER_REDACTED.html) — is the default shareable version for external distribution. The full version ([COMPLAINT_LETTER.html](COMPLAINT_LETTER.html)) is access-controlled. See OBS-5 in [AUDIT_REPORT.html](AUDIT_REPORT.html).
 
-**What hasn't been done:** No complaint has been sent. No COI request has been made. No PA Right-to-Know has been filed. The investigation has produced excellent evidence but has not yet delivered any external communication. <strong>BCC leadership is excluded from all complaint recipient lists — complaints go to oversight bodies only, as justified in [SYSTEMIC_CORRUPTION_JUSTIFICATION.html](SYSTEMIC_CORRUPTION_JUSTIFICATION.html).</strong>
+**What hasn't been done:** No complaint has been sent. No COI request has been made. No PA Right-to-Know has been filed. The investigation has produced excellent evidence but has not yet delivered any external communication. **BCC leadership is excluded from all complaint recipient lists — complaints go to oversight bodies only, as justified in [SYSTEMIC_CORRUPTION_JUSTIFICATION.html](SYSTEMIC_CORRUPTION_JUSTIFICATION.html).**
 
 ---
 
